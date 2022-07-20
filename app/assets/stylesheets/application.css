@@ -4,11 +4,11 @@ li.nav-item {
 }
 
 div.logo {
-  margin: 20px 0px;
+  margin: 20px 0;
 }
 
 div.logo p {
-  margin: 15px 0px;
+  margin: 15px 0;
   letter-spacing: 3px;
   font-size: 13px;
 }
@@ -16,4 +16,57 @@ div.logo p {
 p {
     font-family: 'Cabin';
     font-size: 15px;
+}
+
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+
+.marketing .col-lg-4 h3 {
+  font-size: 20px;
+  margin: 15px 0;
+}
+
+.marketing .col-lg-4 h4 {
+  font-size: 16px;
+  margin: 30px 0;
+  font-weight: normal;
+}
+
+.marketing .col-lg-4 h5 {
+  font-size: 13px;
+  margin: 15px 0;
+  font-weight: normal;
+}
+
+.featurette-divider {
+  margin: 5rem 0;
+}
+
+.featurette-heading {
+  letter-spacing: -.05rem;
+}
+
+@media (min-width: 40em) {
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 7rem;
+  }
 }
