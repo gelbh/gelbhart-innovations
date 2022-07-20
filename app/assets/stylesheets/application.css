@@ -3,6 +3,10 @@ body {
     font-family: 'Cabin';
 }
 
+.main {
+    text-align: center;
+}
+
 a.info {
     color: red;
 }
