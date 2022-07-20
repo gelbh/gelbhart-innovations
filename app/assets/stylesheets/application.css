@@ -121,3 +121,7 @@ p.card {
 .fa:hover {
   opacity: 0.7;
 }
+
+a:link {
+    color: red;
+}
