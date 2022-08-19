@@ -12,6 +12,8 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
+gem "sassc-rails"
+gem "mail_form"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -19,12 +21,12 @@ end
 
 group :development do
   gem "web-console"
-  gem "sqlite3", "~> 1.4"
-
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :production do
-  gem 'pg', '~> 1.4', '>= 1.4.1'
+  gem 'pg', '~> 1.4', '>= 1.4.2'
+  gem 'rails_12factor'
 end
 
 group :test do

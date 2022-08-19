@@ -1,97 +1,124 @@
-<style>
+<div class="jarallax d-none d-sm-block" data-jarallax data-speed="0.35">
+  <span class="position-absolute top-0 start-0 w-100 h-100 bg-gradient-primary-translucent"></span>
+  <div class="jarallax-img" style="background-image: url(<%= asset_path("services_cover.jpg") %>);"></div>
+  <div style="height: 200px;"></div>
+</div>
 
-  .marketing .col-lg-4 {
-    margin-bottom: 1.5rem;
-    text-align: center;
-  }
+<div class="bg-secondary">
+  <%= render 'shared/breadcrumb' %>
 
-  .marketing .col-lg-4 p {
-    margin-right: .75rem;
-    margin-left: .75rem;
-    font-family: 'Cabin';
-  }
+  <!-- Page title + Services grid -->
+  <section class="container pb-2 pb-md-4 pb-lg-5">
+    <h1 class="pb-4">Services</h1>
+    <div class="row row-cols-1 row-cols-md-2">
 
-  .marketing .col-lg-4 h3 {
-    font-size: 20px;
-    margin: 15px 0;
-    font-family: 'Cabin';
-  }
-  
-  .marketing .col-lg-4 h4 {
-    font-size: 16px;
-    margin: 30px 0;
-    font-weight: normal;
-    font-family: 'Cabin';
-  }
-  
-  .marketing .col-lg-4 h5 {
-    font-size: 13px;
-    margin: 15px 0;
-    font-weight: normal;
-    font-family: 'Cabin';
-  }
+      <!-- Item -->
+      <div class="col py-4 my-2 my-sm-3">
+        <a class="card card-hover h-100 border-0 shadow-sm text-decoration-none pt-5 px-sm-3 px-md-0 px-lg-3 pb-sm-3 pb-md-0 pb-lg-3 me-xl-2">
+          <div class="card-body pt-3">
+            <div class="d-inline-block shadow rounded-3 position-absolute top-0 translate-middle-y">
+              <img src="<%= asset_path("diligence.png") %>" class="d-block m-1" width="100" alt="Icon">
+            </div>
+            <h2 class="h4 d-inline-flex align-items-center">
+              Due Diligence
+            </h2>
+            <h3 class="h6 d-block align-items-center">
+              Are you considering to purchase a new pharmaceutical asset, be it a product or a company?
+            </h3>
+            <p class="fs-sm text-body mb-0">With more than 27 years of experience in the pharmaceutical industry, we provide assistance and advice in relation to any due diligence of a pharmaceutical product and a pharmaceutical company, including assessment, evaluation, structuring, negotiation and completion of a potential investment.</p>
+          </div>
+        </a>
+      </div>
 
-</style>
+      <!-- Item -->
+      <div class="col py-4 my-2 my-sm-3">
+        <a class="card card-hover h-100 border-0 shadow-sm text-decoration-none pt-5 px-sm-3 px-md-0 px-lg-3 pb-sm-3 pb-md-0 pb-lg-3 ms-xl-2">
+          <div class="card-body pt-3">
+            <div class="d-inline-block shadow rounded-3 position-absolute top-0 translate-middle-y">
+              <img src="<%= asset_path("business.png") %>" class="d-block m-1" width="100" alt="Icon">
+            </div>
+            <h2 class="h4 d-inline-flex align-items-center">
+              Business Development (Partnerships)
+            </h2>
+            <h3 class="h6 d-block align-items-center">
+              Are you developing a new product and looking for the best partner or looking to license out your product?
+            </h3>
+            <p class="fs-sm text-body mb-0">With our industry experience and knowledge, we can find the right partner to your API, FDF and/or Orphan Generic Drug worldwide.</p>
+          </div>
+        </a>
+      </div>
 
-<div class="container marketing">
-  <div class="row">
+      <!-- Item -->
+      <div class="col py-4 my-2 my-sm-3">
+        <a class="card card-hover h-100 border-0 shadow-sm text-decoration-none pt-5 px-sm-3 px-md-0 px-lg-3 pb-sm-3 pb-md-0 pb-lg-3 ms-xl-2">
+          <div class="card-body pt-3">
+            <div class="d-inline-block shadow rounded-3 position-absolute top-0 translate-middle-y">
+              <img src="<%= asset_path("portfolio.png") %>" class="d-block m-1" width="100" alt="Icon">
+            </div>
+            <h2 class="h4 d-inline-flex align-items-center">
+              Portfolio
+            </h2>
+            <h3 class="h6 d-block align-items-center">
+              Looking for a new molecule but don’t know where to start?
+            </h3>
+            <p class="fs-sm text-body mb-0">With our chemistry background and industry knowledge, we can help you find the right molecules to develop, whether they are small niche molecules or future blockbusters, bread & butter or pearls. We will define the strategy for development after considering intellectual property, pricing and competition.</p>
+          </div>
+        </a>
+      </div>
 
-    <div class="col-lg-4">
-      <img src="/images/diligence.png" class="bd-placeholder-img rounded-circle" width="200" height="200" preserveAspectRatio="xMidYMid slice">
-      <h3 class="fw-normal">Due Diligence</h3>
-      <p>
-        <h4>Are you considering to purchase a new pharmaceutical asset, be it a product or a company?</h4>
-        <h5>With more than 27 years of experience in the pharmaceutical industry, we provide assistance and advice in relation to any due diligence of a pharmaceutical product and a pharmaceutical company, including assessment, evaluation, structuring, negotiation and completion of a potential investment.</h5>
-      </p>
+      <!-- Item -->
+      <div class="col py-4 my-2 my-sm-3">
+        <a class="card card-hover h-100 border-0 shadow-sm text-decoration-none pt-5 px-sm-3 px-md-0 px-lg-3 pb-sm-3 pb-md-0 pb-lg-3 ms-xl-2">
+          <div class="card-body pt-3">
+            <div class="d-inline-block shadow rounded-3 position-absolute top-0 translate-middle-y">
+              <img src="<%= asset_path("strategy.png") %>" class="d-block m-1" width="100" alt="Icon">
+            </div>
+            <h2 class="h4 d-inline-flex align-items-center">
+              Strategy
+            </h2>
+            <h3 class="h6 d-block align-items-center">
+              Not sure which road your company should follow?
+            </h3>
+            <p class="fs-sm text-body mb-0">We will research and identify the market needs and market potential to develop business opportunities for the company's portfolio. We will then locate new customers and new markets in which the company’s potential is not yet fully realized. We will evaluate the current sales team and recommend the right structure, identify sales personnel and train them. After reviewing agencies network we will recommend, where and if to work through agents or directly. We will define ideal pipeline process, KPIs and organization, and evaluate competitors' status.</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Item -->
+      <div class="col py-4 my-2 my-sm-3">
+        <a class="card card-hover h-100 border-0 shadow-sm text-decoration-none pt-5 px-sm-3 px-md-0 px-lg-3 pb-sm-3 pb-md-0 pb-lg-3 ms-xl-2">
+          <div class="card-body pt-3">
+            <div class="d-inline-block shadow rounded-3 position-absolute top-0 translate-middle-y">
+              <img src="<%= asset_path("drugs.png") %>" class="d-block m-1" width="100" alt="Icon">
+            </div>
+            <h2 class="h4 d-inline-flex align-items-center">
+              Generic Orphan Drugs
+            </h2>
+            <h3 class="h6 d-block align-items-center">
+              Are you developing a Generic Orphan Drug?
+            </h3>
+            <p class="fs-sm text-body mb-0">In many cases, it means investing in the development of a small niche product, but that doesn’t mean the market potential is also small. Every market has its own rules for Orphan Drugs and in many cases the brand product is not approved or not marketed in a specific location. We will Identify the relevant markets & find the right local partners, doctors (KOLs), patients and patient associations to allow you to offer your product in a fast and effective way, realizing profits in early stages of the development.</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Item -->
+      <div class="col py-4 my-2 my-sm-3">
+        <a class="card card-hover h-100 border-0 shadow-sm text-decoration-none pt-5 px-sm-3 px-md-0 px-lg-3 pb-sm-3 pb-md-0 pb-lg-3 ms-xl-2">
+          <div class="card-body pt-3">
+            <div class="d-inline-block shadow rounded-3 position-absolute top-0 translate-middle-y">
+              <img src="<%= asset_path("products.png") %>" class="d-block m-1" width="100" alt="Icon">
+            </div>
+            <h2 class="h4 d-inline-flex align-items-center">
+              Launch of New Products
+            </h2>
+            <h3 class="h6 d-block align-items-center">
+              Marketing authorization is just around the corner but the product is not yet ready for launch?
+            </h3>
+            <p class="fs-sm text-body mb-0">We will evaluate the situation and direct your suppliers (API and/or FDF) on how to develop their capacity, open bottlenecks, solve quality problems in the manufacturing procedures quickly and effectively to enable a smooth and timely launch.</p>
+          </div>
+        </a>
+      </div>
     </div>
-
-    <div class="col-lg-4">
-      <img src="/images/business.png" class="bd-placeholder-img rounded-circle" width="200" height="200" preserveAspectRatio="xMidYMid slice">
-      <h3 class="fw-normal">Business Development (Partnerships)</h3>
-      <p>
-        <h4>Are you developing a new product and looking for the best partner or looking to license out your product?</h4>
-        <h5>With our industry experience and knowledge, we can find the right partner to your API, FDF and/or Orphan Generic Drug worldwide.</h5>
-      </p>
-    </div>
-
-    <div class="col-lg-4">
-      <img src="/images/portfolio.png" class="bd-placeholder-img rounded-circle" width="200" height="200" preserveAspectRatio="xMidYMid slice">
-      <h3 class="fw-normal">Portfolio</h3>
-      <p>
-        <h4>Looking for a new molecule but don’t know where to start?</h4>
-        <h5>With our chemistry background and industry knowledge, we can help you find the right molecules to develop, whether they are small niche molecules or future blockbusters, bread & butter or pearls. We will define the strategy for development after considering  intellectual property, pricing and competition.</h5>
-      </p>
-    </div>
-
-  </div>
-  <div class="row">
-
-    <div class="col-lg-4">
-      <img src="/images/strategy.png" class="bd-placeholder-img rounded-circle" width="200" height="200" preserveAspectRatio="xMidYMid slice">
-      <h3 class="fw-normal">Strategy</h3>
-      <p>
-        <h4>Not sure which road your company should follow?</h4>
-        <h5>We will research and identify the market needs and market potential to develop business opportunities for the company's portfolio. We will then locate new customers and new markets in which the company’s potential is not yet fully realized. We will evaluate the current sales team and recommend the right structure, identify sales personnel and train them. After reviewing agencies network we will recommend, where and if to work through agents or directly. We will define ideal pipeline process, KPIs and organization, and evaluate competitors' status.</h5>
-      </p>
-    </div>
-
-    <div class="col-lg-4">
-      <img src="/images/drugs.png" class="bd-placeholder-img rounded-circle" width="200" height="200" preserveAspectRatio="xMidYMid slice">
-      <h3 class="fw-normal">Generic Orphan Drugs</h3>
-      <p>
-        <h4>Are you developing a Generic Orphan Drug?</h4>
-        <h5>In many cases, it means investing in the development of a small niche product, but that doesn’t mean the market potential is also small. Every market has its own rules for Orphan Drugs and in many cases the brand product is not approved or not marketed in a specific location. We will Identify the relevant markets & find the right local partners, doctors (KOLs), patients and patient associations to allow you to offer your product in a fast and effective way, realizing profits in early stages of the development.</h5>
-      </p>
-    </div>
-
-    <div class="col-lg-4">
-      <img src="/images/products.png" class="bd-placeholder-img rounded-circle" width="200" height="200" preserveAspectRatio="xMidYMid slice">
-      <h3 class="fw-normal">Launch of New Products</h3>
-      <p>
-        <h4>Marketing authorization is just around the corner but the product is not yet ready for launch?</h4>
-        <h5>We will evaluate the situation and direct your suppliers (API and/or FDF) on how to develop their capacity, open bottlenecks, solve quality problems in the manufacturing procedures quickly and effectively to enable a smooth and timely launch.</h5>
-      </p>
-    </div>
-    
-  </div>
+  </section>
 </div>
