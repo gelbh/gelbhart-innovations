@@ -20,9 +20,9 @@ class HomeController < ApplicationController
     @desc3 = "".html_safe
 
     @members = [
-      ["Bareket Gelbhart", "International Business Manager", "https://www.linkedin.com/in/bareket-gelbhart-83904a16/", @desc1],
-      ["Yaron Gelbhart", "CEO", "https://www.linkedin.com/in/yaron-gelbhart/", @desc2],
-      ["Tomer Gelbhart", "Software Developer", "https://www.linkedin.com/in/tomer-gelbhart-1452a11a0/", @desc3]]
+      ["Bareket Gelbhart", "https://www.linkedin.com/in/bareket-gelbhart-83904a16/", @desc1],
+      ["Yaron Gelbhart", "https://www.linkedin.com/in/yaron-gelbhart/", @desc2],
+      ["Tomer Gelbhart", "https://www.linkedin.com/in/tomer-gelbhart-1452a11a0/", @desc3]]
   end
 
   def corporate

@@ -76,7 +76,7 @@
   --si-border-radius-pill: 50rem;
   --si-heading-color: #0b0f19;
   --si-link-color: #f16363;
-  --si-link-hover-color: #3e41ee;
+  --si-link-hover-color: #ee3e3e;
   --si-code-color: #e3116c;
   --si-highlight-bg: #fff3cd;
 }
@@ -8087,7 +8087,7 @@ textarea.form-control-lg {
 }
 
 .bg-gradient-primary-translucent {
-  background: linear-gradient(180deg, rgba(99, 102, 241, 0) 0%, rgba(99, 102, 241, 0.6) 120%) !important;
+  background: linear-gradient(180deg, rgba(241, 99, 99, 0) 0%, rgba(241, 99, 99, 0.6) 120%) !important;
 }
 
 .bg-gradient-dark-translucent {
