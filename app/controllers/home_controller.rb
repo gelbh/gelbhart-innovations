@@ -25,11 +25,6 @@ class HomeController < ApplicationController
       ["Tomer Gelbhart", "https://www.linkedin.com/in/tomer-gelbhart-1452a11a0/", @desc3]]
   end
 
-  def corporate
-    @page_desc = "Gelbhart Innovations"
-    @page_title = "Corporate"
-  end
-
   def contact
     @page_desc = "Gelbhart Innovations"
     @page_title = "Contact"

@@ -1,17 +1,32 @@
-<div class="container col-xxl-8 px-4 py-1">
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-        <div class="col-10 col-sm-8 col-lg-6">
-            <div class="map-container">
-                <div id="map"></div>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <h1 class="display-5 fw-bold lh-1 mb-3">Gelbhart Innovations</h1>
-            <p class="lead">
-                Via Giuseppe Motta 9, 6826 Riva San Vitale, Switzerland<br>
-                <a class="info" href="mailto: info@gelbhart.com">info@gelbhart.com</a><br>
-                <a class="info" href="tel: +41797658422">+41 797658422</a><br>
-            </p>
-        </div>
+<!-- Branches -->
+<section class="container py-2 py-lg-4 py-xl-5 mb-2 mb-md-3">
+  <%= render 'shared/breadcrumb' %>
+  <div class="row py-5">
+    <div class="col-lg-6 mb-5 mb-lg-0">
+      <div class="d-flex flex-column h-100 shadow-sm rounded-3 overflow-hidden">
+        <iframe class="d-block h-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11105.540609364607!2d8.966258838391106!3d45.90360883759438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47842973164cf711%3A0x2d91b98d1d5f95c2!2sVia%20Giuseppe%20Motta%209%2C%206826%20Riva%20San%20Vitale!5e0!3m2!1sen!2sch!4v1661011079847!5m2!1sen!2sch" style="border: 0; min-height: 300px;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
     </div>
-</div>
+    <div class="col-lg-5 offset-lg-1">
+      <h2 class="h4 mb-4">Gelbhart Innovations</h2>
+      <ul class="list-unstyled pb-2 pb-lg-0 mb-4 mb-lg-5">
+        <li class="d-flex pb-1 mb-2">
+          <i class="bx bx-map text-primary fs-xl me-2" style="margin-top: .125rem;"></i>
+          Via Giuseppe Motta, 9, Riva san Vitale
+        </li>
+        <li class="d-flex pb-1 mb-2">
+          <i class="bx bx-phone-call text-primary fs-xl me-2" style="margin-top: .125rem;"></i>
+          +41 79 799 51 17
+        </li>
+        <li class="d-flex">
+          <i class="bx bx-time-five text-primary fs-xl me-2" style="margin-top: .125rem;"></i>
+          <div>
+            <strong class="text-nav">Mon - Fri</strong>: 8:00 am - 17:00 pm
+            <br>
+            <strong class="text-nav">Sat - Sun</strong>: Closed
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
