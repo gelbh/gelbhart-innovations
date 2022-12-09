@@ -1,3 +1,8 @@
+ /* * { 
+  outline: 1px solid red;
+  outline-offset: -1px;
+} */
+
 .page-loading {
   position: fixed;
   top: 0;
@@ -13,6 +18,7 @@
   visibility: hidden;
   z-index: 9999;
 }
+
 .dark-mode .page-loading {
   background-color: #0b0f19;
 }

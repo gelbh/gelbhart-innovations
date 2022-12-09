@@ -1,9 +1,19 @@
-<!-- Breadcrumb -->
-<nav class="container py-3" aria-label="breadcrumb">
-  <ol class="breadcrumb mb-0">
+<nav class="d-none d-sm-block container pt-3" aria-label="breadcrumb">
+  <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a href="<%= root_path %>"><i class="bx bx-home-alt fs-lg me-1"></i>Home</a>
+      <a href="<%= root_path %>"><i class="bx bx-home-alt fs-md me-2" role="none"></i>Home</a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><%= @page_title %></li>
+    <% if !['pages','contacts', 'news', 'documents'].include?(controller.controller_name) %>
+      <li class="breadcrumb-item">
+        <%= controller.controller_name.capitalize %>
+      </li>
+    <% end %>
+    <li class="breadcrumb-item active" aria-current="page">
+      <% if defined?(@breadcrumb) %>
+        <%= @breadcrumb %>
+      <% else %>
+        <%= @title.split(' / ').first %>
+      <% end %>
+    </li>
   </ol>
 </nav>

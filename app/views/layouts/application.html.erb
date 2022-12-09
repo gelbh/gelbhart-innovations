@@ -1,18 +1,22 @@
-<% @page_desc = "Gelbhart Innovations" %>
-<% @tmp = "Gelbhart Inn." %>
-<% if defined?(@page_title) %>
-<%  @page_title = @page_title + " / " + @tmp %>
-<% else %>
-<%  @page_title = @tmp %>
+<% if !defined?(@desc) %>
+  <% @desc = "" %>
 <% end %>
+
+<% if defined?(@title) %>
+  <% @title = @title + " / Gelbhart Inn." %>
+<% else %>
+  <% @title = "Gelbhart Inn." %>
+<% end %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
     <meta charset="UTF-8">
-    <title><%= @page_title %></title>
+    <title><%= @title %></title>
 
     <!-- SEO Meta Tags-->
-    <meta name="description" content="<%= @page_desc %>">
+    <meta name="description" content="<%= @desc %>">
     <meta name="keywords" content="">
     <meta name="author" content="Gelbhart Innovations">
 
@@ -23,11 +27,10 @@
     <!-- Favicon and Touch Icons-->
     <link rel="apple-touch-icon" sizes="180x180" href="<%= asset_path("apple-touch-icon.png") %>">
     <link rel="icon" type="image/png" sizes="32x32" href="<%= asset_path("favicon-32x32.png") %>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= asset_path("favicon-16x16.png") %>">
     <link rel="manifest" href="<%= asset_path("site.webmanifest") %>">
-    <link rel="mask-icon" href="<%= asset_path("safari-pinned-tab.svg") %>" color="#6366f1">
     <link rel="shortcut icon" href="<%= asset_path("favicon.ico") %>">
     <meta name="msapplication-TileColor" content="#080032">
-    <meta name="msapplication-config" content="<%= asset_path("browserconfig.xml") %>">
     <meta name="theme-color" content="#ffffff">
 
     <!-- Vendor Styles -->
@@ -36,15 +39,14 @@
     <link rel="stylesheet" media="screen" href="<%= asset_path("lightgallery-bundle.min.css") %>"/>
 
     <!-- Main Theme Styles + Bootstrap -->
-    <link rel="stylesheet" media="screen" href="<%= asset_path("theme.css") %>"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" media="screen" href="<%= asset_path("theme.css") %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
 
-  <!-- Theme mode -->
+    <!-- Theme mode -->
     <script>
       let mode = window.localStorage.getItem('mode'),
           root = document.getElementsByTagName('html')[0];
@@ -55,7 +57,7 @@
       }
     </script>
 
-    <!-- Page loading scripts -->
+    <!-- Page loading script -->
     <script>
       (function () {
         window.onload = function () {
@@ -69,7 +71,6 @@
     </script>
   </head>
 
-
   <!-- Body -->
   <body>
 
@@ -82,20 +83,26 @@
 
     <!-- Page wrapper for sticky footer -->
     <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
-    <main class="page-wrapper">
+    <main class="page-wrapper min-vh-100 <%= 'bg-faded-primary' if controller.controller_name == "contacts" %>">
 
-      <%= render 'shared/header' %>
+      <% if controller.controller_name != "errors" %>
+        <%= render 'shared/header' %>
+      <% end %>
 
-      <%= yield %>
+      <% if controller.controller_name == "errors" %>
+        <%= render 'layouts/error' %>
+      <% else %>
+        <%= yield %>
+      <% end %>
 
     </main>
 
     <%= render 'shared/footer' %>
 
     <!-- Back to top button -->
-    <a href="#top" class="btn-scroll-top" data-scroll>
+    <a href="#top" class="btn-scroll-top" data-scroll role="button" target="_blank">
       <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
-      <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
+      <i class="btn-scroll-top-icon bx bx-chevron-up" role="none"></i>
     </a>
 
     <!-- Vendor Scripts -->
@@ -112,7 +119,6 @@
     <script src="<%= asset_path("lg-thumbnail.min.js") %>"></script>
     <script src="<%= asset_path("lottie-player.js") %>"></script>
     <script src="<%= asset_path("rellax.min.js") %>"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdn-UTZM2qhMN4H0cAgOE8GJ5OXyuPk8A&callback=initMap"></script>
 
     <!-- Main Theme Script -->
     <script src="<%= asset_path("theme.min.js") %>"></script>

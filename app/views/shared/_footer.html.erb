@@ -11,20 +11,27 @@
 <!-- Footer -->
 <footer class="footer bg-dark dark-mode">
   <div class="container text-center pb-4">
-    <div class="navbar-brand justify-content-center text-dark mt-3">
-      <img src="<%= asset_path("logo.png") %>" id="logo" width="150">
+    <div class="justify-content-center">
+      <img src="<%= asset_path("logo.png") %>" alt="Gelbhart Inn. Logo" width="150">
     </div>
-    <div class="d-none d-sm-block pb-sm-3">
-      <ul class="nav justify-content-center">
-        <li class="nav-item"><a href="<%= root_path %>" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="<%= services_path %>" class="nav-link <%= is_active(services_path) %>">Services</a></li>
-        <li class="nav-item"><a href="<%= team_path %>" class="nav-link <%= is_active(team_path) %>">Team</a></li>
-        <li class="nav-item"><a href="<%= contact_path %>" class="nav-link <%= is_active(contact_path) %>">Contact Us</a></li>
-      </ul>
+
+    <!-- Nav -->
+    <div class="d-none d-sm-block">
+      <div class="pb-sm-3">
+        <ul class="nav justify-content-center">
+          <li class="nav-item"><a href="<%= root_path %>" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="<%= services_path %>" class="nav-link">Services</a></li>
+          <li class="nav-item"><a href="<%= team_path %>" class="nav-link">Team</a></li>
+          <li class="nav-item"><a href="<%= contacts_path %>" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+      
     </div>
+
     <div class="fs-xs text-center">
       <span class="text-light opacity-50">&copy; All rights reserved. Made by </span>
-      <a class="nav-link d-inline p-0" href="www.gelbhart.com" target="_blank" rel="noopener">Gelbhart Innovations</a>
+      <a class="nav-link d-inline p-0" href="https://gelbhart.com/" target="_blank" rel="noopener" aria-label="Gelbhart Inn. Website">Gelbhart Innnovations</a>
     </div>
+
   </div>
 </footer>
