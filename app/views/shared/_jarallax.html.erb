@@ -1,0 +1,13 @@
+<% if !defined?(@jarallaxHeight) %>
+  <% @jarallaxHeight = 200 %>
+<% end %>
+
+<% if !defined?(@jarallaxSpeed) %>
+  <% @jarallaxSpeed = 0.6 %>
+<% end %>
+
+<div class="jarallax d-none d-sm-block" data-jarallax data-speed="<%= @jarallaxSpeed %>">
+  <span class="position-absolute top-0 start-0 w-100 h-100 bg-gradient-primary-translucent"></span>
+  <div class="jarallax-img" style="background-image: url(<%= asset_path(@jarallax) %>);"></div>
+  <div style="height: <%= @jarallaxHeight %>px;"></div>
+</div>
