@@ -49,6 +49,11 @@
             <img src="<%= asset_path(member[0].split[0].downcase) %>" class="rounded-3" alt="<%= member[0] %>">
             <div class="card-img-overlay d-flex flex-column align-items-center justify-content-center rounded-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Click me for more info!">
               <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50 rounded-3"></span>
+              <div class="position-relative d-flex zindex-2">
+                <a href="<%= member[2] %>" target="_blank" class="btn btn-icon btn-secondary btn-linkedin btn-sm bg-white me-2">
+                  <i class="bx bxl-linkedin"></i>
+                </a>
+              </div>
             </div>
           </div>
           <div class="card-body text-center p-3">
