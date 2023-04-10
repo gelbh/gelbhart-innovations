@@ -29,6 +29,7 @@ class PagesController < ApplicationController
   def contacts
     @title =  "Contact Us"
     @jarallax = "contacts_cover"
-    @jarallaxSpeed = 0;
+    @jarallaxHeight = 300;
+    @jarallaxSpeed = 0.1;
   end
 end
