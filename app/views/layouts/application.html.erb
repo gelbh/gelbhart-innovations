@@ -1,16 +1,17 @@
 <% if !defined?(@desc) %>
-  <% @desc = "" %>
+<% @desc = "" %>
 <% end %>
 
 <% if defined?(@title) %>
-  <% @title = @title + " / Gelbhart Inn." %>
+<% @title = @title + " / Gelbhart Inn." %>
 <% else %>
-  <% @title = "Gelbhart Inn." %>
+<% @title = "Gelbhart Inn." %>
 <% end %>
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
 
     <meta charset="UTF-8">
     <title><%= @title %></title>
@@ -35,66 +36,69 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- Vendor Styles -->
-    <link rel="stylesheet" media="screen" href="<%= asset_path("boxicons.min.css") %>"/>
-    <link rel="stylesheet" media="screen" href="<%= asset_path("swiper-bundle.min.css") %>"/>
-    <link rel="stylesheet" media="screen" href="<%= asset_path("lightgallery-bundle.min.css") %>"/>
+    <link rel="stylesheet" media="screen" href="<%= asset_path("boxicons.min.css") %>" />
+    <link rel="stylesheet" media="screen" href="<%= asset_path("swiper-bundle.min.css") %>" />
+    <link rel="stylesheet" media="screen" href="<%= asset_path("lightgallery-bundle.min.css") %>" />
 
     <!-- Main Theme Styles + Bootstrap -->
     <link rel="stylesheet" media="screen" href="<%= asset_path("theme.css") %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
 
     <!-- Theme mode -->
     <script>
-      let mode = window.localStorage.getItem('mode'),
-          root = document.getElementsByTagName('html')[0];
-      if (mode !== null && mode === 'dark') {
-        root.classList.add('dark-mode');
-      } else {
-        root.classList.remove('dark-mode');
-      }
+        let mode = window.localStorage.getItem('mode'),
+            root = document.getElementsByTagName('html')[0];
+        if (mode !== null && mode === 'dark') {
+            root.classList.add('dark-mode');
+        } else {
+            root.classList.remove('dark-mode');
+        }
     </script>
 
     <!-- Page loading script -->
     <script>
-      (function () {
-        window.onload = function () {
-          const preloader = document.querySelector('.page-loading');
-          preloader.classList.remove('active');
-          setTimeout(function () {
-            preloader.remove();
-          }, 1000);
-        };
-      })();
+        (function() {
+            window.onload = function() {
+                const preloader = document.querySelector('.page-loading');
+                preloader.classList.remove('active');
+                setTimeout(function() {
+                    preloader.remove();
+                }, 1000);
+            };
+        })();
     </script>
-  </head>
+</head>
 
-  <!-- Body -->
-  <body>
+<!-- Body -->
+
+<body>
 
     <!-- Page loading spinner -->
     <div class="page-loading active">
-      <div class="page-loading-inner">
-        <div class="page-spinner"></div><span>Loading...</span>
-      </div>
+        <div class="page-loading-inner">
+            <div class="page-spinner"></div><span>Loading...</span>
+        </div>
     </div>
 
     <!-- Page wrapper for sticky footer -->
     <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
     <main class="page-wrapper min-vh-100 <%= 'bg-faded-primary' if controller.controller_name == "contacts" %>">
 
-      <% if controller.controller_name != "errors" %>
+        <% if controller.controller_name != "errors" %>
         <%= render 'shared/header' %>
-      <% end %>
+        <% end %>
 
-      <% if controller.controller_name == "errors" %>
+        <% if controller.controller_name == "errors" %>
         <%= render 'layouts/error' %>
-      <% else %>
+        <% elsif controller.controller_name == "documents" %>
+        <%= render 'layouts/documents' %>
+        <% else %>
         <%= yield %>
-      <% end %>
+        <% end %>
 
     </main>
 
@@ -102,8 +106,8 @@
 
     <!-- Back to top button -->
     <a href="#top" class="btn-scroll-top" data-scroll role="button" target="_blank">
-      <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
-      <i class="btn-scroll-top-icon bx bx-chevron-up" role="none"></i>
+        <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
+        <i class="btn-scroll-top-icon bx bx-chevron-up" role="none"></i>
     </a>
 
     <!-- Vendor Scripts -->
@@ -123,5 +127,6 @@
 
     <!-- Main Theme Script -->
     <script src="<%= asset_path("theme.min.js") %>"></script>
-  </body>
+</body>
+
 </html>

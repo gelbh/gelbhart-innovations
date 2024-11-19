@@ -1,19 +1,19 @@
 <nav class="d-none d-sm-block container pt-3" aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="<%= root_path %>"><i class="bx bx-home-alt fs-md me-2" role="none"></i>Home</a>
-    </li>
-    <% if !['pages','contacts', 'news', 'documents'].include?(controller.controller_name) %>
-      <li class="breadcrumb-item">
-        <%= controller.controller_name.capitalize %>
-      </li>
-    <% end %>
-    <li class="breadcrumb-item active" aria-current="page">
-      <% if defined?(@breadcrumb) %>
-        <%= @breadcrumb %>
-      <% else %>
-        <%= @title.split(' / ').first %>
-      <% end %>
-    </li>
-  </ol>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="<%= root_path %>"><i class="bx bx-home-alt fs-md me-2" role="none"></i>Home</a>
+        </li>
+        <% if !['pages','contacts', 'news', 'documents'].include?(controller.controller_name) %>
+        <li class="breadcrumb-item">
+            <%= controller.controller_name.capitalize %>
+        </li>
+        <% end %>
+        <li class="breadcrumb-item active" aria-current="page">
+            <% if defined?(@breadcrumb) %>
+            <%= @breadcrumb %>
+            <% else %>
+            <%= @title.split(' / ').first %>
+            <% end %>
+        </li>
+    </ol>
 </nav>
