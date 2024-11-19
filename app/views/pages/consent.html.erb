@@ -1,0 +1,79 @@
+<!-- Hero -->
+<section class="position-relative d-flex align-items-center bg-light min-vh-100">
+    <div class="container">
+        <!-- Logo -->
+        <div class="row justify-content-center">
+            <div class="col-10 col-sm-6 col-md-4 mt-lg-5 text-center">
+                <img src="<%= asset_path("hevy.png") %>" alt="Hevy App Logo" class="mb-4" style="max-width: 120px;">
+            </div>
+        </div>
+
+        <!-- App Info -->
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+                <h1 class="h2 mb-4">
+                    Hevy <span class="text-gradient-primary">Tracker</span>
+                </h1>
+                <p class="fs-lg mb-4">
+                    Track your Hevy workouts in Google Sheets
+                </p>
+            </div>
+        </div>
+
+        <!-- Permissions Card -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h2 class="h4 mb-4">This app will be able to:</h2>
+
+                        <!-- Permission List -->
+                        <ul class="list-unstyled mb-4">
+                            <li class="d-flex align-items-center mb-3">
+                                <i class="bx bx-check-circle text-primary fs-xl me-2"></i>
+                                <span>View and manage spreadsheets that you create with this app</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-3">
+                                <i class="bx bx-check-circle text-primary fs-xl me-2"></i>
+                                <span>Display and run the application in Google Sheets</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <i class="bx bx-check-circle text-primary fs-xl me-2"></i>
+                                <span>See your primary Google Account email address</span>
+                            </li>
+                        </ul>
+
+                        <!-- Developer Info -->
+                        <div class="d-flex align-items-center pb-3 mb-3 border-bottom">
+                            <i class="bx bx-info-circle fs-xl me-2"></i>
+                            <small class="text-muted">
+                                This application is developed by Gelbhart Innovations.
+                                By proceeding, you agree to allow this app to access your Google Account as described above.
+                            </small>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex justify-content-end pt-3">
+                            <button type="button" class="btn btn-secondary me-3" onclick="window.close()">
+                                Cancel
+                            </button>
+                            <a href="https://docs.google.com/spreadsheets/d/1i0g1h1oBrwrw-L4-BW0YUHeZ50UATcehNrg2azkcyXk/copy" class="btn btn-primary">
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Privacy Notice -->
+        <div class="row justify-content-center mt-4">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 text-center">
+                <small class="text-muted">
+                    By using this app you agree to our
+                    <a href="<%= tos_path %>" target="_blank" class="text-decoration-none">Terms of Service & Privacy Policy</a>
+                </small>
+            </div>
+        </div>
+    </div>
+</section>

@@ -27,9 +27,14 @@ class PagesController < ApplicationController
   end
 
   def contacts
-    @title =  "Contact Us"
-    @jarallax = "contacts_cover"
-    @jarallaxHeight = 300;
-    @jarallaxSpeed = 0.1;
+    @title =  'Contact Us'
+    @jarallax = 'contacts_cover'
+    @jarallaxHeight = 300
+    @jarallaxSpeed = 0.1
+  end
+
+  def consent
+    @title = 'Authorization Request / Hevy Tracker'
+    @desc = 'Authorize Hevy Tracker to access your Google Sheets'
   end
 end

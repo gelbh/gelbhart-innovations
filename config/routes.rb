@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'services', controller: 'pages'
   get 'team', controller: 'pages'
   get 'contacts', controller: 'pages'
+  get 'consent', controller: 'pages'
   
   get 'tos', to: 'documents#tos'
 
