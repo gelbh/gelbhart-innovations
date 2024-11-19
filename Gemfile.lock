@@ -137,6 +137,8 @@ GEM
     nokogiri (1.13.8)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
+    pg (1.5.9)
+    pg (1.5.9-x64-mingw-ucrt)
     public_suffix (5.0.0)
     puma (5.6.4)
       nio4r (~> 2.0)
@@ -238,6 +240,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   mail_form
+  pg
   puma (~> 5.0)
   rails (~> 7.0.3, >= 7.0.3.1)
   sassc-rails
