@@ -23,7 +23,7 @@ class PagesController < ApplicationController
     @members = [
       ["Bareket Gelbhart", "Bareket attended the Technion, Israel Institute of Technology, from where she holds her Bachelor degree in Chemistry with Organic Chemistry as the principal subject.<br><br>She is fluent in Hebrew and English and can converse in Italian. Bareket posses advanced knowledge of Microsoft Word, Excel and PowerPoint.<br><br>She resides in Ticino, Switzerland with her family, from where she travels across the globe regularly for work.<br><br>Bareket is a passionate cook and a die hard football fan.".html_safe, "https://www.linkedin.com/in/bareket-gelbhart-83904a16/"],
       ["Yaron Gelbhart", "Yaron attended the Technion, Israel Institute of Technology, from where he holds his Bachelor of Science degree in Engineering with Project Management as a principal subject. Yaron possesses over 20 years of experience in large projects management with emphasis on the Indian subcontinent.<br><br>His interests also spread across real estate and hospitality. He is fluent in English and Hebrew and has conversational level in Italian. In his free time Yaron does yoga and enjoys a glass of good Italian wine.".html_safe, "https://www.linkedin.com/in/yaron-gelbhart/"],
-      ["Tomer Gelbhart", "As a second year computing student with a passion for web development, I am constantly seeking opportunities to grow my skills and enhance my experience in the field. I am currently working part-time as a web developer, where I have honed my abilities in HTML, CSS, JavaScript, and various web development frameworks.<br><br>My drive to learn and my eye for detail have helped me produce high-quality work for clients, and I am constantly seeking new challenges to expand my knowledge.<br><br>I am eager to continue my education and grow my career in web development, and am open to new opportunities to further my growth in this field.".html_safe, "https://www.linkedin.com/in/tomer-gelbhart/"]]
+      ["Tomer Gelbhart", "Recent graduate with 5+ years of experience in software development, web development, and large language models. Planning to pursue a masters in Artificial Intelligence in the near future. Currently working on expanding my expertise in Computing and Mathematics.".html_safe, "https://www.linkedin.com/in/tomer-gelbhart/"]]
   end
 
   def contacts
@@ -34,7 +34,7 @@ class PagesController < ApplicationController
   end
 
   def consent
-    @title = 'Authorization Request / Hevy Tracker'
-    @desc = 'Authorize Hevy Tracker to access your Google Sheets'
+    @title = 'Hevy Tracker Add-on'
+    @desc = 'Track your Hevy workouts in Google Sheets'
   end
 end
