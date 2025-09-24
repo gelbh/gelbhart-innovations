@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   get 'services', controller: 'pages'
+  get 'pharmaceutical', controller: 'pages'
+  get 'real_estate', controller: 'pages'
   get 'team', controller: 'pages'
   get 'contacts', controller: 'pages'
   get 'consent', controller: 'pages'
