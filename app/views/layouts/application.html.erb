@@ -58,7 +58,7 @@
 
     <!-- Page wrapper for sticky footer -->
     <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
-    <main class="page-wrapper min-vh-100 <%= 'bg-faded-primary' if controller.controller_name == "contacts" %>">
+    <main class="page-wrapper <%= 'bg-faded-primary' if controller.controller_name == "contacts" %>" style="min-height: 100vh;">
 
         <% if controller.controller_name != "errors" %>
         <%= render 'shared/header' %>
