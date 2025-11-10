@@ -70,9 +70,4 @@ class PagesController < ApplicationController
     @jarallaxHeight = 300
     @jarallaxSpeed = 0.1
   end
-
-  def consent
-    @title = 'Hevy Tracker Add-on'
-    @desc = 'Track your Hevy workouts in Google Sheets'
-  end
 end
