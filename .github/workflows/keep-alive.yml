@@ -73,12 +73,12 @@ jobs:
           
           echo "🔄 Pinging Supabase database directly via PostgreSQL..."
           # Simple connection test - just connect and disconnect
-          PGPASSWORD=$(echo "${{ secrets.SUPABASE_DATABASE_URL }}" | sed -n 's/.*:\/\/[^:]*:\([^@]*\)@.*/\1/p') \
-          psql "${{ secrets.SUPABASE_DATABASE_URL }}" -c "SELECT 1;" > /dev/null 2>&1
-          
-          if [ $? -eq 0 ]; then
+          # Use psql with the connection string directly (it handles password from URL)
+          if psql "${{ secrets.SUPABASE_DATABASE_URL }}" -c "SELECT 1;" 2>&1; then
             echo "✅ Supabase database connection successful"
+            exit 0
           else
-            echo "⚠️  Supabase database connection failed"
+            echo "⚠️  Supabase database connection failed (this is optional, not a critical error)"
+            exit 0
           fi
 
