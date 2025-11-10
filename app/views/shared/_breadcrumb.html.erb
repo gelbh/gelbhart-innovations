@@ -8,9 +8,16 @@
             <%= controller.controller_name.capitalize %>
         </li>
         <% end %>
+        <% if ['pharmaceutical', 'real_estate'].include?(action_name) %>
+        <li class="breadcrumb-item">
+            <a href="<%= services_path %>">Services</a>
+        </li>
+        <% end %>
         <li class="breadcrumb-item active" aria-current="page">
             <% if defined?(@breadcrumb) %>
             <%= @breadcrumb %>
+            <% elsif ['pharmaceutical', 'real_estate'].include?(action_name) %>
+            <%= action_name == 'pharmaceutical' ? 'Pharmaceutical' : 'Real Estate' %>
             <% else %>
             <%= @title.split(' / ').first %>
             <% end %>
