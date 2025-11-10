@@ -1,3 +1,4 @@
 import "@hotwired/turbo-rails"
 import "controllers"
-import "src"
+import "src/theme"
+import "src/theme-mode"
