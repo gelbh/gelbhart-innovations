@@ -6,3 +6,66 @@
 /*
  *= require services
  */
+
+/* Page Loader - Loading indicator during Turbo navigation */
+#page-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 9999;
+  background: transparent;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+#page-loader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(to right, var(--si-primary), #f16363);
+  transition: width 0.3s ease;
+}
+
+#page-loader.active {
+  opacity: 1;
+}
+
+#page-loader.active::before {
+  width: 100%;
+  animation: page-loader-progress 0.6s ease-out;
+}
+
+@keyframes page-loader-progress {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Page Transition - Smooth fade-in for page content */
+body {
+  opacity: 1;
+  transition: opacity 0.2s ease-in;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure smooth transitions during Turbo navigation */
+turbo-frame {
+  opacity: 1;
+  transition: opacity 0.2s ease-in;
+}
