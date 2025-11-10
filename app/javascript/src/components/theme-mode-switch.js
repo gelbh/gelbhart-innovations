@@ -11,21 +11,28 @@ const themeModeSwitch = (() => {
 
   let checkbox = modeSwitch.querySelector('.form-check-input');
 
-  if (mode === 'dark') {
-    root.classList.add('dark-mode');
+  // Use global mode and root variables (set by inline script in layout)
+  // Fallback to window if globals aren't available
+  const currentMode = (typeof mode !== 'undefined' ? mode : window.localStorage.getItem('mode'));
+  const htmlRoot = (typeof root !== 'undefined' ? root : document.getElementsByTagName('html')[0]);
+
+  if (currentMode === 'dark') {
+    htmlRoot.classList.add('dark-mode');
     checkbox.checked = true;
   } else {
-    root.classList.remove('dark-mode');
+    htmlRoot.classList.remove('dark-mode');
     checkbox.checked = false;
   }
 
   modeSwitch.addEventListener('click', (e) => {
     if (checkbox.checked) {
-      root.classList.add('dark-mode');
+      htmlRoot.classList.add('dark-mode');
       window.localStorage.setItem('mode', 'dark');
+      if (typeof mode !== 'undefined') mode = 'dark';
     } else {
-      root.classList.remove('dark-mode');
+      htmlRoot.classList.remove('dark-mode');
       window.localStorage.setItem('mode', 'light');
+      if (typeof mode !== 'undefined') mode = 'light';
     }
   });
 
