@@ -47,42 +47,11 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-
-    <!-- Theme mode -->
-    <script>
-        let mode = window.localStorage.getItem('mode'),
-            root = document.getElementsByTagName('html')[0];
-        if (mode !== null && mode === 'dark') {
-            root.classList.add('dark-mode');
-        } else {
-            root.classList.remove('dark-mode');
-        }
-    </script>
-
-    <!-- Page loading script -->
-    <script>
-        (function() {
-            window.onload = function() {
-                const preloader = document.querySelector('.page-loading');
-                preloader.classList.remove('active');
-                setTimeout(function() {
-                    preloader.remove();
-                }, 1000);
-            };
-        })();
-    </script>
 </head>
 
 <!-- Body -->
 
 <body>
-
-    <!-- Page loading spinner -->
-    <div class="page-loading active">
-        <div class="page-loading-inner">
-            <div class="page-spinner"></div><span>Loading...</span>
-        </div>
-    </div>
 
     <!-- Page wrapper for sticky footer -->
     <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
@@ -122,10 +91,40 @@
     <script src="<%= asset_path("lg-zoom.min.js") %>"></script>
     <script src="<%= asset_path("lg-video.min.js") %>"></script>
     <script src="<%= asset_path("lg-thumbnail.min.js") %>"></script>
-    <script src="<%= asset_path("lottie-player.js") %>"></script>
+    <!-- Load lottie-player only if not already registered (prevents Turbo navigation errors) -->
+    <script id="lottie-player-loader">
+      (function() {
+        // Check if lottie-player is already registered
+        if (typeof customElements !== 'undefined' && !customElements.get('lottie-player')) {
+          // Only load if not already in the document
+          if (!document.querySelector('script[src*="lottie-player.js"]')) {
+            var script = document.createElement('script');
+            script.src = '<%= asset_path("lottie-player.js") %>';
+            script.setAttribute('data-turbo-permanent', 'true');
+            document.head.appendChild(script);
+          }
+        }
+        // Remove this loader script to prevent re-execution
+        var loader = document.getElementById('lottie-player-loader');
+        if (loader) loader.remove();
+      })();
+    </script>
     <script src="<%= asset_path("rellax.min.js") %>"></script>
 
     <!-- Main Theme Script -->
+    <!-- Initialize global mode and root variables before theme.min.js loads -->
+    <script>
+      // These must be bare global variables for theme.min.js to access them
+      var mode = window.localStorage.getItem('mode');
+      var root = document.getElementsByTagName('html')[0];
+      
+      // Apply dark mode if needed
+      if (mode !== null && mode === 'dark') {
+        root.classList.add('dark-mode');
+      } else {
+        root.classList.remove('dark-mode');
+      }
+    </script>
     <script src="<%= asset_path("theme.min.js") %>"></script>
 </body>
 
