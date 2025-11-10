@@ -19,8 +19,6 @@ Rails.application.config.assets.paths << Rails.root.join("app", "assets", "vendo
 Rails.application.config.assets.paths << Rails.root.join("app", "assets", "vendor", "lightgallery", "plugins", "thumbnail")
 Rails.application.config.assets.paths << Rails.root.join("app", "assets", "vendor", "@lottiefiles", "lottie-player", "dist")
 
-Rails.application.config.assets.paths << Rails.root.join("app", "assets", "images", "logos")
-Rails.application.config.assets.paths << Rails.root.join("app", "assets", "images", "services")
 Rails.application.config.assets.paths << Rails.root.join("app", "assets", "images", "team")
 Rails.application.config.assets.paths << Rails.root.join("app", "assets", "images", "covers")
 
