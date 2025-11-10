@@ -22,4 +22,7 @@ test:
 
 production:
   <<: *default
-  database: my_database_production
+  url: <%= ENV['DATABASE_URL'] %>
+  # Supabase connection string format:
+  # postgresql://[user]:[password]@[host]:[port]/[database]
+  # Set DATABASE_URL environment variable in Render dashboard

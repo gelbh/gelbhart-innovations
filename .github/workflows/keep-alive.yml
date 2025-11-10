@@ -1,0 +1,85 @@
+name: Keep Services Alive
+
+on:
+  schedule:
+    # Run every 14 minutes to keep Render free tier alive (spins down after 15 min inactivity)
+    - cron: '*/14 * * * *'  # Every 14 minutes
+    # Run every 4 hours for Supabase (spins down after 1 week, but ping every 4h to be safe)
+    - cron: '0 */4 * * *'  # Every 4 hours
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  ping-render:
+    name: Ping Render Service
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Render Service
+        run: |
+          if [ -z "${{ secrets.RENDER_URL }}" ]; then
+            echo "⚠️  RENDER_URL secret not set. Skipping Render ping."
+            exit 0
+          fi
+          
+          echo "🔄 Pinging Render service..."
+          response=$(curl -s -o /dev/null -w "%{http_code}" "${{ secrets.RENDER_URL }}" || echo "000")
+          
+          if [ "$response" = "200" ] || [ "$response" = "301" ] || [ "$response" = "302" ]; then
+            echo "✅ Render service responded with status: $response"
+          else
+            echo "⚠️  Render service responded with status: $response"
+          fi
+
+  ping-supabase:
+    name: Ping Supabase Database
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase Database
+        run: |
+          if [ -z "${{ secrets.SUPABASE_URL }}" ]; then
+            echo "⚠️  SUPABASE_URL secret not set. Skipping Supabase ping."
+            exit 0
+          fi
+          
+          echo "🔄 Pinging Supabase database..."
+          # Supabase REST API endpoint - this will keep the database connection alive
+          response=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
+            "${{ secrets.SUPABASE_URL }}/rest/v1/" || echo "000")
+          
+          if [ "$response" = "200" ] || [ "$response" = "401" ] || [ "$response" = "404" ]; then
+            echo "✅ Supabase database responded with status: $response"
+          else
+            echo "⚠️  Supabase database responded with status: $response"
+          fi
+
+  ping-supabase-direct:
+    name: Ping Supabase Direct Connection
+    runs-on: ubuntu-latest
+    # Only run on manual dispatch or roughly every 4 hours (17 runs * 14 min ≈ 4 hours)
+    # This is optional - the REST API ping above is usually sufficient
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && github.run_number % 17 == 0)
+    steps:
+      - name: Install PostgreSQL Client
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+      
+      - name: Ping Supabase Database Directly
+        run: |
+          if [ -z "${{ secrets.SUPABASE_DATABASE_URL }}" ]; then
+            echo "⚠️  SUPABASE_DATABASE_URL secret not set. Skipping direct database ping."
+            exit 0
+          fi
+          
+          echo "🔄 Pinging Supabase database directly via PostgreSQL..."
+          # Simple connection test - just connect and disconnect
+          PGPASSWORD=$(echo "${{ secrets.SUPABASE_DATABASE_URL }}" | sed -n 's/.*:\/\/[^:]*:\([^@]*\)@.*/\1/p') \
+          psql "${{ secrets.SUPABASE_DATABASE_URL }}" -c "SELECT 1;" > /dev/null 2>&1
+          
+          if [ $? -eq 0 ]; then
+            echo "✅ Supabase database connection successful"
+          else
+            echo "⚠️  Supabase database connection failed"
+          fi
+

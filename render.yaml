@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: gelbhart-innovations
+    env: ruby
+    plan: free
+    buildCommand: bundle install && bundle exec rails assets:precompile
+    startCommand: bundle exec puma -C config/puma.rb
+    envVars:
+      - key: RAILS_ENV
+        value: production
+      - key: RAILS_MASTER_KEY
+        sync: false  # Set this in Render dashboard from config/master.key
+      - key: RAILS_SERVE_STATIC_FILES
+        value: "true"
+      - key: RAILS_LOG_TO_STDOUT
+        value: "true"
+      - key: DATABASE_URL
+        sync: false  # Set this in Render dashboard from Supabase connection string
+    healthCheckPath: /
+    autoDeploy: true
+
