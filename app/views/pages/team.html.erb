@@ -2,6 +2,12 @@
    .card .position-relative {
     cursor: pointer;
   }
+  .swiper-slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
 </style>
 
 <!-- Jarallax -->
@@ -15,8 +21,8 @@
   <h2 class="text-center pb-md-2">Our leadership</h2>
   <div class="swiper mx-n2" data-swiper-options='{
     "centerInsufficientSlides": true,
-    "slidesPerView": 2,
-    "spaceBetween": 20,
+    "slidesPerView": 3,
+    "spaceBetween": 40,
     "pagination": {
       "el": ".swiper-pagination",
       "clickable": true
@@ -24,19 +30,19 @@
     "breakpoints": {
       "500": {
         "slidesPerView": 3,
-        "spaceBetween": 40
+        "spaceBetween": 60
       },
       "650": {
-        "slidesPerView": 4,
-        "spaceBetween": 40
+        "slidesPerView": 3,
+        "spaceBetween": 80
       },
       "900": {
-        "slidesPerView": 6,
-        "spaceBetween": 40
+        "slidesPerView": 3,
+        "spaceBetween": 100
       },
       "1100": {
-        "slidesPerView": 6,
-        "spaceBetween": 40
+        "slidesPerView": 3,
+        "spaceBetween": 120
       }
     }
   }'>
@@ -44,7 +50,7 @@
 
       <!-- Team Members -->
       <% for member in @members do %>
-        <div class="swiper-slide py-3 card border-0 bg-transparent">
+        <div class="swiper-slide py-3 px-2 card border-0 bg-transparent">
           <div class="position-relative card-hover" data-bs-toggle="modal" data-bs-target="#<%= member[0].split(' ').first %>">
             <img src="<%= asset_path(member[0].split[0].downcase) %>" class="rounded-3" alt="<%= member[0] %>">
             <div class="card-img-overlay d-flex flex-column align-items-center justify-content-center rounded-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Click me for more info!">
@@ -56,8 +62,8 @@
               </div>
             </div>
           </div>
-          <div class="card-body text-center p-3">
-            <h3 class="fs-lg fw-semibold pt-1 mb-2 text-nowrap"><%= member[0] %></h3>
+          <div class="card-body text-center px-4 py-3 d-flex flex-column align-items-center">
+            <h3 class="fs-lg fw-semibold pt-1 mb-2 text-center" style="word-break: normal; overflow-wrap: break-word; white-space: normal;"><%= member[0] %></h3>
           </div>
         </div>
       <% end %>
