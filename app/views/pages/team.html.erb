@@ -1,12 +1,178 @@
 <style>
-   .card .position-relative {
+  .card .position-relative {
     cursor: pointer;
+    overflow: hidden;
   }
+  
   .swiper-slide img {
     width: 100%;
     height: auto;
     object-fit: cover;
     display: block;
+    transition: transform 0.4s ease;
+  }
+  
+  /* Enhanced hover effects for team cards */
+  .team-card-wrapper {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .team-card-wrapper:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+  }
+  
+  .team-card-wrapper:hover img {
+    transform: scale(1.08);
+  }
+  
+  .team-overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.35));
+  }
+  
+  .team-card-wrapper:hover .team-overlay {
+    opacity: 1;
+  }
+  
+  .linkedin-wrapper {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .team-overlay .btn-linkedin,
+  .team-overlay .btn-github {
+    transform: translateX(10px);
+    opacity: 0;
+    transition: all 0.3s ease 0.1s;
+  }
+  
+  .team-overlay .btn-github {
+    transition-delay: 0.15s;
+  }
+  
+  .team-card-wrapper:hover .team-overlay .btn-linkedin,
+  .team-card-wrapper:hover .team-overlay .btn-github {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+  .team-overlay .btn-linkedin:hover,
+  .team-overlay .btn-github:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Enhanced modal styling */
+  .team-modal .modal-content {
+    border: none;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  }
+  
+  .team-modal .modal-header {
+    background: transparent;
+    border: none;
+    padding: 2rem;
+    border-bottom: 2px solid var(--si-border-color);
+  }
+  
+  .team-modal .modal-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--si-heading-color);
+  }
+  
+  .team-modal .profile-image-wrapper {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--si-primary);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  .team-modal .profile-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .team-modal .modal-body {
+    padding: 2rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--si-body-color);
+  }
+  
+  .team-modal .btn-close {
+    opacity: 0.6;
+  }
+  
+  .team-modal .btn-close:hover {
+    opacity: 1;
+  }
+  
+  .team-modal .linkedin-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #0077b5;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  .team-modal .linkedin-link:hover {
+    color: #005582;
+    transform: translateX(2px);
+  }
+  
+  .team-modal .linkedin-link i {
+    font-size: 1.25rem;
+  }
+  
+  .team-modal .github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--si-dark);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  .team-modal .github-link:hover {
+    color: var(--si-gray-700);
+    transform: translateX(2px);
+  }
+  
+  .team-modal .github-link i {
+    font-size: 1.25rem;
+  }
+  
+  .dark-mode .team-modal .github-link {
+    color: var(--si-gray-300);
+  }
+  
+  .dark-mode .team-modal .github-link:hover {
+    color: var(--si-white);
+  }
+  
+  .team-modal .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 </style>
 
@@ -51,14 +217,18 @@
       <!-- Team Members -->
       <% for member in @members do %>
         <div class="swiper-slide py-3 px-2 card border-0 bg-transparent">
-          <div class="position-relative card-hover" data-bs-toggle="modal" data-bs-target="#<%= member[0].split(' ').first %>">
+          <div class="position-relative team-card-wrapper shadow-sm rounded-3" data-bs-toggle="modal" data-bs-target="#<%= member[0].split(' ').first %>">
             <img src="<%= asset_path(member[0].split[0].downcase) %>" class="rounded-3" alt="<%= member[0] %>">
-            <div class="card-img-overlay d-flex flex-column align-items-center justify-content-center rounded-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Click me for more info!">
-              <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50 rounded-3"></span>
-              <div class="position-relative d-flex zindex-2">
-                <a href="<%= member[2] %>" target="_blank" class="btn btn-icon btn-secondary btn-linkedin btn-sm bg-white me-2">
+            <div class="card-img-overlay rounded-3 team-overlay" data-bs-toggle="tooltip" data-bs-placement="top" title="Click me for more info!">
+              <div class="linkedin-wrapper">
+                <a href="<%= member[2] %>" target="_blank" class="btn btn-icon btn-secondary btn-linkedin btn-lg bg-white me-2" onclick="event.stopPropagation();">
                   <i class="bx bxl-linkedin"></i>
                 </a>
+                <% if member[3].present? %>
+                  <a href="<%= member[3] %>" target="_blank" class="btn btn-icon btn-secondary btn-github btn-lg bg-white" onclick="event.stopPropagation();">
+                    <i class="bx bxl-github"></i>
+                  </a>
+                <% end %>
               </div>
             </div>
           </div>
@@ -75,18 +245,35 @@
 
   <!-- Team Modals -->
   <% for member in @members do %>
-    <div class="modal fade" id="<%= member[0].split(' ').first %>" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
+    <div class="modal fade team-modal" id="<%= member[0].split(' ').first %>" tabindex="-1" role="dialog" aria-labelledby="<%= member[0].split(' ').first %>Label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
-          <div class="modal-header row">
-            <div class="col-6 text-start">
-              <h5 class="modal-title"><%= member[0] %></h5>
+          <div class="modal-header">
+            <div class="d-flex align-items-center gap-4 w-100">
+              <div class="profile-image-wrapper flex-shrink-0">
+                <img src="<%= asset_path(member[0].split[0].downcase) %>" alt="<%= member[0] %>">
+              </div>
+              <div class="flex-grow-1">
+                <h5 class="modal-title" id="<%= member[0].split(' ').first %>Label"><%= member[0] %></h5>
+                <div class="social-links">
+                  <a href="<%= member[2] %>" target="_blank" class="linkedin-link">
+                    <i class="bx bxl-linkedin fs-5"></i>
+                    <span>Connect on LinkedIn</span>
+                  </a>
+                  <% if member[3].present? %>
+                    <a href="<%= member[3] %>" target="_blank" class="github-link">
+                      <i class="bx bxl-github fs-5"></i>
+                      <span>View GitHub Profile</span>
+                    </a>
+                  <% end %>
+                </div>
+              </div>
             </div>
-            <div class="col-6 text-end">
-              <img src="<%= asset_path(member[0].split[0].downcase) %>" class="rounded-3" alt="<%= member[0] %>" width="100">
-            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body"><p><%= member[1] %></p></div>
+          <div class="modal-body">
+            <%= member[1] %>
+          </div>
         </div>
       </div>
     </div>
