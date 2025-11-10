@@ -10,9 +10,9 @@
 
 <!-- Footer -->
 <footer class="footer bg-dark dark-mode">
-  <div class="container text-center py-4">
-    <div class="justify-content-center">
-      <img src="<%= asset_path("logo.png") %>" alt="Gelbhart Inn. Logo" width="150">
+  <div class="container text-center py-5">
+    <div class="justify-content-center mb-4 <%= 'd-none' if current_page?(root_path) %>">
+      <img src="<%= asset_path("logo.png") %>" alt="Gelbhart Inn. Logo" width="100">
     </div>
 
     <!-- Nav -->
@@ -28,7 +28,7 @@
       
     </div>
 
-    <div class="fs-xs text-center">
+    <div class="fs-xs text-center mt-4">
       <span class="text-light opacity-50">&copy; All rights reserved. Made by </span>
       <a class="nav-link d-inline p-0" href="https://gelbhart.com/" rel="noopener" aria-label="Gelbhart Inn. Website">Gelbhart Innovations</a>
       <div class="pt-2">
