@@ -19,7 +19,6 @@
 //= link_directory ../vendor/lightgallery/css
 //= link_directory ../vendor/jarallax/dist
 //= link_directory ../vendor/parallax-js/dist
-//= link_directory ../vendor/vanilla-tilt/dist
 //= link_directory ../vendor/@lottiefiles/lottie-player/dist
 
 //= link_tree ../favicon
