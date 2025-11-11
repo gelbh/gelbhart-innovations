@@ -16,9 +16,9 @@
                    title: "Pharmaceutical Services",
                    subtitle: "Comprehensive pharmaceutical industry consulting",
                    description: "Due diligence, business development, portfolio strategy, and specialized consulting for pharmaceutical companies and products.",
-                   icon: "bx bxs-capsule",
-                   icon_modifier: "pharma-icon",
-                   gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                   icon: AppConstants::SERVICE_ICONS[:pharmaceutical],
+                   icon_modifier: AppConstants::SERVICE_ICON_MODIFIERS[:pharmaceutical],
+                   gradient: AppConstants::SERVICE_GRADIENTS[:pharmaceutical],
                    href: pharmaceutical_path,
                    wrapper_options: { data: { turbo_preload: true } } %>
       </div>
@@ -29,9 +29,9 @@
                    title: "Real Estate Services",
                    subtitle: "End-to-end real estate development and investment",
                    description: "Land identification, acquisition, development management, marketing, and financial coordination for housing, hospitality, and commercial projects.",
-                   icon: "bx bxs-buildings",
-                   icon_modifier: "realestate-icon",
-                   gradient: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)",
+                   icon: AppConstants::SERVICE_ICONS[:real_estate],
+                   icon_modifier: AppConstants::SERVICE_ICON_MODIFIERS[:real_estate],
+                   gradient: AppConstants::SERVICE_GRADIENTS[:real_estate],
                    href: real_estate_path,
                    wrapper_options: { data: { turbo_preload: true } } %>
       </div>
