@@ -19,21 +19,24 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     get pharmaceutical_url
     assert_response :success
     assert_select "h1", "Pharmaceutical Services"
-    assert_not_nil assigns(:services)
+    # Verify services are rendered by checking for service card content
+    assert_select ".service-card", minimum: 1
   end
 
   test "should get real_estate" do
     get real_estate_url
     assert_response :success
     assert_select "h1", "Real Estate Services"
-    assert_not_nil assigns(:real_estate_services)
+    # Verify services are rendered by checking for service card content
+    assert_select ".service-card", minimum: 1
   end
 
   test "should get team" do
     get team_url
     assert_response :success
     assert_select "h2", "Our leadership"
-    assert_not_nil assigns(:members)
+    # Verify team members are rendered
+    assert_select ".swiper-slide", minimum: 1
   end
 
   test "should get contacts" do
