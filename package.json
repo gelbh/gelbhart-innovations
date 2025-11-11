@@ -4,7 +4,9 @@
   "description": "Silicon - Multipurpose Bootstrap 5 Template & UI Kit",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky",
+    "lint:commit": "commitlint --edit"
   },
   "author": "https://createx.studio/",
   "license": "ISC",
@@ -12,6 +14,8 @@
   "devDependencies": {
     "@babel/core": "^7.18.2",
     "@babel/preset-env": "^7.18.2",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
     "browser-sync": "^2.27.10",
     "del": "^6.1.1",
     "gulp": "^4.0.2",
@@ -22,6 +26,7 @@
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
+    "husky": "^9.1.7",
     "sass": "^1.52.2"
   },
   "dependencies": {
