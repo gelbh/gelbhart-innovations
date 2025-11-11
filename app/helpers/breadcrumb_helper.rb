@@ -4,7 +4,7 @@ module BreadcrumbHelper
 
     items << { name: "Home", path: root_path }
 
-    unless %w[pages contacts news documents].include?(controller.controller_name)
+    unless AppConstants::BREADCRUMB_EXCLUDED_CONTROLLERS.include?(controller.controller_name)
       items << { name: controller.controller_name.titleize }
     end
 
@@ -20,7 +20,7 @@ module BreadcrumbHelper
   private
 
   def services_subpage?
-    %w[pharmaceutical real_estate].include?(action_name)
+    AppConstants::SERVICE_ACTIONS.include?(action_name)
   end
 
   def breadcrumb_current_label
