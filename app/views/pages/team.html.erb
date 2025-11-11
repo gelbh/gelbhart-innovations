@@ -215,17 +215,17 @@
     <div class="swiper-wrapper">
 
       <!-- Team Members -->
-      <% for member in @members do %>
+      <% @members.each do |member| %>
         <div class="swiper-slide py-3 px-2 card border-0 bg-transparent">
-          <div class="position-relative team-card-wrapper shadow-sm rounded-3" data-bs-toggle="modal" data-bs-target="#<%= member[0].split(' ').first %>">
-            <img src="<%= asset_path(member[0].split[0].downcase) %>" class="rounded-3" alt="<%= member[0] %>">
+          <div class="position-relative team-card-wrapper shadow-sm rounded-3" data-bs-toggle="modal" data-bs-target="#<%= member.first_name %>">
+            <img src="<%= asset_path(member.image_filename) %>" class="rounded-3" alt="<%= member.name %>">
             <div class="card-img-overlay rounded-3 team-overlay" data-bs-toggle="tooltip" data-bs-placement="top" title="Click me for more info!">
               <div class="linkedin-wrapper">
-                <a href="<%= member[2] %>" target="_blank" class="btn btn-icon btn-secondary btn-linkedin btn-lg bg-white me-2" onclick="event.stopPropagation();">
+                <a href="<%= member.linkedin_url %>" target="_blank" class="btn btn-icon btn-secondary btn-linkedin btn-lg bg-white me-2" onclick="event.stopPropagation();">
                   <i class="bx bxl-linkedin"></i>
                 </a>
-                <% if member[3].present? %>
-                  <a href="<%= member[3] %>" target="_blank" class="btn btn-icon btn-secondary btn-github btn-lg bg-white" onclick="event.stopPropagation();">
+                <% if member.github? %>
+                  <a href="<%= member.github_url %>" target="_blank" class="btn btn-icon btn-secondary btn-github btn-lg bg-white" onclick="event.stopPropagation();">
                     <i class="bx bxl-github"></i>
                   </a>
                 <% end %>
@@ -233,7 +233,7 @@
             </div>
           </div>
           <div class="card-body text-center px-4 py-3 d-flex flex-column align-items-center">
-            <h3 class="fs-lg fw-semibold pt-1 mb-2 text-center" style="word-break: normal; overflow-wrap: break-word; white-space: normal;"><%= member[0] %></h3>
+            <h3 class="fs-lg fw-semibold pt-1 mb-2 text-center" style="word-break: normal; overflow-wrap: break-word; white-space: normal;"><%= member.name %></h3>
           </div>
         </div>
       <% end %>
@@ -244,24 +244,24 @@
   </div>
 
   <!-- Team Modals -->
-  <% for member in @members do %>
-    <div class="modal fade team-modal" id="<%= member[0].split(' ').first %>" tabindex="-1" role="dialog" aria-labelledby="<%= member[0].split(' ').first %>Label" aria-hidden="true">
+  <% @members.each do |member| %>
+    <div class="modal fade team-modal" id="<%= member.first_name %>" tabindex="-1" role="dialog" aria-labelledby="<%= member.first_name %>Label" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <div class="d-flex align-items-center gap-4 w-100">
               <div class="profile-image-wrapper flex-shrink-0">
-                <img src="<%= asset_path(member[0].split[0].downcase) %>" alt="<%= member[0] %>">
+                <img src="<%= asset_path(member.image_filename) %>" alt="<%= member.name %>">
               </div>
               <div class="flex-grow-1">
-                <h5 class="modal-title" id="<%= member[0].split(' ').first %>Label"><%= member[0] %></h5>
+                <h5 class="modal-title" id="<%= member.first_name %>Label"><%= member.name %></h5>
                 <div class="social-links">
-                  <a href="<%= member[2] %>" target="_blank" class="linkedin-link">
+                  <a href="<%= member.linkedin_url %>" target="_blank" class="linkedin-link">
                     <i class="bx bxl-linkedin fs-5"></i>
                     <span>Connect on LinkedIn</span>
                   </a>
-                  <% if member[3].present? %>
-                    <a href="<%= member[3] %>" target="_blank" class="github-link">
+                  <% if member.github? %>
+                    <a href="<%= member.github_url %>" target="_blank" class="github-link">
                       <i class="bx bxl-github fs-5"></i>
                       <span>View GitHub Profile</span>
                     </a>
@@ -272,7 +272,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <%= member[1] %>
+            <%= member.bio_html %>
           </div>
         </div>
       </div>
