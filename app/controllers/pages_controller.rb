@@ -7,29 +7,29 @@ class PagesController < ApplicationController
 
   def services
     assign_page_metadata(title: "Services")
-    assign_jarallax(image: "services_cover")
+    assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:services])
   end
 
   def pharmaceutical
     assign_page_metadata(title: "Pharmaceutical Services")
-    assign_jarallax(image: "services_cover")
+    assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:services])
     @services = Service.pharmaceutical
   end
 
   def real_estate
     assign_page_metadata(title: "Real Estate Services")
-    assign_jarallax(image: "services_cover")
+    assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:services])
     @real_estate_services = Service.real_estate
   end
 
   def team
     assign_page_metadata(title: "Team")
-    assign_jarallax(image: "team_cover")
+    assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:team])
     @members = TeamMember.all
   end
 
   def contacts
     assign_page_metadata(title: "Contact Us")
-    assign_jarallax(image: "contacts_cover", height: 300, speed: 0.1)
+    assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:contacts], height: 300, speed: 0.1)
   end
 end
