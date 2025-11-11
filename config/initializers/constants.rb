@@ -22,9 +22,9 @@ module AppConstants
 
   # Jarallax background images
   JARALLAX_IMAGES = {
-    services: "services_cover",
-    team: "team_cover",
-    contacts: "contacts_cover"
+    services: "covers/services_cover.jpg",
+    team: "covers/team_cover.jpg",
+    contacts: "covers/contacts_cover.jpg"
   }.freeze
 
   # Controllers that should be excluded from breadcrumb display

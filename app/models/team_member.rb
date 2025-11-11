@@ -17,7 +17,7 @@ class TeamMember
   end
 
   def image_filename
-    first_name.downcase
+    "team/#{first_name.downcase}.png"
   end
 
   def github?

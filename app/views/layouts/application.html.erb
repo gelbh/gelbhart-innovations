@@ -15,9 +15,9 @@
     <meta name="msapplication-TileColor" content="#080032">
     <meta name="theme-color" content="#ffffff">
     <!-- Vendor Styles -->
-    <link rel="stylesheet" media="screen" href="<%= asset_path("boxicons.min.css") %>">
-    <link rel="stylesheet" media="screen" href="<%= asset_path("swiper-bundle.min.css") %>">
-    <link rel="stylesheet" media="screen" href="<%= asset_path("lightgallery-bundle.min.css") %>">
+    <link rel="stylesheet" media="screen" href="<%= asset_path("boxicons/css/boxicons.min.css") %>">
+    <link rel="stylesheet" media="screen" href="<%= asset_path("swiper/swiper-bundle.min.css") %>">
+    <link rel="stylesheet" media="screen" href="<%= asset_path("lightgallery/css/lightgallery-bundle.min.css") %>">
     <!-- Main Theme Styles + Bootstrap -->
     <link rel="stylesheet" media="screen" href="<%= asset_path("theme.css") %>">
     <%= csrf_meta_tags %>
@@ -50,17 +50,17 @@
       <i class="btn-scroll-top-icon bx bx-chevron-up" role="none"></i>
     </a>
     <!-- Vendor Scripts -->
-    <script src="<%= asset_path("bootstrap.bundle.min.js") %>"></script>
-    <script src="<%= asset_path("smooth-scroll.polyfills.min.js") %>"></script>
-    <script src="<%= asset_path("cleave.min.js") %>"></script>
-    <script src="<%= asset_path("jarallax.min.js") %>"></script>
-    <script src="<%= asset_path("parallax.min.js") %>"></script>
-    <script src="<%= asset_path("swiper-bundle.min.js") %>"></script>
-    <script src="<%= asset_path("lightgallery.min.js") %>"></script>
-    <script src="<%= asset_path("lg-fullscreen.min.js") %>"></script>
-    <script src="<%= asset_path("lg-zoom.min.js") %>"></script>
-    <script src="<%= asset_path("lg-video.min.js") %>"></script>
-    <script src="<%= asset_path("lg-thumbnail.min.js") %>"></script>
+    <script src="<%= asset_path("bootstrap/dist/js/bootstrap.bundle.min.js") %>"></script>
+    <script src="<%= asset_path("smooth-scroll/dist/smooth-scroll.polyfills.min.js") %>"></script>
+    <script src="<%= asset_path("cleave.js/dist/cleave.min.js") %>"></script>
+    <script src="<%= asset_path("jarallax/dist/jarallax.min.js") %>"></script>
+    <script src="<%= asset_path("parallax-js/dist/parallax.min.js") %>"></script>
+    <script src="<%= asset_path("swiper/swiper-bundle.min.js") %>"></script>
+    <script src="<%= asset_path("lightgallery/lightgallery.min.js") %>"></script>
+    <script src="<%= asset_path("lightgallery/plugins/fullscreen/lg-fullscreen.min.js") %>"></script>
+    <script src="<%= asset_path("lightgallery/plugins/zoom/lg-zoom.min.js") %>"></script>
+    <script src="<%= asset_path("lightgallery/plugins/video/lg-video.min.js") %>"></script>
+    <script src="<%= asset_path("lightgallery/plugins/thumbnail/lg-thumbnail.min.js") %>"></script>
     <!-- Load lottie-player only if not already registered (prevents Turbo navigation errors) -->
     <script id="lottie-player-loader">
       (function() {
@@ -69,7 +69,7 @@
           // Only load if not already in the document
           if (!document.querySelector('script[src*="lottie-player.js"]')) {
             var script = document.createElement('script');
-            script.src = '<%= asset_path("lottie-player.js") %>';
+            script.src = '<%= asset_path("@lottiefiles/lottie-player/dist/lottie-player.js") %>';
             script.setAttribute('data-turbo-permanent', 'true');
             document.head.appendChild(script);
           }
@@ -79,7 +79,7 @@
         if (loader) loader.remove();
       })();
     </script>
-    <script src="<%= asset_path("rellax.min.js") %>"></script>
+    <script src="<%= asset_path("rellax/rellax.min.js") %>"></script>
     <!-- Main Theme Script -->
     <!-- Initialize global mode and root variables before theme.min.js loads -->
     <script>

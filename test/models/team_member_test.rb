@@ -29,14 +29,14 @@ class TeamMemberTest < ActiveSupport::TestCase
     assert_equal "John", member.first_name
   end
 
-  test "image_filename returns lowercase first name" do
+  test "image_filename returns path with lowercase first name and extension" do
     member = TeamMember.new(
       name: "John Doe",
       bio: "Test bio",
       linkedin_url: "https://linkedin.com/in/johndoe"
     )
     
-    assert_equal "john", member.image_filename
+    assert_equal "team/john.png", member.image_filename
   end
 
   test "github? returns true when github_url is present" do
