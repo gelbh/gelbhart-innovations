@@ -1,10 +1,6 @@
-/* * { 
-  outline: 1px solid red;
-  outline-offset: -1px;
-} */
-
 /*
  *= require services
+ *= require pages/team
  */
 
 /* Page Loader - Loading indicator during Turbo navigation */

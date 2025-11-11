@@ -8,13 +8,8 @@ class TeamMember
   def initialize(name:, bio:, linkedin_url:, github_url: nil)
     @name = name
     @bio = bio
-    @bio_html = bio.html_safe
     @linkedin_url = linkedin_url
     @github_url = github_url
-  end
-
-  def bio_html
-    @bio_html
   end
 
   def first_name
