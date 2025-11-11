@@ -1,18 +1,32 @@
 /* Service Card Styles */
-.service-card:hover .service-icon {
-  transform: translateY(-3px) scale(1.1);
+/* Desktop hover effects */
+@media (hover: hover) and (pointer: fine) {
+  .service-card:hover .service-icon {
+    transform: translateY(-3px) scale(1.1);
+  }
+
+  .service-card:hover .service-icon.pharma-icon {
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4) !important;
+  }
+
+  .service-card:hover .service-icon.realestate-icon {
+    box-shadow: 0 10px 25px rgba(17, 153, 142, 0.4) !important;
+  }
+
+  .service-card:hover .service-icon i {
+    transform: scale(1.2);
+  }
+  
+  .service-card:hover .service-icon::before {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
 }
 
-.service-card:hover .service-icon.pharma-icon {
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4) !important;
-}
-
-.service-card:hover .service-icon.realestate-icon {
-  box-shadow: 0 10px 25px rgba(17, 153, 142, 0.4) !important;
-}
-
-.service-card:hover .service-icon i {
-  transform: scale(1.2);
+/* Touch device - no hover effects, just active states */
+@media (hover: none) {
+  .service-card:active .service-icon {
+    transform: scale(0.95);
+  }
 }
 
 .service-icon {
@@ -32,14 +46,68 @@
   transform: translateX(-100%) translateY(-100%) rotate(45deg);
 }
 
-.service-card:hover .service-icon::before {
-  transform: translateX(100%) translateY(100%) rotate(45deg);
+/* Service Icon Responsive Sizing */
+@media (max-width: 575px) {
+  .service-icon-responsive {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  
+  .service-icon-content {
+    font-size: 1.75rem !important;
+  }
 }
 
-/* Galaxy Fold Media Query */
-@media (min-width: 280px) and (max-width: 320px) {
-  header .form-check {
+@media (min-width: 576px) {
+  .service-icon-responsive {
+    width: 70px !important;
+    height: 70px !important;
+  }
+  
+  .service-icon-content {
+    font-size: 2rem !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .service-icon-responsive {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  
+  .service-icon-content {
+    font-size: 2.2rem !important;
+  }
+}
+
+/* Header Responsive Styles */
+@media (max-width: 575px) {
+  /* Hide center logo on very small screens to prevent overlap */
+  .navbar-brand.position-absolute {
     display: none !important;
+  }
+  
+  /* Ensure theme toggle stays compact on mobile */
+  .mode-switch {
+    scale: 0.9;
+  }
+  
+  /* Reduce navbar padding on mobile */
+  header .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+/* Galaxy Fold and very small screens */
+@media (max-width: 360px) {
+  .mode-switch {
+    scale: 0.8;
+  }
+  
+  .navbar-toggler {
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
   }
 }
 

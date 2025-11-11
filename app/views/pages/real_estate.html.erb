@@ -6,18 +6,18 @@
   <%= render 'shared/breadcrumb' %>
 
   <!-- Page title + Services grid -->
-  <section class="container py-2 pb-md-4 pb-lg-5">
-    <div class="d-flex align-items-center justify-content-between mb-4">
-      <h1 class="mb-0">Real Estate Services</h1>
-      <a href="<%= services_path %>" class="btn btn-outline-primary" data-turbo-preload>
-        <i class="bx bx-arrow-back me-2"></i>All Services
+  <section class="container py-2 pb-md-4 pb-lg-5 px-3 px-sm-4">
+    <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between gap-3 mb-3 mb-sm-4">
+      <h1 class="mb-0 fs-3 fs-sm-2 fs-md-1">Real Estate Services</h1>
+      <a href="<%= services_path %>" class="btn btn-outline-primary btn-sm btn-md-md flex-shrink-0" data-turbo-preload>
+        <i class="bx bx-arrow-back me-1 me-sm-2"></i><span class="d-none d-sm-inline">All </span>Services
       </a>
     </div>
     <div class="row row-cols-1 row-cols-md-2">
 
       <!-- Items -->
       <% @real_estate_services.each do |service| %>
-        <div class="col py-4 my-2 my-sm-3">
+        <div class="col py-3 py-sm-4 my-1 my-sm-2 my-md-3">
           <%= render "shared/service_card",
                      title: service.title,
                      description: service.description,

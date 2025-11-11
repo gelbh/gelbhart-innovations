@@ -65,3 +65,289 @@ turbo-frame {
   opacity: 1;
   transition: opacity 0.2s ease-in;
 }
+
+/* Hero Section Responsive Styles */
+.hero-section {
+  padding-top: 80px;
+  padding-bottom: 2rem;
+}
+
+@media (min-width: 576px) {
+  .hero-section {
+    padding-top: 100px;
+  }
+}
+
+/* Hero Logo Responsive Sizing */
+.hero-logo {
+  max-width: 180px !important;
+}
+
+@media (min-width: 576px) {
+  .hero-logo {
+    max-width: 220px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-logo {
+    max-width: 250px !important;
+  }
+}
+
+/* Hero Title Responsive Sizing */
+.hero-title {
+  font-size: calc(1.5rem + 1vw);
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+@media (min-width: 576px) {
+  .hero-title {
+    font-size: calc(1.75rem + 1.2vw);
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: calc(2rem + 1.5vw);
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* Hero Subtitle Responsive */
+.hero-subtitle {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+@media (min-width: 576px) {
+  .hero-subtitle {
+    font-size: 1.15rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+}
+
+/* Contact Page Map Responsive Styles */
+.contact-map-wrapper {
+  min-height: 300px;
+}
+
+@media (min-width: 576px) {
+  .contact-map-wrapper {
+    min-height: 350px;
+  }
+}
+
+@media (min-width: 768px) {
+  .contact-map-wrapper {
+    min-height: 400px;
+  }
+}
+
+@media (min-width: 992px) {
+  .contact-map-wrapper {
+    min-height: 450px;
+  }
+}
+
+.contact-map {
+  min-height: inherit;
+}
+
+/* Footer Responsive Styles */
+.footer-logo {
+  width: 70px;
+}
+
+@media (min-width: 576px) {
+  .footer-logo {
+    width: 80px;
+  }
+}
+
+@media (min-width: 768px) {
+  .footer-logo {
+    width: 100px;
+  }
+}
+
+/* Global Typography Responsive Improvements */
+/* Ensure better readability on mobile */
+@media (max-width: 575px) {
+  body {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  h1, .h1 {
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+  
+  h2, .h2 {
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+  
+  h3, .h3 {
+    font-size: 1.3rem;
+  }
+  
+  h4, .h4 {
+    font-size: 1.15rem;
+  }
+  
+  h5, .h5 {
+    font-size: 1rem;
+  }
+  
+  /* Better mobile button sizing */
+  .btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .btn-sm {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.75rem;
+  }
+  
+  .btn-lg {
+    font-size: 1rem;
+    padding: 0.65rem 1.25rem;
+  }
+}
+
+/* Responsive spacing utilities */
+@media (max-width: 575px) {
+  /* Reduce excessive padding on mobile */
+  .py-5 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  .py-4 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  
+  .my-5 {
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+  }
+  
+  .my-4 {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+/* Jarallax Responsive */
+.jarallax {
+  min-height: 150px;
+}
+
+@media (min-width: 576px) {
+  .jarallax {
+    min-height: 200px;
+  }
+}
+
+/* Ensure cards stack properly on mobile */
+@media (max-width: 767px) {
+  .card {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Touch-friendly tap targets */
+@media (max-width: 767px) {
+  .btn, .nav-link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-link {
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+/* Very small screens (Galaxy Fold, etc.) - 280px-360px */
+@media (max-width: 360px) {
+  /* Further reduce font sizes */
+  body {
+    font-size: 0.9rem;
+  }
+  
+  h1, .h1 {
+    font-size: 1.5rem;
+  }
+  
+  h2, .h2 {
+    font-size: 1.35rem;
+  }
+  
+  /* Tighter container padding */
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  /* Smaller buttons on very small screens */
+  .btn {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  /* Reduce icon sizes */
+  .fs-xl {
+    font-size: 1.25rem !important;
+  }
+}
+
+/* Prevent horizontal scroll */
+body, html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Ensure images don't overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Better word wrapping */
+h1, h2, h3, h4, h5, h6, p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Responsive table fixes if any */
+@media (max-width: 767px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Smooth scrolling for anchor links */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

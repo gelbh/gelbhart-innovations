@@ -1,38 +1,29 @@
-<style>
-  /* Galaxy Fold */
-  @media (min-width: 280px) and (max-width: 320px) {
-    .navbar-brand {
-      padding-top: 20px;
-      padding-bottom: 20px;
-    }
-  }
-</style>
-
 <!-- Footer -->
 <footer class="footer bg-dark dark-mode">
-  <div class="container text-center py-5">
-    <div class="justify-content-center mb-4 <%= 'd-none' if current_page?(root_path) %>">
-      <img src="<%= asset_path("logo.png") %>" alt="Gelbhart Inn. Logo" width="100">
+  <div class="container text-center py-4 py-sm-5 px-3">
+    <div class="justify-content-center mb-3 mb-sm-4 <%= 'd-none' if current_page?(root_path) %>">
+      <img src="<%= asset_path("logo.png") %>" alt="Gelbhart Inn. Logo" width="80" class="footer-logo">
     </div>
 
     <!-- Nav -->
     <div class="d-none d-sm-block">
-      <div class="pb-sm-3">
-        <ul class="nav justify-content-center">
-          <li class="nav-item"><a href="<%= root_path %>" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="<%= services_path %>" class="nav-link">Services</a></li>
-          <li class="nav-item"><a href="<%= team_path %>" class="nav-link">Team</a></li>
-          <li class="nav-item"><a href="<%= contacts_path %>" class="nav-link">Contact</a></li>
+      <div class="pb-2 pb-sm-3">
+        <ul class="nav justify-content-center flex-wrap">
+          <li class="nav-item"><a href="<%= root_path %>" class="nav-link py-1 py-sm-2">Home</a></li>
+          <li class="nav-item"><a href="<%= services_path %>" class="nav-link py-1 py-sm-2">Services</a></li>
+          <li class="nav-item"><a href="<%= team_path %>" class="nav-link py-1 py-sm-2">Team</a></li>
+          <li class="nav-item"><a href="<%= contacts_path %>" class="nav-link py-1 py-sm-2">Contact</a></li>
         </ul>
       </div>
-
     </div>
 
-    <div class="fs-xs text-center mt-4">
-      <span class="text-light opacity-50">&copy; All rights reserved. Made by </span>
-      <a class="nav-link d-inline p-0" href="https://gelbhart.com/" rel="noopener" aria-label="Gelbhart Inn. Website">Gelbhart Innovations</a>
-      <div class="pt-2">
-        <span class="text-light opacity-50">Please see our </span>
+    <div class="fs-xs text-center mt-3 mt-sm-4">
+      <div class="mb-2">
+        <span class="text-light opacity-50">&copy; All rights reserved. Made by </span>
+        <a class="nav-link d-inline p-0" href="https://gelbhart.com/" rel="noopener" aria-label="Gelbhart Inn. Website">Gelbhart Innovations</a>
+      </div>
+      <div class="pt-1 pt-sm-2">
+        <span class="text-light opacity-50 d-none d-sm-inline">Please see our </span>
         <a class="nav-link d-inline p-0" href="<%= tos_path %>" aria-label="Terms & Conditions and Privacy Policy">Terms & Conditions</a>
         <span class="text-light opacity-50"> and </span>
         <a class="nav-link d-inline p-0" href="<%= tos_path %>" aria-label="Terms & Conditions and Privacy Policy">Privacy Policy</a>

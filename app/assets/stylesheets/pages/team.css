@@ -81,24 +81,46 @@
 .team-modal .modal-header {
   background: transparent;
   border: none;
-  padding: 2rem;
+  padding: 1.5rem 1rem;
   border-bottom: 2px solid var(--si-border-color);
+  position: relative;
+}
+
+@media (min-width: 576px) {
+  .team-modal .modal-header {
+    padding: 2rem;
+  }
 }
 
 .team-modal .modal-title {
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   color: var(--si-heading-color);
 }
 
+@media (min-width: 576px) {
+  .team-modal .modal-title {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
 .team-modal .profile-image-wrapper {
-  width: 120px;
-  height: 120px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   overflow: hidden;
-  border: 4px solid var(--si-primary);
+  border: 3px solid var(--si-primary);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+@media (min-width: 576px) {
+  .team-modal .profile-image-wrapper {
+    width: 120px;
+    height: 120px;
+    border: 4px solid var(--si-primary);
+  }
 }
 
 .team-modal .profile-image-wrapper img {
@@ -108,10 +130,18 @@
 }
 
 .team-modal .modal-body {
-  padding: 2rem;
-  font-size: 1rem;
-  line-height: 1.7;
+  padding: 1.25rem 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
   color: var(--si-body-color);
+}
+
+@media (min-width: 576px) {
+  .team-modal .modal-body {
+    padding: 2rem;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
 }
 
 .team-modal .btn-close {
@@ -174,5 +204,30 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+/* Team Card Responsive Adjustments */
+@media (max-width: 575px) {
+  .team-card-wrapper {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  
+  /* Simplify hover effects on mobile */
+  .team-card-wrapper:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Touch devices - show overlay on tap */
+@media (hover: none) {
+  .team-overlay {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  
+  .team-card-wrapper:active .team-overlay {
+    opacity: 1;
+  }
 }
 

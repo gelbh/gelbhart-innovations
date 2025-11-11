@@ -1,9 +1,9 @@
 <!-- Navbar -->
 <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page -->
 <header class="header navbar navbar-expand-lg navbar-sticky d-flex flex-column shadow-sm bg-light <%= 'position-absolute' if current_page?(root_path) %>">
-    <div class="container position-relative d-flex align-items-center justify-content-between py-3">
+    <div class="container position-relative d-flex align-items-center justify-content-between py-2 py-sm-3">
         <div class="d-flex align-items-center">
-            <button type="button" class="navbar-toggler me-3" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button type="button" class="navbar-toggler me-2 me-sm-3" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div id="navbarNav" class="offcanvas offcanvas-end">
@@ -48,13 +48,13 @@
                 </div>
             </div>
         </div>
-        <a class="position-absolute start-50 translate-middle-x d-flex align-items-center navbar-brand px-3 <%= 'd-none' if current_page?(root_path) %>" href="<%= root_path %>" data-turbo-preload>
+        <a class="position-absolute position-sm-absolute start-50 translate-middle-x d-none d-sm-flex align-items-center navbar-brand px-2 px-sm-3 <%= 'd-none' if current_page?(root_path) %>" href="<%= root_path %>" data-turbo-preload>
             <img src="<%= asset_path("logo.png") %>" alt="Gelbhart Inn. Logo" width="50">
         </a>
-        <div class="form-check form-switch mode-switch" data-bs-toggle="mode">
-            <label class="form-check-label" for="theme-mode"><i class="bx bx-bulb" role="theme" aria-label="Light Mode"><span class="d-none">Light Mode</span></i></label>
+        <div class="form-check form-switch mode-switch ms-auto" data-bs-toggle="mode">
+            <label class="form-check-label d-none d-sm-inline" for="theme-mode"><i class="bx bx-bulb" role="theme" aria-label="Light Mode"><span class="d-none">Light Mode</span></i></label>
             <input name="theme-mode" type="checkbox" class="form-check-input" id="theme-mode">
-            <label class="form-check-label" for="theme-mode"><i class="bx bxs-bulb" role="theme" aria-label="Dark Mode"><span class="d-none">Dark Mode</span></i></label>
+            <label class="form-check-label d-none d-sm-inline" for="theme-mode"><i class="bx bxs-bulb" role="theme" aria-label="Dark Mode"><span class="d-none">Dark Mode</span></i></label>
         </div>
     </div>
 </header>
