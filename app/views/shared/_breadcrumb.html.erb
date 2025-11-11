@@ -1,26 +1,19 @@
 <nav class="d-none d-sm-block container pt-3" aria-label="breadcrumb">
-    <ol class="breadcrumb">
+  <ol class="breadcrumb">
+    <% breadcrumb_trail.each_with_index do |item, index| %>
+      <% if index.zero? %>
         <li class="breadcrumb-item">
-            <a href="<%= root_path %>"><i class="bx bx-home-alt fs-md me-2" role="none"></i>Home</a>
+          <%= link_to root_path do %>
+            <i class="bx bx-home-alt fs-md me-2" role="none"></i>Home
+          <% end %>
         </li>
-        <% if !['pages','contacts', 'news', 'documents'].include?(controller.controller_name) %>
-        <li class="breadcrumb-item">
-            <%= controller.controller_name.capitalize %>
-        </li>
-        <% end %>
-        <% if ['pharmaceutical', 'real_estate'].include?(action_name) %>
-        <li class="breadcrumb-item">
-            <a href="<%= services_path %>">Services</a>
-        </li>
-        <% end %>
-        <li class="breadcrumb-item active" aria-current="page">
-            <% if defined?(@breadcrumb) %>
-            <%= @breadcrumb %>
-            <% elsif ['pharmaceutical', 'real_estate'].include?(action_name) %>
-            <%= action_name == 'pharmaceutical' ? 'Pharmaceutical' : 'Real Estate' %>
-            <% else %>
-            <%= @title.split(' / ').first %>
-            <% end %>
-        </li>
-    </ol>
+      <% elsif item[:current] %>
+        <li class="breadcrumb-item active" aria-current="page"><%= item[:name] %></li>
+      <% elsif item[:path] %>
+        <li class="breadcrumb-item"><%= link_to item[:name], item[:path] %></li>
+      <% else %>
+        <li class="breadcrumb-item"><%= item[:name] %></li>
+      <% end %>
+    <% end %>
+  </ol>
 </nav>

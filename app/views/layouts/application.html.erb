@@ -1,82 +1,54 @@
-<% if !defined?(@desc) %>
-<% @desc = "" %>
-<% end %>
-
-<% if defined?(@title) %>
-<% @title = @title + " / Gelbhart Inn." %>
-<% else %>
-<% @title = "Gelbhart Inn." %>
-<% end %>
-
 <!DOCTYPE html>
 <html lang="en" id="top">
-
-<head>
-
+  <head>
     <meta charset="UTF-8">
-    <title><%= @title %></title>
-
+    <title><%= full_page_title(@title) %></title>
     <!-- SEO Meta Tags-->
-    <meta name="description" content="<%= @desc %>">
+    <meta name="description" content="<%= page_description(@desc) %>">
     <meta name="keywords" content="">
     <meta name="author" content="Gelbhart Innovations">
-
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <!-- Favicon and Touch Icons-->
     <%= render 'application/favicon' %>
     <meta name="msapplication-TileColor" content="#080032">
     <meta name="theme-color" content="#ffffff">
-
     <!-- Vendor Styles -->
-    <link rel="stylesheet" media="screen" href="<%= asset_path("boxicons.min.css") %>" />
-    <link rel="stylesheet" media="screen" href="<%= asset_path("swiper-bundle.min.css") %>" />
-    <link rel="stylesheet" media="screen" href="<%= asset_path("lightgallery-bundle.min.css") %>" />
-
+    <link rel="stylesheet" media="screen" href="<%= asset_path("boxicons.min.css") %>">
+    <link rel="stylesheet" media="screen" href="<%= asset_path("swiper-bundle.min.css") %>">
+    <link rel="stylesheet" media="screen" href="<%= asset_path("lightgallery-bundle.min.css") %>">
     <!-- Main Theme Styles + Bootstrap -->
     <link rel="stylesheet" media="screen" href="<%= asset_path("theme.css") %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-</head>
-
-<!-- Body -->
-
-<body>
-
+  </head>
+  <!-- Body -->
+  <body>
     <!-- Page Loader - Shows during Turbo navigation -->
     <div id="page-loader" data-turbo-permanent></div>
-
     <!-- Page wrapper for sticky footer -->
     <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
     <main class="page-wrapper <%= 'bg-faded-primary' if controller.controller_name == "contacts" %>" style="min-height: 100vh;">
-
-        <% if controller.controller_name != "errors" %>
+      <% if controller.controller_name != "errors" %>
         <%= render 'shared/header' %>
-        <% end %>
-
-        <% if controller.controller_name == "errors" %>
+      <% end %>
+      <% if controller.controller_name == "errors" %>
         <%= render 'layouts/error' %>
-        <% elsif controller.controller_name == "documents" %>
+      <% elsif controller.controller_name == "documents" %>
         <%= render 'layouts/documents' %>
-        <% else %>
+      <% else %>
         <%= yield %>
-        <% end %>
-
+      <% end %>
     </main>
-
     <%= render 'shared/footer' %>
-
     <!-- Back to top button -->
     <a href="#top" class="btn-scroll-top" data-scroll role="button">
-        <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
-        <i class="btn-scroll-top-icon bx bx-chevron-up" role="none"></i>
+      <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
+      <i class="btn-scroll-top-icon bx bx-chevron-up" role="none"></i>
     </a>
-
     <!-- Vendor Scripts -->
     <script src="<%= asset_path("bootstrap.bundle.min.js") %>"></script>
     <script src="<%= asset_path("smooth-scroll.polyfills.min.js") %>"></script>
@@ -108,14 +80,13 @@
       })();
     </script>
     <script src="<%= asset_path("rellax.min.js") %>"></script>
-
     <!-- Main Theme Script -->
     <!-- Initialize global mode and root variables before theme.min.js loads -->
     <script>
       // These must be bare global variables for theme.min.js to access them
       var mode = window.localStorage.getItem('mode');
       var root = document.getElementsByTagName('html')[0];
-      
+
       // Apply dark mode if needed
       if (mode !== null && mode === 'dark') {
         root.classList.add('dark-mode');
@@ -124,6 +95,5 @@
       }
     </script>
     <script src="<%= asset_path("theme.min.js") %>"></script>
-</body>
-
+  </body>
 </html>
