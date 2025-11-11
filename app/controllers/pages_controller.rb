@@ -1,35 +1,35 @@
 class PagesController < ApplicationController
+  include JarallaxConfiguration
+
   def index
-    @title = "Home"
+    assign_page_metadata(title: "Home")
   end
 
   def services
-    @title = "Services"
-    @jarallax = "services_cover"
+    assign_page_metadata(title: "Services")
+    assign_jarallax(image: "services_cover")
   end
 
   def pharmaceutical
-    @title = "Pharmaceutical Services"
-    @jarallax = "services_cover"
+    assign_page_metadata(title: "Pharmaceutical Services")
+    assign_jarallax(image: "services_cover")
     @services = Service.pharmaceutical
   end
 
   def real_estate
-    @title = "Real Estate Services"
-    @jarallax = "services_cover"
+    assign_page_metadata(title: "Real Estate Services")
+    assign_jarallax(image: "services_cover")
     @real_estate_services = Service.real_estate
   end
 
   def team
-    @title = "Team"
-    @jarallax = "team_cover"
+    assign_page_metadata(title: "Team")
+    assign_jarallax(image: "team_cover")
     @members = TeamMember.all
   end
 
   def contacts
-    @title =  'Contact Us'
-    @jarallax = 'contacts_cover'
-    @jarallaxHeight = 300
-    @jarallaxSpeed = 0.1
+    assign_page_metadata(title: "Contact Us")
+    assign_jarallax(image: "contacts_cover", height: 300, speed: 0.1)
   end
 end
