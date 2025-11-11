@@ -12,7 +12,7 @@ class NavigationTest < ApplicationSystemTestCase
 
   test "navigating to services page" do
     visit root_url
-    click_on "Services"
+    click_on "Services", match: :first
     
     assert_selector "h1", text: "Services"
     assert_selector "h2", text: "Pharmaceutical Services"
@@ -35,7 +35,7 @@ class NavigationTest < ApplicationSystemTestCase
 
   test "navigating to team page" do
     visit root_url
-    click_on "Team"
+    click_on "Team", match: :first
     
     assert_selector "h2", text: "Our leadership"
   end
