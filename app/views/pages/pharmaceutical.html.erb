@@ -1,10 +1,8 @@
 <!-- Jarallax -->
 <%= render 'shared/jarallax' %>
-
 <div class="bg-secondary">
   <!-- Breadcrumb -->
   <%= render 'shared/breadcrumb' %>
-
   <!-- Page title + Services grid -->
   <section class="container py-2 pb-md-4 pb-lg-5">
     <div class="d-flex align-items-center justify-content-between mb-4">
@@ -14,28 +12,17 @@
       </a>
     </div>
     <div class="row row-cols-1 row-cols-md-2">
-
       <!-- Items -->
       <% @services.each do |service| %>
         <div class="col py-4 my-2 my-sm-3">
-          <a class="card card-hover service-card h-100 border-0 shadow-sm text-decoration-none pt-5 px-sm-3 px-md-0 px-lg-3 pb-sm-3 pb-md-0 pb-lg-3 me-xl-2">
-            <div class="card-body pt-3">
-              <div class="service-icon d-inline-block position-absolute top-0 translate-middle-y d-flex align-items-center justify-content-center rounded-circle shadow-lg"
-                   style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: all 0.3s ease;">
-                <i class="<%= service.icon %> text-white" style="font-size: 2.2rem; transition: transform 0.3s ease;"></i>
-              </div>
-              <h2 class="h4 d-inline-flex align-items-center">
-                <%= service.title %>
-              </h2>
-              <h3 class="h6 d-block align-items-center">
-                <%= service.subtitle %>
-              </h3>
-              <p class="fs-sm text-body mb-0"><%= service.description %></p>
-            </div>
-          </a>
+          <%= render "shared/service_card",
+                     title: service.title,
+                     subtitle: service.subtitle,
+                     description: service.description,
+                     icon: service.icon,
+                     gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" %>
         </div>
       <% end %>
-
     </div>
   </section>
 </div>

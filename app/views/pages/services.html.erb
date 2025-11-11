@@ -12,40 +12,28 @@
 
       <!-- Pharmaceutical Services -->
       <div class="col py-4 my-2 my-sm-3">
-        <a href="/pharmaceutical" class="card card-hover service-card h-100 border-0 shadow-sm text-decoration-none pt-5 px-sm-3 px-md-0 px-lg-3 pb-sm-3 pb-md-0 pb-lg-3 me-xl-2">
-          <div class="card-body pt-3">
-            <div class="service-icon pharma-icon d-inline-block position-absolute top-0 translate-middle-y d-flex align-items-center justify-content-center rounded-circle shadow-lg"
-                 style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: all 0.3s ease;">
-              <i class="bx bxs-capsule text-white" style="font-size: 2.2rem; transition: transform 0.3s ease;"></i>
-            </div>
-            <h2 class="h4 d-inline-flex align-items-center">
-              Pharmaceutical Services
-            </h2>
-            <h3 class="h6 d-block align-items-center">
-              Comprehensive pharmaceutical industry consulting
-            </h3>
-            <p class="fs-sm text-body mb-0">Due diligence, business development, portfolio strategy, and specialized consulting for pharmaceutical companies and products.</p>
-          </div>
-        </a>
+        <%= render "shared/service_card",
+                   title: "Pharmaceutical Services",
+                   subtitle: "Comprehensive pharmaceutical industry consulting",
+                   description: "Due diligence, business development, portfolio strategy, and specialized consulting for pharmaceutical companies and products.",
+                   icon: "bx bxs-capsule",
+                   icon_modifier: "pharma-icon",
+                   gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                   href: pharmaceutical_path,
+                   wrapper_options: { data: { turbo_preload: true } } %>
       </div>
 
       <!-- Real Estate Services -->
       <div class="col py-4 my-2 my-sm-3">
-        <a href="/real_estate" class="card card-hover service-card h-100 border-0 shadow-sm text-decoration-none pt-5 px-sm-3 px-md-0 px-lg-3 pb-sm-3 pb-md-0 pb-lg-3 me-xl-2">
-          <div class="card-body pt-3">
-            <div class="service-icon realestate-icon d-inline-block position-absolute top-0 translate-middle-y d-flex align-items-center justify-content-center rounded-circle shadow-lg"
-                 style="width: 80px; height: 80px; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); transition: all 0.3s ease;">
-              <i class="bx bxs-buildings text-white" style="font-size: 2.2rem; transition: transform 0.3s ease;"></i>
-            </div>
-            <h2 class="h4 d-inline-flex align-items-center">
-              Real Estate Services
-            </h2>
-            <h3 class="h6 d-block align-items-center">
-              End-to-end real estate development and investment
-            </h3>
-            <p class="fs-sm text-body mb-0">Land identification, acquisition, development management, marketing, and financial coordination for housing, hospitality, and commercial projects.</p>
-          </div>
-        </a>
+        <%= render "shared/service_card",
+                   title: "Real Estate Services",
+                   subtitle: "End-to-end real estate development and investment",
+                   description: "Land identification, acquisition, development management, marketing, and financial coordination for housing, hospitality, and commercial projects.",
+                   icon: "bx bxs-buildings",
+                   icon_modifier: "realestate-icon",
+                   gradient: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)",
+                   href: real_estate_path,
+                   wrapper_options: { data: { turbo_preload: true } } %>
       </div>
 
     </div>
