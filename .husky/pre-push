@@ -1,4 +1,4 @@
-echo "Running ERB lint..."
+echo "🔍 Running ERB lint..."
 bin/lint
 
 if [ $? -ne 0 ]; then
@@ -7,3 +7,14 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "✅ ERB lint passed"
+echo ""
+echo "🧪 Running Rails tests..."
+ruby bin/rails test
+
+if [ $? -ne 0 ]; then
+  echo "❌ Tests failed. Fix the failing tests before pushing."
+  exit 1
+fi
+
+echo "✅ All tests passed"
+echo "🚀 Ready to push!"
