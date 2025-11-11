@@ -1,0 +1,11 @@
+---
+EnableDefaultLinters: true
+
+exclude:
+  - "tmp/**/*"
+  - "vendor/**/*"
+
+linters:
+  Rubocop:
+    enabled: false
+

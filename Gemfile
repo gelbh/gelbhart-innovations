@@ -22,6 +22,8 @@ end
 
 group :development do
   gem "web-console"
+  gem "htmlbeautifier", require: false
+  gem "erb_lint", require: false
 end
 
 group :production do

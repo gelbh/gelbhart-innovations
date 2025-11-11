@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "Running ERB lint..."
+bin/lint
+
+if [ $? -ne 0 ]; then
+  echo "❌ ERB lint failed. Fix the errors before pushing."
+  exit 1
+fi
+
+echo "✅ ERB lint passed"
+
+
