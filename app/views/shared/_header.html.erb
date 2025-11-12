@@ -48,7 +48,7 @@
                 </div>
             </div>
         </div>
-        <a class="position-absolute position-sm-absolute start-50 translate-middle-x d-none d-sm-flex align-items-center navbar-brand px-2 px-sm-3 <%= 'd-none' if current_page?(root_path) %>" href="<%= root_path %>" data-turbo-preload>
+        <a class="position-absolute position-sm-absolute start-50 translate-middle-x align-items-center navbar-brand px-2 px-sm-3 <%= current_page?(root_path) ? 'd-none' : 'd-none d-sm-flex' %>" href="<%= root_path %>" data-turbo-preload>
             <img src="<%= asset_path("logo.png") %>" alt="Gelbhart Inn. Logo" width="50">
         </a>
         <div class="form-check form-switch mode-switch ms-auto" data-bs-toggle="mode">
