@@ -4,45 +4,15 @@
 <!-- Breadcrumb -->
 <%= render 'shared/breadcrumb' %>
 
-<!-- Brands (Carousel) -->
+<!-- Team Grid -->
 <section class="container py-2 pb-lg-5 px-3 px-sm-4 px-md-5">
   <h2 class="text-center pb-2 pb-md-3 fs-4 fs-md-3">Our leadership</h2>
-  <div class="swiper mx-n2" data-swiper-options='{
-    "centerInsufficientSlides": true,
-    "slidesPerView": 1,
-    "spaceBetween": 20,
-    "pagination": {
-      "el": ".swiper-pagination",
-      "clickable": true
-    },
-    "breakpoints": {
-      "400": {
-        "slidesPerView": 2,
-        "spaceBetween": 20
-      },
-      "576": {
-        "slidesPerView": 2,
-        "spaceBetween": 30
-      },
-      "768": {
-        "slidesPerView": 3,
-        "spaceBetween": 40
-      },
-      "992": {
-        "slidesPerView": 3,
-        "spaceBetween": 60
-      },
-      "1200": {
-        "slidesPerView": 3,
-        "spaceBetween": 80
-      }
-    }
-  }'>
-    <div class="swiper-wrapper">
-
-      <!-- Team Members -->
-      <% @members.each do |member| %>
-        <div class="swiper-slide py-2 py-sm-3 px-1 px-sm-2 card border-0 bg-transparent">
+  <div class="row row-cols-1 row-cols-md-3 g-3 g-md-4 justify-content-center">
+    
+    <!-- Team Members -->
+    <% @members.each do |member| %>
+      <div class="col">
+        <div class="card border-0 bg-transparent h-100">
           <div class="position-relative team-card-wrapper shadow-sm rounded-3" data-bs-toggle="modal" data-bs-target="#<%= member.first_name %>">
             <img src="<%= asset_path(member.image_filename) %>" class="rounded-3 w-100" alt="<%= member.name %>">
             <div class="card-img-overlay rounded-3 team-overlay" data-bs-toggle="tooltip" data-bs-placement="top" title="Click me for more info!">
@@ -62,11 +32,9 @@
             <h3 class="fs-md fs-lg-lg fw-semibold pt-1 mb-2 text-center" style="word-break: normal; overflow-wrap: break-word; white-space: normal;"><%= member.name %></h3>
           </div>
         </div>
-      <% end %>
+      </div>
+    <% end %>
 
-    </div>
-    <!-- Pagination (bullets) -->
-    <div class="swiper-pagination position-relative pt-2 mt-4"></div>
   </div>
 
   <!-- Team Modals -->
