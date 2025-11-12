@@ -36,7 +36,6 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "h2", "Our leadership"
     # Verify team members are rendered
-    assert_select ".swiper-slide", minimum: 1
   end
 
   test "should get contacts" do

@@ -1,78 +1,141 @@
 <!-- Jarallax -->
-<%= render 'shared/jarallax' %>
+<%= render "shared/jarallax" %>
 
 <!-- Breadcrumb -->
-<%= render 'shared/breadcrumb' %>
+<%= render "shared/breadcrumb" %>
 
-<!-- Team Grid -->
-<section class="container py-2 pb-lg-5 px-3 px-sm-4 px-md-5">
-  <h2 class="text-center pb-2 pb-md-3 fs-4 fs-md-3">Our leadership</h2>
-  <div class="row row-cols-1 row-cols-md-3 g-3 g-md-4 justify-content-center">
-    
-    <!-- Team Members -->
+<section class="team-page container py-4 py-lg-5 px-3 px-sm-4 px-md-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 text-center">
+      <span class="badge bg-secondary-subtle text-secondary-emphasis rounded-pill px-3 py-2 mb-3">
+        Meet the team
+      </span>
+      <h2 class="display-6 fw-bold mb-3">Our leadership</h2>
+      <p class="lead text-body-secondary mb-4 mb-lg-5">
+        Strategic thinkers and hands-on experts guiding Gelbhart Innovations across industries and continents.
+      </p>
+    </div>
+  </div>
+
+  <div class="team-grid row g-3 g-md-4 row-cols-1 row-cols-sm-2 row-cols-lg-3 justify-content-center">
     <% @members.each do |member| %>
-      <div class="col">
-        <div class="card border-0 bg-transparent h-100">
-          <div class="position-relative team-card-wrapper shadow-sm rounded-3" data-bs-toggle="modal" data-bs-target="#<%= member.first_name %>">
-            <img src="<%= asset_path(member.image_filename) %>" class="rounded-3 w-100" alt="<%= member.name %>">
-            <div class="card-img-overlay rounded-3 team-overlay" data-bs-toggle="tooltip" data-bs-placement="top" title="Click me for more info!">
-              <div class="linkedin-wrapper">
-                <a href="<%= member.linkedin_url %>" target="_blank" class="btn btn-icon btn-secondary btn-linkedin btn-md btn-lg-lg bg-white me-1 me-sm-2" onclick="event.stopPropagation();">
+      <% modal_id = "team-member-#{member.first_name.parameterize}" %>
+      <% social_links = capture do %>
+        <%= link_to member.linkedin_url,
+                    target: "_blank",
+                    rel: "noopener",
+                    class: "team-card-social-link linkedin",
+                    "aria-label": "Open #{member.name}'s LinkedIn profile",
+                    onclick: "event.stopPropagation();" do %>
                   <i class="bx bxl-linkedin"></i>
-                </a>
+        <% end %>
                 <% if member.github? %>
-                  <a href="<%= member.github_url %>" target="_blank" class="btn btn-icon btn-secondary btn-github btn-md btn-lg-lg bg-white" onclick="event.stopPropagation();">
+          <%= link_to member.github_url,
+                      target: "_blank",
+                      rel: "noopener",
+                      class: "team-card-social-link github",
+                      "aria-label": "Open #{member.name}'s GitHub profile",
+                      onclick: "event.stopPropagation();" do %>
                     <i class="bx bxl-github"></i>
-                  </a>
+          <% end %>
+        <% end %>
                 <% end %>
+
+      <article class="team-card col">
+        <div class="team-card-inner card border-0 bg-transparent h-100 shadow-sm">
+          <div class="team-card-media position-relative rounded-4 overflow-hidden"
+               role="button"
+               tabindex="0"
+               data-bs-toggle="modal"
+               data-bs-target="#<%= modal_id %>"
+               aria-label="Open profile for <%= member.name %>"
+               onkeydown="if(event.key === 'Enter' || event.key === ' '){event.preventDefault(); this.click();}">
+            <%= image_tag member.image_filename,
+                          class: "team-card-image",
+                          alt: member.name %>
+
+            <div class="team-card-overlay">
+              <div class="team-card-overlay-content">
+                <div class="team-card-social team-card-social--overlay">
+                  <%= social_links %>
+                </div>
+                <div class="team-card-cta text-white">
+                  <span class="team-card-cta-text">View full profile</span>
+                  <i class="bx bx-chevron-right"></i>
+                </div>
               </div>
             </div>
           </div>
-          <div class="card-body text-center px-2 px-sm-3 px-md-4 py-2 py-sm-3 d-flex flex-column align-items-center">
-            <h3 class="fs-md fs-lg-lg fw-semibold pt-1 mb-2 text-center" style="word-break: normal; overflow-wrap: break-word; white-space: normal;"><%= member.name %></h3>
+
+          <div class="team-card-body card-body text-center px-3 px-sm-4 py-3 py-md-4 d-flex flex-column">
+            <h3 class="team-card-name h5 fw-semibold mb-2"><%= member.name %></h3>
+            <p class="team-card-summary text-body-secondary fs-sm mb-3">
+              <%= truncate(strip_tags(member.bio.to_s), length: 140) %>
+            </p>
+            <div class="team-card-actions mt-auto">
+              <div class="team-card-social team-card-social--inline justify-content-center">
+                <%= social_links %>
+              </div>
+              <button type="button"
+                      class="btn btn-outline-primary w-100 mt-3 team-card-button"
+                      data-bs-toggle="modal"
+                      data-bs-target="#<%= modal_id %>">
+                Learn more
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </article>
     <% end %>
-
   </div>
 
-  <!-- Team Modals -->
   <% @members.each do |member| %>
-    <div class="modal fade team-modal" id="<%= member.first_name %>" tabindex="-1" role="dialog" aria-labelledby="<%= member.first_name %>Label" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-sm-down" role="document">
+    <% modal_id = "team-member-#{member.first_name.parameterize}" %>
+    <div class="modal fade team-modal"
+         id="<%= modal_id %>"
+         tabindex="-1"
+         aria-labelledby="<%= "#{modal_id}-label" %>"
+         aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-sm-down">
         <div class="modal-content">
-          <div class="modal-header flex-column flex-sm-row">
-            <div class="d-flex flex-column flex-sm-row align-items-center gap-3 gap-sm-4 w-100">
-              <div class="profile-image-wrapper flex-shrink-0">
-                <img src="<%= asset_path(member.image_filename) %>" alt="<%= member.name %>" class="w-100 h-100">
+          <div class="modal-header border-0 pb-0">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body pt-0">
+            <div class="team-modal-header d-flex flex-column flex-md-row align-items-start gap-3 gap-md-4">
+              <div class="team-modal-photo flex-shrink-0">
+                <%= image_tag member.image_filename,
+                              alt: member.name,
+                              class: "w-100 h-100 object-fit-cover rounded-circle" %>
               </div>
-              <div class="flex-grow-1 text-center text-sm-start">
-                <h5 class="modal-title fs-5 fs-sm-4" id="<%= member.first_name %>Label"><%= member.name %></h5>
-                <div class="social-links justify-content-center justify-content-sm-start mt-2">
-                  <a href="<%= member.linkedin_url %>" target="_blank" class="linkedin-link">
-                    <i class="bx bxl-linkedin fs-5"></i>
-                    <span class="d-none d-sm-inline">Connect on LinkedIn</span>
-                    <span class="d-inline d-sm-none">LinkedIn</span>
-                  </a>
+              <div class="team-modal-summary text-start">
+                <h5 class="team-modal-name h4 mb-3" id="<%= "#{modal_id}-label" %>"><%= member.name %></h5>
+                <div class="team-modal-social d-flex flex-column flex-sm-row align-items-start gap-2">
+                  <%= link_to member.linkedin_url,
+                              target: "_blank",
+                              rel: "noopener",
+                              class: "team-modal-social-link linkedin" do %>
+                    <i class="bx bxl-linkedin"></i>
+                    <span>Connect on LinkedIn</span>
+                  <% end %>
                   <% if member.github? %>
-                    <a href="<%= member.github_url %>" target="_blank" class="github-link">
-                      <i class="bx bxl-github fs-5"></i>
-                      <span class="d-none d-sm-inline">View GitHub Profile</span>
-                      <span class="d-inline d-sm-none">GitHub</span>
-                    </a>
+                    <%= link_to member.github_url,
+                                target: "_blank",
+                                rel: "noopener",
+                                class: "team-modal-social-link github" do %>
+                      <i class="bx bxl-github"></i>
+                      <span>View GitHub Profile</span>
+                    <% end %>
                   <% end %>
                 </div>
               </div>
             </div>
-            <button type="button" class="btn-close position-absolute top-0 end-0 m-3 m-sm-0 position-sm-relative" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="team-modal-bio mt-4">
+              <%= team_member_bio(member) %>
           </div>
-          <div class="modal-body px-3 px-sm-4">
-            <%= team_member_bio(member) %>
           </div>
         </div>
       </div>
     </div>
   <% end %>
-
 </section>
