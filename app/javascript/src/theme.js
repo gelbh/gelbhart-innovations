@@ -27,6 +27,7 @@ import priceSwitch from './components/price-switch';
 import masonryGrid from './components/masonry-grid';
 import subscriptionForm from './components/subscription-form';
 import hoverAnimation from './components/hover-animation';
+import teamCardFocus from './components/team-card-focus';
 import audioPlayer from './components/audio-player';
 import pageLoader from './components/page-loader';
 import navigation from './navigation';
