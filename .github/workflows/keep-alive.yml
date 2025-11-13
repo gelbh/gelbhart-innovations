@@ -1,34 +1,12 @@
-name: Keep Services Alive
+name: Keep Supabase Alive
 
 on:
   schedule:
-    # Run every 14 minutes to keep Render free tier alive (spins down after 15 min inactivity)
-    - cron: '*/14 * * * *'  # Every 14 minutes
-    # Run every 4 hours for Supabase (spins down after 1 week, but ping every 4h to be safe)
-    - cron: '0 */4 * * *'  # Every 4 hours
+    # Run every 3 days to keep Supabase free tier database alive (pauses after 1 week of inactivity)
+    - cron: '0 12 */3 * *'  # Every 3 days at 12:00 PM UTC
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
-  ping-render:
-    name: Ping Render Service
-    runs-on: ubuntu-latest
-    steps:
-      - name: Ping Render Service
-        run: |
-          if [ -z "${{ secrets.RENDER_URL }}" ]; then
-            echo "⚠️  RENDER_URL secret not set. Skipping Render ping."
-            exit 0
-          fi
-          
-          echo "🔄 Pinging Render service..."
-          response=$(curl -s -o /dev/null -w "%{http_code}" "${{ secrets.RENDER_URL }}" || echo "000")
-          
-          if [ "$response" = "200" ] || [ "$response" = "301" ] || [ "$response" = "302" ]; then
-            echo "✅ Render service responded with status: $response"
-          else
-            echo "⚠️  Render service responded with status: $response"
-          fi
-
   ping-supabase:
     name: Ping Supabase Database
     runs-on: ubuntu-latest
