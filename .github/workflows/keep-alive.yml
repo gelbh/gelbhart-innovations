@@ -19,26 +19,60 @@ jobs:
       - name: Connect to Supabase Database
         run: |
           # Determine which connection string to use
+          # Priority: Pooler URL (IPv4-compatible) > Regular Database URL (convert to pooler)
           DB_URL=""
+          USE_POOLER=false
 
-          if [ -n "${{ secrets.DATABASE_URL }}" ]; then
-            echo "✅ Using DATABASE_URL secret"
+          if [ -n "${{ secrets.SUPABASE_POOLER_URL }}" ]; then
+            echo "✅ Using SUPABASE_POOLER_URL secret (Session Pooler - IPv4 compatible)"
+            DB_URL="${{ secrets.SUPABASE_POOLER_URL }}"
+            USE_POOLER=true
+          elif [ -n "${{ secrets.DATABASE_URL }}" ]; then
+            echo "⚠️  Using DATABASE_URL - attempting to convert to Session Pooler for IPv4 compatibility"
             DB_URL="${{ secrets.DATABASE_URL }}"
           elif [ -n "${{ secrets.SUPABASE_DATABASE_URL }}" ]; then
-            echo "✅ Using SUPABASE_DATABASE_URL secret"
+            echo "⚠️  Using SUPABASE_DATABASE_URL - attempting to convert to Session Pooler for IPv4 compatibility"
             DB_URL="${{ secrets.SUPABASE_DATABASE_URL }}"
           else
             echo "❌ No database connection secrets found!"
             echo "Please set one of the following secrets:"
-            echo "  - DATABASE_URL (preferred): Full PostgreSQL connection string"
-            echo "    Format: postgresql://user:password@host:port/database"
-            echo "  - SUPABASE_DATABASE_URL: PostgreSQL connection string from Supabase dashboard"
-            echo ""
-            echo "You can find the connection string in Supabase Dashboard > Settings > Database > Connection string"
+            echo "  - SUPABASE_POOLER_URL (preferred): Session Pooler connection string (IPv4 compatible)"
+            echo "    Format: postgresql://user:password@aws-0-region.pooler.supabase.com:6543/database"
+            echo "    Find this in Supabase Dashboard > Settings > Database > Connection Pooling > Session mode"
+            echo "  - DATABASE_URL or SUPABASE_DATABASE_URL: Will be converted to use pooler (port 6543)"
             exit 1
           fi
 
-          echo "🔄 Connecting to Supabase PostgreSQL database..."
+          # If not already using pooler, convert connection string to use Session Pooler (port 6543)
+          if [ "$USE_POOLER" = "false" ]; then
+            echo "🔄 Converting connection string to use Session Pooler (IPv4 compatible)..."
+            # Extract components from connection string
+            DB_USER=$(echo "$DB_URL" | sed -n 's|postgresql://\([^:]*\):.*|\1|p')
+            DB_PASS=$(echo "$DB_URL" | sed -n 's|postgresql://[^:]*:\([^@]*\)@.*|\1|p')
+            DB_HOST=$(echo "$DB_URL" | sed -n 's|.*@\([^:]*\):.*|\1|p')
+            DB_NAME=$(echo "$DB_URL" | sed -n 's|.*/\([^?]*\).*|\1|p')
+            
+            # Convert host to pooler format (replace direct host with pooler host)
+            # Direct: db.xxxxx.supabase.co -> Pooler: aws-0-<region>.pooler.supabase.com
+            # For now, we'll change port to 6543 and replace host pattern
+            POOLER_HOST=$(echo "$DB_HOST" | sed 's/db\.\([^.]*\)\.supabase\.co/aws-0-\1.pooler.supabase.com/')
+            
+            # If conversion didn't work, try alternative format
+            if [ "$POOLER_HOST" = "$DB_HOST" ]; then
+              # Try aws-0-<region> format if host is already in that format
+              POOLER_HOST=$(echo "$DB_HOST" | sed 's/\.supabase\.co/.pooler.supabase.com/')
+              # If still no match, use original host (might already be pooler)
+              if [ "$POOLER_HOST" = "$DB_HOST" ]; then
+                POOLER_HOST="$DB_HOST"
+              fi
+            fi
+            
+            # Construct pooler connection string with port 6543
+            DB_URL="postgresql://${DB_USER}:${DB_PASS}@${POOLER_HOST}:6543/${DB_NAME}?sslmode=require"
+            echo "✅ Converted to pooler connection: ${POOLER_HOST}:6543"
+          fi
+
+          echo "🔄 Connecting to Supabase PostgreSQL database via Session Pooler..."
 
           # Execute a simple query to establish database connection
           # This registers as actual database activity, not just REST API calls
@@ -48,5 +82,6 @@ jobs:
           else
             echo "❌ Failed to connect to Supabase database"
             echo "❌ Please verify your connection string is correct and database is accessible"
+            echo "💡 Tip: Get the Session Pooler connection string from Supabase Dashboard > Settings > Database > Connection Pooling > Session mode"
             exit 1
           fi
