@@ -72,16 +72,35 @@ jobs:
             echo "✅ Converted to pooler connection: ${POOLER_HOST}:6543"
           fi
 
-          echo "🔄 Connecting to Supabase PostgreSQL database via Session Pooler..."
+          echo "🔄 Parsing connection string and connecting to Supabase PostgreSQL database via Session Pooler..."
+
+          # Parse connection string to extract components (handles special characters in password)
+          # Format: postgresql://user:password@host:port/database
+          DB_USER=$(echo "$DB_URL" | sed -n 's|postgresql://\([^:]*\):.*|\1|p')
+          DB_PASS=$(echo "$DB_URL" | sed -n 's|postgresql://[^:]*:\([^@]*\)@.*|\1|p')
+          DB_HOST=$(echo "$DB_URL" | sed -n 's|.*@\([^:]*\):.*|\1|p')
+          DB_PORT=$(echo "$DB_URL" | sed -n 's|.*:\([0-9]*\)/.*|\1|p')
+          DB_NAME=$(echo "$DB_URL" | sed -n 's|.*/\([^?]*\).*|\1|p')
+
+          # Use default port if not specified
+          DB_PORT="${DB_PORT:-6543}"
+
+          # Set password as environment variable to avoid shell interpretation issues with special characters
+          export PGPASSWORD="$DB_PASS"
 
           # Execute a simple query to establish database connection
           # This registers as actual database activity, not just REST API calls
-          if psql "$DB_URL" -c "SELECT 1 as keep_alive, NOW() as timestamp;" -t; then
+          # Use explicit connection parameters to handle special characters in password properly
+          if psql -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" -d "$DB_NAME" -c "SELECT 1 as keep_alive, NOW() as timestamp;" -t; then
             echo "✅ Successfully connected to Supabase database and executed query"
             echo "✅ Database activity registered - this should prevent auto-pausing"
           else
             echo "❌ Failed to connect to Supabase database"
             echo "❌ Please verify your connection string is correct and database is accessible"
             echo "💡 Tip: Get the Session Pooler connection string from Supabase Dashboard > Settings > Database > Connection Pooling > Session mode"
+            unset PGPASSWORD
             exit 1
           fi
+
+          # Clear password from environment
+          unset PGPASSWORD
