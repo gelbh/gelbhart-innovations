@@ -2,31 +2,51 @@ name: Keep Supabase Alive
 
 on:
   schedule:
-    # Run every 3 days to keep Supabase free tier database alive (pauses after 1 week of inactivity)
-    - cron: '0 12 */3 * *'  # Every 3 days at 12:00 PM UTC
-  workflow_dispatch:  # Allow manual triggering
+    # Run every 2 days to keep Supabase free tier database alive (pauses after 1 week of inactivity)
+    - cron: "0 12 */2 * *" # Every 2 days at 12:00 PM UTC
+  workflow_dispatch: # Allow manual triggering
 
 jobs:
   ping-supabase:
-    name: Ping Supabase Database
+    name: Connect to Supabase Database
     runs-on: ubuntu-latest
     steps:
-      - name: Ping Supabase Database
+      - name: Install PostgreSQL Client
         run: |
-          if [ -z "${{ secrets.SUPABASE_URL }}" ]; then
-            echo "⚠️  SUPABASE_URL secret not set. Skipping Supabase ping."
-            exit 0
-          fi
-          
-          echo "🔄 Pinging Supabase database..."
-          # Supabase REST API endpoint - this will keep the database connection alive
-          response=$(curl -s -o /dev/null -w "%{http_code}" \
-            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
-            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
-            "${{ secrets.SUPABASE_URL }}/rest/v1/" || echo "000")
-          
-          if [ "$response" = "200" ] || [ "$response" = "401" ] || [ "$response" = "404" ]; then
-            echo "✅ Supabase database responded with status: $response"
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+
+      - name: Connect to Supabase Database
+        run: |
+          # Determine which connection string to use
+          DB_URL=""
+
+          if [ -n "${{ secrets.DATABASE_URL }}" ]; then
+            echo "✅ Using DATABASE_URL secret"
+            DB_URL="${{ secrets.DATABASE_URL }}"
+          elif [ -n "${{ secrets.SUPABASE_DATABASE_URL }}" ]; then
+            echo "✅ Using SUPABASE_DATABASE_URL secret"
+            DB_URL="${{ secrets.SUPABASE_DATABASE_URL }}"
           else
-            echo "⚠️  Supabase database responded with status: $response"
+            echo "❌ No database connection secrets found!"
+            echo "Please set one of the following secrets:"
+            echo "  - DATABASE_URL (preferred): Full PostgreSQL connection string"
+            echo "    Format: postgresql://user:password@host:port/database"
+            echo "  - SUPABASE_DATABASE_URL: PostgreSQL connection string from Supabase dashboard"
+            echo ""
+            echo "You can find the connection string in Supabase Dashboard > Settings > Database > Connection string"
+            exit 1
+          fi
+
+          echo "🔄 Connecting to Supabase PostgreSQL database..."
+
+          # Execute a simple query to establish database connection
+          # This registers as actual database activity, not just REST API calls
+          if psql "$DB_URL" -c "SELECT 1 as keep_alive, NOW() as timestamp;" -t; then
+            echo "✅ Successfully connected to Supabase database and executed query"
+            echo "✅ Database activity registered - this should prevent auto-pausing"
+          else
+            echo "❌ Failed to connect to Supabase database"
+            echo "❌ Please verify your connection string is correct and database is accessible"
+            exit 1
           fi
