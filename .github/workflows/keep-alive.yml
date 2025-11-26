@@ -8,99 +8,79 @@ on:
 
 jobs:
   ping-supabase:
-    name: Connect to Supabase Database
+    name: Ping Supabase REST API
     runs-on: ubuntu-latest
     steps:
-      - name: Install PostgreSQL Client
+      - name: Ping Supabase REST API
         run: |
-          sudo apt-get update
-          sudo apt-get install -y postgresql-client
+          # Determine which secrets to use
+          SUPABASE_URL=""
+          SUPABASE_KEY=""
 
-      - name: Connect to Supabase Database
-        run: |
-          # Determine which connection string to use
-          # Priority: Pooler URL (IPv4-compatible) > Regular Database URL (convert to pooler)
-          DB_URL=""
-          USE_POOLER=false
-
-          if [ -n "${{ secrets.SUPABASE_POOLER_URL }}" ]; then
-            echo "✅ Using SUPABASE_POOLER_URL secret (Session Pooler - IPv4 compatible)"
-            DB_URL="${{ secrets.SUPABASE_POOLER_URL }}"
-            USE_POOLER=true
-          elif [ -n "${{ secrets.DATABASE_URL }}" ]; then
-            echo "⚠️  Using DATABASE_URL - attempting to convert to Session Pooler for IPv4 compatibility"
-            DB_URL="${{ secrets.DATABASE_URL }}"
-          elif [ -n "${{ secrets.SUPABASE_DATABASE_URL }}" ]; then
-            echo "⚠️  Using SUPABASE_DATABASE_URL - attempting to convert to Session Pooler for IPv4 compatibility"
-            DB_URL="${{ secrets.SUPABASE_DATABASE_URL }}"
+          if [ -n "${{ secrets.SUPABASE_URL }}" ] && [ -n "${{ secrets.SUPABASE_ANON_KEY }}" ]; then
+            echo "✅ Using SUPABASE_URL and SUPABASE_ANON_KEY secrets"
+            SUPABASE_URL="${{ secrets.SUPABASE_URL }}"
+            SUPABASE_KEY="${{ secrets.SUPABASE_ANON_KEY }}"
+          elif [ -n "${{ secrets.SUPABASE_URL }}" ] && [ -n "${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" ]; then
+            echo "✅ Using SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY secrets"
+            SUPABASE_URL="${{ secrets.SUPABASE_URL }}"
+            SUPABASE_KEY="${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}"
           else
-            echo "❌ No database connection secrets found!"
-            echo "Please set one of the following secrets:"
-            echo "  - SUPABASE_POOLER_URL (preferred): Session Pooler connection string (IPv4 compatible)"
-            echo "    Format: postgresql://user:password@aws-0-region.pooler.supabase.com:6543/database"
-            echo "    Find this in Supabase Dashboard > Settings > Database > Connection Pooling > Session mode"
-            echo "  - DATABASE_URL or SUPABASE_DATABASE_URL: Will be converted to use pooler (port 6543)"
+            echo "❌ Required secrets not found!"
+            echo "Please set the following secrets in GitHub:"
+            echo "  - SUPABASE_URL: Your Supabase project URL (e.g., https://xxxxx.supabase.co)"
+            echo "  - SUPABASE_ANON_KEY: Your Supabase anon/public key (preferred)"
+            echo "    OR"
+            echo "  - SUPABASE_SERVICE_ROLE_KEY: Your Supabase service role key (alternative)"
+            echo ""
+            echo "💡 Find these in Supabase Dashboard > Settings > API"
+            echo "   - Project URL: Settings > API > Project URL"
+            echo "   - Anon key: Settings > API > Project API keys > anon public"
             exit 1
           fi
 
-          # If not already using pooler, convert connection string to use Session Pooler (port 6543)
-          if [ "$USE_POOLER" = "false" ]; then
-            echo "🔄 Converting connection string to use Session Pooler (IPv4 compatible)..."
-            # Extract components from connection string
-            DB_USER=$(echo "$DB_URL" | sed -n 's|postgresql://\([^:]*\):.*|\1|p')
-            DB_PASS=$(echo "$DB_URL" | sed -n 's|postgresql://[^:]*:\([^@]*\)@.*|\1|p')
-            DB_HOST=$(echo "$DB_URL" | sed -n 's|.*@\([^:]*\):.*|\1|p')
-            DB_NAME=$(echo "$DB_URL" | sed -n 's|.*/\([^?]*\).*|\1|p')
-            
-            # Convert host to pooler format (replace direct host with pooler host)
-            # Direct: db.xxxxx.supabase.co -> Pooler: aws-0-<region>.pooler.supabase.com
-            # For now, we'll change port to 6543 and replace host pattern
-            POOLER_HOST=$(echo "$DB_HOST" | sed 's/db\.\([^.]*\)\.supabase\.co/aws-0-\1.pooler.supabase.com/')
-            
-            # If conversion didn't work, try alternative format
-            if [ "$POOLER_HOST" = "$DB_HOST" ]; then
-              # Try aws-0-<region> format if host is already in that format
-              POOLER_HOST=$(echo "$DB_HOST" | sed 's/\.supabase\.co/.pooler.supabase.com/')
-              # If still no match, use original host (might already be pooler)
-              if [ "$POOLER_HOST" = "$DB_HOST" ]; then
-                POOLER_HOST="$DB_HOST"
-              fi
-            fi
-            
-            # Construct pooler connection string with port 6543
-            DB_URL="postgresql://${DB_USER}:${DB_PASS}@${POOLER_HOST}:6543/${DB_NAME}?sslmode=require"
-            echo "✅ Converted to pooler connection: ${POOLER_HOST}:6543"
-          fi
+          # Ensure URL doesn't have trailing slash
+          SUPABASE_URL=$(echo "$SUPABASE_URL" | sed 's|/$||')
 
-          echo "🔄 Parsing connection string and connecting to Supabase PostgreSQL database via Session Pooler..."
+          echo "🔄 Making REST API call to Supabase to register activity..."
+          echo "📍 URL: ${SUPABASE_URL}/rest/v1/"
 
-          # Parse connection string to extract components (handles special characters in password)
-          # Format: postgresql://user:password@host:port/database
-          DB_USER=$(echo "$DB_URL" | sed -n 's|postgresql://\([^:]*\):.*|\1|p')
-          DB_PASS=$(echo "$DB_URL" | sed -n 's|postgresql://[^:]*:\([^@]*\)@.*|\1|p')
-          DB_HOST=$(echo "$DB_URL" | sed -n 's|.*@\([^:]*\):.*|\1|p')
-          DB_PORT=$(echo "$DB_URL" | sed -n 's|.*:\([0-9]*\)/.*|\1|p')
-          DB_NAME=$(echo "$DB_URL" | sed -n 's|.*/\([^?]*\).*|\1|p')
+          # Make a simple REST API request to Supabase
+          # Querying any endpoint counts as API activity, even if the table doesn't exist
+          # Using a generic table name - API request will be logged even if table doesn't exist (404 response)
+          # This will register as API activity regardless of the response code (200, 404, etc.)
+          RESPONSE=$(curl -s -w "\n%{http_code}" \
+            -X GET \
+            -H "apikey: ${SUPABASE_KEY}" \
+            -H "Authorization: Bearer ${SUPABASE_KEY}" \
+            -H "Content-Type: application/json" \
+            -H "Prefer: return=minimal" \
+            "${SUPABASE_URL}/rest/v1/keep_alive?select=*&limit=1" 2>&1)
 
-          # Use default port if not specified
-          DB_PORT="${DB_PORT:-6543}"
+          HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | sed '$d')
 
-          # Set password as environment variable to avoid shell interpretation issues with special characters
-          export PGPASSWORD="$DB_PASS"
-
-          # Execute a simple query to establish database connection
-          # This registers as actual database activity, not just REST API calls
-          # Use explicit connection parameters to handle special characters in password properly
-          if psql -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" -d "$DB_NAME" -c "SELECT 1 as keep_alive, NOW() as timestamp;" -t; then
-            echo "✅ Successfully connected to Supabase database and executed query"
-            echo "✅ Database activity registered - this should prevent auto-pausing"
+          # Check if request was successful (200, 404, or 406 are all valid - they indicate API activity)
+          if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 500 ]; then
+            echo "✅ Successfully made REST API call to Supabase"
+            echo "✅ HTTP Status: ${HTTP_CODE}"
+            echo "✅ API activity registered - this should prevent auto-pausing"
+            echo ""
+            echo "📊 Response preview:"
+            echo "$BODY" | head -c 200
+            echo ""
+            echo ""
+            echo "💡 This REST API call is recognized by Supabase as activity."
+            echo "💡 Check your Supabase Dashboard > Logs > API to verify the request appears."
           else
-            echo "❌ Failed to connect to Supabase database"
-            echo "❌ Please verify your connection string is correct and database is accessible"
-            echo "💡 Tip: Get the Session Pooler connection string from Supabase Dashboard > Settings > Database > Connection Pooling > Session mode"
-            unset PGPASSWORD
+            echo "❌ Failed to make REST API call to Supabase"
+            echo "❌ HTTP Status: ${HTTP_CODE}"
+            echo "❌ Response:"
+            echo "$BODY"
+            echo ""
+            echo "💡 Please verify:"
+            echo "   1. SUPABASE_URL is correct (format: https://xxxxx.supabase.co)"
+            echo "   2. API key is valid and has proper permissions"
+            echo "   3. Project is not paused"
             exit 1
           fi
-
-          # Clear password from environment
-          unset PGPASSWORD
