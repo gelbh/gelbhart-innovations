@@ -43,32 +43,29 @@ jobs:
           SUPABASE_URL=$(echo "$SUPABASE_URL" | sed 's|/$||')
 
           echo "🔄 Making REST API call to Supabase to register activity..."
-          echo "📍 URL: ${SUPABASE_URL}/rest/v1/"
+          echo "📍 URL: ${SUPABASE_URL}/auth/v1/health"
 
-          # Make a simple REST API request to Supabase
-          # Querying any endpoint counts as API activity, even if the table doesn't exist
-          # Using a generic table name - API request will be logged even if table doesn't exist (404 response)
-          # This will register as API activity regardless of the response code (200, 404, etc.)
+          # Make a health check request to Supabase Auth API
+          # This is a proper health check endpoint that Supabase provides
+          # Returns 200 on success and registers as API activity
           RESPONSE=$(curl -s -w "\n%{http_code}" \
             -X GET \
             -H "apikey: ${SUPABASE_KEY}" \
             -H "Authorization: Bearer ${SUPABASE_KEY}" \
             -H "Content-Type: application/json" \
-            -H "Prefer: return=minimal" \
-            "${SUPABASE_URL}/rest/v1/keep_alive?select=*&limit=1" 2>&1)
+            "${SUPABASE_URL}/auth/v1/health" 2>&1)
 
           HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
           BODY=$(echo "$RESPONSE" | sed '$d')
 
-          # Check if request was successful (200, 404, or 406 are all valid - they indicate API activity)
-          if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 500 ]; then
-            echo "✅ Successfully made REST API call to Supabase"
+          # Check if request was successful (200 indicates successful health check and API activity)
+          if [ "$HTTP_CODE" -eq 200 ]; then
+            echo "✅ Successfully made health check request to Supabase"
             echo "✅ HTTP Status: ${HTTP_CODE}"
             echo "✅ API activity registered - this should prevent auto-pausing"
             echo ""
-            echo "📊 Response preview:"
-            echo "$BODY" | head -c 200
-            echo ""
+            echo "📊 Response:"
+            echo "$BODY"
             echo ""
             echo "💡 This REST API call is recognized by Supabase as activity."
             echo "💡 Check your Supabase Dashboard > Logs > API to verify the request appears."
