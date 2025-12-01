@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   # Robots.txt
   get '/robots.txt', to: 'robots#show', as: 'robots'
 
+  # Sitemap
+  get '/sitemap.xml', to: 'sitemap#show', as: 'sitemap'
+
   # Main pages
   get 'services', to: 'pages#services'
   get 'team', to: 'pages#team'
