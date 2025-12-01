@@ -1,11 +1,15 @@
 services:
+  # Web service configuration for Rails application
   - type: web
     name: gelbhart-innovations
-    env: ruby
+    runtime: ruby
     plan: starter
-    buildCommand: bundle install && bundle exec rails assets:precompile && bundle exec rake sitemap:regenerate && bundle exec rake sitemap:generate_indexnow_key && bundle exec rake sitemap:ping_indexnow
+    buildCommand: "./bin/render-build.sh"
     startCommand: bundle exec puma -C config/puma.rb
+
+    # Environment variables
     envVars:
+      # Rails configuration
       - key: RAILS_ENV
         value: production
       - key: RAILS_MASTER_KEY
@@ -14,9 +18,17 @@ services:
         value: "true"
       - key: RAILS_LOG_TO_STDOUT
         value: "true"
+
+      # Database configuration
       - key: DATABASE_URL
         sync: false
+
+      # Application-specific
       - key: INDEXNOW_API_KEY
         sync: false
+
+    # Health check configuration
     healthCheckPath: /
+
+    # Deployment configuration
     autoDeploy: true
