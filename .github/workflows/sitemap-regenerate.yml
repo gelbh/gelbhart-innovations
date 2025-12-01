@@ -1,0 +1,57 @@
+name: Regenerate Sitemap
+
+on:
+  schedule:
+    # Regenerate sitemap weekly to ensure search engines have up-to-date information
+    # Runs every Monday at 2:00 AM UTC
+    - cron: "0 2 * * 1"
+  workflow_dispatch: # Allow manual triggering
+  push:
+    # Regenerate on pushes to main branch (when content might change)
+    branches:
+      - main
+    paths:
+      # Only regenerate if view files or routes change
+      - "app/views/**"
+      - "config/routes.rb"
+      - "config/sitemap.rb"
+
+jobs:
+  regenerate-sitemap:
+    name: Regenerate Sitemap
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3.10"
+          bundler-cache: true
+
+      - name: Generate sitemap
+        run: |
+          bundle exec rake sitemap:refresh:no_ping
+          echo "✅ Sitemap regenerated successfully"
+
+      - name: Check for changes
+        id: verify-changed-files
+        run: |
+          if [ -n "$(git status --porcelain public/sitemap.xml*)" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push sitemap
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add public/sitemap.xml public/sitemap.xml.gz
+          git commit -m "chore(seo): regenerate sitemap [skip ci]" || exit 0
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
