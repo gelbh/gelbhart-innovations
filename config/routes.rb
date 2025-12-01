@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # Sitemap
   get '/sitemap.xml', to: 'sitemap#show', as: 'sitemap'
+  get '/sitemap.xml.gz', to: 'sitemap#show_gz', as: 'sitemap_gz'
 
   # Main pages
   get 'services', to: 'pages#services'
