@@ -38,3 +38,7 @@ node_modules
 # IndexNow API key file (generated from environment variable in production)
 /public/*.txt
 !/public/robots.txt
+
+# Sitemap files (generated during build, not source code)
+/public/sitemap.xml
+/public/sitemap.xml.gz
