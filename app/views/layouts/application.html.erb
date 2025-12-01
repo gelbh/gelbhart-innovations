@@ -5,15 +5,42 @@
     <title><%= full_page_title(@title) %></title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="<%= page_description(@desc) %>">
-    <meta name="keywords" content="">
     <meta name="author" content="Gelbhart Innovations">
+    <meta name="robots" content="<%= robots_meta_tag %>">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="<%= canonical_url %>">
+    <!-- Open Graph Meta Tags -->
+    <% og_tags = og_meta_tags %>
+    <% og_tags.each do |property, content| %>
+      <%= property_meta_tag(property, content) %>
+    <% end %>
+    <!-- Twitter Card Meta Tags -->
+    <% twitter_tags = twitter_card_meta_tags %>
+    <% twitter_tags.each do |name, content| %>
+      <%= meta_tag(name, content) %>
+    <% end %>
+    <!-- Language Tags -->
+    <meta http-equiv="content-language" content="en">
+    <link rel="alternate" hreflang="en" href="<%= canonical_url %>">
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Performance: Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <!-- Favicon and Touch Icons-->
     <%= render 'application/favicon' %>
     <meta name="msapplication-TileColor" content="#080032">
     <meta name="theme-color" content="#ffffff">
+    <!-- Structured Data: Organization and WebSite -->
+    <%= json_ld_script(organization_schema) %>
+    <%= json_ld_script(website_schema) %>
+    <!-- Page-specific Structured Data -->
+    <% if @structured_data.present? %>
+      <%= json_ld_script(@structured_data) %>
+    <% end %>
     <!-- Vendor Styles -->
     <link rel="stylesheet" media="screen" href="<%= asset_path("boxicons/css/boxicons.min.css") %>">
     <link rel="stylesheet" media="screen" href="<%= asset_path("swiper/swiper-bundle.min.css") %>">
@@ -81,9 +108,7 @@
     </script>
     <script src="<%= asset_path("rellax/rellax.min.js") %>"></script>
     <!-- Main Theme Script -->
-    <!-- Initialize global mode and root variables before theme.min.js loads -->
     <script>
-      // These must be bare global variables for theme.min.js to access them
       var mode = window.localStorage.getItem('mode');
       var root = document.getElementsByTagName('html')[0];
 
