@@ -33,9 +33,6 @@ namespace :sitemap do
 
   desc "Ping IndexNow with URLs from sitemap"
   task ping_indexnow: :environment do
-    # Explicitly require the service class for rake tasks
-    require_relative '../services/indexnow_service'
-    
     unless IndexNowConfig.enabled?
       puts "IndexNow is disabled (INDEXNOW_ENABLED=false). Skipping ping."
       next
@@ -49,7 +46,7 @@ namespace :sitemap do
     end
 
     puts "Extracting URLs from sitemap..."
-    urls = IndexNowService.extract_urls_from_sitemap(sitemap_path.to_s)
+    urls = Services::IndexNowService.extract_urls_from_sitemap(sitemap_path.to_s)
     
     if urls.empty?
       puts "⚠️  No URLs found in sitemap. Skipping IndexNow ping."
@@ -59,7 +56,7 @@ namespace :sitemap do
     puts "Pinging IndexNow with #{urls.size} URL(s)..."
     
     begin
-      success = IndexNowService.ping(urls: urls)
+      success = Services::IndexNowService.ping(urls: urls)
       
       if success
         puts "✅ Successfully notified IndexNow about #{urls.size} URL(s)"
