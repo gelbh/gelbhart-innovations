@@ -21,7 +21,7 @@ module SitemapHelper
 end
 
 SitemapGenerator::Sitemap.create do
-  # Home page - highest priority
+  # Home page
   add root_path, 
       priority: 1.0, 
       changefreq: 'monthly', 
@@ -33,12 +33,13 @@ SitemapGenerator::Sitemap.create do
       changefreq: 'monthly', 
       lastmod: SitemapHelper.get_view_lastmod('pages/services.html.erb')
   
-  add pharmaceutical_path, 
+  # Service category pages
+  add '/services/pharmaceutical', 
       priority: 0.8, 
       changefreq: 'monthly', 
       lastmod: SitemapHelper.get_view_lastmod('pages/pharmaceutical.html.erb')
   
-  add real_estate_path, 
+  add '/services/real-estate', 
       priority: 0.8, 
       changefreq: 'monthly', 
       lastmod: SitemapHelper.get_view_lastmod('pages/real_estate.html.erb')

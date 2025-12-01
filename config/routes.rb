@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   # Root
   root 'pages#index'
 
+  # Robots.txt
+  get '/robots.txt', to: 'robots#show', as: 'robots'
+
   # Main pages
   get 'services', to: 'pages#services'
   get 'team', to: 'pages#team'
