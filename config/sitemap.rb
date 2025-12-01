@@ -13,10 +13,7 @@ default_host = "https://#{base_host}"
 SitemapGenerator::Sitemap.default_host = default_host
 SitemapGenerator::Sitemap.public_path = "public/"
 SitemapGenerator::Sitemap.sitemaps_path = ""
-# Create both compressed and uncompressed files
 SitemapGenerator::Sitemap.compress = false
-SitemapGenerator::Sitemap.default_priority = nil
-SitemapGenerator::Sitemap.default_changefreq = nil
 
 # Helper method to get last modification time for view files
 def get_view_lastmod(view_path)
