@@ -5,6 +5,7 @@ class SitemapController < ApplicationController
     response.headers["Pragma"] = "no-cache"
     response.headers["Expires"] = "0"
 
+    Rails.logger.info "[SitemapController] Serving sitemap (new code path)"
     sitemap_xml_path = Rails.public_path.join('sitemap.xml')
     sitemap_gz_path = Rails.public_path.join('sitemap.xml.gz')
     
@@ -24,6 +25,7 @@ class SitemapController < ApplicationController
                 disposition: 'inline',
                 status: :ok
     else
+      Rails.logger.warn "[SitemapController] Sitemap not found at #{sitemap_xml_path} - returning 404"
       head :not_found
     end
   rescue StandardError => e
