@@ -3,18 +3,20 @@ services:
     name: gelbhart-innovations
     env: ruby
     plan: starter
-    buildCommand: bundle install && bundle exec rails assets:precompile && bundle exec rake sitemap:regenerate
+    buildCommand: bundle install && bundle exec rails assets:precompile && bundle exec rake sitemap:regenerate && bundle exec rake sitemap:generate_indexnow_key
     startCommand: bundle exec puma -C config/puma.rb
     envVars:
       - key: RAILS_ENV
         value: production
       - key: RAILS_MASTER_KEY
-        sync: false # Set this in Render dashboard from config/master.key
+        sync: false
       - key: RAILS_SERVE_STATIC_FILES
         value: "true"
       - key: RAILS_LOG_TO_STDOUT
         value: "true"
       - key: DATABASE_URL
-        sync: false # Set this in Render dashboard from Supabase connection string
+        sync: false
+      - key: INDEXNOW_API_KEY
+        sync: false
     healthCheckPath: /
     autoDeploy: true

@@ -36,6 +36,12 @@ jobs:
           bundle exec rake sitemap:refresh:no_ping
           echo "✅ Sitemap regenerated successfully"
 
+          # Extract uncompressed version if only .gz was generated
+          if [ -f public/sitemap.xml.gz ] && [ ! -f public/sitemap.xml ]; then
+            echo "Extracting uncompressed sitemap..."
+            gunzip -c public/sitemap.xml.gz > public/sitemap.xml
+          fi
+
       - name: Check for changes
         id: verify-changed-files
         run: |
@@ -55,3 +61,12 @@ jobs:
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Ping IndexNow
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: |
+          bundle exec rake sitemap:ping_indexnow || echo "⚠️ IndexNow ping failed (non-blocking)"
+        env:
+          INDEXNOW_API_KEY: ${{ secrets.INDEXNOW_API_KEY }}
+          SITEMAP_HOST: ${{ secrets.SITEMAP_HOST || 'https://gelbhart.com' }}
+          RAILS_ENV: production

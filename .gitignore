@@ -34,3 +34,7 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 node_modules
+
+# IndexNow API key file (generated from environment variable in production)
+/public/*.txt
+!/public/robots.txt
