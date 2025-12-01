@@ -4,7 +4,7 @@ namespace :sitemap do
     puts "Regenerating sitemap..."
     
     begin
-      Rake::Task['sitemap:refresh:no_ping'].invoke
+      SitemapService.new.generate
     rescue StandardError => e
       puts "❌ Error generating sitemap: #{e.class} - #{e.message}"
       Rails.logger.error "[Sitemap] Generation error: #{e.class} - #{e.message}"
@@ -12,20 +12,11 @@ namespace :sitemap do
       raise
     end
     
-    # Extract uncompressed version if only .gz was generated
-    sitemap_xml_path = Rails.root.join('public', 'sitemap.xml')
-    sitemap_gz_path = Rails.root.join('public', 'sitemap.xml.gz')
-    
-    if File.exist?(sitemap_gz_path) && !File.exist?(sitemap_xml_path)
-      puts "Extracting uncompressed sitemap..."
-      result = system('gunzip -c public/sitemap.xml.gz > public/sitemap.xml')
-      unless result
-        puts "⚠️  Warning: Failed to extract uncompressed sitemap"
-      end
-    end
-    
     # Verify sitemap was created successfully
-    if File.exist?(sitemap_xml_path)
+    sitemap_xml_path = Rails.public_path.join('sitemap.xml')
+    sitemap_gz_path = Rails.public_path.join('sitemap.xml.gz')
+    
+    if sitemap_xml_path.exist?
       file_size = File.size(sitemap_xml_path)
       puts "✅ Sitemap regeneration complete"
       puts "   Location: #{sitemap_xml_path}"
@@ -40,11 +31,14 @@ namespace :sitemap do
       rescue StandardError => e
         puts "⚠️  Warning: Could not validate XML structure: #{e.message}"
       end
-    elsif File.exist?(sitemap_gz_path)
-      puts "✅ Sitemap regeneration complete (compressed only)"
-      puts "   Location: #{sitemap_gz_path}"
-      puts "   Size: #{File.size(sitemap_gz_path)} bytes"
-      puts "⚠️  Note: Uncompressed version not found, but .gz file exists"
+      
+      # Verify compressed version was also created
+      if sitemap_gz_path.exist?
+        gz_size = File.size(sitemap_gz_path)
+        puts "   Compressed: #{sitemap_gz_path} (#{gz_size} bytes)"
+      else
+        puts "⚠️  Warning: Compressed sitemap not found at #{sitemap_gz_path}"
+      end
     else
       puts "❌ Error: Sitemap file was not created!"
       puts "   Expected location: #{sitemap_xml_path}"
