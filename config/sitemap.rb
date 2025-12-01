@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = ENV.fetch('SITEMAP_HOST', 'https://gelbhart.dev')
+SitemapGenerator::Sitemap.default_host = ENV.fetch('SITEMAP_HOST', 'https://gelbhart.com')
 
 # Generate both compressed and uncompressed versions
 SitemapGenerator::Sitemap.compress = true
