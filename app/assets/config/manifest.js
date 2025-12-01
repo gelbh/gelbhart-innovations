@@ -21,7 +21,5 @@
 //= link_directory ../vendor/@lottiefiles/lottie-player/dist
 
 //= link_tree ../favicon
-//= link favicon/site.webmanifest.erb
-//= link favicon/browserconfig.xml
 //= link_tree ../json
 //= link_tree ../images
