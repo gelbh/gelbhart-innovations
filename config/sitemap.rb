@@ -20,7 +20,11 @@ module SitemapHelper
   end
 end
 
+# Extend the sitemap block with Rails URL helpers
 SitemapGenerator::Sitemap.create do
+  # Include Rails URL helpers in this block's context
+  extend Rails.application.routes.url_helpers
+  
   # Home page
   add root_path, 
       priority: 1.0, 
@@ -34,12 +38,12 @@ SitemapGenerator::Sitemap.create do
       lastmod: SitemapHelper.get_view_lastmod('pages/services.html.erb')
   
   # Service category pages
-  add '/services/pharmaceutical', 
+  add pharmaceutical_path, 
       priority: 0.8, 
       changefreq: 'monthly', 
       lastmod: SitemapHelper.get_view_lastmod('pages/pharmaceutical.html.erb')
   
-  add '/services/real-estate', 
+  add real_estate_path, 
       priority: 0.8, 
       changefreq: 'monthly', 
       lastmod: SitemapHelper.get_view_lastmod('pages/real_estate.html.erb')

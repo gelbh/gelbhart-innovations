@@ -2,15 +2,54 @@ namespace :sitemap do
   desc "Regenerate sitemap (use this in deployment hooks)"
   task regenerate: :environment do
     puts "Regenerating sitemap..."
-    Rake::Task['sitemap:refresh:no_ping'].invoke
     
-    # Extract uncompressed version if only .gz was generated
-    if File.exist?('public/sitemap.xml.gz') && !File.exist?('public/sitemap.xml')
-      puts "Extracting uncompressed sitemap..."
-      system('gunzip -c public/sitemap.xml.gz > public/sitemap.xml')
+    begin
+      Rake::Task['sitemap:refresh:no_ping'].invoke
+    rescue StandardError => e
+      puts "❌ Error generating sitemap: #{e.class} - #{e.message}"
+      Rails.logger.error "[Sitemap] Generation error: #{e.class} - #{e.message}"
+      Rails.logger.error e.backtrace.join("\n") if Rails.env.development?
+      raise
     end
     
-    puts "✅ Sitemap regeneration complete"
+    # Extract uncompressed version if only .gz was generated
+    sitemap_xml_path = Rails.root.join('public', 'sitemap.xml')
+    sitemap_gz_path = Rails.root.join('public', 'sitemap.xml.gz')
+    
+    if File.exist?(sitemap_gz_path) && !File.exist?(sitemap_xml_path)
+      puts "Extracting uncompressed sitemap..."
+      result = system('gunzip -c public/sitemap.xml.gz > public/sitemap.xml')
+      unless result
+        puts "⚠️  Warning: Failed to extract uncompressed sitemap"
+      end
+    end
+    
+    # Verify sitemap was created successfully
+    if File.exist?(sitemap_xml_path)
+      file_size = File.size(sitemap_xml_path)
+      puts "✅ Sitemap regeneration complete"
+      puts "   Location: #{sitemap_xml_path}"
+      puts "   Size: #{file_size} bytes"
+      
+      # Basic XML validation
+      begin
+        require 'rexml/document'
+        doc = REXML::Document.new(File.read(sitemap_xml_path))
+        url_count = doc.elements.to_a('//url').size
+        puts "   URLs: #{url_count}"
+      rescue StandardError => e
+        puts "⚠️  Warning: Could not validate XML structure: #{e.message}"
+      end
+    elsif File.exist?(sitemap_gz_path)
+      puts "✅ Sitemap regeneration complete (compressed only)"
+      puts "   Location: #{sitemap_gz_path}"
+      puts "   Size: #{File.size(sitemap_gz_path)} bytes"
+      puts "⚠️  Note: Uncompressed version not found, but .gz file exists"
+    else
+      puts "❌ Error: Sitemap file was not created!"
+      puts "   Expected location: #{sitemap_xml_path}"
+      raise "Sitemap generation failed - no output file created"
+    end
   end
 
   desc "Generate IndexNow API key file from environment variable"
