@@ -38,43 +38,22 @@ SitemapGenerator::Sitemap.create do
   
   # Home page
   home_lastmod = get_multiple_views_lastmod("pages/index.html.erb", "layouts/application.html.erb")
-  add root_path, 
-      priority: 1.0, 
-      changefreq: 'monthly', 
-      lastmod: home_lastmod
+  add root_path, lastmod: home_lastmod
 
   # Main service pages
-  add services_path, 
-      priority: 0.9, 
-      changefreq: 'monthly', 
-      lastmod: get_view_lastmod('pages/services.html.erb')
+  add services_path, lastmod: get_view_lastmod('pages/services.html.erb')
   
   # Service category pages
-  add pharmaceutical_path, 
-      priority: 0.8, 
-      changefreq: 'monthly', 
-      lastmod: get_view_lastmod('pages/pharmaceutical.html.erb')
+  add pharmaceutical_path, lastmod: get_view_lastmod('pages/pharmaceutical.html.erb')
   
-  add real_estate_path, 
-      priority: 0.8, 
-      changefreq: 'monthly', 
-      lastmod: get_view_lastmod('pages/real_estate.html.erb')
+  add real_estate_path, lastmod: get_view_lastmod('pages/real_estate.html.erb')
 
   # Other main pages
-  add team_path, 
-      priority: 0.7, 
-      changefreq: 'monthly', 
-      lastmod: get_view_lastmod('pages/team.html.erb')
+  add team_path, lastmod: get_view_lastmod('pages/team.html.erb')
   
-  add contacts_path, 
-      priority: 0.6, 
-      changefreq: 'yearly', 
-      lastmod: get_view_lastmod('pages/contacts.html.erb')
+  add contacts_path, lastmod: get_view_lastmod('pages/contacts.html.erb')
 
   # Document pages
-  add tos_path, 
-      priority: 0.3, 
-      changefreq: 'yearly', 
-      lastmod: get_view_lastmod('documents/tos.html.erb')
+  add tos_path, lastmod: get_view_lastmod('documents/tos.html.erb')
 end
 
