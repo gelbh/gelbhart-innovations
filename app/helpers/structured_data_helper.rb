@@ -12,7 +12,8 @@ module StructuredDataHelper
                    "https://www.linkedin.com/in/yaron-gelbhart/", 
                    "https://www.linkedin.com/in/bareket-gelbhart-83904a16/", 
                    "https://github.com/gelbh",
-                   "https://github.com/gelbh/gelbhart-innovations"
+                   "https://github.com/gelbh/gelbhart-innovations",
+                   "https://gelbhart.dev"
       ]
     }
   end
