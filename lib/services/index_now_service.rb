@@ -9,7 +9,7 @@ module Services
       'https://www.bing.com/indexnow',
       'https://yandex.com/indexnow',
       'https://search.seznam.cz/indexnow',
-      'https://www.naver.com/indexnow'
+      'https://searchadvisor.naver.com/indexnow'
     ].freeze
 
     # Maximum URLs per request (IndexNow limit is 10,000)
@@ -58,6 +58,14 @@ module Services
         false
       end
 
+      # Construct the full URL to the IndexNow API key file
+      # @param host [String] Site hostname (without protocol)
+      # @param api_key [String] IndexNow API key
+      # @return [String] Full URL to the key file
+      def key_location_url(host:, api_key:)
+        "https://#{host}/#{api_key}.txt"
+      end
+
       # Ping a single IndexNow endpoint
       # @param endpoint [String] IndexNow API endpoint URL
       # @param urls [Array<String>] Array of full URLs to notify
@@ -73,6 +81,7 @@ module Services
         payload = {
           host: host,
           key: api_key,
+          keyLocation: key_location_url(host: host, api_key: api_key),
           urlList: urls
         }
 
@@ -92,7 +101,12 @@ module Services
           Rails.logger.debug "[IndexNow] Successfully pinged #{endpoint}"
           true
         else
-          Rails.logger.warn "[IndexNow] Failed to ping #{endpoint}: HTTP #{response.code}"
+          response_body = response.body.to_s.strip
+          if response_body.present?
+            Rails.logger.warn "[IndexNow] Failed to ping #{endpoint}: HTTP #{response.code} - #{response_body}"
+          else
+            Rails.logger.warn "[IndexNow] Failed to ping #{endpoint}: HTTP #{response.code}"
+          end
           false
         end
       rescue Net::TimeoutError, Errno::ETIMEDOUT, Timeout::Error
