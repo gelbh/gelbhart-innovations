@@ -6,7 +6,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get root_url
     assert_response :success
-    assert_select "title", "Home / Gelbhart Inn."
+    assert_select "title", "Home | Gelbhart Innovations"
   end
 
   test "should get services" do

@@ -28,19 +28,20 @@ class ApplicationHelperTest < ActionView::TestCase
   end
 
   test "full_page_title returns title with suffix when title provided" do
-    assert_equal "Home / Gelbhart Inn.", full_page_title("Home")
+    assert_equal "Home | Gelbhart Innovations", full_page_title("Home")
   end
 
   test "full_page_title returns default when no title provided" do
-    assert_equal "Gelbhart Inn.", full_page_title(nil)
+    assert_equal "Gelbhart Innovations", full_page_title(nil)
   end
 
   test "page_description returns provided description" do
     assert_equal "Test description", page_description("Test description")
   end
 
-  test "page_description returns empty string when nil" do
-    assert_equal "", page_description(nil)
+  test "page_description returns default description when nil" do
+    expected = "Gelbhart Innovations provides innovative solutions creating value through comprehensive consulting services in pharmaceutical and real estate industries."
+    assert_equal expected, page_description(nil)
   end
 end
 
