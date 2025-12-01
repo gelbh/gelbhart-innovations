@@ -2,17 +2,24 @@ name: Keep Supabase Alive
 
 on:
   schedule:
-    # Run every 2 days to keep Supabase free tier database alive (pauses after 1 week of inactivity)
-    - cron: "0 12 */2 * *" # Every 2 days at 12:00 PM UTC
+    # Run daily to keep Supabase free tier database alive (pauses after 7 days of inactivity)
+    - cron: "0 12 * * *" # Daily at 12:00 PM UTC
   workflow_dispatch: # Allow manual triggering
 
 jobs:
-  ping-supabase:
-    name: Ping Supabase REST API
+  keep-alive:
+    name: Keep Supabase Database Active
     runs-on: ubuntu-latest
     steps:
-      - name: Ping Supabase REST API
+      - name: Keep Supabase Active via Database Operations
         run: |
+          # This workflow uses database INSERT/DELETE operations to keep Supabase active.
+          #
+          # Documentation:
+          # - Supabase Dashboard: https://supabase.com/dashboard
+          # - API Logs: Supabase Dashboard > Logs > API
+          # - Table Editor: Supabase Dashboard > Table Editor > keep_alive
+
           # Determine which secrets to use
           SUPABASE_URL=""
           SUPABASE_KEY=""
@@ -42,42 +49,80 @@ jobs:
           # Ensure URL doesn't have trailing slash
           SUPABASE_URL=$(echo "$SUPABASE_URL" | sed 's|/$||')
 
-          echo "🔄 Making REST API call to Supabase to register activity..."
-          echo "📍 URL: ${SUPABASE_URL}/auth/v1/health"
+          echo "🔄 Starting keep-alive operations via database INSERT/DELETE..."
+          echo "📍 Supabase URL: ${SUPABASE_URL}"
+          echo ""
 
-          # Make a health check request to Supabase Auth API
-          # This is a proper health check endpoint that Supabase provides
-          # Returns 200 on success and registers as API activity
-          RESPONSE=$(curl -s -w "\n%{http_code}" \
-            -X GET \
+          # Step 1: INSERT a record into keep_alive table
+          echo "📝 Step 1: INSERTing record into keep_alive table..."
+          INSERT_RESPONSE=$(curl -s -w "\n%{http_code}" \
+            -X POST \
             -H "apikey: ${SUPABASE_KEY}" \
             -H "Authorization: Bearer ${SUPABASE_KEY}" \
             -H "Content-Type: application/json" \
-            "${SUPABASE_URL}/auth/v1/health" 2>&1)
+            -H "Prefer: return=minimal" \
+            -d '{}' \
+            "${SUPABASE_URL}/rest/v1/keep_alive" 2>&1)
 
-          HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
-          BODY=$(echo "$RESPONSE" | sed '$d')
+          INSERT_HTTP_CODE=$(echo "$INSERT_RESPONSE" | tail -n1)
+          INSERT_BODY=$(echo "$INSERT_RESPONSE" | sed '$d')
 
-          # Check if request was successful (200 indicates successful health check and API activity)
-          if [ "$HTTP_CODE" -eq 200 ]; then
-            echo "✅ Successfully made health check request to Supabase"
-            echo "✅ HTTP Status: ${HTTP_CODE}"
-            echo "✅ API activity registered - this should prevent auto-pausing"
-            echo ""
-            echo "📊 Response:"
-            echo "$BODY"
-            echo ""
-            echo "💡 This REST API call is recognized by Supabase as activity."
-            echo "💡 Check your Supabase Dashboard > Logs > API to verify the request appears."
+          # Check if INSERT was successful (201 Created or 200 OK)
+          if [ "$INSERT_HTTP_CODE" -eq 201 ] || [ "$INSERT_HTTP_CODE" -eq 200 ]; then
+            echo "✅ INSERT operation successful (HTTP ${INSERT_HTTP_CODE})"
+            
+            # Extract inserted ID if returned (some Supabase configs return the ID)
+            if [ -n "$INSERT_BODY" ] && echo "$INSERT_BODY" | grep -q '"id"'; then
+              INSERTED_ID=$(echo "$INSERT_BODY" | grep -o '"id":[0-9]*' | grep -o '[0-9]*' | head -1)
+              echo "   Inserted record ID: ${INSERTED_ID}"
+            fi
           else
-            echo "❌ Failed to make REST API call to Supabase"
-            echo "❌ HTTP Status: ${HTTP_CODE}"
+            echo "❌ INSERT operation failed!"
+            echo "❌ HTTP Status: ${INSERT_HTTP_CODE}"
             echo "❌ Response:"
-            echo "$BODY"
+            echo "$INSERT_BODY"
             echo ""
-            echo "💡 Please verify:"
-            echo "   1. SUPABASE_URL is correct (format: https://xxxxx.supabase.co)"
-            echo "   2. API key is valid and has proper permissions"
-            echo "   3. Project is not paused"
+            echo "💡 Troubleshooting:"
+            echo "   1. Verify the 'keep_alive' table exists (run migration: bin/rails db:migrate)"
+            echo "   2. Check SUPABASE_URL is correct (format: https://xxxxx.supabase.co)"
+            echo "   3. Verify API key has proper permissions (anon key should work for public schema)"
+            echo "   4. Check if project is paused (unpause in Supabase Dashboard)"
+            echo "   5. Verify table name matches exactly: 'keep_alive' (singular, not plural)"
             exit 1
           fi
+
+          echo ""
+
+          # Step 2: DELETE the oldest record(s) from keep_alive table
+          echo "🗑️  Step 2: DELETing oldest record from keep_alive table..."
+          DELETE_RESPONSE=$(curl -s -w "\n%{http_code}" \
+            -X DELETE \
+            -H "apikey: ${SUPABASE_KEY}" \
+            -H "Authorization: Bearer ${SUPABASE_KEY}" \
+            -H "Content-Type: application/json" \
+            -H "Prefer: return=minimal" \
+            "${SUPABASE_URL}/rest/v1/keep_alive?order=created_at.asc&limit=1" 2>&1)
+
+          DELETE_HTTP_CODE=$(echo "$DELETE_RESPONSE" | tail -n1)
+          DELETE_BODY=$(echo "$DELETE_RESPONSE" | sed '$d')
+
+          # Check if DELETE was successful (204 No Content or 200 OK)
+          if [ "$DELETE_HTTP_CODE" -eq 204 ] || [ "$DELETE_HTTP_CODE" -eq 200 ]; then
+            echo "✅ DELETE operation successful (HTTP ${DELETE_HTTP_CODE})"
+          else
+            echo "⚠️  DELETE operation returned unexpected status: ${DELETE_HTTP_CODE}"
+            echo "   Response: ${DELETE_BODY}"
+            echo "   Note: This may be okay if no records exist to delete"
+          fi
+
+          echo ""
+          echo "✅ Keep-alive operations completed successfully!"
+          echo "✅ Database activity registered - this should prevent auto-pausing"
+          echo ""
+          echo "📊 Verification:"
+          echo "   - Check Supabase Dashboard > Logs > API to see INSERT/DELETE requests"
+          echo "   - Check Supabase Dashboard > Table Editor > keep_alive to verify operations"
+          echo "   - Monitor project status to ensure it doesn't pause"
+          echo ""
+          echo "💡 This workflow runs daily to maintain activity."
+          echo "💡 The keep_alive table should remain mostly empty (records are deleted immediately)."
