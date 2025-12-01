@@ -17,6 +17,7 @@ gem "mail_form"
 gem 'sassc-rails'
 gem 'sitemap_generator'
 gem "image_processing", "~> 1.2"
+gem "rexml"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]

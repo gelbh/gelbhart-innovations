@@ -28,6 +28,8 @@ namespace :sitemap do
         doc = REXML::Document.new(File.read(sitemap_xml_path))
         url_count = doc.elements.to_a('//url').size
         puts "   URLs: #{url_count}"
+      rescue LoadError
+        puts "⚠️  Warning: rexml gem not available, skipping XML validation"
       rescue StandardError => e
         puts "⚠️  Warning: Could not validate XML structure: #{e.message}"
       end
