@@ -15,6 +15,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 gem "mail_form"
 gem 'sassc-rails'
+gem 'sitemap_generator'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
