@@ -9,4 +9,4 @@ Rails.application.config.assets.paths << Rails.root.join("app", "assets", "vendo
 Rails.application.config.assets.paths << Rails.root.join("app", "assets", "favicon")
 
 # Precompile ERB-processed webmanifest
-Rails.application.config.assets.precompile += %w(favicon/site.webmanifest.erb)
+Rails.application.config.assets.precompile += %w(site.webmanifest.erb)
