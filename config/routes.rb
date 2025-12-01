@@ -7,9 +7,13 @@ Rails.application.routes.draw do
   get 'team', to: 'pages#team'
   get 'contacts', to: 'pages#contacts'
 
-  # Service category pages
-  get 'pharmaceutical', to: 'pages#pharmaceutical'
-  get 'real_estate', to: 'pages#real_estate'
+  # Service category pages (nested under services)
+  get 'services/pharmaceutical', to: 'pages#pharmaceutical', as: 'pharmaceutical'
+  get 'services/real-estate', to: 'pages#real_estate', as: 'real_estate'
+
+  # 301 redirects for old URLs
+  get 'pharmaceutical', to: redirect('/services/pharmaceutical', status: 301)
+  get 'real_estate', to: redirect('/services/real-estate', status: 301)
 
   # Document pages
   get 'tos', to: 'documents#tos'
