@@ -16,6 +16,7 @@ class SitemapService
   # @return [void]
   def generate
     ensure_public_directory_exists
+    clear_old_sitemaps
     generate_uncompressed_sitemap
     verify_sitemap_created
     create_compressed_version
@@ -25,6 +26,13 @@ class SitemapService
 
   def ensure_public_directory_exists
     Rails.public_path.mkpath unless Rails.public_path.exist?
+  end
+
+  def clear_old_sitemaps
+    # Remove old sitemap files to prevent duplicates
+    [sitemap_path, gz_path].each do |path|
+      path.delete if path.exist?
+    end
   end
 
   def generate_uncompressed_sitemap
