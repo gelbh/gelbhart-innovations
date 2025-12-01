@@ -2,7 +2,7 @@ services:
   - type: web
     name: gelbhart-innovations
     env: ruby
-    plan: free
+    plan: starter
     buildCommand: bundle install && bundle exec rails assets:precompile && bundle exec rake sitemap:regenerate
     startCommand: bundle exec puma -C config/puma.rb
     envVars:
