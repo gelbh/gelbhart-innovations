@@ -11,7 +11,9 @@ base_host = base_host.gsub(/^https?:\/\//, "")
 default_host = "https://#{base_host}"
 
 SitemapGenerator::Sitemap.default_host = default_host
+SitemapGenerator::Sitemap.public_path = "public/"
 SitemapGenerator::Sitemap.sitemaps_path = ""
+# Create both compressed and uncompressed files
 SitemapGenerator::Sitemap.compress = false
 
 # Helper method to get last modification time for view files
