@@ -1,16 +1,15 @@
 {
-  "name": "silicon-html",
-  "version": "1.6.0",
-  "description": "Silicon - Multipurpose Bootstrap 5 Template & UI Kit",
-  "main": "index.html",
+  "name": "gelbhart-innovations",
+  "version": "1.0.0",
+  "description": "Gelbhart Innovations - Corporate website built with Rails 8 and Bootstrap 5",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky",
     "lint:commit": "commitlint --edit"
   },
-  "author": "https://createx.studio/",
-  "license": "ISC",
-  "homepage": "https://silicon.createx.studio",
+  "author": "Gelbhart Innovations",
+  "license": "MIT",
+  "homepage": "https://gelbhart.com",
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
