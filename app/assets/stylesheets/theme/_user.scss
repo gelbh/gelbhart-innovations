@@ -2,3 +2,20 @@
 // user.scss
 // Use this to write your custom SCSS
 //
+
+// Gelbhart Innovations Brand Colors
+:root {
+  --si-logo-blue: #529fcb;
+  --si-logo-blue-rgb: 82, 159, 203;
+  --si-logo-red: #df4732;
+  --si-logo-red-rgb: 223, 71, 50;
+}
+
+// Utility classes for logo colors
+.text-logo-blue {
+  color: var(--si-logo-blue) !important;
+}
+
+.text-logo-red {
+  color: var(--si-logo-red) !important;
+}
