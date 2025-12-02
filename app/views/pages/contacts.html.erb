@@ -1,39 +1,56 @@
 <!-- Jarallax -->
 <%= render 'shared/jarallax' %>
-
-<!-- Branches -->
-<section class="container px-3 px-sm-4">
-    <%= render 'shared/breadcrumb' %>
-    <div class="row py-3 py-sm-4 py-md-5">
-        <div class="col-12 col-lg-6 mb-4 mb-lg-0">
-            <div class="d-flex flex-column h-100 shadow-sm rounded-3 overflow-hidden contact-map-wrapper">
-                <iframe class="d-block w-100 h-100 contact-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11105.540609364607!2d8.966258838391106!3d45.90360883759438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47842973164cf711%3A0x2d91b98d1d5f95c2!2sVia%20Giuseppe%20Motta%209%2C%206826%20Riva%20San%20Vitale!5e0!3m2!1sen!2sch!4v1661011079847!5m2!1sen!2sch" style="border: 0; min-height: 300px;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-        </div>
-        <div class="col-12 col-lg-5 offset-lg-1">
-            <h2 class="h4 h5-sm mb-3 mb-sm-4">Gelbhart Innovations</h2>
-            <ul class="list-unstyled pb-2 pb-lg-0 mb-4 mb-lg-5">
-                <li class="d-flex pb-2 pb-sm-1 mb-2 align-items-start">
-                    <i class="bx bx-map text-primary fs-xl fs-lg-xl me-2 me-sm-3 flex-shrink-0" style="margin-top: .125rem;"></i>
-                    <span class="fs-sm fs-md-base">Via Giuseppe Motta, 9, Riva san Vitale</span>
-                </li>
-                <li class="d-flex pb-2 pb-sm-1 mb-2 align-items-start">
-                    <i class="bx bx-phone-call text-primary fs-xl fs-lg-xl me-2 me-sm-3 flex-shrink-0" style="margin-top: .125rem;"></i>
-                    <a href="tel:+41797658422" class="text-decoration-none fs-sm fs-md-base">+41 79 765 84 22</a>
-                </li>
-                <li class="d-flex pb-2 pb-sm-1 mb-2 align-items-start">
-                    <i class="bx bx-envelope text-primary fs-xl fs-lg-xl me-2 me-sm-3 flex-shrink-0" style="margin-top: .125rem;"></i>
-                    <a href="mailto:info@gelbhart.com" class="text-decoration-none fs-sm fs-md-base">info@gelbhart.com</a>
-                </li>
-                <li class="d-flex align-items-start">
-                    <i class="bx bx-time-five text-primary fs-xl fs-lg-xl me-2 me-sm-3 flex-shrink-0" style="margin-top: .125rem;"></i>
-                    <div class="fs-sm fs-md-base">
-                        <strong class="text-nav">Mon - Fri</strong>: 8:00 am - 17:00 pm
-                        <br>
-                        <strong class="text-nav">Sat - Sun</strong>: Closed
-                    </div>
-                </li>
-            </ul>
-        </div>
+<!-- Contact Section -->
+<section class="container py-2 pb-md-4 pb-lg-5 px-3 px-sm-4">
+  <%= render 'shared/breadcrumb' %>
+  <div class="row">
+    <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+      <div class="d-flex flex-column h-100 shadow-sm rounded-3 overflow-hidden contact-map-wrapper">
+        <iframe
+          class="d-block w-100 h-100 contact-map"
+          src="<%= AppConstants::CONTACT_INFO[:google_maps_embed_url] %>"
+          title="Gelbhart Innovations Location"
+          style="border: 0;"
+          allowfullscreen=""
+          loading="lazy"
+          aria-label="Interactive map showing Gelbhart Innovations location"></iframe>
+      </div>
     </div>
+    <div class="col-12 col-lg-5 offset-lg-1">
+      <h1 class="h4 h5-sm mb-3 mb-sm-4">Gelbhart Innovations</h1>
+      <% contact = AppConstants::CONTACT_INFO %>
+      <address class="list-unstyled pb-2 pb-lg-0 mb-4 mb-lg-5">
+        <ul class="list-unstyled mb-0">
+          <li class="d-flex pb-2 pb-sm-1 mb-2 align-items-start">
+            <i class="bx bx-map text-primary fs-xl fs-lg-xl me-2 me-sm-3 flex-shrink-0 contact-icon-offset" aria-hidden="true"></i>
+            <span class="fs-sm fs-md-base">
+              <%= contact[:address][:street] %><br>
+              <%= contact[:address][:postal_code] %> <%= contact[:address][:city] %><br>
+              <%= contact[:address][:country] %>
+            </span>
+          </li>
+          <li class="d-flex pb-2 pb-sm-1 mb-2 align-items-start">
+            <i class="bx bx-phone-call text-primary fs-xl fs-lg-xl me-2 me-sm-3 flex-shrink-0 contact-icon-offset" aria-hidden="true"></i>
+            <a href="tel:<%= contact[:phone][:tel] %>" class="text-decoration-none fs-sm fs-md-base">
+              <%= contact[:phone][:display] %>
+            </a>
+          </li>
+          <li class="d-flex pb-2 pb-sm-1 mb-2 align-items-start">
+            <i class="bx bx-envelope text-primary fs-xl fs-lg-xl me-2 me-sm-3 flex-shrink-0 contact-icon-offset" aria-hidden="true"></i>
+            <a href="mailto:<%= contact[:email] %>" class="text-decoration-none fs-sm fs-md-base">
+              <%= contact[:email] %>
+            </a>
+          </li>
+          <li class="d-flex align-items-start">
+            <i class="bx bx-time-five text-primary fs-xl fs-lg-xl me-2 me-sm-3 flex-shrink-0 contact-icon-offset" aria-hidden="true"></i>
+            <div class="fs-sm fs-md-base">
+              <strong class="text-nav"><%= contact[:business_hours][:weekdays][:days] %></strong>: <%= contact[:business_hours][:weekdays][:open] %> - <%= contact[:business_hours][:weekdays][:close] %>
+              <br>
+              <strong class="text-nav">Sat - Sun</strong>: <%= contact[:business_hours][:weekend] %>
+            </div>
+          </li>
+        </ul>
+      </address>
+    </div>
+  </div>
 </section>

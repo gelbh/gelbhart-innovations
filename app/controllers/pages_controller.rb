@@ -49,5 +49,25 @@ class PagesController < ApplicationController
       description: "Get in touch with Gelbhart Innovations. Contact us for inquiries about our pharmaceutical and real estate consulting services."
     )
     assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:contacts], height: 300, speed: 0.1)
+
+    # Generate LocalBusiness structured data
+    contact = AppConstants::CONTACT_INFO
+    address_schema = {
+      "@type" => "PostalAddress",
+      "streetAddress" => contact[:address][:street],
+      "addressLocality" => contact[:address][:city],
+      "postalCode" => contact[:address][:postal_code],
+      "addressCountry" => contact[:address][:country]
+    }
+
+    @structured_data = {
+      "@context" => "https://schema.org",
+      "@type" => "LocalBusiness",
+      "name" => "Gelbhart Innovations",
+      "address" => address_schema,
+      "telephone" => contact[:phone][:display],
+      "email" => contact[:email],
+      "url" => root_url
+    }
   end
 end
