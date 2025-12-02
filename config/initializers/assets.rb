@@ -35,6 +35,9 @@ Rails.application.config.assets.precompile += %w(
   apple-touch-icon.png
   safari-pinned-tab.svg
   browserconfig.xml
+  web-app-manifest-192x192.png
+  web-app-manifest-512x512.png
+  mstile-150x150.png
 )
 
 # Precompile application assets (explicitly declared for production)
