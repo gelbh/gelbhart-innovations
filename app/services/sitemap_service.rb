@@ -1,19 +1,12 @@
-# Service class that wraps the sitemap_generator gem's DSL-based API.
-# Provides programmatic access to sitemap generation while keeping
-# config/sitemap.rb as the source of truth for configuration.
-#
-# Note: Named SitemapService to avoid conflict with SitemapGenerator gem module.
+# frozen_string_literal: true
+
 require "stringio"
+require "zlib"
 
 class SitemapService
-  # File paths
   SITEMAP_XML = "sitemap.xml"
   SITEMAP_GZ = "sitemap.xml.gz"
 
-  # Generates both uncompressed and compressed sitemap files.
-  #
-  # @raise [RuntimeError] if sitemap.xml cannot be generated
-  # @return [void]
   def generate
     ensure_public_directory_exists
     clear_old_sitemaps
@@ -29,70 +22,77 @@ class SitemapService
   end
 
   def clear_old_sitemaps
-    # Remove old sitemap files to prevent duplicates
-    [sitemap_path, gz_path].each do |path|
-      path.delete if path.exist?
-    end
+    [sitemap_path, gz_path].each { |path| path.delete if path.exist? }
   end
 
   def generate_uncompressed_sitemap
-    # Configure sitemap generator before loading config
-    SitemapGenerator::Sitemap.public_path = Rails.public_path.to_s
-    SitemapGenerator::Sitemap.sitemaps_path = ""
-    SitemapGenerator::Sitemap.compress = false
+    configure_sitemap_generator
+    load_sitemap_config
+    configure_sitemap_generator
+  end
 
-    # Load config which will generate the sitemap via SitemapGenerator::Sitemap.create
-    # Silence gem output in test environment to keep test output clean
-    if Rails.env.test?
-      original_stdout = $stdout
-      $stdout = StringIO.new
-      begin
-        load Rails.root.join("config", "sitemap.rb")
-      ensure
-        $stdout = original_stdout
-      end
-    else
-      load Rails.root.join("config", "sitemap.rb")
+  def configure_sitemap_generator
+    SitemapGenerator::Sitemap.tap do |sitemap|
+      sitemap.public_path = Rails.public_path.to_s
+      sitemap.sitemaps_path = ""
+      sitemap.compress = false
     end
+  end
 
-    # Ensure settings are still correct after config loads
-    SitemapGenerator::Sitemap.compress = false
-    SitemapGenerator::Sitemap.public_path = Rails.public_path.to_s
-    SitemapGenerator::Sitemap.sitemaps_path = ""
+  def load_sitemap_config
+    if Rails.env.test?
+      silence_stdout { load sitemap_config_path }
+    else
+      load sitemap_config_path
+    end
+  end
+
+  def silence_stdout
+    original_stdout = $stdout
+    $stdout = StringIO.new
+    yield
+  ensure
+    $stdout = original_stdout
+  end
+
+  def sitemap_config_path
+    Rails.root.join("config", "sitemap.rb")
   end
 
   def verify_sitemap_created
     return if sitemap_path.exist?
 
-    existing_files = Dir.glob(Rails.public_path.join("sitemap*"))
-    error_message = "Failed to generate sitemap.xml at #{sitemap_path}."
-    error_message += " Found files: #{existing_files.inspect}" if existing_files.any?
-    error_message += " Public path exists: #{Rails.public_path.exist?}"
-    error_message += " Public path writable: #{File.writable?(Rails.public_path)}" if Rails.public_path.exist?
-    error_message += " Compress setting: #{SitemapGenerator::Sitemap.compress}"
-    raise error_message
+    raise build_error_message("Failed to generate sitemap.xml")
   end
 
   def create_compressed_version
-    require "zlib"
+    validate_sitemap_exists
+    validate_sitemap_not_empty
 
-    unless sitemap_path.exist?
-      existing_files = Dir.glob(Rails.public_path.join("sitemap*"))
-      error_message = "Cannot create compressed sitemap: sitemap.xml not found at #{sitemap_path}."
-      error_message += " Found files: #{existing_files.inspect}" if existing_files.any?
-      error_message += " Public path exists: #{Rails.public_path.exist?}"
-      raise error_message
-    end
+    Zlib::GzipWriter.open(gz_path) { |gz| gz.write(File.read(sitemap_path)) }
+  end
 
-    sitemap_content = File.read(sitemap_path)
+  def validate_sitemap_exists
+    return if sitemap_path.exist?
 
-    if sitemap_content.empty?
-      raise "Cannot create compressed sitemap: sitemap.xml exists but is empty at #{sitemap_path}"
-    end
+    raise build_error_message("Cannot create compressed sitemap: sitemap.xml not found")
+  end
 
-    Zlib::GzipWriter.open(gz_path) do |gz|
-      gz.write(sitemap_content)
-    end
+  def validate_sitemap_not_empty
+    return unless File.read(sitemap_path).empty?
+
+    raise "Cannot create compressed sitemap: sitemap.xml exists but is empty at #{sitemap_path}"
+  end
+
+  def build_error_message(base_message)
+    existing_files = Dir.glob(Rails.public_path.join("sitemap*"))
+    details = []
+    details << "Found files: #{existing_files.inspect}" if existing_files.any?
+    details << "Public path exists: #{Rails.public_path.exist?}"
+    details << "Public path writable: #{File.writable?(Rails.public_path)}" if Rails.public_path.exist?
+    details << "Compress setting: #{SitemapGenerator::Sitemap.compress}"
+
+    "#{base_message} at #{sitemap_path}. #{details.join(', ')}"
   end
 
   def sitemap_path
@@ -103,4 +103,3 @@ class SitemapService
     @gz_path ||= Rails.public_path.join(SITEMAP_GZ)
   end
 end
-

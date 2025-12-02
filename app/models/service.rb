@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# Plain Old Ruby Object for services
-# Not backed by database - used for static service data
 class Service
   attr_reader :title, :icon, :subtitle, :description
 
@@ -12,7 +10,6 @@ class Service
     @description = description
   end
 
-  # Pharmaceutical services
   def self.pharmaceutical
     [
       new(
@@ -54,7 +51,6 @@ class Service
     ]
   end
 
-  # Real estate services
   def self.real_estate
     [
       new(
@@ -110,4 +106,3 @@ class Service
     ]
   end
 end
-

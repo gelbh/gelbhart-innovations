@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# Plain Old Ruby Object for team members
-# Not backed by database - used for static team data
 class TeamMember
   attr_reader :name, :bio, :linkedin_url, :github_url
 
@@ -24,7 +22,6 @@ class TeamMember
     github_url.present?
   end
 
-  # Class method to return all team members
   def self.all
     [
       new(
@@ -46,4 +43,3 @@ class TeamMember
     ]
   end
 end
-
