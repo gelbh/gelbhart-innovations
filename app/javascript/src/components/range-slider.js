@@ -1,77 +1,101 @@
 /**
  * Range slider
+ * Turbo-aware: works with both initial page load and Turbo navigation
  * @requires https://github.com/leongersen/noUiSlider
-*/
+ */
 
 const rangeSlider = (() => {
+  function initialize() {
+    const rangeSliderWidgets = document.querySelectorAll(".range-slider");
 
-  let rangeSliderWidget = document.querySelectorAll('.range-slider');
+    for (let i = 0; i < rangeSliderWidgets.length; i++) {
+      const widget = rangeSliderWidgets[i];
+      const rangeSliderEl = widget.querySelector(".range-slider-ui");
 
-  for (let i = 0; i < rangeSliderWidget.length; i++) {
+      // Skip if already initialized (noUiSlider adds noUiSlider property)
+      if (rangeSliderEl && rangeSliderEl.noUiSlider) continue;
 
-    let rangeSlider = rangeSliderWidget[i].querySelector('.range-slider-ui'),
-        valueMinInput = rangeSliderWidget[i].querySelector('.range-slider-value-min'),
-        valueMaxInput = rangeSliderWidget[i].querySelector('.range-slider-value-max');
+      const valueMinInput = widget.querySelector(".range-slider-value-min");
+      const valueMaxInput = widget.querySelector(".range-slider-value-max");
 
-    let options = {
-      dataStartMin: parseInt(rangeSliderWidget[i].dataset.startMin, 10),
-      dataStartMax: parseInt(rangeSliderWidget[i].dataset.startMax, 10),
-      dataMin: parseInt(rangeSliderWidget[i].dataset.min, 10),
-      dataMax: parseInt(rangeSliderWidget[i].dataset.max, 10),
-      dataStep: parseInt(rangeSliderWidget[i].dataset.step, 10),
-      dataPips: rangeSliderWidget[i].dataset.pips
-    }
+      const options = {
+        dataStartMin: parseInt(widget.dataset.startMin, 10),
+        dataStartMax: parseInt(widget.dataset.startMax, 10),
+        dataMin: parseInt(widget.dataset.min, 10),
+        dataMax: parseInt(widget.dataset.max, 10),
+        dataStep: parseInt(widget.dataset.step, 10),
+        dataPips: widget.dataset.pips,
+        dataTooltips: widget.dataset.tooltips
+          ? widget.dataset.tooltips === "true"
+          : true,
+        dataTooltipPrefix: widget.dataset.tooltipPrefix || "",
+        dataTooltipSuffix: widget.dataset.tooltipSuffix || "",
+      };
 
-    let start = (options.dataStartMax) ? [options.dataStartMin, options.dataStartMax] : [options.dataStartMin],
-        connect = (options.dataStartMax) ? true : 'lower';
+      const start = options.dataStartMax
+        ? [options.dataStartMin, options.dataStartMax]
+        : [options.dataStartMin];
+      const connect = options.dataStartMax ? true : "lower";
 
-    noUiSlider.create(rangeSlider, {
-      start: start,
-      connect: connect,
-      step: options.dataStep,
-      pips: options.dataPips ? {mode: 'count', values: 5} : false,
-      tooltips: true,
-      range: {
-        'min': options.dataMin,
-        'max': options.dataMax
-      },
-      format: {
-        to: function (value) {
-          return '$' + parseInt(value, 10);
+      /* eslint-disable no-undef */
+      noUiSlider.create(rangeSliderEl, {
+        start: start,
+        connect: connect,
+        step: options.dataStep,
+        pips: options.dataPips ? { mode: "count", values: 5 } : false,
+        tooltips: options.dataTooltips,
+        range: {
+          min: options.dataMin,
+          max: options.dataMax,
         },
-        from: function (value) {
-          return Number(value);
-        }
-      }
-    });
-
-    rangeSlider.noUiSlider.on('update', (values, handle) => {
-      let value = values[handle];
-      value = value.replace(/\D/g,'');
-      if (handle) {
-        if (valueMaxInput) {
-          valueMaxInput.value = Math.round(value);
-        }
-      } else {
-        if (valueMinInput) {
-          valueMinInput.value = Math.round(value);
-        }
-      }
-    });
-    
-    if (valueMinInput) {
-      valueMinInput.addEventListener('change', function() {
-        rangeSlider.noUiSlider.set([this.value, null]);
+        format: {
+          to: function (value) {
+            return (
+              options.dataTooltipPrefix +
+              parseInt(value, 10) +
+              options.dataTooltipSuffix
+            );
+          },
+          from: function (value) {
+            return Number(value);
+          },
+        },
       });
-    }
+      /* eslint-enable no-undef */
 
-    if (valueMaxInput) {
-      valueMaxInput.addEventListener('change', function() {
-        rangeSlider.noUiSlider.set([null, this.value]);
+      rangeSliderEl.noUiSlider.on("update", (values, handle) => {
+        let value = values[handle];
+        value = value.replace(/\D/g, "");
+        if (handle) {
+          if (valueMaxInput) {
+            valueMaxInput.value = Math.round(value);
+          }
+        } else {
+          if (valueMinInput) {
+            valueMinInput.value = Math.round(value);
+          }
+        }
       });
+
+      if (valueMinInput) {
+        valueMinInput.addEventListener("change", function () {
+          rangeSliderEl.noUiSlider.set([this.value, null]);
+        });
+      }
+
+      if (valueMaxInput) {
+        valueMaxInput.addEventListener("change", function () {
+          rangeSliderEl.noUiSlider.set([null, this.value]);
+        });
+      }
     }
   }
 
+  // Initialize on DOMContentLoaded (initial page load)
+  document.addEventListener("DOMContentLoaded", initialize);
+
+  // Initialize on Turbo load (Turbo navigation)
+  document.addEventListener("turbo:load", initialize);
 })();
 
 export default rangeSlider;
