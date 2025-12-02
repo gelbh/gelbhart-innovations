@@ -7,6 +7,7 @@ Rails.application.config.assets.version = "1.0"
 # Rails.application.config.assets.paths << Emoji.images_path
 Rails.application.config.assets.paths << Rails.root.join("app", "assets", "vendor")
 Rails.application.config.assets.paths << Rails.root.join("app", "assets", "favicon")
+Rails.application.config.assets.paths << Rails.root.join("app", "assets", "builds")
 
 # Precompile ERB-processed webmanifest
 Rails.application.config.assets.precompile += %w(site.webmanifest.erb)

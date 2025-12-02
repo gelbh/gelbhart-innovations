@@ -53,4 +53,8 @@ Rails.application.configure do
 
   # Enable asset compilation for tests to avoid precompilation step
   config.assets.compile = true
+
+  # Disable CSS compressor - dartsass-rails handles SCSS compilation separately
+  # This prevents Sprockets from trying to auto-detect and load sassc
+  config.assets.css_compressor = nil
 end
