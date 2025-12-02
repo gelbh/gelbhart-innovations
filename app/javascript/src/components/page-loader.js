@@ -1,38 +1,19 @@
 /**
  * Page Loader Component
- * Shows a loading indicator during Turbo navigation
- * Turbo-aware: works with both initial page load and Turbo navigation
+ * Turbo-aware loading indicator
  */
 
 const pageLoader = (() => {
-  let loader = document.getElementById('page-loader');
-  
-  if (loader == null) return;
+  const loader = document.getElementById("page-loader");
+  if (!loader) return;
 
-  // Show loader when navigation starts
-  document.addEventListener('turbo:before-visit', () => {
-    loader.classList.add('active');
-  });
+  const show = () => loader.classList.add("active");
+  const hide = () => setTimeout(() => loader.classList.remove("active"), 100);
 
-  // Hide loader when navigation completes
-  document.addEventListener('turbo:load', () => {
-    // Small delay to ensure smooth transition
-    setTimeout(() => {
-      loader.classList.remove('active');
-    }, 100);
-  });
-
-  // Also hide on initial page load
-  document.addEventListener('DOMContentLoaded', () => {
-    loader.classList.remove('active');
-  });
-
-  // Handle navigation errors
-  document.addEventListener('turbo:frame-load', () => {
-    loader.classList.remove('active');
-  });
-
+  document.addEventListener("turbo:before-visit", show);
+  document.addEventListener("turbo:load", hide);
+  document.addEventListener("turbo:frame-load", hide);
+  document.addEventListener("DOMContentLoaded", hide);
 })();
 
 export default pageLoader;
-

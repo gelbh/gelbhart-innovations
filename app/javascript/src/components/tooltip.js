@@ -1,50 +1,27 @@
 /**
- * Tooltip
- * Turbo-aware: works with both initial page load and Turbo navigation
- * @requires https://getbootstrap.com
- * @requires https://popper.js.org/
+ * Tooltip Component
+ * @requires Bootstrap
+ * Turbo-aware Bootstrap tooltips
  */
 
 const tooltip = (() => {
-  // Store tooltip instances for cleanup
-  let tooltipInstances = [];
+  let instances = [];
 
-  function initialize() {
-    // Dispose existing tooltips to prevent duplicates
-    tooltipInstances.forEach((tooltip) => {
-      if (tooltip && typeof tooltip.dispose === "function") {
-        tooltip.dispose();
-      }
-    });
-    tooltipInstances = [];
-
-    const tooltipTriggerList = [].slice.call(
+  const initialize = () => {
+    instances.forEach((t) => t?.dispose?.());
+    instances = Array.from(
       document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    );
+    ).map((el) => new bootstrap.Tooltip(el, { trigger: "hover" }));
+  };
 
-    /* eslint-disable no-unused-vars, no-undef */
-    tooltipInstances = tooltipTriggerList.map(
-      (tooltipTriggerEl) =>
-        new bootstrap.Tooltip(tooltipTriggerEl, { trigger: "hover" })
-    );
-    /* eslint-enable no-unused-vars, no-undef */
-  }
+  const cleanup = () => {
+    instances.forEach((t) => t?.dispose?.());
+    instances = [];
+  };
 
-  // Initialize on DOMContentLoaded (initial page load)
   document.addEventListener("DOMContentLoaded", initialize);
-
-  // Initialize on Turbo load (Turbo navigation)
   document.addEventListener("turbo:load", initialize);
-
-  // Cleanup before Turbo cache to prevent stale tooltips
-  document.addEventListener("turbo:before-cache", () => {
-    tooltipInstances.forEach((tooltip) => {
-      if (tooltip && typeof tooltip.dispose === "function") {
-        tooltip.dispose();
-      }
-    });
-    tooltipInstances = [];
-  });
+  document.addEventListener("turbo:before-cache", cleanup);
 })();
 
 export default tooltip;

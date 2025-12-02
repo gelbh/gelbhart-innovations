@@ -1,41 +1,28 @@
 /**
- * Play Lottie animations on hover
- * Turbo-aware: works with both initial page load and Turbo navigation
- * @requires https://github.com/LottieFiles/lottie-player
+ * Hover Animation Component
+ * @requires LottieFiles lottie-player
+ * Turbo-aware Lottie animation on hover
  */
 
 const hoverAnimation = (() => {
-  function initialize() {
-    const playerContainers = document.querySelectorAll(".animation-on-hover");
+  const initialize = () => {
+    for (const container of document.querySelectorAll(".animation-on-hover")) {
+      if (container.dataset.hoverAnimationAttached === "true") continue;
 
-    playerContainers.forEach((container) => {
-      // Skip if already has listeners attached
-      if (container.dataset.hoverAnimationAttached === "true") return;
-
-      container.addEventListener("mouseover", () => {
-        const players = container.querySelectorAll("lottie-player");
-        players.forEach((player) => {
-          player.setDirection(1);
+      const playAll = (direction) => {
+        for (const player of container.querySelectorAll("lottie-player")) {
+          player.setDirection(direction);
           player.play();
-        });
-      });
+        }
+      };
 
-      container.addEventListener("mouseleave", () => {
-        const players = container.querySelectorAll("lottie-player");
-        players.forEach((player) => {
-          player.setDirection(-1);
-          player.play();
-        });
-      });
-
+      container.addEventListener("mouseover", () => playAll(1));
+      container.addEventListener("mouseleave", () => playAll(-1));
       container.dataset.hoverAnimationAttached = "true";
-    });
-  }
+    }
+  };
 
-  // Initialize on DOMContentLoaded (initial page load)
   document.addEventListener("DOMContentLoaded", initialize);
-
-  // Initialize on Turbo load (Turbo navigation)
   document.addEventListener("turbo:load", initialize);
 })();
 

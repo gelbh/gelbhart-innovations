@@ -1,49 +1,27 @@
 /**
- * Popover
- * Turbo-aware: works with both initial page load and Turbo navigation
- * @requires https://getbootstrap.com
- * @requires https://popper.js.org/
+ * Popover Component
+ * @requires Bootstrap
+ * Turbo-aware Bootstrap popovers
  */
 
 const popover = (() => {
-  // Store popover instances for cleanup
-  let popoverInstances = [];
+  let instances = [];
 
-  function initialize() {
-    // Dispose existing popovers to prevent duplicates
-    popoverInstances.forEach((popover) => {
-      if (popover && typeof popover.dispose === "function") {
-        popover.dispose();
-      }
-    });
-    popoverInstances = [];
-
-    const popoverTriggerList = [].slice.call(
+  const initialize = () => {
+    instances.forEach((p) => p?.dispose?.());
+    instances = Array.from(
       document.querySelectorAll('[data-bs-toggle="popover"]')
-    );
+    ).map((el) => new bootstrap.Popover(el));
+  };
 
-    /* eslint-disable no-unused-vars, no-undef */
-    popoverInstances = popoverTriggerList.map(
-      (popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl)
-    );
-    /* eslint-enable no-unused-vars, no-undef */
-  }
+  const cleanup = () => {
+    instances.forEach((p) => p?.dispose?.());
+    instances = [];
+  };
 
-  // Initialize on DOMContentLoaded (initial page load)
   document.addEventListener("DOMContentLoaded", initialize);
-
-  // Initialize on Turbo load (Turbo navigation)
   document.addEventListener("turbo:load", initialize);
-
-  // Cleanup before Turbo cache to prevent stale popovers
-  document.addEventListener("turbo:before-cache", () => {
-    popoverInstances.forEach((popover) => {
-      if (popover && typeof popover.dispose === "function") {
-        popover.dispose();
-      }
-    });
-    popoverInstances = [];
-  });
+  document.addEventListener("turbo:before-cache", cleanup);
 })();
 
 export default popover;

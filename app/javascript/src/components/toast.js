@@ -1,44 +1,27 @@
 /**
- * Toast
- * Turbo-aware: works with both initial page load and Turbo navigation
- * @requires https://getbootstrap.com
+ * Toast Component
+ * @requires Bootstrap
+ * Turbo-aware Bootstrap toasts
  */
 
 const toast = (() => {
-  // Store toast instances for cleanup
-  let toastInstances = [];
+  let instances = [];
 
-  function initialize() {
-    // Dispose existing toasts to prevent duplicates
-    toastInstances.forEach((toast) => {
-      if (toast && typeof toast.dispose === "function") {
-        toast.dispose();
-      }
-    });
-    toastInstances = [];
+  const initialize = () => {
+    instances.forEach((t) => t?.dispose?.());
+    instances = Array.from(document.querySelectorAll(".toast")).map(
+      (el) => new bootstrap.Toast(el)
+    );
+  };
 
-    const toastElList = [].slice.call(document.querySelectorAll(".toast"));
+  const cleanup = () => {
+    instances.forEach((t) => t?.dispose?.());
+    instances = [];
+  };
 
-    /* eslint-disable no-unused-vars, no-undef */
-    toastInstances = toastElList.map((toastEl) => new bootstrap.Toast(toastEl));
-    /* eslint-enable no-unused-vars, no-undef */
-  }
-
-  // Initialize on DOMContentLoaded (initial page load)
   document.addEventListener("DOMContentLoaded", initialize);
-
-  // Initialize on Turbo load (Turbo navigation)
   document.addEventListener("turbo:load", initialize);
-
-  // Cleanup before Turbo cache
-  document.addEventListener("turbo:before-cache", () => {
-    toastInstances.forEach((toast) => {
-      if (toast && typeof toast.dispose === "function") {
-        toast.dispose();
-      }
-    });
-    toastInstances = [];
-  });
+  document.addEventListener("turbo:before-cache", cleanup);
 })();
 
 export default toast;

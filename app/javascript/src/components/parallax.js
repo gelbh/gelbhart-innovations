@@ -1,47 +1,29 @@
 /**
- * Mouse move parallax effect
- * Turbo-aware: works with both initial page load and Turbo navigation
- * @requires https://github.com/wagerfield/parallax
+ * Mouse Parallax Component
+ * @requires parallax-js
+ * Turbo-aware mouse move parallax effect
  */
 
 const parallax = (() => {
-  // Store parallax instances for cleanup
-  let parallaxInstances = [];
+  let instances = [];
 
-  function initialize() {
-    // Destroy existing instances to prevent duplicates
-    parallaxInstances.forEach((instance) => {
-      if (instance && typeof instance.destroy === "function") {
-        instance.destroy();
-      }
-    });
-    parallaxInstances = [];
+  const initialize = () => {
+    instances.forEach((i) => i?.destroy?.());
+    instances = [];
 
-    const elements = document.querySelectorAll(".parallax");
-
-    for (let i = 0; i < elements.length; i++) {
-      /* eslint-disable no-unused-vars, no-undef */
-      const parallaxInstance = new Parallax(elements[i]);
-      parallaxInstances.push(parallaxInstance);
-      /* eslint-enable no-unused-vars, no-undef */
+    for (const el of document.querySelectorAll(".parallax")) {
+      instances.push(new Parallax(el));
     }
-  }
+  };
 
-  // Initialize on DOMContentLoaded (initial page load)
+  const cleanup = () => {
+    instances.forEach((i) => i?.destroy?.());
+    instances = [];
+  };
+
   document.addEventListener("DOMContentLoaded", initialize);
-
-  // Initialize on Turbo load (Turbo navigation)
   document.addEventListener("turbo:load", initialize);
-
-  // Cleanup before Turbo cache
-  document.addEventListener("turbo:before-cache", () => {
-    parallaxInstances.forEach((instance) => {
-      if (instance && typeof instance.destroy === "function") {
-        instance.destroy();
-      }
-    });
-    parallaxInstances = [];
-  });
+  document.addEventListener("turbo:before-cache", cleanup);
 })();
 
 export default parallax;

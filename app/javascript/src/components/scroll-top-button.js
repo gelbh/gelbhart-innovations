@@ -1,65 +1,38 @@
 /**
- * Animate scroll to top button in/off view
- * Turbo-aware: works with both initial page load and Turbo navigation
- * Also handles instant click-to-scroll (bypasses SmoothScroll for immediate response)
-*/
+ * Scroll Top Button Component
+ * Turbo-aware back-to-top button
+ */
 
 const scrollTopButton = (() => {
-
   let scrollHandler = null;
   let clickHandler = null;
 
-  function initialize() {
-    let element = document.querySelector('.btn-scroll-top'),
-        scrollOffset = 600;
-    
-    if (element == null) return;
+  const initialize = () => {
+    const button = document.querySelector(".btn-scroll-top");
+    if (!button) return;
 
-    // Remove existing scroll handler if any
-    if (scrollHandler) {
-      window.removeEventListener('scroll', scrollHandler);
-    }
+    const scrollOffset = 600;
 
-    // Remove existing click handler if any
-    if (clickHandler) {
-      element.removeEventListener('click', clickHandler);
-    }
+    // Remove existing handlers
+    if (scrollHandler) window.removeEventListener("scroll", scrollHandler);
+    if (clickHandler) button.removeEventListener("click", clickHandler);
 
-    let offsetFromTop = parseInt(scrollOffset, 10);
-    
-    // Handle show/hide on scroll
-    scrollHandler = (e) => {
-      if (window.pageYOffset > offsetFromTop) {
-        element.classList.add('show');
-      } else {
-        element.classList.remove('show');
-      }
+    scrollHandler = () => {
+      button.classList.toggle("show", window.pageYOffset > scrollOffset);
     };
-    
-    window.addEventListener('scroll', scrollHandler);
 
-    // Handle instant scroll to top on click
-    // This bypasses SmoothScroll for immediate response without delay
     clickHandler = (e) => {
       e.preventDefault();
       e.stopPropagation();
-      
-      // Instant smooth scroll using native browser API
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
-    element.addEventListener('click', clickHandler);
-  }
+    window.addEventListener("scroll", scrollHandler);
+    button.addEventListener("click", clickHandler);
+  };
 
-  // Initialize on DOMContentLoaded (initial page load)
-  document.addEventListener('DOMContentLoaded', initialize);
-
-  // Initialize on Turbo load (Turbo navigation)
-  document.addEventListener('turbo:load', initialize);
-
+  document.addEventListener("DOMContentLoaded", initialize);
+  document.addEventListener("turbo:load", initialize);
 })();
 
 export default scrollTopButton;

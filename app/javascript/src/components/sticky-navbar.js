@@ -1,56 +1,37 @@
 /**
- * Sticky Navbar
- * Enable sticky behavior of navigation bar on page scroll
- * Turbo-aware: works with both initial page load and Turbo navigation
-*/
+ * Sticky Navbar Component
+ * Turbo-aware sticky navigation bar
+ */
 
 const stickyNavbar = (() => {
-  
   let scrollHandler = null;
 
-  function initialize() {
-    let navbar = document.querySelector('.navbar-sticky');
+  const initialize = () => {
+    const navbar = document.querySelector(".navbar-sticky");
+    if (!navbar) return;
 
-    if (navbar == null) return;
+    if (scrollHandler) window.removeEventListener("scroll", scrollHandler);
 
-    // Remove existing scroll handler if any
-    if (scrollHandler) {
-      window.removeEventListener('scroll', scrollHandler);
-    }
+    const navbarHeight = navbar.offsetHeight;
+    const scrollOffset = 500;
+    const isAbsolute = navbar.classList.contains("position-absolute");
 
-    let navbarClass = navbar.classList,
-        navbarH = navbar.offsetHeight,
-        scrollOffset = 500;
+    scrollHandler = () => {
+      const shouldStick = window.pageYOffset > scrollOffset;
 
-    if (navbarClass.contains('position-absolute')) {
-      scrollHandler = (e) => {
-        if (window.pageYOffset > scrollOffset) {
-          navbar.classList.add('navbar-stuck');
-        } else {
-          navbar.classList.remove('navbar-stuck');
-        }
-      };
-      window.addEventListener('scroll', scrollHandler);
-    } else {
-      scrollHandler = (e) => {
-        if (window.pageYOffset > scrollOffset) {
-          document.body.style.paddingTop = navbarH + 'px';
-          navbar.classList.add('navbar-stuck');
-        } else {
-          document.body.style.paddingTop = '';
-          navbar.classList.remove('navbar-stuck');
-        }
-      };
-      window.addEventListener('scroll', scrollHandler);
-    }
-  }
+      if (isAbsolute) {
+        navbar.classList.toggle("navbar-stuck", shouldStick);
+      } else {
+        document.body.style.paddingTop = shouldStick ? `${navbarHeight}px` : "";
+        navbar.classList.toggle("navbar-stuck", shouldStick);
+      }
+    };
 
-  // Initialize on DOMContentLoaded (initial page load)
-  document.addEventListener('DOMContentLoaded', initialize);
+    window.addEventListener("scroll", scrollHandler);
+  };
 
-  // Initialize on Turbo load (Turbo navigation)
-  document.addEventListener('turbo:load', initialize);
-
+  document.addEventListener("DOMContentLoaded", initialize);
+  document.addEventListener("turbo:load", initialize);
 })();
 
 export default stickyNavbar;

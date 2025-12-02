@@ -1,19 +1,12 @@
 /**
- * Silicon | Multipurpose Bootstrap Template & UI Kit
- * Copyright 2023 Createx Studio
- * Theme core scripts
- *
- * @author Createx Studio
+ * Silicon Theme Core
  * @version 1.6.0
+ * @requires Bootstrap 5 (loaded via vendor assets)
+ * @requires smooth-scroll (loaded via vendor assets)
  */
 
-// Note: Bootstrap and smooth-scroll are loaded via vendor assets in the layout,
-// not via importmap. This is intentional for Rails compatibility.
-
-// Custom Rails/Turbo-aware theme mode implementation
+// Theme mode and components
 import themeModeSwitch from "src/components/theme-mode-switch";
-
-// Silicon theme components (all Turbo-aware)
 import stickyNavbar from "src/components/sticky-navbar";
 import smoothScroll from "src/components/smooth-scroll";
 import scrollTopButton from "src/components/scroll-top-button";
@@ -35,7 +28,7 @@ import subscriptionForm from "src/components/subscription-form";
 import hoverAnimation from "src/components/hover-animation";
 import audioPlayer from "src/components/audio-player";
 
-// Custom Rails-specific components
+// Custom components
 import teamCardFocus from "src/components/team-card-focus";
 import pageLoader from "src/components/page-loader";
 import navigation from "src/navigation";

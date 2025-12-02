@@ -1,29 +1,19 @@
 /**
  * Theme Mode Manager
- * Modern dark mode implementation using Bootstrap 5.3 native color modes
- * Features:
- * - Bootstrap 5.3 standard: data-bs-theme attribute
- * - Backward compatibility: .dark-mode class
- * - System preference detection
- * - Turbo-aware initialization
- * - Module-scoped state (no globals)
+ * Modern dark mode using Bootstrap 5.3 native color modes
+ * Features: data-bs-theme attribute, .dark-mode class fallback,
+ * system preference detection, Turbo-aware initialization
  */
 
-// Module-scoped constants
 const STORAGE_KEY = "theme";
 const THEME_DARK = "dark";
 const THEME_LIGHT = "light";
 
 /**
  * Get system color scheme preference
- * @returns {string} 'dark' or 'light'
  */
 const getSystemPreference = () => {
-  if (typeof window === "undefined" || !window.matchMedia) {
-    return THEME_LIGHT; // Default to light if not available
-  }
-
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
+  return window.matchMedia?.("(prefers-color-scheme: dark)").matches
     ? THEME_DARK
     : THEME_LIGHT;
 };
@@ -31,58 +21,41 @@ const getSystemPreference = () => {
 /**
  * Get current theme from localStorage or system preference
  * Supports backward compatibility with old 'mode' key
- * @returns {string} 'dark' or 'light'
  */
 const getTheme = () => {
-  // Check new storage key first
   let saved = localStorage.getItem(STORAGE_KEY);
 
-  // Backward compatibility: check old 'mode' key
+  // Backward compatibility: migrate old 'mode' key
   if (!saved) {
     const oldMode = localStorage.getItem("mode");
     if (oldMode) {
-      // Migrate old key to new key
       localStorage.setItem(STORAGE_KEY, oldMode);
       localStorage.removeItem("mode");
       saved = oldMode;
     }
   }
 
-  return saved || getSystemPreference();
+  return saved ?? getSystemPreference();
 };
 
 /**
  * Apply theme to document
- * Sets both data-bs-theme attribute (Bootstrap 5.3) and .dark-mode class (backward compatibility)
- * @param {string} theme - 'dark' or 'light'
+ * Sets both data-bs-theme attribute and .dark-mode class for compatibility
  */
 const applyTheme = (theme) => {
-  const html = document.documentElement;
+  const { documentElement: html } = document;
 
-  // Set Bootstrap 5.3 attribute (primary)
   html.setAttribute("data-bs-theme", theme);
-
-  // Set custom class for backward compatibility with custom CSS
-  if (theme === THEME_DARK) {
-    html.classList.add("dark-mode");
-  } else {
-    html.classList.remove("dark-mode");
-  }
+  html.classList.toggle("dark-mode", theme === THEME_DARK);
 };
 
 /**
  * Initialize theme on page load
- * Turbo-aware: works with both initial page load and Turbo navigation
  */
-function initializeThemeMode() {
-  const theme = getTheme();
-  applyTheme(theme);
-}
+const initializeThemeMode = () => applyTheme(getTheme());
 
 /**
  * Set theme and save user preference
- * Used when user manually toggles theme
- * @param {string} theme - 'dark' or 'light'
  */
 const setTheme = (theme) => {
   applyTheme(theme);
@@ -90,53 +63,35 @@ const setTheme = (theme) => {
 };
 
 /**
- * Listen for system preference changes
- * Only applies if user hasn't set a manual preference
+ * Listen for system preference changes when no manual preference is set
  */
 const setupSystemPreferenceListener = () => {
-  if (typeof window === "undefined" || !window.matchMedia) {
-    return;
-  }
+  const mediaQuery = window.matchMedia?.("(prefers-color-scheme: dark)");
+  if (!mediaQuery) return;
 
-  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  const handler = (e) => {
+    // Only apply if user hasn't set a manual preference
+    if (!localStorage.getItem(STORAGE_KEY) && !localStorage.getItem("mode")) {
+      applyTheme(e.matches ? THEME_DARK : THEME_LIGHT);
+    }
+  };
 
-  // Modern browsers support addEventListener on MediaQueryList
-  if (mediaQuery.addEventListener) {
-    mediaQuery.addEventListener("change", (e) => {
-      // Only apply system preference if user hasn't manually set a preference
-      // Check both new and old storage keys for backward compatibility
-      if (!localStorage.getItem(STORAGE_KEY) && !localStorage.getItem("mode")) {
-        applyTheme(e.matches ? THEME_DARK : THEME_LIGHT);
-      }
-    });
-  } else {
-    // Fallback for older browsers
-    mediaQuery.addListener((e) => {
-      // Check both new and old storage keys for backward compatibility
-      if (!localStorage.getItem(STORAGE_KEY) && !localStorage.getItem("mode")) {
-        applyTheme(e.matches ? THEME_DARK : THEME_LIGHT);
-      }
-    });
-  }
+  mediaQuery.addEventListener?.("change", handler) ??
+    mediaQuery.addListener?.(handler);
 };
 
-// Initialize on DOMContentLoaded (initial page load)
-if (typeof document !== "undefined") {
-  // Apply theme immediately if DOM is already loaded
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => {
-      initializeThemeMode();
-      setupSystemPreferenceListener();
-    });
-  } else {
-    // DOM already loaded
+// Initialize theme
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => {
     initializeThemeMode();
     setupSystemPreferenceListener();
-  }
-
-  // Initialize on Turbo load (Turbo navigation)
-  document.addEventListener("turbo:load", initializeThemeMode);
+  });
+} else {
+  initializeThemeMode();
+  setupSystemPreferenceListener();
 }
 
-// Export API for theme-mode-switch component
+// Reinitialize on Turbo navigation
+document.addEventListener("turbo:load", initializeThemeMode);
+
 export { setTheme, getTheme, THEME_DARK, THEME_LIGHT };
