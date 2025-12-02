@@ -13,6 +13,3 @@ module PageMetadata
     @structured_data = structured_data
   end
 end
-
-
-

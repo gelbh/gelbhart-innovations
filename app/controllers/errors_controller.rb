@@ -4,33 +4,36 @@ class ErrorsController < ApplicationController
       format.html do
         assign_page_metadata(
           title: "Error 404",
-          description: "Error 404 - The page you are looking for was moved, removed or might have never existed."
+          description: "The page you are looking for was moved, removed or might have never existed."
         )
         @heading = "Error 404"
         @message = "The page you are looking for was moved, removed or might have never existed."
-        render status: 404
+        render status: :not_found
       end
       format.xml do
-        render xml: '<?xml version="1.0" encoding="UTF-8"?><error><code>404</code><message>Not Found</message></error>', status: 404
+        render xml: build_error_xml(404, "Not Found"), status: :not_found
       end
       format.json do
-        render json: { error: { code: 404, message: "Not Found" } }, status: 404
+        render json: { error: { code: 404, message: "Not Found" } }, status: :not_found
       end
-      format.any do
-        head :not_found
-      end
+      format.any { head :not_found }
     end
   end
 
   def internal_server_error
     assign_page_metadata(
       title: "Error 500",
-      description: "Error 500 - Oops, something went wrong. Try to refresh this page or feel free to contact us if the problem persists."
+      description: "Oops, something went wrong. Try to refresh this page or feel free to contact us if the problem persists."
     )
     @heading = "Error 500"
+    @message = "Oops, something went wrong.<br>Try to refresh this page or feel free to contact us if the problem persists."
+    render status: :internal_server_error
+  end
 
-    @message = "Oops, something went wrong.<br>Try to refresh this page or feel free to contact us if the problem persists".html_safe
+  private
 
-    render status: 500
+  def build_error_xml(code, message)
+    '<?xml version="1.0" encoding="UTF-8"?>' \
+    "<error><code>#{code}</code><message>#{message}</message></error>"
   end
 end

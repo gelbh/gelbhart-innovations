@@ -5,10 +5,7 @@ module JarallaxConfiguration
 
   def assign_jarallax(image:, height: nil, speed: nil)
     @jarallax = image
-    @jarallaxHeight = height
-    @jarallaxSpeed = speed
+    @jarallax_height = height
+    @jarallax_speed = speed
   end
 end
-
-
-
