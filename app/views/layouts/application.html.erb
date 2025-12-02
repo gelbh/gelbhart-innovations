@@ -30,6 +30,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <!-- Performance: Preload critical CSS assets -->
+    <link rel="preload" href="<%= asset_path('boxicons/css/boxicons.min.css') %>" as="style">
+    <link rel="preload" href="<%= asset_path('swiper/swiper-bundle.min.css') %>" as="style">
+    <!-- Performance: Preload critical JavaScript -->
+    <link rel="preload" href="<%= asset_path('bootstrap/dist/js/bootstrap.bundle.min.js') %>" as="script">
     <!-- Favicon and Touch Icons-->
     <%= render 'application/favicon' %>
     <meta name="msapplication-TileColor" content="#080032">
@@ -76,17 +81,20 @@
       <i class="btn-scroll-top-icon bx bx-chevron-up" role="none"></i>
     </a>
     <!-- Vendor Scripts -->
+    <!-- Critical: Bootstrap must load first (no defer) for dropdowns, modals, etc. -->
     <script src="<%= asset_path("bootstrap/dist/js/bootstrap.bundle.min.js") %>"></script>
-    <script src="<%= asset_path("smooth-scroll/dist/smooth-scroll.polyfills.min.js") %>"></script>
-    <script src="<%= asset_path("cleave.js/dist/cleave.min.js") %>"></script>
-    <script src="<%= asset_path("jarallax/dist/jarallax.min.js") %>"></script>
-    <script src="<%= asset_path("parallax-js/dist/parallax.min.js") %>"></script>
+    <!-- Critical: Swiper needed early for carousels -->
     <script src="<%= asset_path("swiper/swiper-bundle.min.js") %>"></script>
-    <script src="<%= asset_path("lightgallery/lightgallery.min.js") %>"></script>
-    <script src="<%= asset_path("lightgallery/plugins/fullscreen/lg-fullscreen.min.js") %>"></script>
-    <script src="<%= asset_path("lightgallery/plugins/zoom/lg-zoom.min.js") %>"></script>
-    <script src="<%= asset_path("lightgallery/plugins/video/lg-video.min.js") %>"></script>
-    <script src="<%= asset_path("lightgallery/plugins/thumbnail/lg-thumbnail.min.js") %>"></script>
+    <!-- Deferred: Non-critical scripts loaded after page parsing -->
+    <script defer src="<%= asset_path("smooth-scroll/dist/smooth-scroll.polyfills.min.js") %>"></script>
+    <script defer src="<%= asset_path("cleave.js/dist/cleave.min.js") %>"></script>
+    <script defer src="<%= asset_path("jarallax/dist/jarallax.min.js") %>"></script>
+    <script defer src="<%= asset_path("parallax-js/dist/parallax.min.js") %>"></script>
+    <script defer src="<%= asset_path("lightgallery/lightgallery.min.js") %>"></script>
+    <script defer src="<%= asset_path("lightgallery/plugins/fullscreen/lg-fullscreen.min.js") %>"></script>
+    <script defer src="<%= asset_path("lightgallery/plugins/zoom/lg-zoom.min.js") %>"></script>
+    <script defer src="<%= asset_path("lightgallery/plugins/video/lg-video.min.js") %>"></script>
+    <script defer src="<%= asset_path("lightgallery/plugins/thumbnail/lg-thumbnail.min.js") %>"></script>
     <!-- Load lottie-player only if not already registered (prevents Turbo navigation errors) -->
     <script id="lottie-player-loader" nonce="<%= content_security_policy_nonce %>" data-turbo-eval="false">
       (function() {
@@ -105,7 +113,7 @@
         if (loader) loader.remove();
       })();
     </script>
-    <script src="<%= asset_path("rellax/rellax.min.js") %>"></script>
+    <script defer src="<%= asset_path("rellax/rellax.min.js") %>"></script>
     <!-- Theme initialization script (FOUT prevention) -->
     <!-- Minimal inline script to prevent flash of unstyled theme before JavaScript modules load -->
     <script nonce="<%= content_security_policy_nonce %>" data-turbo-eval="false">
@@ -132,13 +140,7 @@
           localStorage.setItem('theme', localStorage.getItem('mode'));
           localStorage.removeItem('mode');
         }
-
-        // Define global variables for theme.min.js compatibility
-        // These are expected by the vendor theme script
-        window.mode = theme;
-        window.root = html;
       })();
     </script>
-    <script src="<%= asset_path("theme.min.js") %>"></script>
   </body>
 </html>
