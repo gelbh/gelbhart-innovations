@@ -10,7 +10,7 @@ Rails.application.config.assets.paths << Rails.root.join("app", "assets", "favic
 Rails.application.config.assets.paths << Rails.root.join("app", "assets", "builds")
 
 # Precompile ERB-processed webmanifest
-Rails.application.config.assets.precompile += %w(site.webmanifest.erb)
+Rails.application.config.assets.precompile += %w(site.webmanifest)
 
 # Precompile cover images (explicitly declared for production)
 Rails.application.config.assets.precompile += %w(
