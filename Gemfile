@@ -14,7 +14,7 @@ gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 gem "mail_form"
-gem 'sassc-rails'
+gem 'dartsass-rails'
 gem 'sitemap_generator'
 gem "image_processing", "~> 1.2"
 gem "rexml"

@@ -16,6 +16,10 @@ module Innovations
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
+    # Asset Pipeline: Don't initialize Rails environment during precompilation
+    # This speeds up asset precompilation and reduces memory usage
+    config.assets.initialize_on_precompile = false
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

@@ -24,3 +24,4 @@
 //= link site.webmanifest.erb
 //= link_tree ../json
 //= link_tree ../images
+//= link_tree ../images/covers

@@ -18,6 +18,19 @@ Rails.application.configure do
   # Cache assets for far-future expiry since they are all digest stamped.
   config.public_file_server.headers = { "cache-control" => "public, max-age=#{1.year.to_i}" }
 
+  # Asset Pipeline
+  # Disable runtime compilation - all assets should be precompiled during build
+  # This reduces memory usage by preventing on-demand asset compilation
+  config.assets.compile = false
+
+  # Configure Terser for JavaScript minification (if using Terser)
+  # Note: dartsass-rails handles CSS compilation separately, no css_compressor needed
+  # config.assets.js_compressor = Terser.new(...)  # Optional: only if using Terser gem
+
+  config.assets.digest = true
+  config.assets.version = "1.0"
+  config.assets.debug = false
+
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
 

@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@lottiefiles/lottie-player": "^1.5.7",
-    "bootstrap": "^5.2.0-beta1",
+    "bootstrap": "^5.3.8",
     "boxicons": "^2.1.2",
     "cleave.js": "^1.6.0",
     "imagesloaded": "^5.0.0",
