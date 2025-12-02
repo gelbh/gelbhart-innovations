@@ -1,28 +1,16 @@
-# Postgres.
-#   gem install pg
-#
-#   Ensure the Postgres gem is defined in your Gemfile
-#   gem "pg"
-#
 default: &default
   adapter: postgresql
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
   timeout: 5000
 
 development:
   <<: *default
   database: my_database_development
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
   <<: *default
   database: my_database_test
 
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
-  # Supabase connection string format:
-  # postgresql://[user]:[password]@[host]:[port]/[database]
-  # Set DATABASE_URL environment variable in Render dashboard
+  url: <%= ENV["DATABASE_URL"] %>

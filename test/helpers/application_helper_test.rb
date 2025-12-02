@@ -7,7 +7,7 @@ class ApplicationHelperTest < ActionView::TestCase
     def current_page?(path)
       path == "/test"
     end
-    
+
     assert_equal "active", nav_active_class("/test")
   end
 
@@ -15,7 +15,7 @@ class ApplicationHelperTest < ActionView::TestCase
     def current_page?(path)
       false
     end
-    
+
     assert_equal "", nav_active_class("/test")
   end
 
@@ -23,7 +23,7 @@ class ApplicationHelperTest < ActionView::TestCase
     def current_page?(path)
       path == "/services"
     end
-    
+
     assert_equal "active", nav_active_class("/home", "/services", "/about")
   end
 

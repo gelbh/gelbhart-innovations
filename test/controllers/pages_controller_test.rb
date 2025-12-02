@@ -19,7 +19,6 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     get pharmaceutical_url
     assert_response :success
     assert_select "h1", "Pharmaceutical Services"
-    # Verify services are rendered by checking for service card content
     assert_select ".service-card", minimum: 1
   end
 
@@ -27,7 +26,6 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     get real_estate_url
     assert_response :success
     assert_select "h1", "Real Estate Services"
-    # Verify services are rendered by checking for service card content
     assert_select ".service-card", minimum: 1
   end
 
@@ -35,7 +33,6 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     get team_url
     assert_response :success
     assert_select "h2", "Our leadership"
-    # Verify team members are rendered
   end
 
   test "should get contacts" do

@@ -5,7 +5,7 @@ require "test_helper"
 class TeamMemberTest < ActiveSupport::TestCase
   test "all returns array of team members" do
     members = TeamMember.all
-    
+
     assert_instance_of Array, members
     assert_operator members.size, :>, 0
     assert_instance_of TeamMember, members.first
@@ -13,7 +13,7 @@ class TeamMemberTest < ActiveSupport::TestCase
 
   test "team members have required attributes" do
     member = TeamMember.all.first
-    
+
     assert_not_nil member.name
     assert_not_nil member.bio
     assert_not_nil member.linkedin_url
@@ -25,7 +25,7 @@ class TeamMemberTest < ActiveSupport::TestCase
       bio: "Test bio",
       linkedin_url: "https://linkedin.com/in/johndoe"
     )
-    
+
     assert_equal "John", member.first_name
   end
 
@@ -35,7 +35,7 @@ class TeamMemberTest < ActiveSupport::TestCase
       bio: "Test bio",
       linkedin_url: "https://linkedin.com/in/johndoe"
     )
-    
+
     assert_equal "team/john.png", member.image_filename
   end
 
@@ -46,7 +46,7 @@ class TeamMemberTest < ActiveSupport::TestCase
       linkedin_url: "https://linkedin.com/in/johndoe",
       github_url: "https://github.com/johndoe"
     )
-    
+
     assert member.github?
   end
 
@@ -56,7 +56,7 @@ class TeamMemberTest < ActiveSupport::TestCase
       bio: "Test bio",
       linkedin_url: "https://linkedin.com/in/johndoe"
     )
-    
+
     assert_not member.github?
   end
 
@@ -67,7 +67,7 @@ class TeamMemberTest < ActiveSupport::TestCase
       linkedin_url: "https://linkedin.com/in/johndoe",
       github_url: "https://github.com/johndoe"
     )
-    
+
     assert_equal "John Doe", member.name
     assert_equal "Test bio", member.bio
     assert_equal "https://linkedin.com/in/johndoe", member.linkedin_url

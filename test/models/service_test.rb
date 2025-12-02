@@ -5,7 +5,7 @@ require "test_helper"
 class ServiceTest < ActiveSupport::TestCase
   test "pharmaceutical services returns array of services" do
     services = Service.pharmaceutical
-    
+
     assert_instance_of Array, services
     assert_operator services.size, :>, 0
     assert_instance_of Service, services.first
@@ -13,7 +13,7 @@ class ServiceTest < ActiveSupport::TestCase
 
   test "pharmaceutical services have required attributes" do
     service = Service.pharmaceutical.first
-    
+
     assert_not_nil service.title
     assert_not_nil service.icon
     assert_not_nil service.description
@@ -22,7 +22,7 @@ class ServiceTest < ActiveSupport::TestCase
 
   test "real estate services returns array of services" do
     services = Service.real_estate
-    
+
     assert_instance_of Array, services
     assert_operator services.size, :>, 0
     assert_instance_of Service, services.first
@@ -30,7 +30,7 @@ class ServiceTest < ActiveSupport::TestCase
 
   test "real estate services have required attributes" do
     service = Service.real_estate.first
-    
+
     assert_not_nil service.title
     assert_not_nil service.icon
     assert_not_nil service.description
@@ -38,7 +38,7 @@ class ServiceTest < ActiveSupport::TestCase
 
   test "real estate services descriptions are arrays" do
     services = Service.real_estate
-    
+
     services.each do |service|
       assert_instance_of Array, service.description
     end
@@ -51,7 +51,7 @@ class ServiceTest < ActiveSupport::TestCase
       subtitle: "Test Subtitle",
       description: "Test Description"
     )
-    
+
     assert_equal "Test Service", service.title
     assert_equal "bx bx-test", service.icon
     assert_equal "Test Subtitle", service.subtitle

@@ -1,39 +1,45 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.3.10"
 
-gem "rails", "~> 8.1.0"
-gem 'pg'
-gem "sprockets-rails"
-gem "puma", "~> 6.0"
-gem "importmap-rails"
-gem "turbo-rails"
-gem "stimulus-rails"
-gem "jbuilder"
-gem "tzinfo-data", platforms: %i[ windows jruby ]
+# Rails framework and core dependencies
 gem "bootsnap", require: false
-gem "mail_form"
-gem 'dartsass-rails'
-gem 'sitemap_generator'
+gem "importmap-rails"
+gem "jbuilder"
+gem "puma", "~> 6.0"
+gem "rails", "~> 8.1.0"
+gem "sprockets-rails"
+gem "stimulus-rails"
+gem "turbo-rails"
+
+# Database
+gem "pg"
+
+# Assets and frontend
+gem "dartsass-rails"
 gem "image_processing", "~> 1.2"
+
+# Application-specific gems
+gem "mail_form"
 gem "rexml"
+gem "sitemap_generator"
+gem "tzinfo-data", platforms: %i[windows jruby]
 
 group :development, :test do
-  gem "debug", platforms: %i[ mri windows ]
+  gem "debug", platforms: %i[mri windows]
 end
 
 group :development do
-  gem "web-console"
-  gem "htmlbeautifier", require: false
   gem "erb_lint", require: false
-end
-
-group :production do
+  gem "htmlbeautifier", require: false
+  gem "web-console"
 end
 
 group :test do
   gem "capybara"
-  gem "selenium-webdriver", ">= 4.11"
   gem "rails-controller-testing"
+  gem "selenium-webdriver", ">= 4.11"
 end
