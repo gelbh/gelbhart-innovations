@@ -88,52 +88,57 @@
     <script src="<%= asset_path("lightgallery/plugins/video/lg-video.min.js") %>"></script>
     <script src="<%= asset_path("lightgallery/plugins/thumbnail/lg-thumbnail.min.js") %>"></script>
     <!-- Load lottie-player only if not already registered (prevents Turbo navigation errors) -->
-    <%= javascript_tag id: "lottie-player-loader", nonce: true, data: { turbo_eval: false } do %>
+    <script id="lottie-player-loader" nonce="<%= content_security_policy_nonce %>" data-turbo-eval="false">
       (function() {
-      // Check if lottie-player is already registered
-      if (typeof customElements !== 'undefined' && !customElements.get('lottie-player')) {
-      // Only load if not already in the document
-      if (!document.querySelector('script[src*="lottie-player.js"]')) {
-      var script = document.createElement('script');
-      script.src = '<%= asset_path("@lottiefiles/lottie-player/dist/lottie-player.js") %>';
-      script.setAttribute('data-turbo-permanent', 'true');
-      document.head.appendChild(script);
-      }
-      }
-      // Remove this loader script to prevent re-execution
-      var loader = document.getElementById('lottie-player-loader');
-      if (loader) loader.remove();
+        // Check if lottie-player is already registered
+        if (typeof customElements !== 'undefined' && !customElements.get('lottie-player')) {
+          // Only load if not already in the document
+          if (!document.querySelector('script[src*="lottie-player.js"]')) {
+            var script = document.createElement('script');
+            script.src = '<%= asset_path("@lottiefiles/lottie-player/dist/lottie-player.js") %>';
+            script.setAttribute('data-turbo-permanent', 'true');
+            document.head.appendChild(script);
+          }
+        }
+        // Remove this loader script to prevent re-execution
+        var loader = document.getElementById('lottie-player-loader');
+        if (loader) loader.remove();
       })();
-    <% end %>
+    </script>
     <script src="<%= asset_path("rellax/rellax.min.js") %>"></script>
     <!-- Theme initialization script (FOUT prevention) -->
     <!-- Minimal inline script to prevent flash of unstyled theme before JavaScript modules load -->
-    <%= javascript_tag nonce: true, data: { turbo_eval: false } do %>
+    <script nonce="<%= content_security_policy_nonce %>" data-turbo-eval="false">
       (function() {
-      // Check for saved theme (new key) or legacy key (backward compatibility)
-      var savedTheme = localStorage.getItem('theme') || localStorage.getItem('mode');
-      // Detect system preference as fallback
-      var systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-      var html = document.documentElement;
-      // Set Bootstrap 5.3 attribute and custom class
-      html.setAttribute('data-bs-theme', theme);
-      if (theme === 'dark') {
-      html.classList.add('dark-mode');
-      } else {
-      html.classList.remove('dark-mode');
-      }
-      // Migrate old 'mode' key to new 'theme' key if found
-      if (localStorage.getItem('mode') && !localStorage.getItem('theme')) {
-      localStorage.setItem('theme', localStorage.getItem('mode'));
-      localStorage.removeItem('mode');
-      }
-      // Define global variables for theme.min.js compatibility
-      // These are expected by the vendor theme script
-      window.mode = theme;
-      window.root = html;
+        // Check for saved theme (new key) or legacy key (backward compatibility)
+        var savedTheme = localStorage.getItem('theme') || localStorage.getItem('mode');
+
+        // Detect system preference as fallback
+        var systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+
+        var html = document.documentElement;
+
+        // Set Bootstrap 5.3 attribute and custom class
+        html.setAttribute('data-bs-theme', theme);
+        if (theme === 'dark') {
+          html.classList.add('dark-mode');
+        } else {
+          html.classList.remove('dark-mode');
+        }
+
+        // Migrate old 'mode' key to new 'theme' key if found
+        if (localStorage.getItem('mode') && !localStorage.getItem('theme')) {
+          localStorage.setItem('theme', localStorage.getItem('mode'));
+          localStorage.removeItem('mode');
+        }
+
+        // Define global variables for theme.min.js compatibility
+        // These are expected by the vendor theme script
+        window.mode = theme;
+        window.root = html;
       })();
-    <% end %>
+    </script>
     <script src="<%= asset_path("theme.min.js") %>"></script>
   </body>
 </html>
