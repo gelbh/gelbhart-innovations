@@ -39,7 +39,14 @@ Rails.application.config.action_dispatch.default_headers.merge!(
   # Cross-Origin-Resource-Policy: Control resource sharing
   # Prevents other origins from loading resources from this origin
   # Use "cross-origin" if you need to share resources with other domains
-  "Cross-Origin-Resource-Policy" => "same-origin"
+  "Cross-Origin-Resource-Policy" => "same-origin",
+
+  # Permissions-Policy: Control which browser features can be used
+  # This header restricts access to powerful browser APIs (camera, microphone, etc.)
+  # Configuration mirrors config/initializers/permissions_policy.rb
+  # Format: feature=(self) allows same-origin, feature=() disables completely
+  # Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy
+  "Permissions-Policy" => "accelerometer=(), autoplay=(self), camera=(), display-capture=(), encrypted-media=(self), fullscreen=(self), geolocation=(), gyroscope=(), hid=(), idle-detection=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(self), screen-wake-lock=(), serial=(), sync-xhr=(self), usb=(), web-share=(self)"
 )
 
 # Note: Strict-Transport-Security (HSTS) is handled by config.force_ssl in production.rb
