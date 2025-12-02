@@ -1,8 +1,8 @@
-<!-- Jarallax -->
 <%= render 'shared/jarallax' %>
-<!-- Contact Section -->
+
 <section class="container py-2 pb-md-4 pb-lg-5 px-3 px-sm-4">
   <%= render 'shared/breadcrumb' %>
+
   <div class="row">
     <div class="col-12 col-lg-6 mb-4 mb-lg-0">
       <div class="d-flex flex-column h-100 shadow-sm rounded-3 overflow-hidden contact-map-wrapper">
@@ -16,6 +16,7 @@
           aria-label="Interactive map showing Gelbhart Innovations location"></iframe>
       </div>
     </div>
+
     <div class="col-12 col-lg-5 offset-lg-1">
       <h1 class="h4 h5-sm mb-3 mb-sm-4">Gelbhart Innovations</h1>
       <% contact = AppConstants::CONTACT_INFO %>
@@ -31,15 +32,11 @@
           </li>
           <li class="d-flex pb-2 pb-sm-1 mb-2 align-items-start">
             <i class="bx bx-phone-call text-primary fs-xl fs-lg-xl me-2 me-sm-3 flex-shrink-0 contact-icon-offset" aria-hidden="true"></i>
-            <a href="tel:<%= contact[:phone][:tel] %>" class="text-decoration-none fs-sm fs-md-base">
-              <%= contact[:phone][:display] %>
-            </a>
+            <%= link_to contact[:phone][:display], "tel:#{contact[:phone][:tel]}", class: "text-decoration-none fs-sm fs-md-base" %>
           </li>
           <li class="d-flex pb-2 pb-sm-1 mb-2 align-items-start">
             <i class="bx bx-envelope text-primary fs-xl fs-lg-xl me-2 me-sm-3 flex-shrink-0 contact-icon-offset" aria-hidden="true"></i>
-            <a href="mailto:<%= contact[:email] %>" class="text-decoration-none fs-sm fs-md-base">
-              <%= contact[:email] %>
-            </a>
+            <%= mail_to contact[:email], contact[:email], class: "text-decoration-none fs-sm fs-md-base" %>
           </li>
           <li class="d-flex align-items-start">
             <i class="bx bx-time-five text-primary fs-xl fs-lg-xl me-2 me-sm-3 flex-shrink-0 contact-icon-offset" aria-hidden="true"></i>

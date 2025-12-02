@@ -3,104 +3,92 @@
   <head>
     <meta charset="UTF-8">
     <title><%= full_page_title(@title) %></title>
-    <!-- SEO Meta Tags-->
+
     <meta name="description" content="<%= page_description(@desc) %>">
     <meta name="author" content="Gelbhart Innovations">
     <meta name="robots" content="<%= robots_meta_tag %>">
-    <!-- Canonical URL -->
+
     <link rel="canonical" href="<%= canonical_url %>">
-    <!-- Open Graph Meta Tags -->
-    <% og_tags = og_meta_tags %>
-    <% og_tags.each do |property, content| %>
+
+    <% og_meta_tags.each do |property, content| %>
       <%= property_meta_tag(property, content) %>
     <% end %>
-    <!-- Twitter Card Meta Tags -->
-    <% twitter_tags = twitter_card_meta_tags %>
-    <% twitter_tags.each do |name, content| %>
+
+    <% twitter_card_meta_tags.each do |name, content| %>
       <%= meta_tag(name, content) %>
     <% end %>
-    <!-- Language Tags -->
+
     <meta http-equiv="content-language" content="en">
     <link rel="alternate" hreflang="en" href="<%= canonical_url %>">
-    <!-- Viewport-->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Performance: Preconnect to external domains -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <!-- Performance: Preload critical CSS assets -->
+
     <link rel="preload" href="<%= asset_path('boxicons/css/boxicons.min.css') %>" as="style">
     <link rel="preload" href="<%= asset_path('swiper/swiper-bundle.min.css') %>" as="style">
-    <!-- Performance: Preload critical JavaScript -->
     <link rel="preload" href="<%= asset_path('bootstrap/dist/js/bootstrap.bundle.min.js') %>" as="script">
-    <!-- Favicon and Touch Icons-->
+
     <%= render 'application/favicon' %>
     <meta name="msapplication-TileColor" content="#080032">
     <meta name="theme-color" content="#ffffff">
-    <!-- Structured Data: Organization and WebSite -->
+
     <%= json_ld_script(organization_schema) %>
     <%= json_ld_script(website_schema) %>
-    <!-- Page-specific Structured Data -->
-    <% if @structured_data.present? %>
-      <%= json_ld_script(@structured_data) %>
-    <% end %>
-    <!-- Vendor Styles -->
-    <link rel="stylesheet" media="screen" href="<%= asset_path("boxicons/css/boxicons.min.css") %>">
-    <link rel="stylesheet" media="screen" href="<%= asset_path("swiper/swiper-bundle.min.css") %>">
-    <link rel="stylesheet" media="screen" href="<%= asset_path("lightgallery/css/lightgallery-bundle.min.css") %>">
+    <%= json_ld_script(@structured_data) if @structured_data.present? %>
+
+    <link rel="stylesheet" media="screen" href="<%= asset_path('boxicons/css/boxicons.min.css') %>">
+    <link rel="stylesheet" media="screen" href="<%= asset_path('swiper/swiper-bundle.min.css') %>">
+    <link rel="stylesheet" media="screen" href="<%= asset_path('lightgallery/css/lightgallery-bundle.min.css') %>">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <!-- Main Theme Styles + Bootstrap (now included in application.scss) -->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <!-- Body -->
+
   <body>
-    <!-- Page Loader - Shows during Turbo navigation -->
     <div id="page-loader" data-turbo-permanent></div>
-    <!-- Page wrapper for sticky footer -->
-    <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
+
     <main class="page-wrapper <%= 'bg-faded-primary' if controller.controller_name == "contacts" %>" style="min-height: 100vh;">
-      <% if controller.controller_name != "errors" %>
-        <%= render 'shared/header' %>
-      <% end %>
-      <% if controller.controller_name == "errors" %>
+      <%= render 'shared/header' unless controller.controller_name == "errors" %>
+
+      <% case controller.controller_name %>
+      <% when "errors" %>
         <%= render 'layouts/error' %>
-      <% elsif controller.controller_name == "documents" %>
+      <% when "documents" %>
         <%= render 'layouts/documents' %>
       <% else %>
         <%= yield %>
       <% end %>
     </main>
+
     <%= render 'shared/footer' %>
-    <!-- Back to top button -->
+
     <a href="#top" class="btn-scroll-top" data-scroll role="button">
       <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
       <i class="btn-scroll-top-icon bx bx-chevron-up" role="none"></i>
     </a>
-    <!-- Vendor Scripts -->
-    <!-- Critical: Bootstrap must load first (no defer) for dropdowns, modals, etc. -->
-    <script src="<%= asset_path("bootstrap/dist/js/bootstrap.bundle.min.js") %>"></script>
-    <!-- Critical: Swiper needed early for carousels -->
-    <script src="<%= asset_path("swiper/swiper-bundle.min.js") %>"></script>
-    <!-- Deferred: Non-critical scripts loaded after page parsing -->
-    <script defer src="<%= asset_path("smooth-scroll/dist/smooth-scroll.polyfills.min.js") %>"></script>
-    <script defer src="<%= asset_path("cleave.js/dist/cleave.min.js") %>"></script>
-    <script defer src="<%= asset_path("jarallax/dist/jarallax.min.js") %>"></script>
-    <script defer src="<%= asset_path("parallax-js/dist/parallax.min.js") %>"></script>
-    <script defer src="<%= asset_path("lightgallery/lightgallery.min.js") %>"></script>
-    <script defer src="<%= asset_path("lightgallery/plugins/fullscreen/lg-fullscreen.min.js") %>"></script>
-    <script defer src="<%= asset_path("lightgallery/plugins/zoom/lg-zoom.min.js") %>"></script>
-    <script defer src="<%= asset_path("lightgallery/plugins/video/lg-video.min.js") %>"></script>
-    <script defer src="<%= asset_path("lightgallery/plugins/thumbnail/lg-thumbnail.min.js") %>"></script>
-    <!-- Load lottie-player only if not already registered (prevents Turbo navigation errors) -->
+
+    <script src="<%= asset_path('bootstrap/dist/js/bootstrap.bundle.min.js') %>"></script>
+    <script src="<%= asset_path('swiper/swiper-bundle.min.js') %>"></script>
+    <script defer src="<%= asset_path('smooth-scroll/dist/smooth-scroll.polyfills.min.js') %>"></script>
+    <script defer src="<%= asset_path('cleave.js/dist/cleave.min.js') %>"></script>
+    <script defer src="<%= asset_path('jarallax/dist/jarallax.min.js') %>"></script>
+    <script defer src="<%= asset_path('parallax-js/dist/parallax.min.js') %>"></script>
+    <script defer src="<%= asset_path('lightgallery/lightgallery.min.js') %>"></script>
+    <script defer src="<%= asset_path('lightgallery/plugins/fullscreen/lg-fullscreen.min.js') %>"></script>
+    <script defer src="<%= asset_path('lightgallery/plugins/zoom/lg-zoom.min.js') %>"></script>
+    <script defer src="<%= asset_path('lightgallery/plugins/video/lg-video.min.js') %>"></script>
+    <script defer src="<%= asset_path('lightgallery/plugins/thumbnail/lg-thumbnail.min.js') %>"></script>
+
     <script id="lottie-player-loader" nonce="<%= content_security_policy_nonce %>" data-turbo-eval="false">
       (function() {
-        // Check if lottie-player is already registered
         if (typeof customElements !== 'undefined' && !customElements.get('lottie-player')) {
-          // Only load if not already in the document
           if (!document.querySelector('script[src*="lottie-player.js"]')) {
             var script = document.createElement('script');
             script.src = '<%= asset_path("@lottiefiles/lottie-player/dist/lottie-player.js") %>';
@@ -108,34 +96,23 @@
             document.head.appendChild(script);
           }
         }
-        // Remove this loader script to prevent re-execution
         var loader = document.getElementById('lottie-player-loader');
         if (loader) loader.remove();
       })();
     </script>
-    <script defer src="<%= asset_path("rellax/rellax.min.js") %>"></script>
-    <!-- Theme initialization script (FOUT prevention) -->
-    <!-- Minimal inline script to prevent flash of unstyled theme before JavaScript modules load -->
+
+    <script defer src="<%= asset_path('rellax/rellax.min.js') %>"></script>
+
     <script nonce="<%= content_security_policy_nonce %>" data-turbo-eval="false">
       (function() {
-        // Check for saved theme (new key) or legacy key (backward compatibility)
         var savedTheme = localStorage.getItem('theme') || localStorage.getItem('mode');
-
-        // Detect system preference as fallback
-        var systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var systemPrefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
         var theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-
         var html = document.documentElement;
 
-        // Set Bootstrap 5.3 attribute and custom class
         html.setAttribute('data-bs-theme', theme);
-        if (theme === 'dark') {
-          html.classList.add('dark-mode');
-        } else {
-          html.classList.remove('dark-mode');
-        }
+        html.classList.toggle('dark-mode', theme === 'dark');
 
-        // Migrate old 'mode' key to new 'theme' key if found
         if (localStorage.getItem('mode') && !localStorage.getItem('theme')) {
           localStorage.setItem('theme', localStorage.getItem('mode'));
           localStorage.removeItem('mode');

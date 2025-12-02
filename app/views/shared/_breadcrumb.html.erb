@@ -17,17 +17,14 @@
     <% end %>
   </ol>
 </nav>
-<%# BreadcrumbList JSON-LD Structured Data %>
-<% breadcrumb_items = breadcrumb_trail.map do |item| %>
-  <% url = if item[:current] %>
-  <% request.original_url.split("?").first %>
-<% elsif item[:path].present? %>
-  <% url_for(item[:path]) %>
-<% else %>
-  <% nil %>
-<% end %>
-<% { name: item[:name], url: url } %>
-<% end %>
-<% if breadcrumb_items.length >= 2 %>
-  <%= json_ld_script(breadcrumb_list_schema(breadcrumb_items)) %>
-<% end %>
+
+<% breadcrumb_items = breadcrumb_trail.map do |item|
+  url = if item[:current]
+    request.original_url.split("?").first
+  elsif item[:path].present?
+    url_for(item[:path])
+  end
+  { name: item[:name], url: url }
+end %>
+
+<%= json_ld_script(breadcrumb_list_schema(breadcrumb_items)) if breadcrumb_items.length >= 2 %>

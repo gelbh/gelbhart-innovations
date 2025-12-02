@@ -1,7 +1,4 @@
-<!-- Jarallax -->
 <%= render "shared/jarallax" %>
-
-<!-- Breadcrumb -->
 <%= render "shared/breadcrumb" %>
 
 <section class="team-page container py-4 py-lg-5 px-3 px-sm-4 px-md-5">
@@ -27,19 +24,19 @@
                     class: "team-card-social-link linkedin",
                     "aria-label": "Open #{member.name}'s LinkedIn profile",
                     onclick: "event.stopPropagation();" do %>
-                  <i class="bx bxl-linkedin"></i>
+          <i class="bx bxl-linkedin"></i>
         <% end %>
-                <% if member.github? %>
+        <% if member.github? %>
           <%= link_to member.github_url,
                       target: "_blank",
                       rel: "noopener",
                       class: "team-card-social-link github",
                       "aria-label": "Open #{member.name}'s GitHub profile",
                       onclick: "event.stopPropagation();" do %>
-                    <i class="bx bxl-github"></i>
+            <i class="bx bxl-github"></i>
           <% end %>
         <% end %>
-                <% end %>
+      <% end %>
 
       <article class="team-card col">
         <div class="team-card-inner card border-0 bg-transparent h-100 shadow-sm">
@@ -132,7 +129,7 @@
             </div>
             <div class="team-modal-bio mt-4">
               <%= team_member_bio(member) %>
-          </div>
+            </div>
           </div>
         </div>
       </div>

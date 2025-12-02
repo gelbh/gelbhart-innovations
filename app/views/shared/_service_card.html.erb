@@ -9,25 +9,33 @@
   wrapper_options = local_assigns.fetch(:wrapper_options, {}).dup
   body_class      = local_assigns[:body_class] || "fs-sm text-body mb-0"
 
-  combined_icon_classes = ["service-icon", icon_modifier, "d-inline-block", "position-absolute", "top-0", "translate-middle-y", "d-flex", "align-items-center", "justify-content-center", "rounded-circle", "shadow-lg"].compact.join(" ")
+  combined_icon_classes = [
+    "service-icon",
+    icon_modifier,
+    "d-inline-block",
+    "position-absolute",
+    "top-0",
+    "translate-middle-y",
+    "d-flex",
+    "align-items-center",
+    "justify-content-center",
+    "rounded-circle",
+    "shadow-lg"
+  ].compact.join(" ")
 
   default_card_classes = "card card-hover service-card h-100 border-0 shadow-sm text-decoration-none pt-4 pt-sm-5 px-3 px-sm-3 px-md-0 px-lg-3 pb-3 pb-sm-3 pb-md-0 pb-lg-3 me-xl-2"
-  wrapper_classes      = [wrapper_options.delete(:class), default_card_classes].compact.join(" ")
+  wrapper_classes = [wrapper_options.delete(:class), default_card_classes].compact.join(" ")
 
-  body = capture do
+  body_content = capture do
 %>
   <div class="card-body pt-2 pt-sm-3 px-2 px-sm-3">
     <div class="<%= combined_icon_classes %> service-icon-responsive"
          style="width: 70px; height: 70px; background: <%= gradient %>; transition: all 0.3s ease;">
       <i class="<%= icon %> text-white service-icon-content" style="font-size: 2rem; transition: transform 0.3s ease;"></i>
     </div>
-    <h2 class="h5 h4-sm d-inline-flex align-items-center">
-      <%= title %>
-    </h2>
+    <h2 class="h5 h4-sm d-inline-flex align-items-center"><%= title %></h2>
     <% if subtitle.present? %>
-      <h3 class="h6 d-block align-items-center">
-        <%= subtitle %>
-      </h3>
+      <h3 class="h6 d-block align-items-center"><%= subtitle %></h3>
     <% end %>
     <% if description.is_a?(Array) %>
       <div class="<%= body_class %>">
@@ -42,12 +50,13 @@
     <% end %>
   </div>
 <% end %>
+
 <% if href.present? %>
   <%= link_to href, wrapper_options.merge(class: wrapper_classes) do %>
-    <%= body %>
+    <%= body_content %>
   <% end %>
 <% else %>
   <%= content_tag :div, wrapper_options.merge(class: wrapper_classes) do %>
-    <%= body %>
+    <%= body_content %>
   <% end %>
 <% end %>
