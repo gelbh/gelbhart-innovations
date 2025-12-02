@@ -1,0 +1,21 @@
+{
+  // ERB/HTML formatting
+  "[erb]": {
+    "editor.formatOnSave": false
+  },
+  "[html.erb]": {
+    "editor.formatOnSave": false
+  },
+
+  // Ruby formatting
+  "[ruby]": {
+    "editor.formatOnSave": false
+  },
+
+  // Exclude certain folders from search/watch
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/tmp/**": true,
+    "**/log/**": true
+  }
+}

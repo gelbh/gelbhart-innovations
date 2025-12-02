@@ -1,0 +1,5 @@
+# HTMLBeautifier configuration for ERB files
+indent_size: 2
+keep_blank_lines: 2
+tab_stops: 2
+

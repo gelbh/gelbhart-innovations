@@ -1,0 +1,11 @@
+# ERB files
+*.erb
+app/views/**/*.erb
+
+# Rails generated files
+db/schema.rb
+
+# Vendor and node modules
+vendor/
+node_modules/
+
