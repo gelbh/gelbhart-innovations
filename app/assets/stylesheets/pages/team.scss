@@ -654,3 +654,23 @@
   background: rgba(255, 255, 255, 0.1);
   color: var(--si-gray-100);
 }
+
+/* Fix for modal backdrop transition on first render */
+.modal-backdrop {
+  will-change: opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.modal-backdrop.fade {
+  transition: opacity 0.15s linear;
+}
+
+.modal-backdrop.show {
+  opacity: 0.5;
+}
+
+/* Ensure team modal renders cleanly during backdrop transition */
+.team-modal.show .modal-dialog {
+  transform: translateZ(0);
+}
