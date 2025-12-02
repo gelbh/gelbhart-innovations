@@ -28,8 +28,6 @@ Rails.application.config.assets.precompile += %w[
   favicon-96x96.png
   apple-touch-icon.png
   safari-pinned-tab.svg
-  browserconfig.xml
-  mstile-150x150.png
   web-app-manifest-192x192.png
   web-app-manifest-512x512.png
 
