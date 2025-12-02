@@ -3,11 +3,9 @@
   <head>
     <meta charset="UTF-8">
     <title><%= full_page_title(@title) %></title>
-
     <meta name="description" content="<%= page_description(@desc) %>">
     <meta name="author" content="Gelbhart Innovations">
     <meta name="robots" content="<%= robots_meta_tag %>">
-
     <link rel="canonical" href="<%= canonical_url %>">
 
     <% og_meta_tags.each do |property, content| %>
@@ -20,7 +18,6 @@
 
     <meta http-equiv="content-language" content="en">
     <link rel="alternate" hreflang="en" href="<%= canonical_url %>">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
@@ -36,6 +33,10 @@
     <%= render 'application/favicon' %>
     <meta name="msapplication-TileColor" content="#080032">
     <meta name="theme-color" content="#ffffff">
+
+    <% if ENV['GOOGLE_MAPS_API_KEY'].present? %>
+      <meta name="google-maps-api-key" content="<%= ENV['GOOGLE_MAPS_API_KEY'] %>">
+    <% end %>
 
     <%= json_ld_script(organization_schema) %>
     <%= json_ld_script(website_schema) %>

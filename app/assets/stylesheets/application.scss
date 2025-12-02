@@ -1,18 +1,12 @@
 // ============================================================================
-// Application Styles
-// Main stylesheet with Bootstrap 5, Silicon theme, and custom components
+// Application Styles - Bootstrap 5 + Silicon Theme
 // ============================================================================
 
-// ----------------------------------------------------------------------------
 // Theme Variables & Bootstrap Core
-// ----------------------------------------------------------------------------
-
-// Load theme variables first to override Bootstrap defaults via !default
 @import "theme/user-variables";
 @import "theme/variables";
 @import "theme/variables-dark";
 
-// Bootstrap core - load in order: functions → mixins → variables → maps → components
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/variables";
@@ -20,18 +14,12 @@
 @import "bootstrap/scss/root";
 @import "bootstrap/scss/reboot";
 
-// ----------------------------------------------------------------------------
 // Theme Components
-// ----------------------------------------------------------------------------
-
 @import "theme/theme";
 @import "theme/utilities";
 @import "theme/components";
 
-// ----------------------------------------------------------------------------
 // Page-Specific Styles
-// ----------------------------------------------------------------------------
-
 @import "pages/services";
 @import "pages/team";
 
@@ -39,11 +27,7 @@
 // Global Styles
 // ============================================================================
 
-// ----------------------------------------------------------------------------
 // Page Transitions & Loading
-// ----------------------------------------------------------------------------
-
-// Turbo navigation page loader
 #page-loader {
   position: fixed;
   inset: 0 0 auto 0;
@@ -85,23 +69,17 @@
   }
 }
 
-// ----------------------------------------------------------------------------
 // View Transitions API (Chrome 111+, Edge 111+)
-// ----------------------------------------------------------------------------
-
-// Customize View Transitions animation timing and behavior
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: 0.3s;
   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-// Smooth fade for outgoing content
 ::view-transition-old(root) {
   animation-name: view-transition-fade-out;
 }
 
-// Smooth fade for incoming content
 ::view-transition-new(root) {
   animation-name: view-transition-fade-in;
 }
@@ -124,11 +102,7 @@
   }
 }
 
-// ----------------------------------------------------------------------------
-// CSS Fallback for Browsers Without View Transitions API (Safari, Firefox)
-// ----------------------------------------------------------------------------
-
-// Fallback fade transition for browsers without View Transitions API support
+// Fallback for browsers without View Transitions API
 html.turbo-loading {
   opacity: 0;
   transition: opacity 0.2s ease-out;
@@ -139,28 +113,33 @@ html:not(.turbo-loading) {
   transition: opacity 0.2s ease-in;
 }
 
-// Smooth page transitions for legacy support
-body {
-  opacity: 1;
-  transition: opacity 0.2s ease-in;
-}
-
+body,
 turbo-frame {
   opacity: 1;
   transition: opacity 0.2s ease-in;
 }
 
-// Smooth scrolling (respects user preference)
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
   }
 }
 
-// ----------------------------------------------------------------------------
-// Hero Section
-// ----------------------------------------------------------------------------
+// Navbar Brand Logo
+.navbar-brand {
+  img {
+    transition: none !important;
+    filter: none !important;
+  }
 
+  &:hover img {
+    filter: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+}
+
+// Hero Section
 .hero-section {
   padding: 80px 0 2rem;
 
@@ -194,6 +173,36 @@ turbo-frame {
   @media (min-width: 1200px) {
     font-size: 2.5rem;
   }
+
+  .text-gradient-primary {
+    display: inline-block;
+    background: linear-gradient(
+      90deg,
+      var(--si-logo-red) 0%,
+      #a86881 12.5%,
+      var(--si-logo-blue) 25%,
+      #a86881 37.5%,
+      var(--si-logo-red) 50%,
+      #a86881 62.5%,
+      var(--si-logo-blue) 75%,
+      #a86881 87.5%,
+      var(--si-logo-red) 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 9s linear infinite;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .hero-subtitle {
@@ -208,36 +217,199 @@ turbo-frame {
   }
 }
 
-// ----------------------------------------------------------------------------
 // Contact Page
-// ----------------------------------------------------------------------------
-
 .contact-map-wrapper {
-  min-height: 300px;
+  isolation: isolate;
+  min-height: 350px;
 
   @media (min-width: 576px) {
-    min-height: 350px;
-  }
-  @media (min-width: 768px) {
     min-height: 400px;
   }
-  @media (min-width: 992px) {
+  @media (min-width: 768px) {
     min-height: 450px;
+  }
+  @media (min-width: 992px) {
+    min-height: 500px;
+  }
+}
+
+.contact-map-container {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  background-color: var(--si-gray-100);
+  position: relative;
+
+  &:hover {
+    box-shadow: 0 1rem 3rem rgba(var(--si-dark-rgb), 0.175) !important;
+  }
+
+  &:focus-within {
+    outline: 2px solid var(--si-primary);
+    outline-offset: 2px;
+  }
+
+  [data-bs-theme="dark"] & {
+    background-color: var(--si-gray-800);
+  }
+}
+
+.contact-map-placeholder {
+  transition: opacity 0.4s ease;
+  z-index: 1;
+
+  .map-loaded & {
+    opacity: 0;
+    pointer-events: none;
   }
 }
 
 .contact-map {
-  min-height: inherit;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  min-height: 100%;
+  width: 100%;
+
+  .map-loaded & {
+    opacity: 1;
+  }
+
+  > div {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .gm-style-cc,
+  .gmnoprint.gm-style-cc,
+  a[href^="https://maps.google.com/maps"],
+  .gm-style a[href^="https://maps.google.com/maps"],
+  .gm-style .gmnoprint:not(.gm-bundled-control):not(.gm-fullscreen-control),
+  .gm-style [href*="google.com"][href*="maps"][aria-label] {
+    display: none !important;
+  }
+}
+
+.contact-map-link {
+  z-index: 10;
+  opacity: 0.9;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  backdrop-filter: blur(4px);
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+
+  [data-bs-theme="dark"] & {
+    background-color: rgba(var(--si-dark-rgb), 0.8) !important;
+    color: var(--si-white) !important;
+    border-color: transparent !important;
+  }
+}
+
+.contact-info-list .contact-info-item:not(:last-child) {
+  border-bottom: 1px solid var(--si-border-color);
+}
+
+.contact-info-item {
+  border-radius: 0.5rem;
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+  &:focus-within {
+    background-color: rgba(var(--si-primary-rgb), 0.06);
+
+    .contact-icon-circle {
+      transform: scale(1.05);
+      box-shadow: 0 0.25rem 0.75rem rgba(var(--si-primary-rgb), 0.15);
+    }
+  }
+}
+
+.contact-icon-circle {
+  width: 3rem;
+  height: 3rem;
+
+  @media (min-width: 576px) {
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+}
+
+.contact-link {
+  transition: color 0.2s ease;
+
+  &:hover,
+  &:focus {
+    color: var(--si-primary) !important;
+    text-decoration: underline !important;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--si-primary);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+.contact-map-link:focus-visible {
+  outline: 2px solid var(--si-primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(var(--si-primary-rgb), 0.25);
+}
+
+.skip-map-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 0.5rem 1rem;
+  background-color: var(--si-primary);
+  color: var(--si-white);
+  text-decoration: none;
+  border-radius: 0.25rem;
+
+  &:focus {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0.5rem;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .contact-map-container,
+  .contact-map-placeholder,
+  .contact-map,
+  .contact-map-link,
+  .contact-info-item,
+  .contact-icon-circle,
+  .contact-link {
+    transition: none !important;
+  }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .contact-map-container:focus-within {
+    outline-width: 3px;
+  }
+
+  .contact-info-item:not(:last-child) {
+    border-bottom-width: 2px;
+  }
+
+  .contact-link:focus-visible {
+    outline-width: 3px;
+  }
 }
 
 .contact-icon-offset {
   margin-top: 0.125rem;
 }
 
-// ----------------------------------------------------------------------------
 // Footer
-// ----------------------------------------------------------------------------
-
 .footer-logo {
   width: 70px;
 
@@ -249,10 +421,7 @@ turbo-frame {
   }
 }
 
-// ----------------------------------------------------------------------------
 // Jarallax Parallax
-// ----------------------------------------------------------------------------
-
 .jarallax {
   min-height: 150px;
 
@@ -264,10 +433,6 @@ turbo-frame {
 // ============================================================================
 // Mobile Optimizations
 // ============================================================================
-
-// ----------------------------------------------------------------------------
-// Typography & Spacing - Mobile (≤575px)
-// ----------------------------------------------------------------------------
 
 @media (max-width: 575px) {
   body {
@@ -311,7 +476,6 @@ turbo-frame {
     padding: 0.65rem 1.25rem;
   }
 
-  // Reduce excessive spacing on mobile
   .py-5 {
     padding-block: 2rem !important;
   }
@@ -326,16 +490,11 @@ turbo-frame {
   }
 }
 
-// ----------------------------------------------------------------------------
-// Touch Targets & Cards - Tablet & Mobile (≤767px)
-// ----------------------------------------------------------------------------
-
 @media (max-width: 767px) {
   .card {
     margin-bottom: 1rem;
   }
 
-  // Ensure touch-friendly tap targets (44px minimum)
   .btn,
   .nav-link {
     min-height: 44px;
@@ -348,17 +507,12 @@ turbo-frame {
     padding: 0.5rem 0.75rem;
   }
 
-  // Responsive tables
   table {
     display: block;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
 }
-
-// ----------------------------------------------------------------------------
-// Very Small Screens - Galaxy Fold, etc. (≤360px)
-// ----------------------------------------------------------------------------
 
 @media (max-width: 360px) {
   body {
@@ -388,24 +542,18 @@ turbo-frame {
   }
 }
 
-// ============================================================================
 // Base Layout & Accessibility
-// ============================================================================
-
-// Prevent horizontal scroll
 body,
 html {
   overflow-x: hidden;
   max-width: 100%;
 }
 
-// Responsive images
 img {
   max-width: 100%;
   height: auto;
 }
 
-// Better word wrapping
 h1,
 h2,
 h3,

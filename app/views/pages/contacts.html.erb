@@ -5,49 +5,93 @@
 
   <div class="row">
     <div class="col-12 col-lg-6 mb-4 mb-lg-0">
-      <div class="d-flex flex-column h-100 shadow-sm rounded-3 overflow-hidden contact-map-wrapper">
-        <iframe
-          class="d-block w-100 h-100 contact-map"
-          src="<%= AppConstants::CONTACT_INFO[:google_maps_embed_url] %>"
-          title="Gelbhart Innovations Location"
-          style="border: 0;"
-          allowfullscreen=""
-          loading="lazy"
-          aria-label="Interactive map showing Gelbhart Innovations location"></iframe>
+      <div class="position-relative contact-map-wrapper h-100"
+           data-controller="google-map"
+           data-google-map-lat-value="<%= AppConstants::CONTACT_INFO[:map_coordinates][:lat] %>"
+           data-google-map-lng-value="<%= AppConstants::CONTACT_INFO[:map_coordinates][:lng] %>"
+           data-google-map-address-value="<%= AppConstants::CONTACT_INFO[:address][:street] %>, <%= AppConstants::CONTACT_INFO[:address][:city] %>">
+        <div class="d-flex flex-column h-100 shadow-lg rounded-4 overflow-hidden contact-map-container">
+          <div class="contact-map-placeholder position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-light" aria-hidden="true">
+            <div class="text-center text-muted">
+              <i class="bx bx-map-alt fs-1 mb-2 d-block"></i>
+              <span class="fs-sm">Loading map...</span>
+            </div>
+          </div>
+          <div
+            class="contact-map w-100 h-100 position-relative"
+            data-google-map-target="mapContainer"
+            role="application"
+            aria-label="Interactive map showing Gelbhart Innovations location at <%= AppConstants::CONTACT_INFO[:address][:street] %>, <%= AppConstants::CONTACT_INFO[:address][:city] %>"></div>
+        </div>
+        <a href="https://www.google.com/maps/place/Via+Giuseppe+Motta+9,+6826+Riva+San+Vitale,+Switzerland"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="btn btn-sm btn-light shadow-sm position-absolute bottom-0 end-0 m-3 contact-map-link"
+           aria-label="View larger map in Google Maps (opens in new tab)">
+          <i class="bx bx-link-external me-1" aria-hidden="true"></i>
+          View Larger Map
+        </a>
       </div>
     </div>
 
     <div class="col-12 col-lg-5 offset-lg-1">
-      <h1 class="h4 h5-sm mb-3 mb-sm-4">Gelbhart Innovations</h1>
+      <h1 class="h3 mb-4 pb-2">Gelbhart Innovations</h1>
       <% contact = AppConstants::CONTACT_INFO %>
-      <address class="list-unstyled pb-2 pb-lg-0 mb-4 mb-lg-5">
-        <ul class="list-unstyled mb-0">
-          <li class="d-flex pb-2 pb-sm-1 mb-2 align-items-start">
-            <i class="bx bx-map text-primary fs-xl fs-lg-xl me-2 me-sm-3 flex-shrink-0 contact-icon-offset" aria-hidden="true"></i>
-            <span class="fs-sm fs-md-base">
+
+      <div class="contact-info-list">
+        <div class="d-flex align-items-start pb-3 mb-3 contact-info-item">
+          <div class="bg-secondary text-dark rounded-circle flex-shrink-0 d-flex align-items-center justify-content-center contact-icon-circle" aria-hidden="true">
+            <i class="bx bx-map fs-4"></i>
+          </div>
+          <div class="ps-3 ps-sm-4">
+            <h2 class="h6 pb-1 mb-1">Address</h2>
+            <address class="mb-0 text-body fs-sm">
               <%= contact[:address][:street] %><br>
               <%= contact[:address][:postal_code] %> <%= contact[:address][:city] %><br>
               <%= contact[:address][:country] %>
-            </span>
-          </li>
-          <li class="d-flex pb-2 pb-sm-1 mb-2 align-items-start">
-            <i class="bx bx-phone-call text-primary fs-xl fs-lg-xl me-2 me-sm-3 flex-shrink-0 contact-icon-offset" aria-hidden="true"></i>
-            <%= link_to contact[:phone][:display], "tel:#{contact[:phone][:tel]}", class: "text-decoration-none fs-sm fs-md-base" %>
-          </li>
-          <li class="d-flex pb-2 pb-sm-1 mb-2 align-items-start">
-            <i class="bx bx-envelope text-primary fs-xl fs-lg-xl me-2 me-sm-3 flex-shrink-0 contact-icon-offset" aria-hidden="true"></i>
-            <%= mail_to contact[:email], contact[:email], class: "text-decoration-none fs-sm fs-md-base" %>
-          </li>
-          <li class="d-flex align-items-start">
-            <i class="bx bx-time-five text-primary fs-xl fs-lg-xl me-2 me-sm-3 flex-shrink-0 contact-icon-offset" aria-hidden="true"></i>
-            <div class="fs-sm fs-md-base">
-              <strong class="text-nav"><%= contact[:business_hours][:weekdays][:days] %></strong>: <%= contact[:business_hours][:weekdays][:open] %> - <%= contact[:business_hours][:weekdays][:close] %>
-              <br>
-              <strong class="text-nav">Sat - Sun</strong>: <%= contact[:business_hours][:weekend] %>
+            </address>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-start pb-3 mb-3 contact-info-item">
+          <div class="bg-secondary text-dark rounded-circle flex-shrink-0 d-flex align-items-center justify-content-center contact-icon-circle" aria-hidden="true">
+            <i class="bx bx-phone-call fs-4"></i>
+          </div>
+          <div class="ps-3 ps-sm-4">
+            <h2 class="h6 pb-1 mb-1">Phone</h2>
+            <%= link_to contact[:phone][:display], "tel:#{contact[:phone][:tel]}", class: "text-body text-decoration-none fs-sm contact-link" %>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-start pb-3 mb-3 contact-info-item">
+          <div class="bg-secondary text-dark rounded-circle flex-shrink-0 d-flex align-items-center justify-content-center contact-icon-circle" aria-hidden="true">
+            <i class="bx bx-envelope fs-4"></i>
+          </div>
+          <div class="ps-3 ps-sm-4">
+            <h2 class="h6 pb-1 mb-1">Email</h2>
+            <%= mail_to contact[:email], contact[:email], class: "text-body text-decoration-none fs-sm contact-link" %>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-start contact-info-item">
+          <div class="bg-secondary text-dark rounded-circle flex-shrink-0 d-flex align-items-center justify-content-center contact-icon-circle" aria-hidden="true">
+            <i class="bx bx-time-five fs-4"></i>
+          </div>
+          <div class="ps-3 ps-sm-4">
+            <h2 class="h6 pb-1 mb-1">Business Hours</h2>
+            <div class="text-body fs-sm">
+              <div class="d-flex justify-content-between mb-1">
+                <span class="text-nav fw-medium"><%= contact[:business_hours][:weekdays][:days] %></span>
+                <span class="ms-3"><%= contact[:business_hours][:weekdays][:open] %> - <%= contact[:business_hours][:weekdays][:close] %></span>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span class="text-nav fw-medium">Sat - Sun</span>
+                <span class="ms-3"><%= contact[:business_hours][:weekend] %></span>
+              </div>
             </div>
-          </li>
-        </ul>
-      </address>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
