@@ -1,7 +1,3 @@
-// Utilities
-// Extend / update default Bootstrap's utility classes
-
-// Use Sass modules for modern functions
 @use "sass:map";
 
 @import "bootstrap/scss/functions";
@@ -15,23 +11,16 @@
 $utilities: map-merge(
   $utilities,
   (
-    // Position
-    "position":
-      (
-        property: position,
-        responsive: true,
-        values: static relative absolute fixed sticky,
-      ),
-
-    // Border colors
-    "border-color":
-      (
-        property: border-color,
-        class: border,
-        values: $border-colors,
-      ),
-
-    // Background colors
+    "position": (
+      property: position,
+      responsive: true,
+      values: static relative absolute fixed sticky,
+    ),
+    "border-color": (
+      property: border-color,
+      class: border,
+      values: $border-colors,
+    ),
     "background-color":
       map-merge(
         map.get($utilities, "background-color"),
@@ -48,114 +37,87 @@ $utilities: map-merge(
             ),
         )
       ),
-    // Background faded colors
-    "background-faded-color":
-      (
-        property: background-color,
-        class: bg-faded,
-        values: $theme-faded-colors,
+    "background-faded-color": (
+      property: background-color,
+      class: bg-faded,
+      values: $theme-faded-colors,
+    ),
+    "background-size": (
+      property: background-size,
+      class: bg-size,
+      values: (
+        cover: cover,
+        contain: contain,
       ),
-
-    // Background size
-    "background-size":
-      (
-        property: background-size,
-        class: bg-size,
-        values: (
-          cover: cover,
-          contain: contain,
-        ),
+    ),
+    "background-position": (
+      property: background-position,
+      class: bg-position,
+      values: (
+        "center": center,
+        "center-y": left center,
+        "center-x": center top,
+        "top-end": top right,
+        "top-start": top left,
+        "top-center": top center,
+        "center-end": center right,
+        "center-start": center left,
+        "center-bottom": center bottom,
+        "bottom-end": bottom right,
+        "bottom-start": bottom left,
+        "bottom-center": bottom center,
       ),
-
-    // Background position
-    "background-position":
-      (
-        property: background-position,
-        class: bg-position,
-        values: (
-          "center": center,
-          "center-y": left center,
-          "center-x": center top,
-          "top-end": top right,
-          "top-start": top left,
-          "top-center": top center,
-          "center-end": center right,
-          "center-start": center left,
-          "center-bottom": center bottom,
-          "bottom-end": bottom right,
-          "bottom-start": bottom left,
-          "bottom-center": bottom center,
-        ),
+    ),
+    "background-repeat": (
+      property: background-repeat,
+      class: bg-repeat,
+      values: (
+        0: no-repeat,
+        x: repeat-x,
+        y: repeat-y,
       ),
-
-    // Background repeat
-    "background-repeat":
-      (
-        property: background-repeat,
-        class: bg-repeat,
-        values: (
-          0: no-repeat,
-          x: repeat-x,
-          y: repeat-y,
-        ),
+    ),
+    "background-attachment": (
+      property: background-attachment,
+      class: bg-attachment,
+      values: fixed,
+    ),
+    "background-gradient": (
+      property: background,
+      class: bg-gradient,
+      values: $theme-gradients,
+    ),
+    "background-image": (
+      property: background-image,
+      class: bg-image,
+      values: none,
+    ),
+    "shadow": (
+      property: box-shadow,
+      class: shadow,
+      values: (
+        null: $box-shadow,
+        sm: $box-shadow-sm,
+        lg: $box-shadow-lg,
+        none: none,
+        "primary": $box-shadow-primary,
+        "secondary": $box-shadow-secondary,
+        "info": $box-shadow-info,
+        "success": $box-shadow-success,
+        "warning": $box-shadow-warning,
+        "danger": $box-shadow-danger,
+        "dark": $box-shadow-dark,
       ),
-
-    // Background attachment
-    "background-attachment":
-      (
-        property: background-attachment,
-        class: bg-attachment,
-        values: fixed,
+    ),
+    "border": (
+      property: border,
+      responsive: true,
+      values: (
+        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style)
+          var(--#{$prefix}border-color),
+        0: 0,
       ),
-
-    // Gradient background
-    "background-gradient":
-      (
-        property: background,
-        class: bg-gradient,
-        values: $theme-gradients,
-      ),
-
-    // Disble background image
-    "background-image":
-      (
-        property: background-image,
-        class: bg-image,
-        values: none,
-      ),
-
-    // Box shadow
-    "shadow":
-      (
-        property: box-shadow,
-        class: shadow,
-        values: (
-          null: $box-shadow,
-          sm: $box-shadow-sm,
-          lg: $box-shadow-lg,
-          none: none,
-          "primary": $box-shadow-primary,
-          "secondary": $box-shadow-secondary,
-          "info": $box-shadow-info,
-          "success": $box-shadow-success,
-          "warning": $box-shadow-warning,
-          "danger": $box-shadow-danger,
-          "dark": $box-shadow-dark,
-        ),
-      ),
-
-    // Border on the sides
-    "border":
-      (
-        property: border,
-        responsive: true,
-        values: (
-          null: var(--#{$prefix}border-width) var(--#{$prefix}border-style)
-            var(--#{$prefix}border-color),
-          0: 0,
-        ),
-      ),
-
+    ),
     "border-top": (
       property: border-top,
       responsive: true,
@@ -165,7 +127,6 @@ $utilities: map-merge(
         0: 0,
       ),
     ),
-
     "border-end": (
       property: border-right,
       responsive: true,
@@ -176,7 +137,6 @@ $utilities: map-merge(
         0: 0,
       ),
     ),
-
     "border-bottom": (
       property: border-bottom,
       responsive: true,
@@ -186,7 +146,6 @@ $utilities: map-merge(
         0: 0,
       ),
     ),
-
     "border-start": (
       property: border-left,
       responsive: true,
@@ -197,8 +156,6 @@ $utilities: map-merge(
         0: 0,
       ),
     ),
-
-    // Rounded top: 0
     "rounded-top":
       map-merge(
         map.get($utilities, "rounded-top"),
@@ -212,7 +169,6 @@ $utilities: map-merge(
             ),
         )
       ),
-    // Rounded end: 0
     "rounded-end":
       map-merge(
         map.get($utilities, "rounded-end"),
@@ -226,7 +182,6 @@ $utilities: map-merge(
             ),
         )
       ),
-    // Rounded bottom: 0
     "rounded-bottom":
       map-merge(
         map.get($utilities, "rounded-bottom"),
@@ -240,7 +195,6 @@ $utilities: map-merge(
             ),
         )
       ),
-    // Rounded start: 0
     "rounded-start":
       map-merge(
         map.get($utilities, "rounded-start"),
@@ -254,7 +208,6 @@ $utilities: map-merge(
             ),
         )
       ),
-    // Width
     "width":
       map-merge(
         map.get($utilities, "width"),
@@ -273,7 +226,6 @@ $utilities: map-merge(
             ),
         )
       ),
-    // Height
     "height":
       map-merge(
         map.get($utilities, "height"),
@@ -288,48 +240,41 @@ $utilities: map-merge(
             ),
         )
       ),
-    // Opacity
-    "opacity":
-      (
-        property: opacity,
-        class: opacity,
-        values: (
-          8: 0.08,
-          10: 0.1,
-          15: 0.15,
-          25: 0.25,
-          35: 0.35,
-          40: 0.4,
-          50: 0.5,
-          60: 0.6,
-          70: 0.7,
-          75: 0.75,
-          80: 0.8,
-          90: 0.9,
-          100: 1,
+    "opacity": (
+      property: opacity,
+      class: opacity,
+      values: (
+        8: 0.08,
+        10: 0.1,
+        15: 0.15,
+        25: 0.25,
+        35: 0.35,
+        40: 0.4,
+        50: 0.5,
+        60: 0.6,
+        70: 0.7,
+        75: 0.75,
+        80: 0.8,
+        90: 0.9,
+        100: 1,
+      ),
+    ),
+    "color": (
+      property: color,
+      class: text,
+      values:
+        map-merge(
+          $theme-colors,
+          (
+            "white": $white,
+            "body": var(--#{$prefix}body-color),
+            "muted": $text-muted,
+            "nav": $nav-link-color,
+            "border": var(--#{$prefix}border-color),
+            "reset": inherit,
+          )
         ),
-      ),
-
-    // Text color
-    "color":
-      (
-        property: color,
-        class: text,
-        values:
-          map-merge(
-            $theme-colors,
-            (
-              "white": $white,
-              "body": var(--#{$prefix}body-color),
-              "muted": $text-muted,
-              "nav": $nav-link-color,
-              "border": var(--#{$prefix}border-color),
-              "reset": inherit,
-            )
-          ),
-      ),
-
-    // Font weight
+    ),
     "font-weight":
       map-merge(
         map.get($utilities, "font-weight"),
@@ -345,64 +290,47 @@ $utilities: map-merge(
             ),
         )
       ),
-    // Text shadow
-    "text-shadow":
-      (
-        property: text-shadow,
-        values: (
-          null: $text-shadow,
-        ),
+    "text-shadow": (
+      property: text-shadow,
+      values: (
+        null: $text-shadow,
       ),
-
-    // Table layout
-    "table-layout":
-      (
-        property: table-layout,
-        values: fixed,
+    ),
+    "table-layout": (
+      property: table-layout,
+      values: fixed,
+    ),
+    "z-index": (
+      property: z-index,
+      class: zindex,
+      values: 1 2 3 4 5 6,
+    ),
+    "gradient": (
+      property: background-image,
+      class: bg,
+      values: (
+        gradient: linear-gradient(180deg, rgba($white, 0.18), rgba($white, 0)),
       ),
-
-    // Z-index
-    "z-index":
-      (
-        property: z-index,
-        class: zindex,
-        values: 1 2 3 4 5 6,
+    ),
+    "translate-middle": (
+      property: transform,
+      class: translate-middle,
+      responsive: true,
+      values: (
+        null: translate(-50%, -50%),
+        x: translateX(-50%),
+        y: translateY(-50%),
       ),
-
-    // Update default Bootstrap graident
-    "gradient":
-      (
-        property: background-image,
-        class: bg,
-        values: (
-          gradient: linear-gradient(180deg, rgba($white, 0.18), rgba($white, 0)),
-        ),
-      ),
-
-    // Traslate
-    "translate-middle":
-      (
-        property: transform,
-        class: translate-middle,
-        responsive: true,
-        values: (
-          null: translate(-50%, -50%),
-          x: translateX(-50%),
-          y: translateY(-50%),
-        ),
-      )
+    ),
   )
 );
-
-// Gradient text
 
 .text-gradient-primary {
   background: linear-gradient(to right, $primary, #8b5cf6, #d946ef);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-
-// Swap image on hover
 
 .swap-image {
   position: relative;
@@ -432,8 +360,6 @@ $utilities: map-merge(
     }
   }
 }
-
-// Dark color mode
 
 @if $enable-dark-mode {
   @include color-mode(dark) {
@@ -479,7 +405,6 @@ $utilities: map-merge(
       box-shadow: none !important;
     }
 
-    // Show / hide image depending on color mode
     .dark-mode-img {
       display: block;
     }
