@@ -1,110 +1,122 @@
-/* Service Card Styles */
-/* Desktop hover effects */
-@media (hover: hover) and (pointer: fine) {
-  .service-card:hover .service-icon {
-    transform: translateY(-3px) scale(1.1);
-  }
+// ============================================================================
+// Services Page Styles
+// Service cards with interactive hover effects and responsive design
+// ============================================================================
 
-  .service-card:hover .service-icon.pharma-icon {
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4) !important;
-  }
+// ----------------------------------------------------------------------------
+// Service Cards
+// ----------------------------------------------------------------------------
 
-  .service-card:hover .service-icon.realestate-icon {
-    box-shadow: 0 10px 25px rgba(17, 153, 142, 0.4) !important;
-  }
+.service-icon {
+  position: relative;
+  overflow: hidden;
 
-  .service-card:hover .service-icon i {
-    transform: scale(1.2);
-  }
-
-  .service-card:hover .service-icon::before {
-    transform: translateX(100%) translateY(100%) rotate(45deg);
+  // Shine effect on hover
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: transform 0.6s;
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
   }
 }
 
-/* Touch device - no hover effects, just active states */
+// ----------------------------------------------------------------------------
+// Desktop Hover Effects (pointer devices only)
+// ----------------------------------------------------------------------------
+
+@media (hover: hover) and (pointer: fine) {
+  .service-card:hover {
+    .service-icon {
+      transform: translateY(-3px) scale(1.1);
+
+      &.pharma-icon {
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4) !important;
+      }
+
+      &.realestate-icon {
+        box-shadow: 0 10px 25px rgba(17, 153, 142, 0.4) !important;
+      }
+
+      i {
+        transform: scale(1.2);
+      }
+
+      &::before {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+      }
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Touch Device Active States (no hover)
+// ----------------------------------------------------------------------------
+
 @media (hover: none) {
   .service-card:active .service-icon {
     transform: scale(0.95);
   }
 }
 
-.service-icon {
-  position: relative;
-  overflow: hidden;
-}
+// ----------------------------------------------------------------------------
+// Service Icon Responsive Sizing
+// ----------------------------------------------------------------------------
 
-.service-icon::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  transition: transform 0.6s;
-  transform: translateX(-100%) translateY(-100%) rotate(45deg);
-}
+.service-icon-responsive {
+  width: 60px !important;
+  height: 60px !important;
 
-/* Service Icon Responsive Sizing */
-@media (max-width: 575px) {
-  .service-icon-responsive {
-    width: 60px !important;
-    height: 60px !important;
-  }
-
-  .service-icon-content {
-    font-size: 1.75rem !important;
-  }
-}
-
-@media (min-width: 576px) {
-  .service-icon-responsive {
+  @media (min-width: 576px) {
     width: 70px !important;
     height: 70px !important;
   }
 
-  .service-icon-content {
-    font-size: 2rem !important;
-  }
-}
-
-@media (min-width: 768px) {
-  .service-icon-responsive {
+  @media (min-width: 768px) {
     width: 80px !important;
     height: 80px !important;
   }
+}
 
-  .service-icon-content {
+.service-icon-content {
+  font-size: 1.75rem !important;
+
+  @media (min-width: 576px) {
+    font-size: 2rem !important;
+  }
+
+  @media (min-width: 768px) {
     font-size: 2.2rem !important;
   }
 }
 
-/* Header Responsive Styles */
+// ----------------------------------------------------------------------------
+// Header Responsive Adjustments
+// ----------------------------------------------------------------------------
+
 @media (max-width: 575px) {
-  /* Hide center logo on very small screens to prevent overlap */
+  // Hide center logo on very small screens to prevent overlap
   .navbar-brand.position-absolute {
     display: none !important;
   }
 
-  /* Ensure theme toggle stays compact on mobile */
   .mode-switch {
     scale: 0.9;
   }
 
-  /* Reduce navbar padding on mobile */
   header .container {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+    padding-inline: 0.75rem;
   }
 }
 
-/* Galaxy Fold and very small screens */
 @media (max-width: 360px) {
   .mode-switch {
     scale: 0.8;
