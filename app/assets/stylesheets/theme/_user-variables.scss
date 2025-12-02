@@ -1,0 +1,32 @@
+//
+// user-variables.scss
+// Override Bootstrap and Silicon variables with custom theme colors
+//
+
+// Primary color - Red theme
+$primary: #ef4646 !default;
+
+// Secondary color - Light gray
+$secondary: #eff2fc !default;
+
+// Success color - Green
+$success: #22c55e !default;
+
+// Info color - Blue
+$info: #4c82f7 !default;
+
+// Warning color - Yellow/Orange
+$warning: #ffba08 !default;
+
+// Danger color - Red (same as primary)
+$danger: #ef4444 !default;
+
+// Link colors
+$link-color: #006f97 !default;
+$link-hover-color: #ef4646 !default;
+
+// Code color
+$code-color: #e3116c !default;
+
+// Highlight background
+$highlight-bg: #fff3cd !default;
