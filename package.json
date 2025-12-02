@@ -1,6 +1,6 @@
 {
   "name": "silicon-html",
-  "version": "1.2.0",
+  "version": "1.6.0",
   "description": "Silicon - Multipurpose Bootstrap 5 Template & UI Kit",
   "main": "index.html",
   "scripts": {
@@ -17,22 +17,22 @@
     "husky": "^9.1.7"
   },
   "dependencies": {
-    "@lottiefiles/lottie-player": "^1.5.7",
+    "@lottiefiles/lottie-player": "^2.0.2",
     "bootstrap": "^5.3.8",
-    "boxicons": "^2.1.2",
+    "boxicons": "^2.1.4",
     "cleave.js": "^1.6.0",
     "imagesloaded": "^5.0.0",
-    "img-comparison-slider": "^7.6.0",
-    "jarallax": "^2.0.3",
-    "lightgallery": "^2.4.0",
-    "nouislider": "^15.6.0",
+    "img-comparison-slider": "^8.0.1",
+    "jarallax": "^2.1.4",
+    "lightgallery": "^2.7.2",
+    "nouislider": "^15.7.1",
     "parallax-js": "^3.1.0",
-    "prismjs": "^1.28.0",
+    "prismjs": "^1.29.0",
     "rellax": "^1.12.1",
-    "shufflejs": "^6.0.0",
+    "shufflejs": "^6.1.0",
     "smooth-scroll": "^16.1.3",
-    "swiper": "^8.2.2",
-    "vanilla-tilt": "^1.7.2"
+    "swiper": "^8.4.7",
+    "vanilla-tilt": "^1.8.1"
   },
   "browserslist": [
     ">= 0.5%",
