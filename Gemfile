@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.3.10"
 
-# Rails framework and core dependencies
+# Rails and core dependencies
 gem "bootsnap", require: false
 gem "importmap-rails"
 gem "jbuilder"
@@ -18,11 +18,11 @@ gem "turbo-rails"
 # Database
 gem "pg"
 
-# Assets and frontend
+# Assets
 gem "dartsass-rails"
 gem "image_processing", "~> 1.2"
 
-# Application-specific gems
+# Application features
 gem "mail_form"
 gem "rexml"
 gem "sitemap_generator"
@@ -30,6 +30,7 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 
 group :development, :test do
   gem "debug", platforms: %i[mri windows]
+  gem "dotenv-rails"
 end
 
 group :development do
