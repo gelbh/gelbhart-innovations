@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   get '/favicon.ico', to: redirect { |_params, request|
     ActionController::Base.helpers.asset_path('favicon.ico')
   }
+  
+  # Web manifest
+  get '/site.webmanifest', to: 'manifest#site_webmanifest'
 
   # Error pages
   match '/404', to: 'errors#not_found', via: :all
