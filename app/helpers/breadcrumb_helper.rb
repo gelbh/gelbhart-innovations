@@ -1,20 +1,15 @@
 module BreadcrumbHelper
   def breadcrumb_trail
-    items = []
+    [].tap do |items|
+      items << { name: "Home", path: root_path }
 
-    items << { name: "Home", path: root_path }
+      unless AppConstants::BREADCRUMB_EXCLUDED_CONTROLLERS.include?(controller.controller_name)
+        items << { name: controller.controller_name.titleize }
+      end
 
-    unless AppConstants::BREADCRUMB_EXCLUDED_CONTROLLERS.include?(controller.controller_name)
-      items << { name: controller.controller_name.titleize }
+      items << { name: "Services", path: services_path } if services_subpage?
+      items << { name: breadcrumb_current_label, current: true }
     end
-
-    if services_subpage?
-      items << { name: "Services", path: services_path }
-    end
-
-    items << { name: breadcrumb_current_label, current: true }
-
-    items
   end
 
   private
@@ -24,13 +19,13 @@ module BreadcrumbHelper
   end
 
   def breadcrumb_current_label
-    return @breadcrumb if defined?(@breadcrumb) && @breadcrumb.present?
+    return @breadcrumb if @breadcrumb.present?
+    return service_action_label if services_subpage?
 
-    if services_subpage?
-      return action_name == "pharmaceutical" ? "Pharmaceutical" : "Real Estate"
-    end
+    @title.to_s.split(" / ").first.presence || controller.action_name.titleize
+  end
 
-    (@title || "").to_s.split(" / ").first.presence || controller.action_name.titleize
+  def service_action_label
+    action_name == "pharmaceutical" ? "Pharmaceutical" : "Real Estate"
   end
 end
-
