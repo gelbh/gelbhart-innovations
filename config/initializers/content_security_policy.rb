@@ -81,5 +81,5 @@ Rails.application.configure do
   # - If Google Fonts fail: verify fonts.googleapis.com and fonts.gstatic.com in font-src/style-src
   # - If inline scripts fail: verify nonce is applied (check <script> tags in HTML source)
   # - If dynamically created scripts fail: they need nonce attribute set via JS
-  config.content_security_policy_report_only = true
+  config.content_security_policy_report_only = false
 end

@@ -38,13 +38,20 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Assume all access to the app is happening through a SSL-terminating reverse proxy.
+  # Note: Enable this if your app is behind a load balancer or reverse proxy that terminates SSL
   # config.assume_ssl = true
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  # This adds the following security features:
+  # - Redirects all HTTP requests to HTTPS
+  # - Sets Strict-Transport-Security (HSTS) header with max-age=1 year and includeSubDomains
+  # - Sets secure flag on all cookies
+  config.force_ssl = true
 
   # Skip http-to-https redirect for the default health check endpoint.
-  # config.ssl_options = { redirect: { exclude: ->(request) { request.path == "/up" } } }
+  # This is important for load balancers and container orchestration health checks
+  # that may use HTTP for internal health probes.
+  config.ssl_options = { redirect: { exclude: ->(request) { request.path == "/up" } } }
 
   # Log to STDOUT with the current request id as a default log tag.
   config.log_tags = [ :request_id ]
