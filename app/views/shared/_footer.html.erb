@@ -1,7 +1,9 @@
 <footer class="footer bg-dark dark-mode">
   <div class="container text-center py-4 py-sm-5 px-3">
     <div class="justify-content-center mb-3 mb-sm-4 <%= 'd-none' if current_page?(root_path) %>">
-      <%= image_tag "logo.png", alt: "Gelbhart Inn. Logo", width: 80, class: "footer-logo" %>
+      <%= link_to root_path, data: { turbo_preload: true } do %>
+        <%= image_tag "logo.png", alt: "Gelbhart Inn. Logo", width: 80, class: "footer-logo" %>
+      <% end %>
     </div>
 
     <div class="d-none d-sm-block">
