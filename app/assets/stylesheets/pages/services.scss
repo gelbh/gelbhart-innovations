@@ -103,11 +103,6 @@
 // ----------------------------------------------------------------------------
 
 @media (max-width: 575px) {
-  // Hide center logo on very small screens to prevent overlap
-  .navbar-brand.position-absolute {
-    display: none !important;
-  }
-
   .mode-switch {
     scale: 0.9;
   }

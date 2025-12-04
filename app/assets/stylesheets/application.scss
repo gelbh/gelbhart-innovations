@@ -137,6 +137,12 @@ turbo-frame {
     box-shadow: none !important;
     transform: none !important;
   }
+
+  @media (max-width: 575px) {
+    img {
+      width: 35px !important;
+    }
+  }
 }
 
 // Hero Section

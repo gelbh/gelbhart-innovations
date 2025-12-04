@@ -52,7 +52,7 @@
       </div>
     </div>
 
-    <%= link_to root_path, class: "position-absolute position-sm-absolute start-50 translate-middle-x align-items-center navbar-brand px-2 px-sm-3 #{current_page?(root_path) ? 'd-none' : 'd-none d-sm-flex'}", data: { turbo_preload: true } do %>
+    <%= link_to root_path, class: "position-absolute position-sm-absolute start-50 translate-middle-x align-items-center navbar-brand px-2 px-sm-3 #{current_page?(root_path) ? 'd-none' : 'd-flex'}", data: { turbo_preload: true } do %>
       <%= image_tag "logo.png", alt: "Gelbhart Inn. Logo", width: 50 %>
     <% end %>
 
