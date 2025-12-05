@@ -6,7 +6,7 @@
 module IndexNowConfig
   class << self
     def api_key
-      ENV.fetch("INDEXNOW_API_KEY", nil)
+      Rails.application.credentials.dig(:indexnow_api_key) || ENV.fetch("INDEXNOW_API_KEY", nil)
     end
 
     def host

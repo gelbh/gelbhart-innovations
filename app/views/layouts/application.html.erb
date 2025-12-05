@@ -34,8 +34,9 @@
     <meta name="msapplication-TileColor" content="#080032">
     <meta name="theme-color" content="#ffffff">
 
-    <% if ENV['GOOGLE_MAPS_API_KEY'].present? %>
-      <meta name="google-maps-api-key" content="<%= ENV['GOOGLE_MAPS_API_KEY'] %>">
+    <% api_key = Rails.application.credentials.dig(:google_maps_api_key) || ENV['GOOGLE_MAPS_API_KEY'] %>
+    <% if api_key.present? %>
+      <meta name="google-maps-api-key" content="<%= api_key %>">
     <% end %>
 
     <%= json_ld_script(organization_schema) %>

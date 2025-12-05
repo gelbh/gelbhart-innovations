@@ -29,6 +29,9 @@
 
 # Security
 /config/master.key
+/config/credentials/*.key
+/config/credentials/development.key
+/config/credentials/production.key
 
 # Dependencies
 node_modules
@@ -39,5 +42,5 @@ node_modules
 /public/sitemap.xml
 /public/sitemap.xml.gz
 
-# Environment variables
-.env
+# Documentation
+/docs
