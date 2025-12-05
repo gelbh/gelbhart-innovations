@@ -1,0 +1,8 @@
+// Jarallax Parallax
+.jarallax {
+  min-height: 150px;
+
+  @media (min-width: 576px) {
+    min-height: 200px;
+  }
+}

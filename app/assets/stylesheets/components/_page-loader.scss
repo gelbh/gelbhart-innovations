@@ -1,0 +1,41 @@
+// Page Loader & Progress Animation
+#page-loader {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 3px;
+  z-index: 9999;
+  background: transparent;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 0;
+    background: linear-gradient(to right, var(--si-primary), #f16363);
+    transition: width 0.3s ease;
+  }
+
+  &.active {
+    opacity: 1;
+
+    &::before {
+      width: 100%;
+      animation: page-loader-progress 0.6s ease-out;
+    }
+  }
+}
+
+@keyframes page-loader-progress {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    width: 100%;
+  }
+}

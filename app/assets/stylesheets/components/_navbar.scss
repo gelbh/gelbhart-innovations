@@ -1,0 +1,19 @@
+// Navbar Brand Logo
+.navbar-brand {
+  img {
+    transition: none !important;
+    filter: none !important;
+  }
+
+  &:hover img {
+    filter: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  @media (max-width: 575px) {
+    img {
+      width: 35px !important;
+    }
+  }
+}
