@@ -20,21 +20,9 @@ const getSystemPreference = () => {
 
 /**
  * Get current theme from localStorage or system preference
- * Supports backward compatibility with old 'mode' key
  */
 const getTheme = () => {
-  let saved = localStorage.getItem(STORAGE_KEY);
-
-  // Backward compatibility: migrate old 'mode' key
-  if (!saved) {
-    const oldMode = localStorage.getItem("mode");
-    if (oldMode) {
-      localStorage.setItem(STORAGE_KEY, oldMode);
-      localStorage.removeItem("mode");
-      saved = oldMode;
-    }
-  }
-
+  const saved = localStorage.getItem(STORAGE_KEY);
   return saved ?? getSystemPreference();
 };
 
@@ -71,7 +59,7 @@ const setupSystemPreferenceListener = () => {
 
   const handler = (e) => {
     // Only apply if user hasn't set a manual preference
-    if (!localStorage.getItem(STORAGE_KEY) && !localStorage.getItem("mode")) {
+    if (!localStorage.getItem(STORAGE_KEY)) {
       applyTheme(e.matches ? THEME_DARK : THEME_LIGHT);
     }
   };

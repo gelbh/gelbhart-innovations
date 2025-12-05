@@ -13,9 +13,6 @@ Rails.application.config.action_dispatch.default_headers.merge!(
   # Control referrer information sharing
   "Referrer-Policy" => "strict-origin-when-cross-origin",
 
-  # Legacy XSS protection for older browsers (deprecated in favor of CSP)
-  "X-XSS-Protection" => "1; mode=block",
-
   # Prevent Flash and Acrobat from loading data
   "X-Permitted-Cross-Domain-Policies" => "none",
 

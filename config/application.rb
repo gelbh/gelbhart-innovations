@@ -13,9 +13,6 @@ module Innovations
     # Autoload lib directory, excluding non-Ruby subdirectories
     config.autoload_lib(ignore: %w[assets tasks])
 
-    # Initialize Rails environment during asset precompilation for importmap-rails
-    config.assets.initialize_on_precompile = true
-
     # Disable system test file generation
     config.generators.system_tests = nil
   end

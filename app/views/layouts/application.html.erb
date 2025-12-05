@@ -19,7 +19,6 @@
     <meta http-equiv="content-language" content="en">
     <link rel="alternate" hreflang="en" href="<%= canonical_url %>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,6 +36,11 @@
     <% api_key = Rails.application.credentials.dig(:google_maps_api_key) || ENV['GOOGLE_MAPS_API_KEY'] %>
     <% if api_key.present? %>
       <meta name="google-maps-api-key" content="<%= api_key %>">
+    <% end %>
+
+    <% map_id = Rails.application.credentials.dig(:google_maps_map_id) || ENV['GOOGLE_MAPS_MAP_ID'] %>
+    <% if map_id.present? %>
+      <meta name="google-maps-map-id" content="<%= map_id %>">
     <% end %>
 
     <%= json_ld_script(organization_schema) %>
@@ -78,7 +82,7 @@
 
     <script src="<%= asset_path('bootstrap/dist/js/bootstrap.bundle.min.js') %>"></script>
     <script src="<%= asset_path('swiper/swiper-bundle.min.js') %>"></script>
-    <script defer src="<%= asset_path('smooth-scroll/dist/smooth-scroll.polyfills.min.js') %>"></script>
+    <script defer src="<%= asset_path('smooth-scroll/dist/smooth-scroll.min.js') %>"></script>
     <script defer src="<%= asset_path('cleave.js/dist/cleave.min.js') %>"></script>
     <script defer src="<%= asset_path('jarallax/dist/jarallax.min.js') %>"></script>
     <script defer src="<%= asset_path('parallax-js/dist/parallax.min.js') %>"></script>
@@ -107,18 +111,13 @@
 
     <script nonce="<%= content_security_policy_nonce %>" data-turbo-eval="false">
       (function() {
-        var savedTheme = localStorage.getItem('theme') || localStorage.getItem('mode');
+        var savedTheme = localStorage.getItem('theme');
         var systemPrefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
         var theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
         var html = document.documentElement;
 
         html.setAttribute('data-bs-theme', theme);
         html.classList.toggle('dark-mode', theme === 'dark');
-
-        if (localStorage.getItem('mode') && !localStorage.getItem('theme')) {
-          localStorage.setItem('theme', localStorage.getItem('mode'));
-          localStorage.removeItem('mode');
-        }
       })();
     </script>
   </body>

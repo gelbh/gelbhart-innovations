@@ -50,7 +50,7 @@ Rails.application.config.assets.precompile += %w[
   lightgallery/plugins/zoom/lg-zoom.min.js
   parallax-js/dist/parallax.min.js
   rellax/rellax.min.js
-  smooth-scroll/dist/smooth-scroll.polyfills.min.js
+  smooth-scroll/dist/smooth-scroll.min.js
   swiper/swiper-bundle.min.css
   swiper/swiper-bundle.min.js
   @lottiefiles/lottie-player/dist/lottie-player.js
