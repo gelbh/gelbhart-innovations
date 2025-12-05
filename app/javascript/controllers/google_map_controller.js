@@ -15,7 +15,7 @@ export default class extends Controller {
     lat: Number,
     lng: Number,
     address: String,
-    zoom: { type: Number, default: 16 },
+    zoom: { type: Number, default: 8 },
     apiKey: { type: String, default: "" },
   };
 
@@ -83,7 +83,17 @@ export default class extends Controller {
     {
       featureType: "water",
       elementType: "labels.text.fill",
-      stylers: [{ color: "#6366f1" }],
+      stylers: [{ color: "#529fcb" }],
+    },
+    {
+      featureType: "administrative.country",
+      elementType: "geometry.stroke",
+      stylers: [{ color: "#ef4646" }, { weight: 2.5 }],
+    },
+    {
+      featureType: "administrative.province",
+      elementType: "geometry.stroke",
+      stylers: [{ color: "#ef4646" }, { weight: 1.5 }],
     },
   ];
 
@@ -116,12 +126,12 @@ export default class extends Controller {
     {
       featureType: "administrative.province",
       elementType: "labels.text.fill",
-      stylers: [{ color: "#f17060" }],
+      stylers: [{ color: "#ef4646" }],
     },
     {
       featureType: "administrative.locality",
       elementType: "labels.text.fill",
-      stylers: [{ color: "#e85c47" }],
+      stylers: [{ color: "#ef4646" }],
     },
     {
       featureType: "administrative.locality",
@@ -131,7 +141,7 @@ export default class extends Controller {
     {
       featureType: "administrative.neighborhood",
       elementType: "labels.text.fill",
-      stylers: [{ color: "#f98575" }],
+      stylers: [{ color: "#ef4646" }],
     },
     {
       featureType: "landscape",
@@ -166,7 +176,7 @@ export default class extends Controller {
     {
       featureType: "road.highway.controlled_access",
       elementType: "geometry.fill",
-      stylers: [{ color: "#df4732" }],
+      stylers: [{ color: "#ef4646" }],
     },
     {
       featureType: "road.arterial",
@@ -176,7 +186,7 @@ export default class extends Controller {
     {
       featureType: "road.arterial",
       elementType: "labels.text.fill",
-      stylers: [{ color: "#ff9a8b" }],
+      stylers: [{ color: "#ef4646" }],
     },
     {
       featureType: "road.arterial",
@@ -191,7 +201,7 @@ export default class extends Controller {
     {
       featureType: "road.local",
       elementType: "labels.text.fill",
-      stylers: [{ color: "#ffb3a7" }],
+      stylers: [{ color: "#ef4646" }],
     },
     {
       featureType: "transit",
@@ -201,12 +211,27 @@ export default class extends Controller {
     {
       featureType: "water",
       elementType: "geometry",
-      stylers: [{ color: "#0f252e" }, { lightness: 17 }],
+      stylers: [{ color: "#529fcb" }, { lightness: 20 }],
     },
     {
       featureType: "water",
       elementType: "geometry.fill",
-      stylers: [{ color: "#080808" }, { gamma: 3.14 }, { weight: 1.07 }],
+      stylers: [{ color: "#529fcb" }, { lightness: 15 }],
+    },
+    {
+      featureType: "water",
+      elementType: "labels.text.fill",
+      stylers: [{ color: "#529fcb" }, { lightness: 30 }],
+    },
+    {
+      featureType: "administrative.country",
+      elementType: "geometry.stroke",
+      stylers: [{ color: "#ef4646" }, { weight: 2.5 }],
+    },
+    {
+      featureType: "administrative.province",
+      elementType: "geometry.stroke",
+      stylers: [{ color: "#ef4646" }, { weight: 1.5 }],
     },
   ];
 
@@ -245,6 +270,14 @@ export default class extends Controller {
     if (this.resizeTimeout) {
       clearTimeout(this.resizeTimeout);
       this.resizeTimeout = null;
+    }
+
+    // Clean up zoom controls
+    const zoomControls = this.mapContainerTarget?.querySelector(
+      ".custom-zoom-control"
+    );
+    if (zoomControls) {
+      zoomControls.remove();
     }
 
     this.observer = null;
@@ -291,7 +324,7 @@ export default class extends Controller {
         };
 
         const script = document.createElement("script");
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&loading=async&callback=initGoogleMaps&v=weekly`;
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&loading=async&callback=initGoogleMaps&v=weekly&libraries=geometry`;
         script.async = true;
         script.defer = true;
 
@@ -332,16 +365,19 @@ export default class extends Controller {
       zoom: this.zoomValue,
       styles,
       disableDefaultUI: false,
-      zoomControl: true,
+      zoomControl: false,
       mapTypeControl: false,
       scaleControl: true,
       streetViewControl: false,
       rotateControl: false,
       fullscreenControl: true,
-      gestureHandling: "auto",
+      gestureHandling: "greedy",
+      draggable: true,
     };
 
     this.map = new google.maps.Map(this.mapContainerTarget, mapOptions);
+
+    this.createZoomControls();
 
     this.marker = new google.maps.Marker({
       map: this.map,
@@ -360,6 +396,7 @@ export default class extends Controller {
 
     this.element.classList.add("map-loaded");
     this.setupResizeObserver(center);
+    this.setupSatelliteModeToggle(center);
 
     google.maps.event.addListenerOnce(this.map, "tilesloaded", () => {
       this.forceCenterMap(center);
@@ -475,5 +512,174 @@ export default class extends Controller {
     const center = { lat: this.latValue, lng: this.lngValue };
     console.log("Recentering map to:", center);
     this.forceCenterMap(center);
+  }
+
+  createZoomControls() {
+    if (!this.map) return;
+
+    // Create a custom control class
+    class ZoomControl {
+      constructor(controller) {
+        this.controller = controller;
+      }
+
+      onAdd(map) {
+        this.map = map;
+        const zoomControlDiv = document.createElement("div");
+        zoomControlDiv.className = "custom-zoom-control";
+
+        const zoomInButton = document.createElement("button");
+        zoomInButton.className = "custom-zoom-button custom-zoom-in";
+        zoomInButton.setAttribute("type", "button");
+        zoomInButton.setAttribute("aria-label", "Zoom in");
+        zoomInButton.innerHTML =
+          '<i class="bx bx-plus" aria-hidden="true"></i>';
+        zoomInButton.addEventListener("click", (e) => {
+          e.stopPropagation();
+          this.controller.zoomIn();
+        });
+
+        const zoomOutButton = document.createElement("button");
+        zoomOutButton.className = "custom-zoom-button custom-zoom-out";
+        zoomOutButton.setAttribute("type", "button");
+        zoomOutButton.setAttribute("aria-label", "Zoom out");
+        zoomOutButton.innerHTML =
+          '<i class="bx bx-minus" aria-hidden="true"></i>';
+        zoomOutButton.addEventListener("click", (e) => {
+          e.stopPropagation();
+          this.controller.zoomOut();
+        });
+
+        zoomControlDiv.appendChild(zoomInButton);
+        zoomControlDiv.appendChild(zoomOutButton);
+
+        this.zoomControlDiv = zoomControlDiv;
+        return zoomControlDiv;
+      }
+
+      onRemove() {
+        if (this.zoomControlDiv && this.zoomControlDiv.parentNode) {
+          this.zoomControlDiv.parentNode.removeChild(this.zoomControlDiv);
+        }
+      }
+    }
+
+    // Add the control to the map
+    const zoomControl = new ZoomControl(this);
+    this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(zoomControl);
+
+    this.updateZoomButtons();
+    this.map.addListener("zoom_changed", () => this.updateZoomButtons());
+  }
+
+  zoomIn() {
+    if (!this.map) return;
+    const currentZoom = this.map.getZoom();
+    if (currentZoom < 21) {
+      this.map.setZoom(currentZoom + 1);
+    }
+  }
+
+  zoomOut() {
+    if (!this.map) return;
+    const currentZoom = this.map.getZoom();
+    if (currentZoom > 0) {
+      this.map.setZoom(currentZoom - 1);
+    }
+  }
+
+  updateZoomButtons() {
+    if (!this.map) return;
+    const currentZoom = this.map.getZoom();
+    const zoomInButton = document.querySelector(".custom-zoom-in");
+    const zoomOutButton = document.querySelector(".custom-zoom-out");
+
+    if (zoomInButton) {
+      zoomInButton.disabled = currentZoom >= 21;
+      zoomInButton.setAttribute("aria-disabled", currentZoom >= 21);
+    }
+    if (zoomOutButton) {
+      zoomOutButton.disabled = currentZoom <= 0;
+      zoomOutButton.setAttribute("aria-disabled", currentZoom <= 0);
+    }
+  }
+
+  setupSatelliteModeToggle(markerPosition) {
+    if (!this.map) return;
+
+    // Threshold zoom level to switch to satellite (17 = close-up view)
+    const SATELLITE_ZOOM_THRESHOLD = 17;
+    // Maximum distance in meters from marker to show satellite view
+    const MAX_DISTANCE_METERS = 500;
+
+    const checkAndToggleSatellite = () => {
+      if (!this.map) return;
+
+      const currentZoom = this.map.getZoom();
+      const currentCenter = this.map.getCenter();
+      const currentMapType = this.map.getMapTypeId();
+
+      if (!currentCenter) return;
+
+      // Calculate distance from map center to marker
+      let distance = 0;
+      if (
+        google.maps.geometry &&
+        google.maps.geometry.spherical &&
+        google.maps.geometry.spherical.computeDistanceBetween
+      ) {
+        // Use geometry library if available
+        distance = google.maps.geometry.spherical.computeDistanceBetween(
+          currentCenter,
+          markerPosition
+        );
+      } else {
+        // Fallback: simple distance calculation using Haversine formula
+        const R = 6371000; // Earth's radius in meters
+        const lat1 = currentCenter.lat() * (Math.PI / 180);
+        const lat2 = markerPosition.lat * (Math.PI / 180);
+        const deltaLat =
+          (markerPosition.lat - currentCenter.lat()) * (Math.PI / 180);
+        const deltaLng =
+          (markerPosition.lng - currentCenter.lng()) * (Math.PI / 180);
+
+        const a =
+          Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
+          Math.cos(lat1) *
+            Math.cos(lat2) *
+            Math.sin(deltaLng / 2) *
+            Math.sin(deltaLng / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        distance = R * c;
+      }
+
+      // Check if we should show satellite view
+      const shouldShowSatellite =
+        currentZoom >= SATELLITE_ZOOM_THRESHOLD &&
+        distance <= MAX_DISTANCE_METERS;
+
+      if (
+        shouldShowSatellite &&
+        currentMapType !== google.maps.MapTypeId.HYBRID
+      ) {
+        // Switch to hybrid (satellite with labels) when zoomed in on marker
+        this.map.setMapTypeId(google.maps.MapTypeId.HYBRID);
+      } else if (
+        !shouldShowSatellite &&
+        currentMapType === google.maps.MapTypeId.HYBRID
+      ) {
+        // Switch back to roadmap when zoomed out or panned away
+        this.map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+      }
+    };
+
+    // Listen to zoom changes
+    this.map.addListener("zoom_changed", checkAndToggleSatellite);
+
+    // Listen to center changes (panning)
+    this.map.addListener("center_changed", checkAndToggleSatellite);
+
+    // Check initial state
+    checkAndToggleSatellite();
   }
 }
