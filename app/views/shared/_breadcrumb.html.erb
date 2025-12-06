@@ -22,7 +22,7 @@
   url = if item[:current]
     request.original_url.split("?").first
   elsif item[:path].present?
-    url_for(item[:path], only_path: false)
+    request.base_url + item[:path]
   end
   { name: item[:name], url: url }
 end.compact.reject { |item| item[:url].blank? } %>
