@@ -31,4 +31,5 @@ import audioPlayer from "src/components/audio-player";
 // Custom components
 import teamCardFocus from "src/components/team-card-focus";
 import pageLoader from "src/components/page-loader";
+import mobileMenu from "src/components/mobile-menu";
 import navigation from "src/navigation";
