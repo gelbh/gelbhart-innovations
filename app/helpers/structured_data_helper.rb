@@ -39,14 +39,18 @@ module StructuredDataHelper
   end
 
   def breadcrumb_list_schema(items)
-    return nil if items.blank? || items.length < 2
+    return nil if items.blank?
 
-    list_items = items.each_with_index.map do |item, index|
+    # Filter out items without valid absolute URLs
+    valid_items = items.select { |item| item[:url].present? && item[:url].start_with?("http") }
+    return nil if valid_items.length < 2
+
+    list_items = valid_items.each_with_index.map do |item, index|
       {
         "@type" => "ListItem",
         "position" => index + 1,
         "name" => item[:name],
-        "item" => item[:url] || item[:path]
+        "item" => item[:url]
       }
     end
 

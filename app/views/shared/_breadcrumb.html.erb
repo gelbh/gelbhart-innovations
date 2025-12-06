@@ -22,9 +22,9 @@
   url = if item[:current]
     request.original_url.split("?").first
   elsif item[:path].present?
-    url_for(item[:path])
+    url_for(item[:path], only_path: false)
   end
   { name: item[:name], url: url }
-end %>
+end.compact.reject { |item| item[:url].blank? } %>
 
 <%= json_ld_script(breadcrumb_list_schema(breadcrumb_items)) if breadcrumb_items.length >= 2 %>
