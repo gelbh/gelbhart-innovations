@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 #
 # Render Build Script
 # Handles Ruby dependencies, asset compilation, sitemap generation, and IndexNow operations
