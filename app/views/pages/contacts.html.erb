@@ -8,8 +8,7 @@
       <div class="position-relative contact-map-wrapper h-100"
            data-controller="google-map"
            data-google-map-lat-value="<%= AppConstants::CONTACT_INFO[:map_coordinates][:lat] %>"
-           data-google-map-lng-value="<%= AppConstants::CONTACT_INFO[:map_coordinates][:lng] %>"
-           data-google-map-address-value="<%= AppConstants::CONTACT_INFO[:address][:street] %>, <%= AppConstants::CONTACT_INFO[:address][:city] %>">
+           data-google-map-lng-value="<%= AppConstants::CONTACT_INFO[:map_coordinates][:lng] %>">
         <div class="d-flex flex-column h-100 shadow-lg rounded-4 overflow-hidden contact-map-container">
           <div class="contact-map-placeholder position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-light" aria-hidden="true">
             <div class="text-center text-muted">
@@ -27,9 +26,9 @@
            target="_blank"
            rel="noopener noreferrer"
            class="btn btn-sm btn-light shadow-sm position-absolute bottom-0 end-0 m-3 contact-map-link"
-           aria-label="View larger map in Google Maps (opens in new tab)">
+           aria-label="Open in Google Maps (opens in new tab)">
           <i class="bx bx-link-external me-1" aria-hidden="true"></i>
-          View Larger Map
+          Open in Google Maps
         </a>
       </div>
     </div>
