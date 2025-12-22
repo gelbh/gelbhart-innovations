@@ -4,6 +4,7 @@
 
 // Use Sass modules for modern functions
 @use "sass:color";
+@use "sass:map";
 
 .alert {
   --#{$prefix}alert-link-color: inherit;
@@ -39,7 +40,7 @@
   padding: calc(var(--#{$prefix}alert-padding-y) * 1.375)
     var(--#{$prefix}alert-padding-x);
 }
-@each $color, $value in map-remove($theme-colors, "secondary", "light", "dark")
+@each $color, $value in map.remove($theme-colors, "secondary", "light", "dark")
 {
   .alert-#{$color} .btn-close {
     background: transparent

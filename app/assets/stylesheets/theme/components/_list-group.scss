@@ -1,3 +1,5 @@
+@use "sass:map";
+
 //
 // List group
 // --------------------------------------------------
@@ -124,9 +126,10 @@
 
 // Horizontal
 //
+
 // Change the layout of list group items from vertical (default) to horizontal.
 
-@each $breakpoint in map-keys($grid-breakpoints) {
+@each $breakpoint in map.keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
