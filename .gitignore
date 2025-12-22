@@ -29,9 +29,6 @@
 
 # Security
 /config/master.key
-/config/credentials/*.key
-/config/credentials/development.key
-/config/credentials/production.key
 
 # Dependencies
 node_modules
