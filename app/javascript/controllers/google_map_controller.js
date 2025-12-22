@@ -1,11 +1,22 @@
 import { Controller } from "@hotwired/stimulus";
 
+// Configuration constants
+const SATELLITE_ZOOM_THRESHOLD = 17;
+const MAX_DISTANCE_METERS = 500;
+const RESIZE_DEBOUNCE_MS = 150;
+const INITIAL_CENTER_DELAY_MS = 450;
+const FALLBACK_RECENTER_DELAYS_MS = [100, 300, 600, 1000];
+const INTERSECTION_OBSERVER_ROOT_MARGIN = "100px";
+const INTERSECTION_OBSERVER_THRESHOLD = 0.1;
+const EARTH_RADIUS_METERS = 6371000;
+
 /**
  * Google Map Controller
  *
  * Implements Google Maps JavaScript API with:
- * - Lazy loading with IntersectionObserver
+ * - Lazy loading via IntersectionObserver
  * - Cloud-Based Map Styling (CBMS v2) via Map ID
+ * - AdvancedMarkerElement for modern marker rendering
  */
 export default class extends Controller {
   static targets = ["mapContainer"];
@@ -18,10 +29,10 @@ export default class extends Controller {
   };
 
   connect() {
-    window.mapController = this;
     this.lastWidth = 0;
     this.lastHeight = 0;
     this.resizeTimeout = null;
+    this.mapEventListeners = [];
 
     if (!("IntersectionObserver" in window)) {
       this.loadMap();
@@ -30,14 +41,16 @@ export default class extends Controller {
 
     this.observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            this.loadMap();
-            this.observer.unobserve(entry.target);
-          }
-        });
+        const entry = entries.find((e) => e.isIntersecting);
+        if (entry) {
+          this.loadMap();
+          this.observer.unobserve(entry.target);
+        }
       },
-      { rootMargin: "100px", threshold: 0.1 }
+      {
+        rootMargin: INTERSECTION_OBSERVER_ROOT_MARGIN,
+        threshold: INTERSECTION_OBSERVER_THRESHOLD,
+      }
     );
 
     this.observer.observe(this.element);
@@ -52,62 +65,64 @@ export default class extends Controller {
       this.resizeTimeout = null;
     }
 
+    this.mapEventListeners.forEach((listener) => listener?.remove());
+    this.mapEventListeners = [];
+
     this.observer = null;
     this.resizeObserver = null;
+    this.map = null;
+    this.marker = null;
   }
 
   async loadMap() {
     try {
-      if (typeof google !== "undefined" && google.maps) {
-        this.initializeMap();
-        return;
-      }
-
-      await this.loadGoogleMapsAPI();
-      this.initializeMap();
+      await this.ensureGoogleMapsLoaded();
+      await this.initializeMap();
     } catch (error) {
       console.error("Failed to load Google Maps:", error);
       this.showError();
     }
   }
 
+  async ensureGoogleMapsLoaded() {
+    if (typeof google !== "undefined" && google.maps) {
+      return;
+    }
+
+    if (window.googleMapsLoading) {
+      return window.googleMapsLoading;
+    }
+
+    window.googleMapsLoading = this.loadGoogleMapsAPI();
+    return window.googleMapsLoading;
+  }
+
   loadGoogleMapsAPI() {
     return new Promise((resolve, reject) => {
-      if (window.googleMapsLoading) {
-        window.googleMapsLoading.then(resolve).catch(reject);
+      const apiKey = this.getApiKey();
+
+      if (!apiKey) {
+        reject(new Error("Google Maps API key is required"));
         return;
       }
 
-      window.googleMapsLoading = new Promise((res, rej) => {
-        const apiKey = this.getApiKey();
+      const callbackName = `initGoogleMaps_${Date.now()}`;
+      window[callbackName] = () => {
+        delete window[callbackName];
+        resolve();
+      };
 
-        if (!apiKey) {
-          const error = new Error("Google Maps API key is required");
-          rej(error);
-          reject(error);
-          return;
-        }
+      const script = document.createElement("script");
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&loading=async&callback=${callbackName}&v=weekly&libraries=geometry,marker`;
+      script.async = true;
+      script.defer = true;
 
-        window.initGoogleMaps = () => {
-          delete window.initGoogleMaps;
-          res();
-          resolve();
-        };
+      script.onerror = () => {
+        delete window[callbackName];
+        reject(new Error("Failed to load Google Maps API"));
+      };
 
-        const script = document.createElement("script");
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&loading=async&callback=initGoogleMaps&v=weekly&libraries=geometry`;
-        script.async = true;
-        script.defer = true;
-
-        script.onerror = () => {
-          delete window.initGoogleMaps;
-          const error = new Error("Failed to load Google Maps API");
-          rej(error);
-          reject(error);
-        };
-
-        document.head.appendChild(script);
-      });
+      document.head.appendChild(script);
     });
   }
 
@@ -139,14 +154,13 @@ export default class extends Controller {
     return "";
   }
 
-  initializeMap() {
+  async initializeMap() {
     const center = { lat: this.latValue, lng: this.lngValue };
-    const mapId = this.getMapId();
 
-    const mapOptions = {
+    this.map = new google.maps.Map(this.mapContainerTarget, {
       center,
       zoom: this.zoomValue,
-      mapId,
+      mapId: this.getMapId(),
       colorScheme: google.maps.ColorScheme.FOLLOW_SYSTEM,
       disableDefaultUI: false,
       zoomControl: false,
@@ -157,24 +171,31 @@ export default class extends Controller {
       fullscreenControl: true,
       gestureHandling: "greedy",
       draggable: true,
-    };
-
-    this.map = new google.maps.Map(this.mapContainerTarget, mapOptions);
-
-    this.marker = new google.maps.Marker({
-      map: this.map,
-      position: center,
     });
+
+    await this.createMarker(center);
 
     this.element.classList.add("map-loaded");
     this.setupResizeObserver(center);
     this.setupSatelliteModeToggle(center);
 
-    google.maps.event.addListenerOnce(this.map, "tilesloaded", () => {
-      this.forceCenterMap(center);
-    });
+    const tilesLoadedListener = google.maps.event.addListenerOnce(
+      this.map,
+      "tilesloaded",
+      () => this.forceCenterMap(center)
+    );
+    this.mapEventListeners.push(tilesLoadedListener);
 
     this.dispatch("loaded", { detail: { map: this.map } });
+  }
+
+  async createMarker(position) {
+    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+    this.marker = new AdvancedMarkerElement({
+      map: this.map,
+      position,
+    });
   }
 
   setupResizeObserver(center) {
@@ -187,28 +208,26 @@ export default class extends Controller {
       for (const entry of entries) {
         const { width, height } = entry.contentRect;
 
-        if (width !== this.lastWidth || height !== this.lastHeight) {
-          this.lastWidth = width;
-          this.lastHeight = height;
+        if (width === this.lastWidth && height === this.lastHeight) continue;
 
-          if (this.resizeTimeout) clearTimeout(this.resizeTimeout);
+        this.lastWidth = width;
+        this.lastHeight = height;
 
-          this.resizeTimeout = setTimeout(() => {
-            this.forceCenterMap(center);
-          }, 150);
-        }
+        if (this.resizeTimeout) clearTimeout(this.resizeTimeout);
+
+        this.resizeTimeout = setTimeout(() => {
+          this.forceCenterMap(center);
+        }, RESIZE_DEBOUNCE_MS);
       }
     });
 
     this.resizeObserver.observe(this.mapContainerTarget);
 
-    setTimeout(() => {
-      this.forceCenterMap(center);
-    }, 450);
+    setTimeout(() => this.forceCenterMap(center), INITIAL_CENTER_DELAY_MS);
   }
 
   fallbackRecenter(center) {
-    [100, 300, 600, 1000].forEach((delay) => {
+    FALLBACK_RECENTER_DELAYS_MS.forEach((delay) => {
       setTimeout(() => {
         if (this.map) this.forceCenterMap(center);
       }, delay);
@@ -221,23 +240,21 @@ export default class extends Controller {
     google.maps.event.trigger(this.map, "resize");
 
     requestAnimationFrame(() => {
-      if (this.map) {
-        this.map.setCenter(center);
-        this.map.setZoom(this.zoomValue);
-      }
+      this.map?.setCenter(center);
+      this.map?.setZoom(this.zoomValue);
     });
   }
 
   showError() {
     const placeholder = this.element.querySelector(".contact-map-placeholder");
-    if (placeholder) {
-      placeholder.innerHTML = `
-        <div class="text-center text-danger">
-          <i class="bx bx-error fs-1 mb-2 d-block"></i>
-          <span class="fs-sm">Failed to load map</span>
-        </div>
-      `;
-    }
+    if (!placeholder) return;
+
+    placeholder.innerHTML = `
+      <div class="text-center text-danger">
+        <i class="bx bx-error fs-1 mb-2 d-block"></i>
+        <span class="fs-sm">Failed to load map</span>
+      </div>
+    `;
   }
 
   recenter() {
@@ -247,86 +264,67 @@ export default class extends Controller {
     }
 
     const center = { lat: this.latValue, lng: this.lngValue };
-    console.log("Recentering map to:", center);
     this.forceCenterMap(center);
   }
 
   setupSatelliteModeToggle(targetPosition) {
     if (!this.map) return;
 
-    // Threshold zoom level to switch to satellite (17 = close-up view)
-    const SATELLITE_ZOOM_THRESHOLD = 17;
-    // Maximum distance in meters from target to show satellite view
-    const MAX_DISTANCE_METERS = 500;
-
     const checkAndToggleSatellite = () => {
       if (!this.map) return;
 
       const currentZoom = this.map.getZoom();
       const currentCenter = this.map.getCenter();
-      const currentMapType = this.map.getMapTypeId();
-
       if (!currentCenter) return;
 
-      // Calculate distance from map center to target
-      let distance = 0;
-      if (
-        google.maps.geometry &&
-        google.maps.geometry.spherical &&
-        google.maps.geometry.spherical.computeDistanceBetween
-      ) {
-        // Use geometry library if available
-        distance = google.maps.geometry.spherical.computeDistanceBetween(
-          currentCenter,
-          targetPosition
-        );
-      } else {
-        // Fallback: simple distance calculation using Haversine formula
-        const R = 6371000; // Earth's radius in meters
-        const lat1 = currentCenter.lat() * (Math.PI / 180);
-        const lat2 = targetPosition.lat * (Math.PI / 180);
-        const deltaLat =
-          (targetPosition.lat - currentCenter.lat()) * (Math.PI / 180);
-        const deltaLng =
-          (targetPosition.lng - currentCenter.lng()) * (Math.PI / 180);
-
-        const a =
-          Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
-          Math.cos(lat1) *
-            Math.cos(lat2) *
-            Math.sin(deltaLng / 2) *
-            Math.sin(deltaLng / 2);
-        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        distance = R * c;
-      }
-
-      // Check if we should show satellite view
+      const distance = this.calculateDistance(currentCenter, targetPosition);
       const shouldShowSatellite =
         currentZoom >= SATELLITE_ZOOM_THRESHOLD &&
         distance <= MAX_DISTANCE_METERS;
 
-      if (
-        shouldShowSatellite &&
-        currentMapType !== google.maps.MapTypeId.HYBRID
-      ) {
-        // Switch to hybrid (satellite with labels) when zoomed in on target
+      const currentMapType = this.map.getMapTypeId();
+      const isHybrid = currentMapType === google.maps.MapTypeId.HYBRID;
+
+      if (shouldShowSatellite && !isHybrid) {
         this.map.setMapTypeId(google.maps.MapTypeId.HYBRID);
-      } else if (
-        !shouldShowSatellite &&
-        currentMapType === google.maps.MapTypeId.HYBRID
-      ) {
-        // Switch back to roadmap when zoomed out or panned away
+      } else if (!shouldShowSatellite && isHybrid) {
         this.map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
       }
     };
 
-    // Listen to zoom changes
-    this.map.addListener("zoom_changed", checkAndToggleSatellite);
+    const zoomListener = this.map.addListener(
+      "zoom_changed",
+      checkAndToggleSatellite
+    );
+    const centerListener = this.map.addListener(
+      "center_changed",
+      checkAndToggleSatellite
+    );
 
-    // Listen to center changes (panning)
-    this.map.addListener("center_changed", checkAndToggleSatellite);
-
-    // Check initial state
+    this.mapEventListeners.push(zoomListener, centerListener);
     checkAndToggleSatellite();
+  }
+
+  calculateDistance(from, to) {
+    if (google.maps.geometry?.spherical?.computeDistanceBetween) {
+      return google.maps.geometry.spherical.computeDistanceBetween(from, to);
+    }
+
+    return this.haversineDistance({ lat: from.lat(), lng: from.lng() }, to);
+  }
+
+  haversineDistance(point1, point2) {
+    const toRadians = (deg) => deg * (Math.PI / 180);
+
+    const lat1 = toRadians(point1.lat);
+    const lat2 = toRadians(point2.lat);
+    const deltaLat = toRadians(point2.lat - point1.lat);
+    const deltaLng = toRadians(point2.lng - point1.lng);
+
+    const a =
+      Math.sin(deltaLat / 2) ** 2 +
+      Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLng / 2) ** 2;
+
+    return EARTH_RADIUS_METERS * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   }
 }
