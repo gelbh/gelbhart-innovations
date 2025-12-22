@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # Main pages
   get "services", to: "pages#services"
   get "team", to: "pages#team"
-  get "contacts", to: "pages#contacts"
+  get "contact", to: "pages#contact"
 
   # Service category pages
   get "services/pharmaceutical", to: "pages#pharmaceutical", as: "pharmaceutical"
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   # Legacy redirects
   get "pharmaceutical", to: redirect("/services/pharmaceutical", status: 301)
   get "real_estate", to: redirect("/services/real-estate", status: 301)
+  get "contacts", to: redirect("/contact", status: 301)
 
   # Document pages
   get "tos", to: "documents#tos"

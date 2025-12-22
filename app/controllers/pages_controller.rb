@@ -43,12 +43,12 @@ class PagesController < ApplicationController
     @members = TeamMember.all
   end
 
-  def contacts
+  def contact
     assign_page_metadata(
       title: "Contact Us",
       description: "Get in touch with Gelbhart Innovations. Contact us for inquiries about our pharmaceutical and real estate consulting services."
     )
-    assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:contacts], height: 300, speed: 0.1)
+    assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:contact], height: 300, speed: 0.1)
 
     # Generate LocalBusiness structured data
     contact = AppConstants::CONTACT_INFO

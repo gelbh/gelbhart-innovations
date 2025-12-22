@@ -73,7 +73,7 @@
 
     <%= render 'shared/header' unless controller.controller_name == "errors" %>
 
-    <main class="page-wrapper <%= 'bg-faded-primary' if controller.controller_name == 'contacts' %>" style="min-height: 100vh;">
+    <main class="page-wrapper <%= 'bg-faded-primary' if action_name == 'contact' %>" style="min-height: 100vh;">
       <% case controller.controller_name %>
       <% when "errors" %>
         <%= render 'layouts/error' %>

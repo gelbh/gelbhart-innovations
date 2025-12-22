@@ -35,8 +35,8 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_select "h2", "Our leadership"
   end
 
-  test "should get contacts" do
-    get contacts_url
+  test "should get contact" do
+    get contact_url
     assert_response :success
     assert_select "title", /Contact Us/
   end

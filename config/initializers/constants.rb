@@ -19,10 +19,10 @@ module AppConstants
   JARALLAX_IMAGES = {
     services: "covers/services_cover.jpg",
     team: "covers/team_cover.jpg",
-    contacts: "covers/contacts_cover.jpg"
+    contact: "covers/contacts_cover.jpg"
   }.freeze
 
-  BREADCRUMB_EXCLUDED_CONTROLLERS = %w[pages contacts documents].freeze
+  BREADCRUMB_EXCLUDED_CONTROLLERS = %w[pages contact documents].freeze
 
   SERVICE_ACTIONS = %w[pharmaceutical real_estate].freeze
 

@@ -40,7 +40,7 @@ SitemapGenerator::Sitemap.create do
   add pharmaceutical_path, lastmod: view_lastmod("pages/pharmaceutical.html.erb")
   add real_estate_path, lastmod: view_lastmod("pages/real_estate.html.erb")
   add team_path, lastmod: view_lastmod("pages/team.html.erb")
-  add contacts_path, lastmod: view_lastmod("pages/contacts.html.erb")
+  add contact_path, lastmod: view_lastmod("pages/contact.html.erb")
 
   # Document pages
   add tos_path, lastmod: view_lastmod("documents/tos.html.erb")

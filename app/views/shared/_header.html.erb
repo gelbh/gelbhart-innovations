@@ -40,7 +40,7 @@
             <%= link_to "Team", team_path, class: "nav-link #{nav_active_class(team_path)}", data: { turbo_preload: true } %>
           </li>
           <li class="nav-item">
-            <%= link_to "Contact Us", contacts_path, class: "nav-link #{nav_active_class(contacts_path)}", data: { turbo_preload: true } %>
+            <%= link_to "Contact Us", contact_path, class: "nav-link #{nav_active_class(contact_path)}", data: { turbo_preload: true } %>
           </li>
         </ul>
       </div>
@@ -112,7 +112,7 @@
               <% end %>
             </li>
             <li class="mobile-nav-item">
-              <%= link_to contacts_path, class: "mobile-nav-link d-flex align-items-center #{nav_active_class(contacts_path)}", data: { turbo_preload: true } do %>
+              <%= link_to contact_path, class: "mobile-nav-link d-flex align-items-center #{nav_active_class(contact_path)}", data: { turbo_preload: true } do %>
                 <i class="bx bx-envelope me-2"></i>
                 <span>Contact Us</span>
               <% end %>
