@@ -10,8 +10,6 @@ services:
     # Environment variables
     envVars:
       # Rails configuration
-      - key: RAILS_ENV
-        value: production
       - key: RAILS_MASTER_KEY
         sync: false
       - key: RAILS_SERVE_STATIC_FILES
