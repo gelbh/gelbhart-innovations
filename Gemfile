@@ -15,12 +15,8 @@ gem "sprockets-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
 
-# Database
-gem "pg"
-
 # Assets
 gem "dartsass-rails"
-gem "image_processing", "~> 1.2"
 
 # Application features
 gem "mail_form"

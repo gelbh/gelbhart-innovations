@@ -17,8 +17,6 @@ Rails.application.configure do
   config.assets.version = "1.0"
   config.assets.debug = false
 
-  config.active_storage.service = :local
-
   # Force SSL with HSTS, excluding health check endpoint
   config.force_ssl = true
   config.ssl_options = { redirect: { exclude: ->(request) { request.path == "/up" } } }
@@ -32,6 +30,4 @@ Rails.application.configure do
   config.active_support.report_deprecations = false
   config.action_mailer.default_url_options = { host: "gelbhart.com" }
   config.i18n.fallbacks = true
-  config.active_record.dump_schema_after_migration = false
-  config.active_record.attributes_for_inspect = [:id]
 end

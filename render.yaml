@@ -19,10 +19,6 @@ services:
       - key: RAILS_LOG_TO_STDOUT
         value: "true"
 
-      # Database configuration
-      - key: DATABASE_URL
-        sync: false
-
     # Health check configuration
     healthCheckPath: /
 
