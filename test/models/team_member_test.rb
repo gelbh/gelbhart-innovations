@@ -21,8 +21,7 @@ class TeamMemberTest < ActiveSupport::TestCase
 
   test "first_name returns first part of name" do
     member = TeamMember.new(
-      name: "John Doe",
-      bio: "Test bio",
+      key: :john_doe,
       linkedin_url: "https://linkedin.com/in/johndoe"
     )
 
@@ -31,18 +30,16 @@ class TeamMemberTest < ActiveSupport::TestCase
 
   test "image_filename returns path with lowercase first name and extension" do
     member = TeamMember.new(
-      name: "John Doe",
-      bio: "Test bio",
+      key: :john_doe,
       linkedin_url: "https://linkedin.com/in/johndoe"
     )
 
-    assert_equal "team/john.png", member.image_filename
+    assert_equal "team/john_doe.png", member.image_filename
   end
 
   test "github? returns true when github_url is present" do
     member = TeamMember.new(
-      name: "John Doe",
-      bio: "Test bio",
+      key: :john_doe,
       linkedin_url: "https://linkedin.com/in/johndoe",
       github_url: "https://github.com/johndoe"
     )
@@ -52,8 +49,7 @@ class TeamMemberTest < ActiveSupport::TestCase
 
   test "github? returns false when github_url is nil" do
     member = TeamMember.new(
-      name: "John Doe",
-      bio: "Test bio",
+      key: :john_doe,
       linkedin_url: "https://linkedin.com/in/johndoe"
     )
 
@@ -62,16 +58,16 @@ class TeamMemberTest < ActiveSupport::TestCase
 
   test "initializes with all attributes" do
     member = TeamMember.new(
-      name: "John Doe",
-      bio: "Test bio",
+      key: :john_doe,
       linkedin_url: "https://linkedin.com/in/johndoe",
       github_url: "https://github.com/johndoe"
     )
 
-    assert_equal "John Doe", member.name
-    assert_equal "Test bio", member.bio
+    assert_equal :john_doe, member.key
     assert_equal "https://linkedin.com/in/johndoe", member.linkedin_url
     assert_equal "https://github.com/johndoe", member.github_url
+    assert_respond_to member, :name
+    assert_respond_to member, :bio
   end
 end
 

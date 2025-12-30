@@ -46,16 +46,17 @@ class ServiceTest < ActiveSupport::TestCase
 
   test "service initializes with all attributes" do
     service = Service.new(
-      title: "Test Service",
+      key: "test_service",
       icon: "bx bx-test",
-      subtitle: "Test Subtitle",
-      description: "Test Description"
+      category: :pharmaceutical
     )
 
-    assert_equal "Test Service", service.title
+    assert_equal "test_service", service.key
     assert_equal "bx bx-test", service.icon
-    assert_equal "Test Subtitle", service.subtitle
-    assert_equal "Test Description", service.description
+    assert_equal :pharmaceutical, service.category
+    assert_respond_to service, :title
+    assert_respond_to service, :subtitle
+    assert_respond_to service, :description
   end
 end
 
