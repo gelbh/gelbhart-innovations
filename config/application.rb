@@ -23,5 +23,10 @@ module Innovations
 
     # Disable system test file generation
     config.generators.system_tests = nil
+
+    # Internationalization (i18n) configuration
+    config.i18n.available_locales = %i[en es fr de it pt zh ja ko ar]
+    config.i18n.default_locale = :en
+    config.i18n.fallbacks = true
   end
 end

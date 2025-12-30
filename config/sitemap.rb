@@ -2,12 +2,10 @@
 
 require "sitemap_generator"
 
-# Determine the base host with environment-aware fallback
 base_host = ENV.fetch("SITEMAP_HOST", nil) ||
             Rails.application.config.action_mailer.default_url_options[:host] ||
             "gelbhart.com"
 
-# Normalize host (remove protocol if present) and construct HTTPS URL
 normalized_host = base_host.gsub(%r{^https?://}, "")
 default_host = "https://#{normalized_host}"
 
@@ -16,7 +14,8 @@ SitemapGenerator::Sitemap.public_path = "public/"
 SitemapGenerator::Sitemap.sitemaps_path = ""
 SitemapGenerator::Sitemap.compress = false
 
-# Get last modification time for a view file
+SITEMAP_LOCALES = %i[en es fr de it pt zh ja ko ar].freeze
+
 def view_lastmod(view_path)
   full_path = Rails.root.join("app/views", view_path)
   full_path.exist? ? File.mtime(full_path) : Time.current
@@ -24,25 +23,33 @@ rescue StandardError
   Time.current
 end
 
-# Get the most recent modification time from multiple view files
 def recent_view_lastmod(*view_paths)
   view_paths.map { |path| view_lastmod(path) }.max || Time.current
+end
+
+def alternate_links_for(path_method, _locale_param = nil)
+  SITEMAP_LOCALES.map do |locale|
+    locale_path = locale == :en ? nil : locale
+    path = public_send(path_method, locale: locale_path)
+    { href: "#{SitemapGenerator::Sitemap.default_host}#{path}", lang: locale.to_s }
+  end
 end
 
 SitemapGenerator::Sitemap.create do
   extend Rails.application.routes.url_helpers
 
-  # Home page
-  add root_path, lastmod: recent_view_lastmod("pages/index.html.erb", "layouts/application.html.erb")
+  SITEMAP_LOCALES.each do |locale|
+    locale_param = locale == :en ? nil : locale
 
-  # Main pages
-  add services_path, lastmod: view_lastmod("pages/services.html.erb")
-  add pharmaceutical_path, lastmod: view_lastmod("pages/pharmaceutical.html.erb")
-  add real_estate_path, lastmod: view_lastmod("pages/real_estate.html.erb")
-  add team_path, lastmod: view_lastmod("pages/team.html.erb")
-  add contact_path, lastmod: view_lastmod("pages/contact.html.erb")
+    add root_path(locale: locale_param),
+        lastmod: recent_view_lastmod("pages/index.html.erb", "layouts/application.html.erb"),
+        alternates: alternate_links_for(:root_path)
 
-  # Document pages
-  add tos_path, lastmod: view_lastmod("documents/tos.html.erb")
+    add services_path(locale: locale_param), lastmod: view_lastmod("pages/services.html.erb"), alternates: alternate_links_for(:services_path)
+    add pharmaceutical_path(locale: locale_param), lastmod: view_lastmod("pages/pharmaceutical.html.erb"), alternates: alternate_links_for(:pharmaceutical_path)
+    add real_estate_path(locale: locale_param), lastmod: view_lastmod("pages/real_estate.html.erb"), alternates: alternate_links_for(:real_estate_path)
+    add team_path(locale: locale_param), lastmod: view_lastmod("pages/team.html.erb"), alternates: alternate_links_for(:team_path)
+    add contact_path(locale: locale_param), lastmod: view_lastmod("pages/contact.html.erb"), alternates: alternate_links_for(:contact_path)
+    add tos_path(locale: locale_param), lastmod: view_lastmod("documents/tos.html.erb"), alternates: alternate_links_for(:tos_path)
+  end
 end
-
