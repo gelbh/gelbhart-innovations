@@ -1,12 +1,7 @@
-// ============================================================================
-// Application Styles - Bootstrap 5 + Silicon Theme
-// ============================================================================
-
 // Theme Variables & Bootstrap Core
 @import "theme/user-variables";
 @import "theme/variables";
 @import "theme/variables-dark";
-
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/variables";
@@ -23,6 +18,7 @@
 @import "global/transitions";
 @import "global/base";
 @import "global/responsive";
+@import "global/rtl";
 
 // Components
 @import "components/page-loader";
@@ -30,8 +26,9 @@
 @import "components/hero";
 @import "components/footer";
 @import "components/parallax";
+@import "components/language-switcher";
 
-// Page-Specific Styles
+// Pages
 @import "pages/services";
 @import "pages/team";
 @import "pages/contact";

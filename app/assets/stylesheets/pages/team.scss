@@ -1,12 +1,4 @@
-// ============================================================================
-// Team Page Styles
-// Team member cards with hover effects, modals, and responsive design
-// ============================================================================
-
-// ----------------------------------------------------------------------------
 // Base Team Page Layout
-// ----------------------------------------------------------------------------
-
 .team-page {
   position: relative;
 
@@ -25,10 +17,7 @@
   }
 }
 
-// ----------------------------------------------------------------------------
 // Team Card Structure
-// ----------------------------------------------------------------------------
-
 .team-card {
   display: flex;
 }
@@ -42,7 +31,6 @@
 
   &:focus-within {
     outline: none;
-
     .team-card-button {
       transform: translateY(-2px);
     }
@@ -125,10 +113,7 @@
   gap: 0.75rem;
 }
 
-// ----------------------------------------------------------------------------
 // Team Card Social Links
-// ----------------------------------------------------------------------------
-
 .team-card-social {
   display: inline-flex;
   align-items: center;
@@ -180,20 +165,13 @@
   }
 }
 
-// ----------------------------------------------------------------------------
 // Team Modal
-// ----------------------------------------------------------------------------
-
 .team-modal {
   .modal-content {
     border-radius: 1.5rem;
     border: none;
     box-shadow: 0 30px 80px rgba(11, 15, 25, 0.3);
     overflow: hidden;
-
-    @media (min-width: 576px) {
-      border-radius: 1.5rem;
-    }
   }
 
   .modal-body {
@@ -275,17 +253,13 @@
 .team-modal-bio {
   p {
     margin-bottom: 1rem;
-
     &:last-child {
       margin-bottom: 0;
     }
   }
 }
 
-// ----------------------------------------------------------------------------
-// Team Page Variant (Variant C with tweaks)
-// ----------------------------------------------------------------------------
-
+// Team Page Variant
 .team-page .team-card-inner {
   position: relative;
   overflow: hidden;
@@ -301,7 +275,6 @@
   text-align: center;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 
-  // Gradient hover effect on card background only
   &::before {
     content: "";
     position: absolute;
@@ -326,7 +299,6 @@
     &::before {
       opacity: 1;
     }
-
     .team-card-image {
       transform: none;
     }
@@ -335,7 +307,6 @@
   @media (max-width: 991.98px) {
     padding: 2rem 1.5rem;
   }
-
   @media (max-width: 575.98px) {
     padding: 1.75rem 1.25rem;
   }
@@ -354,7 +325,6 @@
   @media (max-width: 991.98px) {
     width: 75%;
   }
-
   @media (max-width: 575.98px) {
     width: 85%;
     min-width: 0;
@@ -433,10 +403,7 @@
   display: none;
 }
 
-// ----------------------------------------------------------------------------
 // Team Page Modal Styling
-// ----------------------------------------------------------------------------
-
 .team-page .team-modal {
   .modal-content {
     position: relative;
@@ -460,7 +427,7 @@
     .btn-close {
       position: absolute;
       top: 1.25rem;
-      right: 1.25rem;
+      inset-inline-end: 1.25rem;
       z-index: 1060;
       margin: 0;
       border-radius: 50%;
@@ -510,7 +477,7 @@
 .team-page .team-modal-header {
   justify-content: flex-start;
   align-items: flex-start;
-  text-align: left;
+  text-align: start;
   flex-wrap: wrap;
   gap: 2rem;
 }
@@ -569,10 +536,7 @@
   line-height: 1.75;
 }
 
-// ----------------------------------------------------------------------------
 // Dark Mode Styles
-// ----------------------------------------------------------------------------
-
 .dark-mode {
   .team-card-inner {
     background: rgba(15, 20, 32, 0.9);
@@ -596,7 +560,6 @@
     color: var(--si-gray-400);
   }
 
-  // Team page variant dark mode
   .team-page {
     .team-card-inner {
       background: linear-gradient(
@@ -676,11 +639,7 @@
   }
 }
 
-// ----------------------------------------------------------------------------
-// Accessibility & Performance
-// ----------------------------------------------------------------------------
-
-// Reduce motion for users who prefer it
+// Accessibility: Reduced Motion
 @media (prefers-reduced-motion: reduce) {
   .team-card-inner,
   .team-card-image,
@@ -692,7 +651,7 @@
   }
 }
 
-// Modal backdrop optimization
+// Modal Backdrop
 .modal-backdrop {
   will-change: opacity;
   transform: translateZ(0);
@@ -707,7 +666,6 @@
   }
 }
 
-// Ensure smooth modal rendering
 .team-modal.show .modal-dialog {
   transform: translateZ(0);
 }

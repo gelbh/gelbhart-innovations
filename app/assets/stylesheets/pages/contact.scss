@@ -1,4 +1,3 @@
-// Contact Page
 .contact-map-wrapper {
   isolation: isolate;
   min-height: 350px;
@@ -59,6 +58,7 @@
     height: 100% !important;
   }
 
+  // Hide Google Maps attribution for cleaner look
   .gm-style-cc,
   .gmnoprint.gm-style-cc,
   a[href^="https://maps.google.com/maps"],
@@ -164,10 +164,8 @@
 
 .contact-info-item {
   border-radius: 0.5rem;
-  margin-left: -0.5rem;
-  margin-right: -0.5rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  margin-inline: -0.5rem;
+  padding-inline: 0.5rem;
 
   &:focus-within {
     background-color: rgba(var(--si-primary-rgb), 0.06);
@@ -232,7 +230,7 @@
   margin-top: 0.125rem;
 }
 
-// Reduced motion support
+// Accessibility: Reduced Motion
 @media (prefers-reduced-motion: reduce) {
   .contact-map-container,
   .contact-map-placeholder,
@@ -245,16 +243,14 @@
   }
 }
 
-// High contrast mode support
+// Accessibility: High Contrast
 @media (prefers-contrast: high) {
   .contact-map-container:focus-within {
     outline-width: 3px;
   }
-
   .contact-info-item:not(:last-child) {
     border-bottom-width: 2px;
   }
-
   .contact-link:focus-visible {
     outline-width: 3px;
   }
