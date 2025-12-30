@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "prepare": "husky",
+    "postinstall": "mkdir -p app/assets/vendor && rm -rf app/assets/vendor/flag-icons && cp -r node_modules/flag-icons app/assets/vendor/flag-icons",
     "lint:commit": "commitlint --edit"
   },
   "author": "Gelbhart Innovations",
