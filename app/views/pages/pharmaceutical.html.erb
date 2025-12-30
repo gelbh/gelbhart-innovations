@@ -5,9 +5,9 @@
 
   <section class="container py-2 pb-md-4 pb-lg-5 px-3 px-sm-4">
     <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between gap-3 mb-3 mb-sm-4">
-      <h1 class="mb-0 fs-3 fs-sm-2 fs-md-1">Pharmaceutical Services</h1>
+      <h1 class="mb-0 fs-3 fs-sm-2 fs-md-1"><%= t('pages.services.pharmaceutical.page_title') %></h1>
       <%= link_to services_path, class: "btn btn-outline-primary btn-sm btn-md-md flex-shrink-0", data: { turbo_preload: true } do %>
-        <i class="bx bx-arrow-back me-1 me-sm-2"></i><span class="d-none d-sm-inline">All Services</span>
+        <i class="bx bx-arrow-back me-1 me-sm-2"></i><span class="d-none d-sm-inline"><%= t('pages.services.pharmaceutical.back_button') %></span>
       <% end %>
     </div>
 

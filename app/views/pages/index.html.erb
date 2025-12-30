@@ -2,14 +2,14 @@
   <div class="container px-3 px-sm-4">
     <div class="row justify-content-center">
       <div class="col-11 col-sm-10 col-md-8 col-lg-6 text-center mb-3 mb-sm-4">
-        <%= image_tag "logo.png", alt: "Gelbhart Innovations Logo", class: "img-fluid hero-logo", style: "max-width: 250px;" %>
+        <%= image_tag "logo.png", alt: t('site.name') + " Logo", class: "img-fluid hero-logo", style: "max-width: 250px;" %>
       </div>
     </div>
 
     <div class="row justify-content-center">
       <div class="col-11 col-sm-10 col-md-8 col-lg-6">
         <h1 class="display-4 display-5-sm text-center hero-title">
-          GELBHART <span class="text-gradient-primary">INNOVATIONS</span>
+          <%= t('pages.home.title') %> <span class="text-gradient-primary"><%= t('pages.home.subtitle') %></span>
         </h1>
       </div>
     </div>
@@ -17,7 +17,7 @@
     <div class="row justify-content-center">
       <div class="col-11 col-sm-10 col-md-8 col-lg-6 pt-2 pt-sm-3">
         <h2 class="text-center hero-subtitle fs-6 fs-sm-5">
-          INNOVATIVE SOLUTIONS <br class="d-none d-sm-inline"> CREATING VALUE
+          <%= t('pages.home.tagline_line1') %> <br class="d-none d-sm-inline"> <%= t('pages.home.tagline_line2') %>
         </h2>
       </div>
     </div>

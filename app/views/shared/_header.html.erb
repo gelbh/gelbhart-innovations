@@ -1,4 +1,4 @@
-<header class="header navbar navbar-expand-lg navbar-sticky d-flex flex-column shadow-sm bg-light <%= 'position-absolute' if current_page?(root_path) %>">
+<header class="header navbar navbar-expand-lg navbar-sticky d-flex flex-column shadow-sm bg-light <%= 'position-absolute' if home_page? %>">
   <div class="container position-relative d-flex align-items-center justify-content-between py-2 py-sm-3">
     <div class="d-flex align-items-center">
       <button type="button" class="navbar-toggler me-2 me-sm-3" data-bs-toggle="modal" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,7 +11,7 @@
           <li class="nav-item dropdown">
             <div class="d-flex align-items-center position-relative">
               <%= link_to services_path, class: "nav-link pe-0 #{nav_active_class(services_path, pharmaceutical_path, real_estate_path)}", data: { turbo_preload: true }, style: "border-right: none;" do %>
-                Services
+                <%= t('nav.services') %>
               <% end %>
               <button class="btn dropdown-toggle dropdown-toggle-split ps-1 pe-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="border: none; background: none; color: inherit; font-size: 0.8rem; margin-left: -2px;">
                 <span class="visually-hidden">Toggle Dropdown</span>
@@ -20,44 +20,49 @@
             <ul class="dropdown-menu">
               <li>
                 <%= link_to services_path, class: "dropdown-item", data: { turbo_preload: true } do %>
-                  <i class="bx bx-grid-alt text-primary me-2"></i>All Services
+                  <i class="bx bx-grid-alt text-primary me-2"></i><%= t('nav.all_services') %>
                 <% end %>
               </li>
               <li><hr class="dropdown-divider"></li>
               <li>
                 <%= link_to pharmaceutical_path, class: "dropdown-item", data: { turbo_preload: true } do %>
-                  <i class="bx bxs-capsule text-primary me-2"></i>Pharmaceutical
+                  <i class="bx bxs-capsule text-primary me-2"></i><%= t('nav.pharmaceutical') %>
                 <% end %>
               </li>
               <li>
                 <%= link_to real_estate_path, class: "dropdown-item", data: { turbo_preload: true } do %>
-                  <i class="bx bxs-buildings text-primary me-2"></i>Real Estate
+                  <i class="bx bxs-buildings text-primary me-2"></i><%= t('nav.real_estate') %>
                 <% end %>
               </li>
             </ul>
           </li>
           <li class="nav-item">
-            <%= link_to "Team", team_path, class: "nav-link #{nav_active_class(team_path)}", data: { turbo_preload: true } %>
+            <%= link_to t('nav.team'), team_path, class: "nav-link #{nav_active_class(team_path)}", data: { turbo_preload: true } %>
           </li>
           <li class="nav-item">
-            <%= link_to "Contact Us", contact_path, class: "nav-link #{nav_active_class(contact_path)}", data: { turbo_preload: true } %>
+            <%= link_to t('nav.contact'), contact_path, class: "nav-link #{nav_active_class(contact_path)}", data: { turbo_preload: true } %>
           </li>
         </ul>
       </div>
     </div>
 
-    <%= link_to root_path, class: "position-absolute position-sm-absolute start-50 translate-middle-x align-items-center navbar-brand px-2 px-sm-3 #{current_page?(root_path) ? 'd-none' : 'd-flex'}", data: { turbo_preload: true } do %>
+    <%= link_to root_path, class: "position-absolute position-sm-absolute start-50 translate-middle-x align-items-center navbar-brand px-2 px-sm-3 #{home_page? ? 'd-none' : 'd-flex'}", data: { turbo_preload: true } do %>
       <%= image_tag "logo.png", alt: "Gelbhart Inn. Logo", width: 50 %>
     <% end %>
 
-    <div class="form-check form-switch mode-switch ms-auto" data-bs-toggle="mode">
-      <label class="form-check-label d-none d-sm-inline" for="theme-mode">
-        <i class="bx bx-bulb" role="theme" aria-label="Light Mode"><span class="d-none">Light Mode</span></i>
-      </label>
-      <input name="theme-mode" type="checkbox" class="form-check-input" id="theme-mode">
-      <label class="form-check-label d-none d-sm-inline" for="theme-mode">
-        <i class="bx bxs-bulb" role="theme" aria-label="Dark Mode"><span class="d-none">Dark Mode</span></i>
-      </label>
+    <div class="d-flex align-items-center ms-auto">
+      <!-- Language Switcher -->
+      <%= render 'shared/language_switcher' %>
+
+      <div class="form-check form-switch mode-switch ms-2 ms-sm-3" data-bs-toggle="mode">
+        <label class="form-check-label d-none d-sm-inline" for="theme-mode">
+          <i class="bx bx-bulb" role="theme" aria-label="<%= t('common.light_mode') %>"><span class="d-none"><%= t('common.light_mode') %></span></i>
+        </label>
+        <input name="theme-mode" type="checkbox" class="form-check-input" id="theme-mode">
+        <label class="form-check-label d-none d-sm-inline" for="theme-mode">
+          <i class="bx bxs-bulb" role="theme" aria-label="<%= t('common.dark_mode') %>"><span class="d-none"><%= t('common.dark_mode') %></span></i>
+        </label>
+      </div>
     </div>
   </div>
 </header>
@@ -69,9 +74,9 @@
       <div class="modal-header border-bottom">
         <h5 class="modal-title d-flex align-items-center" id="mobileMenuLabel">
           <%= image_tag "logo.png", alt: "Gelbhart Inn. Logo", width: 30, class: "me-2" %>
-          <span>Menu</span>
+          <span><%= t('nav.menu') %></span>
         </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<%= t('common.close') %>"></button>
       </div>
       <div class="modal-body">
         <nav class="mobile-nav">
@@ -79,7 +84,7 @@
             <li class="mobile-nav-item">
               <a class="mobile-nav-link <%= 'active' if nav_active_class(services_path, pharmaceutical_path, real_estate_path).present? %>" href="#" role="button" data-bs-toggle="collapse" data-bs-target="#mobileServicesDropdown" aria-expanded="false" aria-controls="mobileServicesDropdown">
                 <i class="bx bx-grid-alt me-2"></i>
-                <span>Services</span>
+                <span><%= t('nav.services') %></span>
                 <i class="bx bx-chevron-down ms-auto mobile-nav-chevron"></i>
               </a>
               <div class="collapse" id="mobileServicesDropdown">
@@ -87,19 +92,19 @@
                   <li>
                     <%= link_to services_path, class: "mobile-nav-sublink d-flex align-items-center #{nav_active_class(services_path)}", data: { turbo_preload: true } do %>
                       <i class="bx bx-grid-alt me-2"></i>
-                      All Services
+                      <%= t('nav.all_services') %>
                     <% end %>
                   </li>
                   <li>
                     <%= link_to pharmaceutical_path, class: "mobile-nav-sublink d-flex align-items-center #{nav_active_class(pharmaceutical_path)}", data: { turbo_preload: true } do %>
                       <i class="bx bxs-capsule me-2"></i>
-                      Pharmaceutical
+                      <%= t('nav.pharmaceutical') %>
                     <% end %>
                   </li>
                   <li>
                     <%= link_to real_estate_path, class: "mobile-nav-sublink d-flex align-items-center #{nav_active_class(real_estate_path)}", data: { turbo_preload: true } do %>
                       <i class="bx bxs-buildings me-2"></i>
-                      Real Estate
+                      <%= t('nav.real_estate') %>
                     <% end %>
                   </li>
                 </ul>
@@ -108,13 +113,13 @@
             <li class="mobile-nav-item">
               <%= link_to team_path, class: "mobile-nav-link d-flex align-items-center #{nav_active_class(team_path)}", data: { turbo_preload: true } do %>
                 <i class="bx bx-group me-2"></i>
-                <span>Team</span>
+                <span><%= t('nav.team') %></span>
               <% end %>
             </li>
             <li class="mobile-nav-item">
               <%= link_to contact_path, class: "mobile-nav-link d-flex align-items-center #{nav_active_class(contact_path)}", data: { turbo_preload: true } do %>
                 <i class="bx bx-envelope me-2"></i>
-                <span>Contact Us</span>
+                <span><%= t('nav.contact') %></span>
               <% end %>
             </li>
           </ul>

@@ -3,9 +3,7 @@
     <% breadcrumb_trail.each_with_index do |item, index| %>
       <% if index.zero? %>
         <li class="breadcrumb-item">
-          <%= link_to root_path do %>
-            <i class="bx bx-home-alt fs-md me-2" role="none"></i>Home
-          <% end %>
+          <%= link_to root_path do %><i class="bx bx-home-alt fs-md me-2" role="none"></i><%= t('nav.home') %><% end %>
         </li>
       <% elsif item[:current] %>
         <li class="breadcrumb-item active" aria-current="page"><%= item[:name] %></li>
@@ -17,14 +15,8 @@
     <% end %>
   </ol>
 </nav>
-
-<% breadcrumb_items = breadcrumb_trail.map do |item|
-  url = if item[:current]
-    request.original_url.split("?").first
-  elsif item[:path].present?
-    request.base_url + item[:path]
-  end
+<% breadcrumb_items = breadcrumb_trail.map { |item|
+  url = item[:current] ? request.original_url.split("?").first : (item[:path].present? ? request.base_url + item[:path] : nil)
   { name: item[:name], url: url }
-end.compact.reject { |item| item[:url].blank? } %>
-
+}.reject { |item| item[:url].blank? } %>
 <%= json_ld_script(breadcrumb_list_schema(breadcrumb_items)) if breadcrumb_items.length >= 2 %>

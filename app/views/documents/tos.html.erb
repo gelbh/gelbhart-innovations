@@ -1,49 +1,22 @@
+<% badge_style = "background-color: #529fcb; color: white;" %>
+
 <div class="card border-0 shadow-sm mb-4 mb-md-5">
   <div class="card-body p-4 p-sm-5">
     <div class="d-flex align-items-center mb-3 mb-sm-4">
       <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary bg-opacity-10 flex-shrink-0 me-3" style="width: 48px; height: 48px;">
         <i class="bx bx-file-blank text-primary fs-3"></i>
       </div>
-      <h2 class="h3 mb-0">Terms and Conditions</h2>
+      <h2 class="h3 mb-0"><%= t('documents.tos.title') %></h2>
     </div>
-
     <div class="list-group list-group-flush">
-      <div class="list-group-item border-0 px-0 py-3">
-        <div class="d-flex align-items-start">
-          <span class="badge me-3 mt-1" style="background-color: #529fcb; color: white;">1</span>
-          <p class="mb-0">Welcome to our website. By accessing or using our website, you agree to be bound by these terms of service and our privacy policy.</p>
+      <% t('documents.tos.items').each_with_index do |item, index| %>
+        <div class="list-group-item border-0 px-0 py-3">
+          <div class="d-flex align-items-start">
+            <span class="badge me-3 mt-1" style="<%= badge_style %>"><%= index + 1 %></span>
+            <p class="mb-0"><%= item %></p>
+          </div>
         </div>
-      </div>
-      <div class="list-group-item border-0 px-0 py-3">
-        <div class="d-flex align-items-start">
-          <span class="badge me-3 mt-1" style="background-color: #529fcb; color: white;">2</span>
-          <p class="mb-0">The content on our website is the property of our company and is protected by intellectual property laws. You may only use the content for personal, non-commercial purposes. You may not copy, modify, distribute or reuse any portion of the website without our prior written consent.</p>
-        </div>
-      </div>
-      <div class="list-group-item border-0 px-0 py-3">
-        <div class="d-flex align-items-start">
-          <span class="badge me-3 mt-1" style="background-color: #529fcb; color: white;">3</span>
-          <p class="mb-0">Our website may contain links to third-party websites. We are not responsible for the availability, content, or privacy practices of those external sites.</p>
-        </div>
-      </div>
-      <div class="list-group-item border-0 px-0 py-3">
-        <div class="d-flex align-items-start">
-          <span class="badge me-3 mt-1" style="background-color: #529fcb; color: white;">4</span>
-          <p class="mb-0">We provide this website "as is" without any warranties or representations. We are not liable for any damages arising from your use of the website, including but not limited to direct, indirect, incidental, or consequential damages.</p>
-        </div>
-      </div>
-      <div class="list-group-item border-0 px-0 py-3">
-        <div class="d-flex align-items-start">
-          <span class="badge me-3 mt-1" style="background-color: #529fcb; color: white;">5</span>
-          <p class="mb-0">In no event shall our company be liable for any claims, losses, or damages exceeding $100 related to your use of this website.</p>
-        </div>
-      </div>
-      <div class="list-group-item border-0 px-0 py-3">
-        <div class="d-flex align-items-start">
-          <span class="badge me-3 mt-1" style="background-color: #529fcb; color: white;">6</span>
-          <p class="mb-0">These terms shall be governed by the laws of Switzerland. Any disputes will be resolved in the courts of Switzerland.</p>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
@@ -54,34 +27,17 @@
       <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary bg-opacity-10 flex-shrink-0 me-3" style="width: 48px; height: 48px;">
         <i class="bx bx-shield-quarter text-primary fs-3"></i>
       </div>
-      <h2 class="h3 mb-0">Privacy Policy</h2>
+      <h2 class="h3 mb-0"><%= t('documents.privacy.title') %></h2>
     </div>
-
     <div class="list-group list-group-flush">
-      <div class="list-group-item border-0 px-0 py-3">
-        <div class="d-flex align-items-start">
-          <span class="badge me-3 mt-1" style="background-color: #529fcb; color: white;">1</span>
-          <p class="mb-0">We may collect information provided by you, as well as information automatically collected by our web server and browser. We use this information to provide and improve our services.</p>
+      <% t('documents.privacy.items').each_with_index do |item, index| %>
+        <div class="list-group-item border-0 px-0 py-3">
+          <div class="d-flex align-items-start">
+            <span class="badge me-3 mt-1" style="<%= badge_style %>"><%= index + 1 %></span>
+            <p class="mb-0"><%= item %></p>
+          </div>
         </div>
-      </div>
-      <div class="list-group-item border-0 px-0 py-3">
-        <div class="d-flex align-items-start">
-          <span class="badge me-3 mt-1" style="background-color: #529fcb; color: white;">2</span>
-          <p class="mb-0">We may share your information with third-party service providers who assist us in operating the website and serving our customers. We do not sell or rent your personal information to any third parties.</p>
-        </div>
-      </div>
-      <div class="list-group-item border-0 px-0 py-3">
-        <div class="d-flex align-items-start">
-          <span class="badge me-3 mt-1" style="background-color: #529fcb; color: white;">3</span>
-          <p class="mb-0">We use cookies and other tracking technologies to personalize your experience and analyze website usage. You can control the use of cookies through your browser settings.</p>
-        </div>
-      </div>
-      <div class="list-group-item border-0 px-0 py-3">
-        <div class="d-flex align-items-start">
-          <span class="badge me-3 mt-1" style="background-color: #529fcb; color: white;">4</span>
-          <p class="mb-0">We may update this privacy policy from time to time. Your continued use of the website after any changes constitutes your acceptance of the new policy.</p>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

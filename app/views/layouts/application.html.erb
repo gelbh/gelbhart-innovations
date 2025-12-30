@@ -1,49 +1,55 @@
 <!DOCTYPE html>
-<html lang="en" id="top">
+<html lang="<%= I18n.locale %>" dir="<%= I18n.locale == :ar ? 'rtl' : 'ltr' %>" id="top">
   <head>
-    <%# Character encoding and analytics %>
     <meta charset="UTF-8">
+
+    <script nonce="<%= content_security_policy_nonce %>">
+      (function() {
+        var savedTheme = localStorage.getItem('theme');
+        var systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-bs-theme', theme);
+        document.documentElement.classList.toggle('dark-mode', theme === 'dark');
+      })();
+    </script>
+
     <%= render 'application/google_analytics' %>
 
-    <%# Page metadata %>
     <title><%= full_page_title(@title) %></title>
     <meta name="description" content="<%= page_description(@desc) %>">
-    <meta name="author" content="Gelbhart Innovations">
+    <meta name="author" content="<%= t('site.author') %>">
     <meta name="robots" content="<%= robots_meta_tag %>">
     <link rel="canonical" href="<%= canonical_url %>">
 
-    <%# Open Graph meta tags %>
     <% og_meta_tags.each do |property, content| %>
       <%= property_meta_tag(property, content) %>
     <% end %>
 
-    <%# Twitter Card meta tags %>
     <% twitter_card_meta_tags.each do |name, content| %>
       <%= meta_tag(name, content) %>
     <% end %>
 
-    <%# Language and viewport %>
-    <meta http-equiv="content-language" content="en">
-    <link rel="alternate" hreflang="en" href="<%= canonical_url %>">
+    <meta http-equiv="content-language" content="<%= I18n.locale %>">
+    <%= render 'application/hreflang_tags' %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <%# Font preconnections %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
-    <%# Asset preloads for critical resources %>
+    <% if I18n.locale == :ar %>
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <% end %>
+
     <link rel="preload" href="<%= asset_path('boxicons/css/boxicons.min.css') %>" as="style">
     <link rel="preload" href="<%= asset_path('swiper/swiper-bundle.min.css') %>" as="style">
     <link rel="preload" href="<%= asset_path('bootstrap/dist/js/bootstrap.bundle.min.js') %>" as="script">
 
-    <%# Favicon and theme %>
     <%= render 'application/favicon' %>
     <meta name="msapplication-TileColor" content="#080032">
     <meta name="theme-color" content="#ffffff">
 
-    <%# Google Maps configuration %>
     <% if (api_key = Rails.application.credentials.dig(:google_maps, :api_key) || ENV['GOOGLE_MAPS_API_KEY']).present? %>
       <meta name="google-maps-api-key" content="<%= api_key %>">
     <% end %>
@@ -51,17 +57,15 @@
       <meta name="google-maps-map-id" content="<%= map_id %>">
     <% end %>
 
-    <%# Structured data %>
     <%= json_ld_script(organization_schema) %>
     <%= json_ld_script(website_schema) %>
     <%= json_ld_script(@structured_data) if @structured_data.present? %>
 
-    <%# Vendor stylesheets %>
     <link rel="stylesheet" media="screen" href="<%= asset_path('boxicons/css/boxicons.min.css') %>">
     <link rel="stylesheet" media="screen" href="<%= asset_path('swiper/swiper-bundle.min.css') %>">
     <link rel="stylesheet" media="screen" href="<%= asset_path('lightgallery/css/lightgallery-bundle.min.css') %>">
+    <link rel="stylesheet" media="screen" href="<%= asset_path('flag-icons/css/flag-icons.min.css') %>">
 
-    <%# Rails assets %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
@@ -86,16 +90,13 @@
 
     <%= render 'shared/footer' %>
 
-    <a href="#top" class="btn-scroll-top" data-scroll aria-label="Scroll to top">
-      <span class="btn-scroll-top-tooltip text-muted fs-sm me-2" aria-hidden="true">Top</span>
+    <a href="#top" class="btn-scroll-top" data-scroll aria-label="<%= t('common.scroll_to_top') %>">
+      <span class="btn-scroll-top-tooltip text-muted fs-sm me-2" aria-hidden="true"><%= t('common.scroll_to_top') %></span>
       <i class="btn-scroll-top-icon bx bx-chevron-up" aria-hidden="true"></i>
     </a>
 
-    <%# Core vendor scripts %>
     <script src="<%= asset_path('bootstrap/dist/js/bootstrap.bundle.min.js') %>"></script>
     <script src="<%= asset_path('swiper/swiper-bundle.min.js') %>"></script>
-
-    <%# Deferred vendor scripts %>
     <script defer src="<%= asset_path('smooth-scroll/dist/smooth-scroll.min.js') %>"></script>
     <script defer src="<%= asset_path('cleave.js/dist/cleave.min.js') %>"></script>
     <script defer src="<%= asset_path('jarallax/dist/jarallax.min.js') %>"></script>
@@ -106,7 +107,6 @@
     <script defer src="<%= asset_path('lightgallery/plugins/video/lg-video.min.js') %>"></script>
     <script defer src="<%= asset_path('lightgallery/plugins/thumbnail/lg-thumbnail.min.js') %>"></script>
 
-    <%# Lottie player lazy loader %>
     <script id="lottie-player-loader" nonce="<%= content_security_policy_nonce %>" data-turbo-eval="false">
       (function() {
         if (typeof customElements !== 'undefined' && !customElements.get('lottie-player')) {
@@ -123,18 +123,5 @@
     </script>
 
     <script defer src="<%= asset_path('rellax/rellax.min.js') %>"></script>
-
-    <%# Theme initialization %>
-    <script nonce="<%= content_security_policy_nonce %>" data-turbo-eval="false">
-      (function() {
-        var savedTheme = localStorage.getItem('theme');
-        var systemPrefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
-        var theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-        var html = document.documentElement;
-
-        html.setAttribute('data-bs-theme', theme);
-        html.classList.toggle('dark-mode', theme === 'dark');
-      })();
-    </script>
   </body>
 </html>
