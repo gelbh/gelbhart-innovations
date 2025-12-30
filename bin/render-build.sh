@@ -61,30 +61,51 @@ report_asset_sizes() {
 
     # Total size
     local total_size
-    total_size=$(du -sh public/assets | cut -f1)
+    total_size=$(du -sh public/assets 2>/dev/null | cut -f1)
     echo "Total assets size: ${total_size}"
 
-    # Top 10 largest files
+    # Top 10 largest files (suppress errors from find/sort)
     echo "Top 10 largest asset files:"
-    find public/assets -type f -exec du -h {} \; 2>/dev/null | sort -rh | head -10
+    set +e
+    find public/assets -type f -exec du -h {} \; 2>/dev/null | sort -rh 2>/dev/null | head -10 2>/dev/null || echo "  (unable to list files)"
+    set -e
 
     # File counts by type
     echo "Asset file counts by type:"
-    echo "  CSS files: $(find public/assets -name "*.css" -type f 2>/dev/null | wc -l)"
-    echo "  JS files: $(find public/assets -name "*.js" -type f 2>/dev/null | wc -l)"
-    echo "  Image files: $(find public/assets \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.gif" -o -name "*.svg" -o -name "*.webp" \) -type f 2>/dev/null | wc -l)"
-    echo "  Font files: $(find public/assets \( -name "*.woff" -o -name "*.woff2" -o -name "*.ttf" -o -name "*.eot" \) -type f 2>/dev/null | wc -l)"
+    local css_count js_count img_count font_count
+    css_count=$(find public/assets -name "*.css" -type f 2>/dev/null | wc -l)
+    js_count=$(find public/assets -name "*.js" -type f 2>/dev/null | wc -l)
+    img_count=$(find public/assets \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.gif" -o -name "*.svg" -o -name "*.webp" \) -type f 2>/dev/null | wc -l)
+    font_count=$(find public/assets \( -name "*.woff" -o -name "*.woff2" -o -name "*.ttf" -o -name "*.eot" \) -type f 2>/dev/null | wc -l)
+    echo "  CSS files: ${css_count}"
+    echo "  JS files: ${js_count}"
+    echo "  Image files: ${img_count}"
+    echo "  Font files: ${font_count}"
 }
 
 generate_sitemap() {
     log_section "Generating sitemap"
+    # Temporarily disable exit on error to allow graceful failure
+    set +e
     bundle exec rake sitemap:regenerate
+    local sitemap_exit_code=$?
+    set -e
+    
+    if [[ $sitemap_exit_code -ne 0 ]]; then
+        echo "⚠️  Warning: Sitemap generation failed (exit code: $sitemap_exit_code)"
+        echo "   This may be due to missing database connection or other environment issues."
+        echo "   Build will continue, but sitemap may need to be generated manually."
+        return 0
+    fi
 }
 
 run_indexnow_operations() {
     log_section "IndexNow operations"
-    bundle exec rake sitemap:generate_indexnow_key
-    bundle exec rake sitemap:ping_indexnow
+    # IndexNow operations are optional - allow them to fail gracefully
+    set +e
+    bundle exec rake sitemap:generate_indexnow_key || echo "⚠️  IndexNow key generation skipped"
+    bundle exec rake sitemap:ping_indexnow || echo "⚠️  IndexNow ping skipped"
+    set -e
 }
 
 # -----------------------------------------------------------------------------
