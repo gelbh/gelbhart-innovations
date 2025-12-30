@@ -1,0 +1,333 @@
+// RTL (Right-to-Left) Support for Arabic
+// Uses CSS Logical Properties for proper bidirectional layout
+
+$arabic-font-stack: "Noto Sans Arabic", "Segoe UI", "Tahoma", system-ui,
+  sans-serif;
+
+html[dir="rtl"] {
+  &[lang="ar"] body {
+    font-family: $arabic-font-stack;
+  }
+
+  font-size: 1.02rem;
+  line-height: 1.7;
+
+  // Bootstrap Margin Utilities → Logical Properties
+  .me-1 {
+    margin-right: 0 !important;
+    margin-inline-end: 0.25rem !important;
+  }
+  .me-2 {
+    margin-right: 0 !important;
+    margin-inline-end: 0.5rem !important;
+  }
+  .me-3 {
+    margin-right: 0 !important;
+    margin-inline-end: 1rem !important;
+  }
+  .me-4 {
+    margin-right: 0 !important;
+    margin-inline-end: 1.5rem !important;
+  }
+  .me-5 {
+    margin-right: 0 !important;
+    margin-inline-end: 3rem !important;
+  }
+  .me-auto {
+    margin-right: 0 !important;
+    margin-inline-end: auto !important;
+  }
+
+  .ms-1 {
+    margin-left: 0 !important;
+    margin-inline-start: 0.25rem !important;
+  }
+  .ms-2 {
+    margin-left: 0 !important;
+    margin-inline-start: 0.5rem !important;
+  }
+  .ms-3 {
+    margin-left: 0 !important;
+    margin-inline-start: 1rem !important;
+  }
+  .ms-4 {
+    margin-left: 0 !important;
+    margin-inline-start: 1.5rem !important;
+  }
+  .ms-5 {
+    margin-left: 0 !important;
+    margin-inline-start: 3rem !important;
+  }
+  .ms-auto {
+    margin-left: 0 !important;
+    margin-inline-start: auto !important;
+  }
+
+  // Bootstrap Padding Utilities → Logical Properties
+  .pe-1 {
+    padding-right: 0 !important;
+    padding-inline-end: 0.25rem !important;
+  }
+  .pe-2 {
+    padding-right: 0 !important;
+    padding-inline-end: 0.5rem !important;
+  }
+  .pe-3 {
+    padding-right: 0 !important;
+    padding-inline-end: 1rem !important;
+  }
+  .pe-4 {
+    padding-right: 0 !important;
+    padding-inline-end: 1.5rem !important;
+  }
+  .pe-5 {
+    padding-right: 0 !important;
+    padding-inline-end: 3rem !important;
+  }
+
+  .ps-1 {
+    padding-left: 0 !important;
+    padding-inline-start: 0.25rem !important;
+  }
+  .ps-2 {
+    padding-left: 0 !important;
+    padding-inline-start: 0.5rem !important;
+  }
+  .ps-3 {
+    padding-left: 0 !important;
+    padding-inline-start: 1rem !important;
+  }
+  .ps-4 {
+    padding-left: 0 !important;
+    padding-inline-start: 1.5rem !important;
+  }
+  .ps-5 {
+    padding-left: 0 !important;
+    padding-inline-start: 3rem !important;
+  }
+
+  // Text & Float Utilities
+  .text-start {
+    text-align: start !important;
+  }
+  .text-end {
+    text-align: end !important;
+  }
+  .float-start {
+    float: right !important;
+  }
+  .float-end {
+    float: left !important;
+  }
+
+  // Navigation
+  .navbar-nav {
+    padding-inline: 0;
+  }
+  .navbar-brand {
+    margin-inline-end: 0;
+  }
+
+  .dropdown-menu {
+    text-align: start;
+    &.dropdown-menu-end {
+      inset-inline-end: auto;
+      inset-inline-start: 0;
+    }
+  }
+
+  .mobile-nav-chevron {
+    transform: rotate(180deg);
+  }
+
+  // Mirror Directional Icons
+  .bx-arrow-back,
+  .bx-arrow-right,
+  .bx-chevron-right,
+  .bx-chevron-left,
+  .bx-right-arrow-alt,
+  .bx-left-arrow-alt,
+  .bx-link-external {
+    transform: scaleX(-1);
+  }
+
+  // Breadcrumb
+  .breadcrumb-item + .breadcrumb-item {
+    padding-left: 0 !important;
+    padding-inline-start: 0;
+    padding-inline-end: var(--bs-breadcrumb-item-padding-x);
+
+    &::before {
+      float: right;
+      padding-right: 0 !important;
+      padding-inline-start: var(--bs-breadcrumb-item-padding-x);
+      padding-inline-end: 0;
+      content: "\ed3f";
+    }
+  }
+
+  // Forms
+  .form-switch {
+    padding-inline-start: 0;
+    padding-inline-end: 2.5em;
+
+    .form-check-input {
+      margin-inline-start: 0;
+      margin-inline-end: -2.5em;
+      float: left;
+    }
+  }
+
+  .mode-switch.form-switch {
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse; // Flip the order in RTL
+
+    .form-check-input {
+      margin: 0 0.5rem;
+      float: none;
+    }
+
+    .form-check-label {
+      margin: 0;
+    }
+  }
+
+  .form-control,
+  .form-select {
+    text-align: start;
+  }
+
+  // Modal
+  .modal-header .btn-close {
+    margin-inline-start: auto;
+    margin-inline-end: calc(-0.5 * var(--bs-modal-header-padding-x));
+  }
+
+  // Cards & Content
+  .card-body {
+    text-align: start;
+  }
+
+  ul,
+  ol {
+    padding-inline-start: 0;
+    padding-inline-end: 2rem;
+    &.list-unstyled {
+      padding-inline-end: 0;
+    }
+  }
+
+  // Page-Specific Adjustments
+  .team-modal-header {
+    text-align: start;
+  }
+  .team-modal-social {
+    justify-content: flex-start;
+  }
+  .team-card-summary {
+    text-align: start;
+  }
+  .contact-info-item {
+    text-align: start;
+  }
+  .contact-map-link {
+    inset-inline-end: auto;
+    inset-inline-start: 1rem;
+  }
+  .service-icon {
+    inset-inline-start: auto;
+    inset-inline-end: 1.5rem;
+  }
+  .service-card {
+    text-align: start;
+  }
+  .hero-title,
+  .hero-subtitle {
+    text-align: center;
+  }
+  .footer {
+    text-align: center;
+    .nav {
+      justify-content: center;
+    }
+  }
+  .language-switcher .dropdown-menu {
+    text-align: start;
+  }
+
+  .btn-scroll-top {
+    inset-inline-end: auto;
+    inset-inline-start: 1.5rem;
+    .btn-scroll-top-tooltip {
+      margin-inline-start: 0;
+      margin-inline-end: 0.5rem;
+    }
+  }
+}
+
+// Preserve LTR for Technical Content
+html[dir="rtl"] {
+  a[href^="tel:"],
+  a[href^="mailto:"],
+  .email,
+  .phone-number {
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
+  }
+
+  a[href^="http"]:not(.nav-link):not(.btn):not(.dropdown-item) {
+    direction: ltr;
+    unicode-bidi: embed;
+  }
+
+  pre,
+  code,
+  kbd,
+  samp {
+    direction: ltr;
+    text-align: left;
+  }
+
+  address {
+    direction: ltr;
+    unicode-bidi: embed;
+    text-align: left;
+  }
+
+  time,
+  .time-display {
+    direction: ltr;
+    unicode-bidi: embed;
+  }
+}
+
+// RTL Typography
+html[dir="rtl"] {
+  &[lang="ar"] {
+    letter-spacing: 0.01em;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      letter-spacing: 0;
+      font-weight: 600;
+    }
+  }
+  word-spacing: 0.05em;
+}
+
+// Print
+@media print {
+  html[dir="rtl"] {
+    direction: rtl;
+    * {
+      text-align: start;
+    }
+  }
+}
