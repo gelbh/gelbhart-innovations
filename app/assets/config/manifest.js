@@ -19,7 +19,7 @@
 //= link_directory ../vendor/jarallax/dist
 //= link_directory ../vendor/parallax-js/dist
 //= link_directory ../vendor/@lottiefiles/lottie-player/dist
-//= link_directory ../vendor/flag-icons/css
+//= link_tree ../vendor/flag-icons/css .css
 
 //= link_tree ../favicon
 //= link_tree ../json
