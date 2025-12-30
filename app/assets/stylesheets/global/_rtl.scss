@@ -1,8 +1,31 @@
 // RTL (Right-to-Left) Support for Arabic
 // Uses CSS Logical Properties for proper bidirectional layout
+// Also handles language-specific font configurations (Arabic, Chinese, Japanese, Korean)
 
 $arabic-font-stack: "Noto Sans Arabic", "Segoe UI", "Tahoma", system-ui,
   sans-serif;
+
+// CJK (Chinese, Japanese, Korean) Font Support
+$chinese-font-stack: "Noto Sans SC", "Microsoft YaHei", "PingFang SC",
+  "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+
+$japanese-font-stack: "Noto Sans JP", "Yu Gothic UI", "Hiragino Sans", "Meiryo",
+  "MS PGothic", sans-serif;
+
+$korean-font-stack: "Noto Sans KR", "Nanum Gothic", "Malgun Gothic",
+  "Apple SD Gothic Neo", "AppleGothic", sans-serif;
+
+html[lang="zh"] body {
+  font-family: $chinese-font-stack;
+}
+
+html[lang="ja"] body {
+  font-family: $japanese-font-stack;
+}
+
+html[lang="ko"] body {
+  font-family: $korean-font-stack;
+}
 
 html[dir="rtl"] {
   &[lang="ar"] body {

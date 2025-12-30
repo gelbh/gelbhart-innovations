@@ -41,6 +41,15 @@
     <% if I18n.locale == :ar %>
       <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
     <% end %>
+    <% if I18n.locale == :zh %>
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <% end %>
+    <% if I18n.locale == :ja %>
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <% end %>
+    <% if I18n.locale == :ko %>
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <% end %>
 
     <link rel="preload" href="<%= asset_path('boxicons/css/boxicons.min.css') %>" as="style">
     <link rel="preload" href="<%= asset_path('swiper/swiper-bundle.min.css') %>" as="style">
