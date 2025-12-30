@@ -1,0 +1,22 @@
+<% rtl_locales = %i[ar] %>
+<% current_is_rtl = rtl_locales.include?(I18n.locale) %>
+<div class="dropdown language-switcher">
+  <button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center px-2"
+          type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fi fi-<%= locale_to_flag(I18n.locale) %> me-1"></span>
+    <span class="d-none d-sm-inline"><%= t("languages.#{I18n.locale}") %></span>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+    <% I18n.available_locales.each do |locale| %>
+      <% needs_reload = current_is_rtl != rtl_locales.include?(locale) %>
+      <li>
+        <%= link_to url_for(locale: locale),
+                    class: "dropdown-item d-flex align-items-center #{'active' if I18n.locale == locale}",
+                    data: { turbo: needs_reload ? false : nil } do %>
+          <span class="fi fi-<%= locale_to_flag(locale) %> me-2"></span>
+          <span><%= t("languages.#{locale}") %></span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
