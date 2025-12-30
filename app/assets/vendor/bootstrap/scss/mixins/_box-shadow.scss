@@ -1,5 +1,3 @@
-@use "sass:list";
-
 @mixin box-shadow($shadow...) {
   @if $enable-shadows {
     $result: ();
@@ -12,14 +10,14 @@
           $has-single-value: true;
           $single-value: $value;
         } @else {
-          $result: list.append($result, $value, "comma");
+          $result: append($result, $value, "comma");
         }
       }
     }
 
     @if $has-single-value {
       box-shadow: $single-value;
-    } @else if (list.length($result) > 0) {
+    } @else if (length($result) > 0) {
       box-shadow: $result;
     }
   }
