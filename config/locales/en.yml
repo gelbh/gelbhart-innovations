@@ -1,33 +1,197 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   "true": "foo"
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
+# English locale file - Master source for translations
+# All other locale files are generated from this file using AI translation
 
 en:
-  hello: "Hello world"
+  # Language names (in their native language for the switcher)
+  languages:
+    en: "English"
+    es: "Español"
+    fr: "Français"
+    de: "Deutsch"
+    it: "Italiano"
+    pt: "Português"
+    zh: "中文"
+    ja: "日本語"
+    ko: "한국어"
+    ar: "العربية"
+
+  # Site metadata
+  site:
+    name: "Gelbhart Innovations"
+    author: "Gelbhart Innovations"
+    tagline: "Innovative Solutions Creating Value"
+    description: "Strategic consulting for pharmaceutical and real estate industries"
+
+  # Navigation
+  nav:
+    home: "Home"
+    services: "Services"
+    all_services: "All Services"
+    pharmaceutical: "Pharmaceutical"
+    real_estate: "Real Estate"
+    team: "Team"
+    contact: "Contact Us"
+    menu: "Menu"
+
+  # Common UI elements
+  common:
+    loading_map: "Loading map..."
+    open_in_google_maps: "Open in Google Maps"
+    scroll_to_top: "Top"
+    go_to_homepage: "Go to homepage"
+    learn_more: "Learn more"
+    view_full_profile: "View full profile"
+    connect_on_linkedin: "Connect on LinkedIn"
+    view_github_profile: "View GitHub Profile"
+    close: "Close"
+    light_mode: "Light Mode"
+    dark_mode: "Dark Mode"
+
+  # Footer
+  footer:
+    copyright: "All rights reserved. Made by"
+    legal_notice: "Please see our"
+    terms_and_conditions: "Terms & Conditions"
+    privacy_policy: "Privacy Policy"
+    and: "and"
+
+  # Pages
+  pages:
+    home:
+      title: "GELBHART"
+      subtitle: "INNOVATIONS"
+      tagline_line1: "INNOVATIVE SOLUTIONS"
+      tagline_line2: "CREATING VALUE"
+
+    services:
+      title: "Services"
+      pharmaceutical:
+        title: "Pharmaceutical Services"
+        subtitle: "Comprehensive pharmaceutical industry consulting"
+        description: "Due diligence, business development, portfolio strategy, and specialized consulting for pharmaceutical companies and products."
+        page_title: "Pharmaceutical Services"
+        back_button: "All Services"
+      real_estate:
+        title: "Real Estate Services"
+        subtitle: "End-to-end real estate development and investment"
+        description: "Land identification, acquisition, development management, marketing, and financial coordination for housing, hospitality, and commercial projects."
+        page_title: "Real Estate Services"
+        back_button: "All Services"
+
+    team:
+      badge: "Meet the team"
+      title: "Our leadership"
+      description: "Strategic thinkers and hands-on experts guiding Gelbhart Innovations across industries and continents."
+      linkedin_aria: "Open %{name}'s LinkedIn profile"
+      github_aria: "Open %{name}'s GitHub profile"
+      open_profile_aria: "Open profile for %{name}"
+
+    contact:
+      title: "Gelbhart Innovations"
+      address_label: "Address"
+      phone_label: "Phone"
+      email_label: "Email"
+      hours_label: "Business Hours"
+      weekdays: "Mon - Fri"
+      weekend: "Sat - Sun"
+      closed: "Closed"
+      map_aria: "Interactive map showing Gelbhart Innovations location at %{street}, %{city}"
+
+  # Documents
+  documents:
+    tos:
+      title: "Terms and Conditions"
+      items:
+        - "Welcome to our website. By accessing or using our website, you agree to be bound by these terms of service and our privacy policy."
+        - "The content on our website is the property of our company and is protected by intellectual property laws. You may only use the content for personal, non-commercial purposes. You may not copy, modify, distribute or reuse any portion of the website without our prior written consent."
+        - "Our website may contain links to third-party websites. We are not responsible for the availability, content, or privacy practices of those external sites."
+        - 'We provide this website "as is" without any warranties or representations. We are not liable for any damages arising from your use of the website, including but not limited to direct, indirect, incidental, or consequential damages.'
+        - "In no event shall our company be liable for any claims, losses, or damages exceeding $100 related to your use of this website."
+        - "These terms shall be governed by the laws of Switzerland. Any disputes will be resolved in the courts of Switzerland."
+    privacy:
+      title: "Privacy Policy"
+      items:
+        - "We may collect information provided by you, as well as information automatically collected by our web server and browser. We use this information to provide and improve our services."
+        - "We may share your information with third-party service providers who assist us in operating the website and serving our customers. We do not sell or rent your personal information to any third parties."
+        - "We use cookies and other tracking technologies to personalize your experience and analyze website usage. You can control the use of cookies through your browser settings."
+        - "We may update this privacy policy from time to time. Your continued use of the website after any changes constitutes your acceptance of the new policy."
+
+  # Error pages
+  errors:
+    not_found:
+      heading: "404"
+      message: "The page you are looking for does not exist or has been moved."
+    internal_server_error:
+      heading: "500"
+      message: "Something went wrong on our end. Please try again later."
+
+  # Team members
+  team_members:
+    bareket:
+      name: "Bareket Gelbhart"
+      bio: "Bareket attended the Technion, Israel Institute of Technology, from where she holds her Bachelor degree in Chemistry with Organic Chemistry as the principal subject.<br><br>She is fluent in Hebrew and English and can converse in Italian. Bareket posses advanced knowledge of Microsoft Word, Excel and PowerPoint.<br><br>She resides in Ticino, Switzerland with her family, from where she travels across the globe regularly for work.<br><br>Bareket is a passionate cook and a die hard football fan."
+    yaron:
+      name: "Yaron Gelbhart"
+      bio: "Yaron attended the Technion, Israel Institute of Technology, from where he holds his Bachelor of Science degree in Engineering with Project Management as a principal subject. Yaron possesses over 20 years of experience in large projects management with emphasis on the Indian subcontinent.<br><br>His interests also spread across real estate and hospitality. He is fluent in English and Hebrew and has conversational level in Italian. In his free time Yaron does yoga and enjoys a glass of good Italian wine."
+    tomer:
+      name: "Tomer Gelbhart"
+      bio: "Passionate MSc Computer Science student with a BSc in Computer Science. Experienced in front-end development and API integration to develop tools that address real-world challenges.<br><br>Looking for an internship beginning May 2026 to strengthen my back-end development skills and progress toward becoming a full-stack developer."
+
+  # Pharmaceutical services (from Service model)
+  services_data:
+    pharmaceutical:
+      due_diligence:
+        title: "Due Diligence"
+        subtitle: "Are you considering to purchase a new pharmaceutical asset, be it a product or a company?"
+        description: "With more than 27 years of experience in the pharmaceutical industry, we provide assistance and advice in relation to any due diligence of a pharmaceutical product and a pharmaceutical company, including assessment, evaluation, structuring, negotiation and completion of a potential investment."
+      business_development:
+        title: "Business Development (Partnerships)"
+        subtitle: "Are you developing a new product and looking for the best partner or looking to license out your product?"
+        description: "With our industry experience and knowledge, we can find the right partner to your API, FDF and/or Orphan Generic Drug worldwide."
+      portfolio:
+        title: "Portfolio"
+        subtitle: "Looking for a new molecule but don't know where to start?"
+        description: "With our chemistry background and industry knowledge, we can help you find the right molecules to develop, whether they are small niche molecules or future blockbusters, bread & butter or pearls. We will define the strategy for development after considering intellectual property, pricing and competition."
+      strategy:
+        title: "Strategy"
+        subtitle: "Not sure which road your company should follow?"
+        description: "We will research and identify the market needs and market potential to develop business opportunities for the company's portfolio. We will then locate new customers and new markets in which the company's potential is not yet fully realized. We will evaluate the current sales team and recommend the right structure, identify sales personnel and train them. After reviewing agencies network we will recommend, where and if to work through agents or directly. We will define ideal pipeline process, KPIs and organization, and evaluate competitors' status."
+      orphan_drugs:
+        title: "Generic Orphan Drugs"
+        subtitle: "Are you developing a Generic Orphan Drug?"
+        description: "In many cases, it means investing in the development of a small niche product, but that doesn't mean the market potential is also small. Every market has its own rules for Orphan Drugs and in many cases the brand product is not approved or not marketed in a specific location. We will Identify the relevant markets & find the right local partners, doctors (KOLs), patients and patient associations to allow you to offer your product in a fast and effective way, realizing profits in early stages of the development."
+      product_launch:
+        title: "Launch of New Products"
+        subtitle: "Marketing authorization is just around the corner but the product is not yet ready for launch?"
+        description: "We will evaluate the situation and direct your suppliers (API and/or FDF) on how to develop their capacity, open bottlenecks, solve quality problems in the manufacturing procedures quickly and effectively to enable a smooth and timely launch."
+    real_estate:
+      land_identification:
+        title: "Land & Opportunity Identification"
+        description:
+          - "Sourcing high-potential land parcels for housing, hospitality, leisure, and commercial projects."
+          - "Conducting in-depth market research and feasibility studies."
+          - "Evaluating zoning, infrastructure, and long-term value."
+      acquisition:
+        title: "Acquisition & Structuring"
+        description:
+          - "Managing land purchase negotiations and due diligence."
+          - "Coordinating with legal advisors, banks, and financial institutions."
+          - "Structuring investments and ownership models aligned with client and investor goals."
+      development:
+        title: "Design & Development Management"
+        description:
+          - "Leading master planning, architecture, and design processes."
+          - "Overseeing consultants, contractors, and project teams."
+          - "Ensuring quality, sustainability, and on-time delivery."
+      marketing:
+        title: "Marketing & Sales Execution"
+        description:
+          - "Building brand identity and go-to-market strategy."
+          - "Designing marketing campaigns to target investors and end-users."
+          - "Managing sales networks and client relationships for maximum absorption."
+      financial:
+        title: "Financial & Regulatory Coordination"
+        description:
+          - "Working closely with banks, accountants, and auditors to secure financing and maintain compliance."
+          - "Managing financial reporting, investor relations, and regulatory approvals."
+          - "Providing transparent oversight from concept to project handover."

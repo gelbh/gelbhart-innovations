@@ -1,0 +1,173 @@
+---
+zh:
+  languages:
+    en: English
+    es: Español
+    fr: Français
+    de: Deutsch
+    it: Italiano
+    pt: Português
+    zh: 中文
+    ja: 日本語
+    ko: 한국어
+    ar: العربية
+  site:
+    name: Gelbhart Innovations
+    author: Gelbhart Innovations
+    tagline: 创造价值的创新解决方案
+    description: 为制药业和房地产业提供战略咨询
+  nav:
+    home: 首页
+    services: 服务
+    all_services: 所有服务
+    pharmaceutical: 制药
+    real_estate: 房地产
+    team: 团队
+    contact: 联系我们
+    menu: 菜单
+  common:
+    loading_map: 正在加载地图...
+    open_in_google_maps: 在谷歌地图中打开
+    scroll_to_top: 返回顶部
+    go_to_homepage: 转到主页
+    learn_more: 了解更多
+    view_full_profile: 查看完整资料
+    connect_on_linkedin: 在 LinkedIn 上联系
+    view_github_profile: 查看 GitHub 简介
+    close: 关闭
+    light_mode: 灯光模式
+    dark_mode: 黑暗模式
+  footer:
+    copyright: 保留所有权利。制作
+    legal_notice: 请参阅我们的
+    terms_and_conditions: 条款和条件
+    privacy_policy: 隐私政策
+    and: 和
+  pages:
+    home:
+      title: GELBHART
+      subtitle: INNOVATIONS
+      tagline_line1: 创新解决方案
+      tagline_line2: 创造价值
+    services:
+      title: 服务
+      pharmaceutical:
+        title: 制药服务
+        subtitle: 全面的制药业咨询
+        description: 为制药公司和产品提供尽职调查、业务开发、投资组合战略和专业咨询。
+        page_title: 制药服务
+        back_button: 所有服务
+      real_estate:
+        title: 房地产服务
+        subtitle: 端到端的房地产开发和投资
+        description: 住房、酒店和商业项目的土地识别、收购、开发管理、营销和财务协调。
+        page_title: 房地产服务
+        back_button: 所有服务
+    team:
+      badge: 认识团队
+      title: 我们的领导层
+      description: 指导 Gelbhart 创新的战略思想家和实践专家遍布各行业和各大洲。
+      linkedin_aria: 打开 %{name} 的 LinkedIn 个人资料
+      github_aria: 打开 %{name} 的 GitHub 简介
+      open_profile_aria: 为 %{name} 打开配置文件
+    contact:
+      title: Gelbhart Innovations
+      address_label: 地址
+      phone_label: 电话
+      email_label: 电子邮件
+      hours_label: 营业时间
+      weekdays: 周一至周五
+      weekend: 周六 - 周日
+      closed: 关闭
+      map_aria: 交互式地图显示 Gelbhart Innovations 位于%{street}_, %{city}_。
+  documents:
+    tos:
+      title: 条款和条件
+      items:
+      - 欢迎访问我们的网站。访问或使用我们的网站，即表示您同意接受本服务条款和隐私政策的约束。
+      - 我们网站上的内容是我们公司的财产，受知识产权法保护。您只能将网站内容用于个人、非商业目的。未经我们事先书面同意，不得复制、修改、分发或再使用网站的任何部分。
+      - 我们的网站可能包含第三方网站的链接。对于这些外部网站的可用性、内容或隐私保护措施，我们概不负责。
+      - 我们 "按原样 "提供本网站，不作任何保证或陈述。对于因使用本网站而造成的任何损失，包括但不限于直接、间接、附带或间接损失，我们概不负责。
+      - 在任何情况下，本公司均不对与您使用本网站有关的超过 100 美元的任何索赔、损失或损害负责。
+      - 本条款受瑞士法律管辖。任何争议将在瑞士法院解决。
+    privacy:
+      title: 隐私政策
+      items:
+      - 我们可能会收集您提供的信息，以及我们的网络服务器和浏览器自动收集的信息。我们使用这些信息来提供和改进我们的服务。
+      - 我们可能会与协助我们运营网站和服务客户的第三方服务提供商共享您的信息。我们不会向任何第三方出售或出租您的个人信息。
+      - 我们使用 cookie 和其他跟踪技术为您提供个性化体验并分析网站使用情况。您可以通过浏览器设置控制 cookie 的使用。
+      - 我们可能会不时更新本隐私政策。如果您在任何变更后继续使用本网站，即表示您接受新政策。
+  errors:
+    not_found:
+      heading: '404'
+      message: 您要查找的页面不存在或已被移动。
+    internal_server_error:
+      heading: '500'
+      message: 我们出了点问题。请稍后再试。
+  team_members:
+    bareket:
+      name: Bareket Gelbhart
+      bio: Bareket 曾就读于以色列理工学院，获得化学学士学位，主修有机化学。Bareket 精通 Microsoft Word、Excel 和 PowerPoint。<br><br>她与家人居住在瑞士提契诺州，并经常从那里前往世界各地工作。
+    yaron:
+      name: 亚伦-盖尔巴特
+      bio: Yaron 曾就读于以色列理工学院，获得工程学学士学位，主修项目管理。Yaron 拥有 20 多年的大型项目管理经验，重点是印度次大陆地区。<br><br>他的兴趣还涉及房地产和酒店业。他能说流利的英语和希伯来语，并能用意大利语对话。闲暇时，Yaron 喜欢做瑜伽和品尝上好的意大利葡萄酒。
+    tomer:
+      name: Tomer Gelbhart
+      bio: 热情洋溢的计算机科学硕士生，拥有计算机科学学士学位。<br><br>希望从 2026 年 5 月开始找一份实习工作，以加强我的后端开发技能，并向成为全栈开发人员迈进。
+  services_data:
+    pharmaceutical:
+      due_diligence:
+        title: 尽职调查
+        subtitle: 您是否正在考虑购买新的医药资产，无论是产品还是公司？
+        description: 我们在制药行业拥有超过 27 年的经验，可就医药产品和制药公司的任何尽职调查提供协助和建议，包括潜在投资的评估、评价、构建、谈判和完成。
+      business_development:
+        title: 业务发展（合作伙伴）
+        subtitle: 您是否正在开发一种新产品，并在寻找最佳合作伙伴或希望获得产品许可？
+        description: 凭借我们的行业经验和知识，我们可以在全球范围内为您的原料药、FDF 和/或孤儿仿制药找到合适的合作伙伴。
+      portfolio:
+        title: 投资组合
+        subtitle: 正在寻找新分子，却不知从何下手？
+        description: 凭借我们的化学背景和行业知识，我们可以帮助您找到合适的分子进行开发，无论是小分子还是未来的大片，无论是面包和黄油还是珍珠。在考虑知识产权、定价和竞争等因素后，我们将确定开发战略。
+      strategy:
+        title: 战略
+        subtitle: 不确定贵公司应该走哪条路？
+        description: 我们将研究并确定市场需求和市场潜力，为公司的产品组合开发商机。然后，我们将寻找公司尚未充分发挥潜力的新客户和新市场。我们将评估当前的销售团队，推荐合适的结构，确定销售人员并对其进行培训。在审查代理网络后，我们将建议在何处以及是否通过代理或直接开展工作。我们将确定理想的管道流程、关键绩效指标和组织结构，并评估竞争对手的状况。
+      orphan_drugs:
+        title: 非专利孤儿药
+        subtitle: 您正在开发一种 "非专利孤儿药 "吗？
+        description: 在许多情况下，这意味着要投资开发一种小众产品，但这并不意味着市场潜力也很小。每个市场都有自己的 "孤儿药 "规则，在许多情况下，品牌产品在特定地区未获批准或未上市。我们将确定相关市场，找到合适的当地合作伙伴、医生（KOL）、患者和患者协会，让您以快速有效的方式提供产品，在开发的早期阶段就实现盈利。
+      product_launch:
+        title: 推出新产品
+        subtitle: 营销授权指日可待，但产品尚未做好上市准备？
+        description: 我们将对情况进行评估，并指导您的供应商（原料药和/或食品添加剂）如何发展产能、打通瓶颈、快速有效地解决生产程序中的质量问题，以便顺利及时地推出产品。
+    real_estate:
+      land_identification:
+        title: 土地与机遇识别
+        description:
+        - 为住房、酒店、休闲和商业项目寻找高潜力地块。
+        - 进行深入的市场调研和可行性研究。
+        - 评估分区、基础设施和长期价值。
+      acquisition:
+        title: 收购与结构设计
+        description:
+        - 管理土地购买谈判和尽职调查。
+        - 与法律顾问、银行和金融机构协调。
+        - 构建符合客户和投资者目标的投资和所有权模式。
+      development:
+        title: 设计与开发管理
+        description:
+        - 领导总体规划、建筑和设计工作。
+        - 监督顾问、承包商和项目团队。
+        - 确保质量、可持续性和按时交付。
+      marketing:
+        title: 营销与销售执行
+        description:
+        - 建立品牌形象和市场战略。
+        - 针对投资者和最终用户设计营销活动。
+        - 管理销售网络和客户关系，最大限度地吸收客户。
+      financial:
+        title: 财务与监管协调
+        description:
+        - 与银行、会计师和审计师密切合作，确保融资和合规性。
+        - 管理财务报告、投资者关系和监管审批。
+        - 提供从概念到项目移交的透明监督。

@@ -1,0 +1,173 @@
+---
+it:
+  languages:
+    en: English
+    es: Español
+    fr: Français
+    de: Deutsch
+    it: Italiano
+    pt: Português
+    zh: 中文
+    ja: 日本語
+    ko: 한국어
+    ar: العربية
+  site:
+    name: Gelbhart Innovations
+    author: Gelbhart Innovations
+    tagline: Soluzioni innovative che creano valore
+    description: Consulenza strategica per l'industria farmaceutica e immobiliare
+  nav:
+    home: Casa
+    services: Servizi
+    all_services: Tutti i servizi
+    pharmaceutical: Farmaceutico
+    real_estate: Immobili
+    team: Squadra
+    contact: Contatto
+    menu: Menu
+  common:
+    loading_map: Caricamento mappa...
+    open_in_google_maps: Aprire in Google Maps
+    scroll_to_top: In alto
+    go_to_homepage: Vai alla homepage
+    learn_more: Per saperne di più
+    view_full_profile: Visualizza il profilo completo
+    connect_on_linkedin: Connettiti su LinkedIn
+    view_github_profile: Visualizza il profilo GitHub
+    close: Chiudere
+    light_mode: Modalità luce
+    dark_mode: Modalità scura
+  footer:
+    copyright: Tutti i diritti riservati. Realizzato da
+    legal_notice: Si prega di consultare il nostro
+    terms_and_conditions: Termini e condizioni
+    privacy_policy: Informativa sulla privacy
+    and: e
+  pages:
+    home:
+      title: GELBHART
+      subtitle: INNOVATIONS
+      tagline_line1: SOLUZIONI INNOVATIVE
+      tagline_line2: CREARE VALORE
+    services:
+      title: Servizi
+      pharmaceutical:
+        title: Servizi farmaceutici
+        subtitle: Consulenza completa per l'industria farmaceutica
+        description: Due diligence, sviluppo commerciale, strategia di portafoglio e consulenza specializzata per aziende e prodotti farmaceutici.
+        page_title: Servizi farmaceutici
+        back_button: Tutti i servizi
+      real_estate:
+        title: Servizi immobiliari
+        subtitle: Sviluppo e investimento immobiliare end-to-end
+        description: Identificazione del terreno, acquisizione, gestione dello sviluppo, marketing e coordinamento finanziario per progetti abitativi, alberghieri e commerciali.
+        page_title: Servizi immobiliari
+        back_button: Tutti i servizi
+    team:
+      badge: Incontrare il team
+      title: La nostra leadership
+      description: Pensatori strategici ed esperti pratici che guidano Gelbhart Innovations in tutti i settori e continenti.
+      linkedin_aria: Aprire il profilo LinkedIn di %{name}
+      github_aria: Aprire il profilo GitHub di %{name}
+      open_profile_aria: Profilo aperto per %{name}
+    contact:
+      title: Gelbhart Innovations
+      address_label: Indirizzo
+      phone_label: Telefono
+      email_label: Email
+      hours_label: Orario d'ufficio
+      weekdays: Lun. - Ven
+      weekend: Sabato - Domenica
+      closed: Chiuso
+      map_aria: Mappa interattiva che mostra la sede di Gelbhart Innovations a %{street}, %{city}
+  documents:
+    tos:
+      title: Termini e condizioni
+      items:
+      - Benvenuti nel nostro sito web. Accedendo o utilizzando il nostro sito web, l'utente accetta di essere vincolato dai presenti termini di servizio e dalla nostra politica sulla privacy.
+      - Il contenuto del nostro sito web è di proprietà della nostra azienda ed è protetto dalle leggi sulla proprietà intellettuale. È possibile utilizzare il contenuto solo per scopi personali e non commerciali. Non è consentito copiare, modificare, distribuire o riutilizzare alcuna parte del sito web senza il nostro previo consenso scritto.
+      - Il nostro sito web può contenere link a siti web di terzi. Non siamo responsabili della disponibilità, del contenuto o delle pratiche sulla privacy di tali siti esterni.
+      - Forniamo questo sito web "così com'è" senza alcuna garanzia o dichiarazione. Non siamo responsabili di alcun danno derivante dall'uso del sito web da parte dell'utente, compresi, ma non solo, i danni diretti, indiretti, incidentali o consequenziali.
+      - In nessun caso la nostra azienda sarà responsabile di eventuali reclami, perdite o danni superiori a 100 dollari relativi all'utilizzo di questo sito web da parte dell'utente.
+      - I presenti termini sono disciplinati dalle leggi della Svizzera. Eventuali controversie saranno risolte dai tribunali della Svizzera.
+    privacy:
+      title: Informativa sulla privacy
+      items:
+      - Possiamo raccogliere informazioni fornite dall'utente, nonché informazioni raccolte automaticamente dal nostro server web e dal browser. Utilizziamo queste informazioni per fornire e migliorare i nostri servizi.
+      - Possiamo condividere le vostre informazioni con fornitori di servizi terzi che ci assistono nella gestione del sito web e nel servizio ai nostri clienti. Non vendiamo né affittiamo le vostre informazioni personali a terzi.
+      - Utilizziamo i cookie e altre tecnologie di tracciamento per personalizzare la vostra esperienza e analizzare l'utilizzo del sito web. È possibile controllare l'uso dei cookie attraverso le impostazioni del browser.
+      - La presente informativa sulla privacy può essere aggiornata periodicamente. L'uso continuato del sito web dopo eventuali modifiche costituisce l'accettazione della nuova politica.
+  errors:
+    not_found:
+      heading: '404'
+      message: La pagina che state cercando non esiste o è stata spostata.
+    internal_server_error:
+      heading: '500'
+      message: Qualcosa non è andato per il verso giusto. Si prega di riprovare più tardi.
+  team_members:
+    bareket:
+      name: Bareket Gelbhart
+      bio: Bareket ha frequentato il Technion, l'Istituto di Tecnologia di Israele, dove ha conseguito la laurea triennale in Chimica con indirizzo Chimica Organica.<br><br>Libera correntemente l'ebraico e l'inglese e sa conversare in italiano. Possiede una conoscenza avanzata di Microsoft Word, Excel e PowerPoint.<br><br>Risiede in Ticino, Svizzera, con la sua famiglia, da dove viaggia regolarmente in tutto il mondo per lavoro.<br><br>Bareket è un'appassionata di cucina e un'accanita tifosa di calcio.
+    yaron:
+      name: Yaron Gelbhart
+      bio: Yaron ha frequentato il Technion, l'Istituto di Tecnologia di Israele, dove ha conseguito una laurea in Ingegneria con specializzazione in Project Management. Yaron possiede oltre 20 anni di esperienza nella gestione di grandi progetti, con particolare attenzione al subcontinente indiano.<br><br>I suoi interessi si estendono anche al settore immobiliare e all'ospitalità. Parla correntemente inglese ed ebraico e ha un livello di conversazione in italiano. Nel tempo libero Yaron fa yoga e si gode un buon bicchiere di vino italiano.
+    tomer:
+      name: Tomer Gelbhart
+      bio: Studente appassionato di MSc Computer Science con una laurea in Informatica. Esperienza nello sviluppo front-end e nell'integrazione di API per sviluppare strumenti che affrontino le sfide del mondo reale.<br><br>Cerco uno stage a partire da maggio 2026 per rafforzare le mie capacità di sviluppo back-end e progredire verso la trasformazione in uno sviluppatore full-stack.
+  services_data:
+    pharmaceutical:
+      due_diligence:
+        title: Due Diligence
+        subtitle: State pensando di acquistare un nuovo asset farmaceutico, sia esso un prodotto o un'azienda?
+        description: Con oltre 27 anni di esperienza nel settore farmaceutico, forniamo assistenza e consulenza in relazione a qualsiasi due diligence di un prodotto farmaceutico e di un'azienda farmaceutica, comprese la valutazione, la strutturazione, la negoziazione e il completamento di un potenziale investimento.
+      business_development:
+        title: Sviluppo commerciale (partenariati)
+        subtitle: State sviluppando un nuovo prodotto e siete alla ricerca del partner migliore o volete concedere in licenza il vostro prodotto?
+        description: Grazie alla nostra esperienza e conoscenza del settore, possiamo trovare il partner giusto per i vostri API, FDF e/o farmaci generici orfani in tutto il mondo.
+      portfolio:
+        title: Portafoglio
+        subtitle: Siete alla ricerca di una nuova molecola ma non sapete da dove cominciare?
+        description: Grazie al nostro background chimico e alla nostra conoscenza del settore, possiamo aiutarvi a trovare le molecole giuste da sviluppare, sia che si tratti di piccole molecole di nicchia che di futuri blockbuster, bread & butter o perle. Definiremo la strategia di sviluppo dopo aver considerato la proprietà intellettuale, il prezzo e la concorrenza.
+      strategy:
+        title: Strategia
+        subtitle: Non siete sicuri di quale strada debba seguire la vostra azienda?
+        description: Ricerchiamo e identifichiamo le esigenze e il potenziale del mercato per sviluppare opportunità commerciali per il portafoglio dell'azienda. Individueremo quindi nuovi clienti e nuovi mercati in cui il potenziale dell'azienda non è ancora pienamente realizzato. Valuteremo l'attuale team di vendita e raccomanderemo la giusta struttura, individueremo il personale di vendita e lo formeremo. Dopo aver esaminato la rete di agenzie, raccomanderemo dove e se lavorare tramite agenti o direttamente. Definiremo il processo di pipeline ideale, i KPI e l'organizzazione, e valuteremo lo stato dei concorrenti.
+      orphan_drugs:
+        title: Farmaci orfani generici
+        subtitle: State sviluppando un farmaco orfano generico?
+        description: In molti casi, significa investire nello sviluppo di un piccolo prodotto di nicchia, ma ciò non significa che anche il potenziale di mercato sia piccolo. Ogni mercato ha le proprie regole per i farmaci orfani e in molti casi il prodotto di marca non è approvato o non è commercializzato in un determinato luogo. Identificheremo i mercati rilevanti e troveremo i giusti partner locali, medici (KOL), pazienti e associazioni di pazienti per consentirvi di offrire il vostro prodotto in modo rapido ed efficace, realizzando profitti nelle prime fasi dello sviluppo.
+      product_launch:
+        title: Lancio di nuovi prodotti
+        subtitle: L'autorizzazione alla commercializzazione è dietro l'angolo ma il prodotto non è ancora pronto per il lancio?
+        description: Valuteremo la situazione e indirizzeremo i vostri fornitori (API e/o FDF) su come sviluppare le loro capacità, aprire i colli di bottiglia, risolvere i problemi di qualità nelle procedure di produzione in modo rapido ed efficace per consentire un lancio regolare e tempestivo.
+    real_estate:
+      land_identification:
+        title: Identificazione dei terreni e delle opportunità
+        description:
+        - Ricerca di lotti di terreno ad alto potenziale per progetti abitativi, ricettivi, ricreativi e commerciali.
+        - Conduzione di ricerche di mercato approfondite e studi di fattibilità.
+        - Valutazione della zonizzazione, delle infrastrutture e del valore a lungo termine.
+      acquisition:
+        title: Acquisizione e strutturazione
+        description:
+        - Gestione delle trattative per l'acquisto di terreni e della due diligence.
+        - Coordinamento con consulenti legali, banche e istituzioni finanziarie.
+        - Strutturare investimenti e modelli di proprietà allineati agli obiettivi dei clienti e degli investitori.
+      development:
+        title: Gestione della progettazione e dello sviluppo
+        description:
+        - Guida dei processi di master planning, architettura e progettazione.
+        - Supervisione di consulenti, appaltatori e team di progetto.
+        - Garantire qualità, sostenibilità e puntualità nelle consegne.
+      marketing:
+        title: Esecuzione di marketing e vendite
+        description:
+        - Costruire l'identità del marchio e la strategia di mercato.
+        - Progettazione di campagne di marketing rivolte a investitori e utenti finali.
+        - Gestire le reti di vendita e le relazioni con i clienti per ottenere il massimo assorbimento.
+      financial:
+        title: Coordinamento finanziario e normativo
+        description:
+        - Lavorare a stretto contatto con banche, contabili e revisori per garantire i finanziamenti e mantenere la conformità.
+        - Gestione delle relazioni finanziarie, delle relazioni con gli investitori e delle approvazioni normative.
+        - Garantire una supervisione trasparente dall'ideazione alla consegna del progetto.

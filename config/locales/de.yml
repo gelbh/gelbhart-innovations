@@ -1,0 +1,173 @@
+---
+de:
+  languages:
+    en: English
+    es: Español
+    fr: Français
+    de: Deutsch
+    it: Italiano
+    pt: Português
+    zh: 中文
+    ja: 日本語
+    ko: 한국어
+    ar: العربية
+  site:
+    name: Gelbhart Innovations
+    author: Gelbhart Innovations
+    tagline: Innovative Lösungen schaffen Werte
+    description: Strategische Beratung für die Pharma- und Immobilienbranche
+  nav:
+    home: Startseite
+    services: Dienstleistungen
+    all_services: Alle Dienstleistungen
+    pharmaceutical: Pharmazeutische
+    real_estate: Liegenschaften
+    team: Team
+    contact: Kontakt
+    menu: Menü
+  common:
+    loading_map: Karte laden...
+    open_in_google_maps: In Google Maps öffnen
+    scroll_to_top: Top
+    go_to_homepage: Zur Homepage gehen
+    learn_more: Mehr erfahren
+    view_full_profile: Vollständiges Profil anzeigen
+    connect_on_linkedin: Auf LinkedIn verbinden
+    view_github_profile: GitHub-Profil ansehen
+    close: Schließen Sie
+    light_mode: Licht-Modus
+    dark_mode: Dunkler Modus
+  footer:
+    copyright: Alle Rechte vorbehalten. Hergestellt von
+    legal_notice: Bitte beachten Sie unser
+    terms_and_conditions: Bedingungen und Konditionen
+    privacy_policy: Datenschutzbestimmungen
+    and: und
+  pages:
+    home:
+      title: GELBHART
+      subtitle: INNOVATIONS
+      tagline_line1: INNOVATIVE LÖSUNGEN
+      tagline_line2: WERT SCHAFFEN
+    services:
+      title: Dienstleistungen
+      pharmaceutical:
+        title: Pharmazeutische Dienstleistungen
+        subtitle: Umfassende Beratung der Pharmaindustrie
+        description: Due Diligence, Geschäftsentwicklung, Portfoliostrategie und spezialisierte Beratung für pharmazeutische Unternehmen und Produkte.
+        page_title: Pharmazeutische Dienstleistungen
+        back_button: Alle Dienstleistungen
+      real_estate:
+        title: Immobilien-Dienstleistungen
+        subtitle: Umfassende Immobilienentwicklung und -investition
+        description: Identifizierung von Grundstücken, Erwerb, Erschließungsmanagement, Marketing und finanzielle Koordinierung von Projekten in den Bereichen Wohnen, Gastgewerbe und Handel.
+        page_title: Immobilien-Dienstleistungen
+        back_button: Alle Dienstleistungen
+    team:
+      badge: Treffen Sie das Team
+      title: Unsere Führung
+      description: Strategische Denker und praktische Experten leiten Gelbhart Innovations über Branchen und Kontinente hinweg.
+      linkedin_aria: Öffnen Sie das LinkedIn-Profil von %{name}
+      github_aria: Das GitHub-Profil von %{name} öffnen
+      open_profile_aria: Profil für %{name} öffnen
+    contact:
+      title: Gelbhart Innovations
+      address_label: Adresse
+      phone_label: Telefon
+      email_label: E-Mail
+      hours_label: Geschäftszeiten
+      weekdays: Mo - Fr
+      weekend: Sa - So
+      closed: Geschlossen
+      map_aria: Interaktive Karte mit dem Standort von Gelbhart Innovations in %{street}, %{city}
+  documents:
+    tos:
+      title: Bedingungen und Konditionen
+      items:
+      - Willkommen auf unserer Website. Indem Sie auf unsere Website zugreifen oder sie nutzen, erklären Sie sich mit diesen Nutzungsbedingungen und unserer Datenschutzrichtlinie einverstanden.
+      - Der Inhalt unserer Website ist Eigentum unseres Unternehmens und durch Gesetze zum Schutz des geistigen Eigentums geschützt. Sie dürfen die Inhalte nur für persönliche, nicht-kommerzielle Zwecke nutzen. Sie dürfen keinen Teil der Website ohne unsere vorherige schriftliche Zustimmung kopieren, verändern, verteilen oder wiederverwenden.
+      - Unsere Website kann Links zu Websites Dritter enthalten. Wir sind nicht verantwortlich für die Verfügbarkeit, den Inhalt oder die Datenschutzpraktiken dieser externen Websites.
+      - Wir stellen diese Website "wie sie ist" zur Verfügung, ohne jegliche Garantien oder Zusicherungen. Wir haften nicht für Schäden, die durch die Nutzung der Website entstehen, einschließlich, aber nicht beschränkt auf direkte, indirekte, zufällige oder Folgeschäden.
+      - In keinem Fall haftet unser Unternehmen für Ansprüche, Verluste oder Schäden, die den Betrag von 100 $ übersteigen und mit der Nutzung dieser Website in Zusammenhang stehen.
+      - Diese Bedingungen unterliegen den Gesetzen der Schweiz. Alle Streitigkeiten werden vor den Gerichten in der Schweiz ausgetragen.
+    privacy:
+      title: Datenschutzbestimmungen
+      items:
+      - Wir können von Ihnen bereitgestellte Informationen sowie Informationen, die automatisch von unserem Webserver und Browser erfasst werden, sammeln. Wir verwenden diese Informationen, um unsere Dienste bereitzustellen und zu verbessern.
+      - Wir können Ihre Daten an Drittanbieter weitergeben, die uns beim Betrieb der Website und bei der Betreuung unserer Kunden unterstützen. Wir verkaufen oder vermieten Ihre persönlichen Daten nicht an Dritte.
+      - Wir verwenden Cookies und andere Tracking-Technologien, um Ihre Erfahrung zu personalisieren und die Nutzung der Website zu analysieren. Sie können die Verwendung von Cookies über Ihre Browsereinstellungen steuern.
+      - Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Wenn Sie die Website nach einer Änderung weiterhin nutzen, erklären Sie sich mit der neuen Richtlinie einverstanden.
+  errors:
+    not_found:
+      heading: '404'
+      message: Die Seite, die Sie suchen, existiert nicht oder wurde verschoben.
+    internal_server_error:
+      heading: '500'
+      message: Auf unserer Seite ist etwas schief gelaufen. Bitte versuchen Sie es später noch einmal.
+  team_members:
+    bareket:
+      name: Bareket Gelbhart
+      bio: Bareket besuchte das Technion, Israel Institute of Technology, wo sie ihren Bachelor-Abschluss in Chemie mit dem Hauptfach Organische Chemie machte.<br><br>Sie spricht fließend Hebräisch und Englisch und kann sich auf Italienisch unterhalten. Bareket verfügt über fortgeschrittene Kenntnisse in Microsoft Word, Excel und PowerPoint.<br><br>Sie wohnt mit ihrer Familie im Tessin, von wo aus sie regelmäßig beruflich in die ganze Welt reist.<br><br>Bareket ist eine leidenschaftliche Köchin und ein eingefleischter Fußballfan.
+    yaron:
+      name: Yaron Gelbhart
+      bio: Yaron besuchte das Technion, das Israelische Institut für Technologie, wo er seinen Bachelor of Science in Ingenieurwissenschaften mit dem Hauptfach Projektmanagement erwarb. Yaron verfügt über mehr als 20 Jahre Erfahrung im Management großer Projekte mit Schwerpunkt auf dem indischen Subkontinent.<br><br>Seine Interessen erstrecken sich auch auf die Bereiche Immobilien und Gastgewerbe. Er spricht fließend Englisch und Hebräisch und verfügt über Konversationskenntnisse in Italienisch. In seiner Freizeit macht Yaron Yoga und genießt ein Glas guten italienischen Weins.
+    tomer:
+      name: Tomer Gelbhart
+      bio: Leidenschaftlicher MSc-Informatikstudent mit einem BSc in Informatik. Erfahren in Front-End-Entwicklung und API-Integration, um Tools zu entwickeln, die reale Herausforderungen angehen.<br><br>Suche ein Praktikum ab Mai 2026, um meine Back-End-Entwicklungsfähigkeiten zu stärken und Fortschritte auf dem Weg zum Full-Stack-Entwickler zu machen.
+  services_data:
+    pharmaceutical:
+      due_diligence:
+        title: Sorgfaltspflicht
+        subtitle: Erwägen Sie den Kauf eines neuen pharmazeutischen Produkts oder eines Unternehmens?
+        description: Mit mehr als 27 Jahren Erfahrung in der pharmazeutischen Industrie bieten wir Unterstützung und Beratung in Bezug auf jede Art von Due Diligence eines pharmazeutischen Produkts und eines pharmazeutischen Unternehmens, einschließlich Beurteilung, Bewertung, Strukturierung, Verhandlung und Abschluss einer potenziellen Investition.
+      business_development:
+        title: Geschäftsentwicklung (Partnerschaften)
+        subtitle: Sie entwickeln ein neues Produkt und sind auf der Suche nach dem besten Partner oder wollen Ihr Produkt in Lizenz vergeben?
+        description: Mit unserer Branchenerfahrung und -kenntnis können wir weltweit den richtigen Partner für Ihr API, FDF und/oder Orphan Generic Drug finden.
+      portfolio:
+        title: Portfolio
+        subtitle: Sie suchen ein neues Molekül, wissen aber nicht, wo Sie anfangen sollen?
+        description: Mit unserem chemischen Hintergrund und unserer Branchenkenntnis können wir Ihnen helfen, die richtigen Moleküle für die Entwicklung zu finden, ganz gleich, ob es sich um kleine Nischenmoleküle oder künftige Blockbuster, um Brot und Butter oder Perlen handelt. Wir legen die Entwicklungsstrategie fest, nachdem wir geistiges Eigentum, Preisgestaltung und Wettbewerb berücksichtigt haben.
+      strategy:
+        title: Strategie
+        subtitle: Sie sind sich nicht sicher, welchen Weg Ihr Unternehmen einschlagen soll?
+        description: Wir recherchieren und identifizieren die Marktbedürfnisse und das Marktpotenzial, um Geschäftsmöglichkeiten für das Portfolio des Unternehmens zu entwickeln. Wir werden neue Kunden und neue Märkte ausfindig machen, in denen das Potenzial des Unternehmens noch nicht voll ausgeschöpft ist. Wir bewerten das derzeitige Vertriebsteam und empfehlen die richtige Struktur, ermitteln das Vertriebspersonal und schulen es. Nach der Überprüfung des Agenturnetzes empfehlen wir, ob und wo wir mit Vertretern oder direkt arbeiten sollen. Wir definieren den idealen Pipeline-Prozess, KPIs und die Organisation und bewerten den Status der Wettbewerber.
+      orphan_drugs:
+        title: Generische Orphan Drugs
+        subtitle: Entwickeln Sie ein generisches Medikament für seltene Krankheiten?
+        description: In vielen Fällen bedeutet dies, dass in die Entwicklung eines kleinen Nischenprodukts investiert wird, was aber nicht bedeutet, dass das Marktpotenzial ebenfalls gering ist. Jeder Markt hat seine eigenen Regeln für Orphan Drugs und in vielen Fällen ist das Markenprodukt an einem bestimmten Ort nicht zugelassen oder nicht vermarktet. Wir identifizieren die relevanten Märkte und finden die richtigen lokalen Partner, Ärzte (KOLs), Patienten und Patientenverbände, damit Sie Ihr Produkt schnell und effektiv anbieten und bereits in frühen Entwicklungsstadien Gewinne erzielen können.
+      product_launch:
+        title: Einführung neuer Produkte
+        subtitle: Die Marktzulassung steht vor der Tür, aber das Produkt ist noch nicht marktreif?
+        description: Wir bewerten die Situation und weisen Ihre Lieferanten (API und/oder FDF) an, wie sie ihre Kapazitäten ausbauen, Engpässe beseitigen und Qualitätsprobleme bei den Herstellungsverfahren schnell und effektiv lösen können, um eine reibungslose und rechtzeitige Markteinführung zu ermöglichen.
+    real_estate:
+      land_identification:
+        title: Identifizierung von Land und Gelegenheiten
+        description:
+        - Beschaffung von Grundstücken mit hohem Potenzial für Wohnungs-, Gaststätten-, Freizeit- und Gewerbeprojekte.
+        - Durchführung eingehender Marktforschung und Machbarkeitsstudien.
+        - Bewertung von Gebietseinteilung, Infrastruktur und langfristigem Wert.
+      acquisition:
+        title: Akquisition und Strukturierung
+        description:
+        - Leitung von Grundstückskaufverhandlungen und Due-Diligence-Prüfungen.
+        - Koordinierung mit Rechtsberatern, Banken und Finanzinstituten.
+        - Strukturierung von Investitionen und Eigentumsmodellen im Einklang mit den Zielen von Kunden und Investoren.
+      development:
+        title: Design- und Entwicklungsmanagement
+        description:
+        - Leitung von Masterplanungs-, Architektur- und Designprozessen.
+        - Beaufsichtigung von Beratern, Auftragnehmern und Projektteams.
+        - Gewährleistung von Qualität, Nachhaltigkeit und pünktlicher Lieferung.
+      marketing:
+        title: Marketing und Vertrieb
+        description:
+        - Aufbau einer Markenidentität und Markteinführungsstrategie.
+        - Entwicklung von Marketingkampagnen für Investoren und Endverbraucher.
+        - Verwaltung von Vertriebsnetzen und Kundenbeziehungen für eine maximale Ausschöpfung.
+      financial:
+        title: Finanzielle und regulatorische Koordinierung
+        description:
+        - Enge Zusammenarbeit mit Banken, Buchhaltern und Wirtschaftsprüfern zur Sicherung der Finanzierung und Einhaltung der Vorschriften.
+        - Verwaltung der Finanzberichterstattung, Investor Relations und behördliche Genehmigungen.
+        - Transparente Überwachung vom Konzept bis zur Projektübergabe.

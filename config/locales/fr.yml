@@ -1,0 +1,173 @@
+---
+fr:
+  languages:
+    en: English
+    es: Español
+    fr: Français
+    de: Deutsch
+    it: Italiano
+    pt: Português
+    zh: 中文
+    ja: 日本語
+    ko: 한국어
+    ar: العربية
+  site:
+    name: Gelbhart Innovations
+    author: Gelbhart Innovations
+    tagline: Des solutions innovantes qui créent de la valeur
+    description: Conseil stratégique pour les industries pharmaceutiques et immobilières
+  nav:
+    home: Accueil
+    services: Services
+    all_services: Tous les services
+    pharmaceutical: Pharmaceutique
+    real_estate: Immobilier
+    team: L'équipe
+    contact: Nous contacter
+    menu: Menu
+  common:
+    loading_map: Chargement de la carte...
+    open_in_google_maps: Ouvrir dans Google Maps
+    scroll_to_top: Haut de page
+    go_to_homepage: Aller à la page d'accueil
+    learn_more: En savoir plus
+    view_full_profile: Voir le profil complet
+    connect_on_linkedin: Se connecter sur LinkedIn
+    view_github_profile: Voir le profil GitHub
+    close: Fermer
+    light_mode: Mode lumineux
+    dark_mode: Mode sombre
+  footer:
+    copyright: Tous droits réservés. Réalisé par
+    legal_notice: Veuillez consulter notre
+    terms_and_conditions: Conditions générales d'utilisation
+    privacy_policy: Politique de confidentialité
+    and: et
+  pages:
+    home:
+      title: GELBHART
+      subtitle: INNOVATIONS
+      tagline_line1: DES SOLUTIONS INNOVANTES
+      tagline_line2: CRÉER DE LA VALEUR
+    services:
+      title: Services
+      pharmaceutical:
+        title: Services pharmaceutiques
+        subtitle: Conseil global à l'industrie pharmaceutique
+        description: Due diligence, développement commercial, stratégie de portefeuille et conseil spécialisé pour les entreprises et les produits pharmaceutiques.
+        page_title: Services pharmaceutiques
+        back_button: Tous les services
+      real_estate:
+        title: Services immobiliers
+        subtitle: Développement et investissement immobiliers de bout en bout
+        description: Identification et acquisition de terrains, gestion du développement, marketing et coordination financière pour des projets de logement, d'hôtellerie et de commerce.
+        page_title: Services immobiliers
+        back_button: Tous les services
+    team:
+      badge: Rencontrer l'équipe
+      title: Notre leadership
+      description: Des penseurs stratégiques et des experts pratiques qui guident Gelbhart Innovations à travers les industries et les continents.
+      linkedin_aria: Ouvrir le profil LinkedIn de %{name}
+      github_aria: Ouvrir le profil GitHub de %{name}
+      open_profile_aria: Profil ouvert pour %{name}
+    contact:
+      title: Gelbhart Innovations
+      address_label: Adresse
+      phone_label: Téléphone
+      email_label: Courriel
+      hours_label: Heures d'ouverture
+      weekdays: Du lundi au vendredi
+      weekend: Samedi - Dimanche
+      closed: Fermé
+      map_aria: Carte interactive montrant l'emplacement de Gelbhart Innovations à %{street}, %{city}
+  documents:
+    tos:
+      title: Conditions générales d'utilisation
+      items:
+      - Bienvenue sur notre site web. En accédant à notre site web ou en l'utilisant, vous acceptez d'être lié par les présentes conditions de service et par notre politique de confidentialité.
+      - Le contenu de notre site web est la propriété de notre société et est protégé par les lois sur la propriété intellectuelle. Vous ne pouvez utiliser le contenu qu'à des fins personnelles et non commerciales. Il est interdit de copier, modifier, distribuer ou réutiliser toute partie du site web sans notre accord écrit préalable.
+      - Notre site web peut contenir des liens vers des sites web de tiers. Nous ne sommes pas responsables de la disponibilité, du contenu ou des pratiques de confidentialité de ces sites externes.
+      - Nous fournissons ce site web "en l'état", sans aucune garantie ni représentation. Nous ne sommes pas responsables des dommages résultant de l'utilisation du site web, y compris, mais sans s'y limiter, les dommages directs, indirects, accessoires ou consécutifs.
+      - En aucun cas notre société ne sera responsable des réclamations, pertes ou dommages dépassant 100 dollars liés à votre utilisation de ce site web.
+      - Les présentes conditions sont régies par le droit suisse. Tout litige sera résolu par les tribunaux suisses.
+    privacy:
+      title: Politique de confidentialité
+      items:
+      - Nous pouvons recueillir des informations que vous nous fournissez, ainsi que des informations collectées automatiquement par notre serveur web et notre navigateur. Nous utilisons ces informations pour fournir et améliorer nos services.
+      - Nous pouvons partager vos informations avec des prestataires de services tiers qui nous aident à exploiter le site web et à servir nos clients. Nous ne vendons ni ne louons vos informations personnelles à des tiers.
+      - Nous utilisons des cookies et d'autres technologies de suivi pour personnaliser votre expérience et analyser l'utilisation du site web. Vous pouvez contrôler l'utilisation des cookies par le biais des paramètres de votre navigateur.
+      - Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. En continuant à utiliser le site web après toute modification, vous acceptez la nouvelle politique.
+  errors:
+    not_found:
+      heading: '404'
+      message: La page que vous recherchez n'existe pas ou a été déplacée.
+    internal_server_error:
+      heading: '500'
+      message: Un problème s'est produit de notre côté. Veuillez réessayer plus tard.
+  team_members:
+    bareket:
+      name: Bareket Gelbhart
+      bio: Bareket a fréquenté le Technion, l'Institut israélien de technologie, où elle est titulaire d'une licence en chimie, avec la chimie organique comme matière principale.<br><br>Elle parle couramment l'hébreu et l'anglais et peut converser en italien. Elle possède des connaissances avancées de Microsoft Word, Excel et PowerPoint.<br><br>Elle réside au Tessin, en Suisse, avec sa famille, d'où elle voyage régulièrement à travers le monde pour son travail.<br><br>Bareket est une cuisinière passionnée et une fan inconditionnelle de football.
+    yaron:
+      name: Yaron Gelbhart
+      bio: Yaron a fréquenté le Technion, l'Institut israélien de technologie, où il a obtenu une licence en ingénierie, avec la gestion de projet comme matière principale. Yaron possède plus de 20 ans d'expérience dans la gestion de grands projets, en particulier dans le sous-continent indien.<br><br>Il s'intéresse également à l'immobilier et à l'hôtellerie. Il parle couramment l'anglais et l'hébreu et a un niveau de conversation en italien. Pendant son temps libre, Yaron fait du yoga et apprécie un verre de bon vin italien.
+    tomer:
+      name: Tomer Gelbhart
+      bio: Étudiant passionné de MSc Computer Science avec un BSc en informatique. Expérimenté dans le développement front-end et l'intégration d'API pour développer des outils qui répondent aux défis du monde réel.<br><br>Recherche d'un stage débutant en mai 2026 pour renforcer mes compétences en développement back-end et progresser pour devenir un développeur full-stack.
+  services_data:
+    pharmaceutical:
+      due_diligence:
+        title: Diligence raisonnable
+        subtitle: Vous envisagez d'acheter un nouvel actif pharmaceutique, qu'il s'agisse d'un produit ou d'une entreprise ?
+        description: Avec plus de 27 ans d'expérience dans l'industrie pharmaceutique, nous fournissons une assistance et des conseils dans le cadre de la due diligence d'un produit pharmaceutique et d'une entreprise pharmaceutique, y compris l'évaluation, la structuration, la négociation et la réalisation d'un investissement potentiel.
+      business_development:
+        title: Développement commercial (partenariats)
+        subtitle: Vous développez un nouveau produit et recherchez le meilleur partenaire ou souhaitez concéder une licence pour votre produit ?
+        description: Grâce à notre expérience et à nos connaissances de l'industrie, nous pouvons trouver le bon partenaire pour votre API, votre FDF et/ou votre médicament générique orphelin dans le monde entier.
+      portfolio:
+        title: Le portefeuille
+        subtitle: Vous cherchez une nouvelle molécule mais vous ne savez pas par où commencer ?
+        description: Grâce à notre expérience en chimie et à notre connaissance de l'industrie, nous pouvons vous aider à trouver les bonnes molécules à développer, qu'il s'agisse de petites molécules de niche ou de futurs blockbusters, de pain et de beurre ou de perles. Nous définirons la stratégie de développement en tenant compte de la propriété intellectuelle, de la tarification et de la concurrence.
+      strategy:
+        title: Stratégie
+        subtitle: Vous n'êtes pas sûr de la voie à suivre pour votre entreprise ?
+        description: Nous rechercherons et identifierons les besoins et le potentiel du marché afin de développer des opportunités commerciales pour le portefeuille de l'entreprise. Nous trouverons ensuite de nouveaux clients et de nouveaux marchés dans lesquels le potentiel de l'entreprise n'est pas encore pleinement exploité. Nous évaluerons l'équipe de vente actuelle et recommanderons la structure adéquate, identifierons le personnel de vente et le formerons. Après avoir passé en revue le réseau d'agences, nous recommanderons où et s'il convient de travailler par l'intermédiaire d'agents ou directement. Nous définirons le processus de pipeline idéal, les indicateurs clés de performance et l'organisation, et nous évaluerons la situation des concurrents.
+      orphan_drugs:
+        title: Médicaments orphelins génériques
+        subtitle: Développez-vous un médicament orphelin générique ?
+        description: Dans de nombreux cas, il s'agit d'investir dans le développement d'un petit produit de niche, mais cela ne signifie pas que le potentiel du marché est également faible. Chaque marché a ses propres règles pour les médicaments orphelins et, dans de nombreux cas, le produit de marque n'est pas approuvé ou n'est pas commercialisé dans un endroit spécifique. Nous identifierons les marchés pertinents et trouverons les bons partenaires locaux, les médecins (KOL), les patients et les associations de patients pour vous permettre de proposer votre produit de manière rapide et efficace, en réalisant des bénéfices dès les premières étapes du développement.
+      product_launch:
+        title: Lancement de nouveaux produits
+        subtitle: L'autorisation de mise sur le marché est imminente mais le produit n'est pas encore prêt à être lancé ?
+        description: Nous évaluerons la situation et indiquerons à vos fournisseurs (API et/ou FDF) comment développer leurs capacités, éliminer les goulets d'étranglement et résoudre les problèmes de qualité dans les procédures de fabrication de manière rapide et efficace afin de permettre un lancement sans heurts et dans les délais.
+    real_estate:
+      land_identification:
+        title: Identification des terres et des opportunités
+        description:
+        - Recherche de terrains à fort potentiel pour des projets de logement, d'hôtellerie, de loisirs et de commerce.
+        - Réaliser des études de marché approfondies et des études de faisabilité.
+        - Évaluation du zonage, de l'infrastructure et de la valeur à long terme.
+      acquisition:
+        title: Acquisition et structuration
+        description:
+        - Gestion des négociations d'achat de terrains et de la diligence raisonnable.
+        - Assurer la coordination avec les conseillers juridiques, les banques et les institutions financières.
+        - Structurer les investissements et les modèles de propriété en fonction des objectifs des clients et des investisseurs.
+      development:
+        title: Gestion de la conception et du développement
+        description:
+        - Diriger les processus de planification, d'architecture et de conception.
+        - Superviser les consultants, les entrepreneurs et les équipes de projet.
+        - Garantir la qualité, la durabilité et le respect des délais.
+      marketing:
+        title: Marketing et exécution des ventes
+        description:
+        - Construire l'identité de la marque et la stratégie de mise sur le marché.
+        - Concevoir des campagnes de marketing pour cibler les investisseurs et les utilisateurs finaux.
+        - Gérer les réseaux de vente et les relations avec les clients pour une absorption maximale.
+      financial:
+        title: Coordination financière et réglementaire
+        description:
+        - Travailler en étroite collaboration avec les banques, les comptables et les auditeurs afin de garantir le financement et de maintenir la conformité.
+        - Gérer les rapports financiers, les relations avec les investisseurs et les approbations réglementaires.
+        - Assurer une supervision transparente de la conception à la remise du projet.

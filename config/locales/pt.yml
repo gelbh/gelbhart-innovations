@@ -1,0 +1,173 @@
+---
+pt:
+  languages:
+    en: English
+    es: Español
+    fr: Français
+    de: Deutsch
+    it: Italiano
+    pt: Português
+    zh: 中文
+    ja: 日本語
+    ko: 한국어
+    ar: العربية
+  site:
+    name: Gelbhart Innovations
+    author: Gelbhart Innovations
+    tagline: Soluções inovadoras que criam valor
+    description: Consultoria estratégica para os sectores farmacêutico e imobiliário
+  nav:
+    home: Início
+    services: Serviços
+    all_services: Todos os serviços
+    pharmaceutical: Farmacêutico
+    real_estate: Imóveis
+    team: Equipa
+    contact: Contactar-nos
+    menu: Menu
+  common:
+    loading_map: Carregar mapa...
+    open_in_google_maps: Abrir no Google Maps
+    scroll_to_top: Topo
+    go_to_homepage: Ir para a página inicial
+    learn_more: Saiba mais
+    view_full_profile: Ver perfil completo
+    connect_on_linkedin: Ligar no LinkedIn
+    view_github_profile: Ver perfil do GitHub
+    close: Fechar
+    light_mode: Modo de luz
+    dark_mode: Modo escuro
+  footer:
+    copyright: Todos os direitos reservados. Fabricado por
+    legal_notice: Consulte a nossa
+    terms_and_conditions: Termos e condições
+    privacy_policy: Política de privacidade
+    and: e
+  pages:
+    home:
+      title: GELBHART
+      subtitle: INNOVATIONS
+      tagline_line1: SOLUÇÕES INOVADORAS
+      tagline_line2: CRIAR VALOR
+    services:
+      title: Serviços
+      pharmaceutical:
+        title: Serviços farmacêuticos
+        subtitle: Consultoria abrangente no sector farmacêutico
+        description: Due diligence, desenvolvimento de negócios, estratégia de portfólio e consultoria especializada para empresas e produtos farmacêuticos.
+        page_title: Serviços farmacêuticos
+        back_button: Todos os serviços
+      real_estate:
+        title: Serviços imobiliários
+        subtitle: Desenvolvimento e investimento imobiliário de ponta a ponta
+        description: Identificação de terrenos, aquisição, gestão do desenvolvimento, marketing e coordenação financeira de projectos de habitação, hotelaria e comércio.
+        page_title: Serviços imobiliários
+        back_button: Todos os serviços
+    team:
+      badge: Conheça a equipa
+      title: A nossa liderança
+      description: Pensadores estratégicos e especialistas práticos que orientam a Gelbhart Innovations em todos os sectores e continentes.
+      linkedin_aria: Abrir o perfil LinkedIn de %{name}
+      github_aria: Abrir o perfil de %{name} no GitHub
+      open_profile_aria: Abrir perfil para %{name}
+    contact:
+      title: Gelbhart Innovations
+      address_label: Endereço
+      phone_label: Telefone
+      email_label: Correio eletrónico
+      hours_label: Horário comercial
+      weekdays: Seg - Sex
+      weekend: Sáb - Dom
+      closed: Fechado
+      map_aria: Mapa interativo que mostra a localização da Gelbhart Innovations em %{street}, %{city}
+  documents:
+    tos:
+      title: Termos e condições
+      items:
+      - Bem-vindo ao nosso sítio Web. Ao aceder ou utilizar o nosso sítio Web, o utilizador aceita ficar vinculado às presentes condições de serviço e à nossa política de privacidade.
+      - O conteúdo do nosso sítio Web é propriedade da nossa empresa e está protegido por leis de propriedade intelectual. O utilizador só pode utilizar o conteúdo para fins pessoais e não comerciais. Não é permitido copiar, modificar, distribuir ou reutilizar qualquer parte do sítio Web sem o nosso consentimento prévio por escrito.
+      - O nosso sítio Web pode conter ligações para sítios Web de terceiros. Não somos responsáveis pela disponibilidade, conteúdo ou práticas de privacidade desses sítios externos.
+      - Fornecemos este sítio Web "tal como está" sem quaisquer garantias ou representações. Não nos responsabilizamos por quaisquer danos resultantes da sua utilização do sítio Web, incluindo, mas não se limitando a, danos diretos, indirectos, incidentais ou consequenciais.
+      - Em caso algum a nossa empresa será responsável por quaisquer reclamações, perdas ou danos superiores a 100 dólares relacionados com a sua utilização deste sítio Web.
+      - As presentes condições regem-se pelas leis da Suíça. Quaisquer litígios serão resolvidos nos tribunais da Suíça.
+    privacy:
+      title: Política de privacidade
+      items:
+      - Podemos recolher informações fornecidas pelo utilizador, bem como informações recolhidas automaticamente pelo nosso servidor Web e navegador. Utilizamos estas informações para fornecer e melhorar os nossos serviços.
+      - Podemos partilhar as suas informações com prestadores de serviços terceiros que nos ajudam a operar o sítio Web e a servir os nossos clientes. Não vendemos nem alugamos as suas informações pessoais a terceiros.
+      - Utilizamos cookies e outras tecnologias de rastreio para personalizar a sua experiência e analisar a utilização do sítio Web. Pode controlar a utilização de cookies através das definições do seu browser.
+      - Poderemos atualizar esta política de privacidade periodicamente. A utilização continuada do sítio Web após quaisquer alterações constitui a aceitação da nova política.
+  errors:
+    not_found:
+      heading: '404'
+      message: A página que procura não existe ou foi transferida.
+    internal_server_error:
+      heading: '500'
+      message: Algo correu mal no nosso lado. Por favor, tente novamente mais tarde.
+  team_members:
+    bareket:
+      name: Bareket Gelbhart
+      bio: Bareket frequentou o Technion, Instituto de Tecnologia de Israel, de onde é licenciada em Química com Química Orgânica como disciplina principal.<br><br>É fluente em hebraico e inglês e pode conversar em italiano. Possui conhecimentos avançados de Microsoft Word, Excel e PowerPoint.<br><br>Reside em Ticino, na Suíça, com a sua família, de onde viaja regularmente para todo o mundo em trabalho.<br><br>Bareket é uma cozinheira apaixonada e uma fã incondicional de futebol.
+    yaron:
+      name: Yaron Gelbhart
+      bio: Yaron frequentou o Technion, Instituto de Tecnologia de Israel, onde obteve o grau de Bacharel em Ciências em Engenharia com Gestão de Projectos como disciplina principal. Yaron possui mais de 20 anos de experiência em gestão de grandes projectos, com ênfase no subcontinente indiano.<br><br>Os seus interesses também se estendem ao sector imobiliário e à hotelaria. É fluente em inglês e hebraico e tem um nível de conversação em italiano. Nos seus tempos livres, Yaron pratica ioga e aprecia um copo de bom vinho italiano.
+    tomer:
+      name: Tomer Gelbhart
+      bio: Estudante apaixonado de MSc em Ciência da Computação com bacharelado em Ciência da Computação. Experiente em desenvolvimento front-end e integração de API para desenvolver ferramentas que abordam desafios do mundo real.<br><br>Procurando um estágio a partir de maio de 2026 para fortalecer minhas habilidades de desenvolvimento back-end e progredir para me tornar um desenvolvedor full-stack.
+  services_data:
+    pharmaceutical:
+      due_diligence:
+        title: Diligência devida
+        subtitle: Está a pensar em adquirir um novo ativo farmacêutico, quer se trate de um produto ou de uma empresa?
+        description: Com mais de 27 anos de experiência na indústria farmacêutica, prestamos assistência e aconselhamento em relação a qualquer due diligence de um produto farmacêutico e de uma empresa farmacêutica, incluindo a análise, avaliação, estruturação, negociação e conclusão de um potencial investimento.
+      business_development:
+        title: Desenvolvimento de negócios (parcerias)
+        subtitle: Está a desenvolver um novo produto e procura o melhor parceiro ou pretende licenciar o seu produto?
+        description: Com a nossa experiência e conhecimento do sector, podemos encontrar o parceiro certo para o seu API, FDF e/ou Medicamento Genérico Órfão a nível mundial.
+      portfolio:
+        title: Carteira
+        subtitle: Está à procura de uma nova molécula mas não sabe por onde começar?
+        description: Com a nossa experiência em química e conhecimento da indústria, podemos ajudá-lo a encontrar as moléculas certas para desenvolver, quer sejam pequenas moléculas de nicho ou futuros blockbusters, pão e manteiga ou pérolas. Definiremos a estratégia de desenvolvimento depois de considerarmos a propriedade intelectual, os preços e a concorrência.
+      strategy:
+        title: Estratégia
+        subtitle: Não tem a certeza de qual o caminho que a sua empresa deve seguir?
+        description: Iremos pesquisar e identificar as necessidades do mercado e o potencial do mercado para desenvolver oportunidades de negócio para a carteira da empresa. Em seguida, localizaremos novos clientes e novos mercados nos quais o potencial da empresa ainda não está totalmente realizado. Avaliaremos a atual equipa de vendas e recomendaremos a estrutura adequada, identificaremos o pessoal de vendas e dar-lhe-emos formação. Depois de analisarmos a rede de agências, recomendaremos onde e se devemos trabalhar através de agentes ou diretamente. Definiremos o processo de pipeline ideal, os KPIs e a organização, e avaliaremos a situação da concorrência.
+      orphan_drugs:
+        title: Medicamentos órfãos genéricos
+        subtitle: Está a desenvolver um medicamento órfão genérico?
+        description: Em muitos casos, significa investir no desenvolvimento de um pequeno produto de nicho, mas isso não significa que o potencial de mercado também seja pequeno. Cada mercado tem as suas próprias regras para os medicamentos órfãos e, em muitos casos, o produto de marca não está aprovado ou não é comercializado num local específico. Identificaremos os mercados relevantes e encontraremos os parceiros locais certos, médicos (KOLs), doentes e associações de doentes para lhe permitir oferecer o seu produto de uma forma rápida e eficaz, obtendo lucros nas fases iniciais do desenvolvimento.
+      product_launch:
+        title: Lançamento de novos produtos
+        subtitle: A autorização de comercialização está quase a chegar, mas o produto ainda não está pronto para ser lançado?
+        description: Avaliaremos a situação e orientaremos os seus fornecedores (API e/ou FDF) sobre a forma de desenvolver a sua capacidade, abrir estrangulamentos, resolver problemas de qualidade nos procedimentos de fabrico de forma rápida e eficaz para permitir um lançamento suave e atempado.
+    real_estate:
+      land_identification:
+        title: Identificação de terrenos e oportunidades
+        description:
+        - Procura de parcelas de terreno com elevado potencial para projectos de habitação, hotelaria, lazer e comércio.
+        - Realização de estudos de mercado aprofundados e de estudos de viabilidade.
+        - Avaliação do zonamento, das infra-estruturas e do valor a longo prazo.
+      acquisition:
+        title: Aquisição e estruturação
+        description:
+        - Gerir as negociações de compra de terrenos e a devida diligência.
+        - Coordenação com consultores jurídicos, bancos e instituições financeiras.
+        - Estruturação de investimentos e modelos de propriedade alinhados com os objectivos do cliente e do investidor.
+      development:
+        title: Gestão da conceção e do desenvolvimento
+        description:
+        - Liderar processos de planeamento, arquitetura e design.
+        - Supervisão de consultores, contratantes e equipas de projeto.
+        - Garantir a qualidade, a sustentabilidade e a entrega atempada.
+      marketing:
+        title: Execução de marketing e vendas
+        description:
+        - Criação de uma identidade de marca e de uma estratégia de entrada no mercado.
+        - Conceção de campanhas de marketing destinadas a investidores e utilizadores finais.
+        - Gerir as redes de vendas e as relações com os clientes para uma absorção máxima.
+      financial:
+        title: Coordenação financeira e regulamentar
+        description:
+        - Trabalhar em estreita colaboração com bancos, contabilistas e auditores para garantir o financiamento e manter a conformidade.
+        - Gerir os relatórios financeiros, as relações com os investidores e as aprovações regulamentares.
+        - Proporcionar uma supervisão transparente desde a conceção até à entrega do projeto.
