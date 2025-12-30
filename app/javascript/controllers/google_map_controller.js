@@ -1,23 +1,22 @@
 import { Controller } from "@hotwired/stimulus";
 
-// Configuration constants
-const SATELLITE_ZOOM_THRESHOLD = 17;
-const MAX_DISTANCE_METERS = 500;
-const RESIZE_DEBOUNCE_MS = 150;
-const INITIAL_CENTER_DELAY_MS = 450;
-const FALLBACK_RECENTER_DELAYS_MS = [100, 300, 600, 1000];
-const INTERSECTION_OBSERVER_ROOT_MARGIN = "100px";
-const INTERSECTION_OBSERVER_THRESHOLD = 0.1;
-const EARTH_RADIUS_METERS = 6371000;
+const CONFIG = {
+  SATELLITE_ZOOM_THRESHOLD: 17,
+  MAX_DISTANCE_METERS: 500,
+  RESIZE_DEBOUNCE_MS: 150,
+  INITIAL_CENTER_DELAY_MS: 450,
+  FALLBACK_RECENTER_DELAYS_MS: [100, 300, 600, 1000],
+  INTERSECTION_ROOT_MARGIN: "100px",
+  INTERSECTION_THRESHOLD: 0.1,
+  EARTH_RADIUS_METERS: 6371000,
+};
 
-/**
- * Google Map Controller
- *
- * Implements Google Maps JavaScript API with:
- * - Lazy loading via IntersectionObserver
- * - Cloud-Based Map Styling (CBMS v2) via Map ID
- * - AdvancedMarkerElement for modern marker rendering
- */
+const THEME = {
+  STORAGE_KEY: "theme",
+  DARK: "dark",
+  LIGHT: "light",
+};
+
 export default class extends Controller {
   static targets = ["mapContainer"];
   static values = {
@@ -33,6 +32,7 @@ export default class extends Controller {
     this.lastHeight = 0;
     this.resizeTimeout = null;
     this.mapEventListeners = [];
+    this.isInitializing = false;
 
     if (!("IntersectionObserver" in window)) {
       this.loadMap();
@@ -48,8 +48,8 @@ export default class extends Controller {
         }
       },
       {
-        rootMargin: INTERSECTION_OBSERVER_ROOT_MARGIN,
-        threshold: INTERSECTION_OBSERVER_THRESHOLD,
+        rootMargin: CONFIG.INTERSECTION_ROOT_MARGIN,
+        threshold: CONFIG.INTERSECTION_THRESHOLD,
       }
     );
 
@@ -57,8 +57,19 @@ export default class extends Controller {
   }
 
   disconnect() {
+    this.cleanupMap();
     this.observer?.disconnect();
+    this.themeObserver?.disconnect();
+    this.observer = null;
+    this.themeObserver = null;
+    this.ColorScheme = null;
+    this.MapClass = null;
+    this.isInitializing = false;
+  }
+
+  cleanupMap() {
     this.resizeObserver?.disconnect();
+    this.resizeObserver = null;
 
     if (this.resizeTimeout) {
       clearTimeout(this.resizeTimeout);
@@ -68,10 +79,16 @@ export default class extends Controller {
     this.mapEventListeners.forEach((listener) => listener?.remove());
     this.mapEventListeners = [];
 
-    this.observer = null;
-    this.resizeObserver = null;
+    if (this.marker) {
+      this.marker.map = null;
+      this.marker = null;
+    }
+
     this.map = null;
-    this.marker = null;
+
+    if (this.hasMapContainerTarget) {
+      this.mapContainerTarget.innerHTML = "";
+    }
   }
 
   async loadMap() {
@@ -155,38 +172,62 @@ export default class extends Controller {
   }
 
   async initializeMap() {
-    const center = { lat: this.latValue, lng: this.lngValue };
+    // Prevent multiple simultaneous initializations
+    if (this.isInitializing) return;
+    this.isInitializing = true;
 
-    this.map = new google.maps.Map(this.mapContainerTarget, {
-      center,
-      zoom: this.zoomValue,
-      mapId: this.getMapId(),
-      colorScheme: google.maps.ColorScheme.FOLLOW_SYSTEM,
-      disableDefaultUI: false,
-      zoomControl: false,
-      mapTypeControl: false,
-      scaleControl: true,
-      streetViewControl: false,
-      rotateControl: false,
-      fullscreenControl: true,
-      gestureHandling: "greedy",
-      draggable: true,
-    });
+    try {
+      const center = { lat: this.latValue, lng: this.lngValue };
 
-    await this.createMarker(center);
+      // Import the maps library to ensure ColorScheme is available
+      // Store Map and ColorScheme for reuse when recreating map on theme change
+      if (!this.MapClass || !this.ColorScheme) {
+        const { Map } = await google.maps.importLibrary("maps");
+        this.MapClass = Map;
+        // ColorScheme is on google.maps namespace, not exported from importLibrary
+        this.ColorScheme = google.maps.ColorScheme;
+      }
 
-    this.element.classList.add("map-loaded");
-    this.setupResizeObserver(center);
-    this.setupSatelliteModeToggle(center);
+      const colorScheme = this.getMapColorScheme();
 
-    const tilesLoadedListener = google.maps.event.addListenerOnce(
-      this.map,
-      "tilesloaded",
-      () => this.forceCenterMap(center)
-    );
-    this.mapEventListeners.push(tilesLoadedListener);
+      this.map = new this.MapClass(this.mapContainerTarget, {
+        center,
+        zoom: this.zoomValue,
+        mapId: this.getMapId(),
+        colorScheme,
+        disableDefaultUI: false,
+        zoomControl: false,
+        mapTypeControl: false,
+        scaleControl: true,
+        streetViewControl: false,
+        rotateControl: false,
+        fullscreenControl: true,
+        gestureHandling: "greedy",
+        draggable: true,
+      });
 
-    this.dispatch("loaded", { detail: { map: this.map } });
+      await this.createMarker(center);
+
+      this.element.classList.add("map-loaded");
+      this.setupResizeObserver(center);
+      this.setupSatelliteModeToggle(center);
+
+      // Only set up theme observer once (on first initialization)
+      if (!this.themeObserver) {
+        this.setupThemeObserver();
+      }
+
+      const tilesLoadedListener = google.maps.event.addListenerOnce(
+        this.map,
+        "tilesloaded",
+        () => this.forceCenterMap(center)
+      );
+      this.mapEventListeners.push(tilesLoadedListener);
+
+      this.dispatch("loaded", { detail: { map: this.map } });
+    } finally {
+      this.isInitializing = false;
+    }
   }
 
   async createMarker(position) {
@@ -207,27 +248,28 @@ export default class extends Controller {
     this.resizeObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
         const { width, height } = entry.contentRect;
-
         if (width === this.lastWidth && height === this.lastHeight) continue;
 
         this.lastWidth = width;
         this.lastHeight = height;
 
         if (this.resizeTimeout) clearTimeout(this.resizeTimeout);
-
-        this.resizeTimeout = setTimeout(() => {
-          this.forceCenterMap(center);
-        }, RESIZE_DEBOUNCE_MS);
+        this.resizeTimeout = setTimeout(
+          () => this.forceCenterMap(center),
+          CONFIG.RESIZE_DEBOUNCE_MS
+        );
       }
     });
 
     this.resizeObserver.observe(this.mapContainerTarget);
-
-    setTimeout(() => this.forceCenterMap(center), INITIAL_CENTER_DELAY_MS);
+    setTimeout(
+      () => this.forceCenterMap(center),
+      CONFIG.INITIAL_CENTER_DELAY_MS
+    );
   }
 
   fallbackRecenter(center) {
-    FALLBACK_RECENTER_DELAYS_MS.forEach((delay) => {
+    CONFIG.FALLBACK_RECENTER_DELAYS_MS.forEach((delay) => {
       setTimeout(() => {
         if (this.map) this.forceCenterMap(center);
       }, delay);
@@ -267,6 +309,62 @@ export default class extends Controller {
     this.forceCenterMap(center);
   }
 
+  getWebsiteTheme() {
+    const htmlTheme = document.documentElement.getAttribute("data-bs-theme");
+    if (htmlTheme === THEME.DARK || htmlTheme === THEME.LIGHT) return htmlTheme;
+
+    try {
+      const savedTheme = localStorage.getItem(THEME.STORAGE_KEY);
+      if (savedTheme === THEME.DARK || savedTheme === THEME.LIGHT)
+        return savedTheme;
+    } catch {
+      /* localStorage unavailable */
+    }
+
+    try {
+      if (window.matchMedia?.("(prefers-color-scheme: dark)").matches)
+        return THEME.DARK;
+    } catch {
+      /* matchMedia unavailable */
+    }
+
+    return THEME.LIGHT;
+  }
+
+  getMapColorScheme() {
+    if (!this.ColorScheme) return undefined;
+    return this.getWebsiteTheme() === THEME.DARK
+      ? this.ColorScheme.DARK
+      : this.ColorScheme.LIGHT;
+  }
+
+  setupThemeObserver() {
+    if (!("MutationObserver" in window)) return;
+
+    this.themeObserver = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "data-bs-theme"
+        ) {
+          this.updateMapTheme();
+          break;
+        }
+      }
+    });
+
+    this.themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-bs-theme"],
+    });
+  }
+
+  async updateMapTheme() {
+    if (!this.MapClass || !this.ColorScheme) return;
+    this.cleanupMap();
+    await this.initializeMap();
+  }
+
   setupSatelliteModeToggle(targetPosition) {
     if (!this.map) return;
 
@@ -279,11 +377,10 @@ export default class extends Controller {
 
       const distance = this.calculateDistance(currentCenter, targetPosition);
       const shouldShowSatellite =
-        currentZoom >= SATELLITE_ZOOM_THRESHOLD &&
-        distance <= MAX_DISTANCE_METERS;
+        currentZoom >= CONFIG.SATELLITE_ZOOM_THRESHOLD &&
+        distance <= CONFIG.MAX_DISTANCE_METERS;
 
-      const currentMapType = this.map.getMapTypeId();
-      const isHybrid = currentMapType === google.maps.MapTypeId.HYBRID;
+      const isHybrid = this.map.getMapTypeId() === google.maps.MapTypeId.HYBRID;
 
       if (shouldShowSatellite && !isHybrid) {
         this.map.setMapTypeId(google.maps.MapTypeId.HYBRID);
@@ -309,13 +406,11 @@ export default class extends Controller {
     if (google.maps.geometry?.spherical?.computeDistanceBetween) {
       return google.maps.geometry.spherical.computeDistanceBetween(from, to);
     }
-
     return this.haversineDistance({ lat: from.lat(), lng: from.lng() }, to);
   }
 
   haversineDistance(point1, point2) {
     const toRadians = (deg) => deg * (Math.PI / 180);
-
     const lat1 = toRadians(point1.lat);
     const lat2 = toRadians(point2.lat);
     const deltaLat = toRadians(point2.lat - point1.lat);
@@ -324,7 +419,10 @@ export default class extends Controller {
     const a =
       Math.sin(deltaLat / 2) ** 2 +
       Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLng / 2) ** 2;
-
-    return EARTH_RADIUS_METERS * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return (
+      CONFIG.EARTH_RADIUS_METERS *
+      2 *
+      Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+    );
   }
 }
