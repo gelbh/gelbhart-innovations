@@ -1,17 +1,11 @@
 # frozen_string_literal: true
 
-# Be sure to restart your server when you modify this file.
-
 Rails.application.config.assets.version = "1.0"
 
-# Additional asset load paths
 Rails.application.config.assets.paths << Rails.root.join("app/assets/vendor")
 Rails.application.config.assets.paths << Rails.root.join("app/assets/favicon")
 Rails.application.config.assets.paths << Rails.root.join("app/assets/builds")
 
-# Precompile assets explicitly referenced via asset_path() in views.
-# Note: While manifest.js link_tree/link_directory also precompile these,
-# explicit declaration ensures predictable behavior across environments.
 Rails.application.config.assets.precompile += %w[
   application.css
   application.js
@@ -54,4 +48,5 @@ Rails.application.config.assets.precompile += %w[
   swiper/swiper-bundle.min.css
   swiper/swiper-bundle.min.js
   @lottiefiles/lottie-player/dist/lottie-player.js
+  flag-icons/css/flag-icons.min.css
 ]
