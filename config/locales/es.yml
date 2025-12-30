@@ -23,19 +23,19 @@ es:
     pharmaceutical: Farmacéutica
     real_estate: Inmobiliario
     team: Equipo
-    contact: Contacte con nosotros
+    contact: Póngase en contacto con nosotros
     menu: Menú
   common:
     loading_map: Cargando mapa...
     open_in_google_maps: Abrir en Google Maps
-    scroll_to_top: Top
+    scroll_to_top: Arriba
     go_to_homepage: Ir a la página de inicio
     learn_more: Más información
     view_full_profile: Ver perfil completo
-    connect_on_linkedin: Conéctate en LinkedIn
+    connect_on_linkedin: Conectarse en LinkedIn
     view_github_profile: Ver perfil de GitHub
     close: Cerrar
-    light_mode: Modo Luz
+    light_mode: Modo Claro
     dark_mode: Modo oscuro
   footer:
     copyright: Todos los derechos reservados. Fabricado por
@@ -84,26 +84,26 @@ es:
     tos:
       title: Condiciones generales
       items:
-      - Bienvenido a nuestro sitio web. Al acceder o utilizar nuestro sitio web, acepta las presentes condiciones de servicio y nuestra política de privacidad.
-      - El contenido de nuestro sitio web es propiedad de nuestra empresa y está protegido por las leyes de propiedad intelectual. Sólo puede utilizar el contenido para fines personales y no comerciales. No puede copiar, modificar, distribuir ni reutilizar ninguna parte del sitio web sin nuestro consentimiento previo por escrito.
-      - Nuestro sitio web puede contener enlaces a sitios web de terceros. No somos responsables de la disponibilidad, el contenido o las prácticas de privacidad de esos sitios externos.
-      - Proporcionamos este sitio web "tal cual", sin garantías ni declaraciones. No nos hacemos responsables de ningún daño derivado del uso del sitio web, incluidos, entre otros, los daños directos, indirectos, incidentales o consecuentes.
-      - En ningún caso nuestra empresa será responsable de reclamaciones, pérdidas o daños superiores a 100 dólares relacionados con el uso que usted haga de este sitio web.
-      - Estas condiciones se regirán por las leyes de Suiza. Cualquier litigio se resolverá en los tribunales de Suiza.
+        - Bienvenido a nuestro sitio web. Al acceder o utilizar nuestro sitio web, acepta las presentes condiciones de servicio y nuestra política de privacidad.
+        - El contenido de nuestro sitio web es propiedad de nuestra empresa y está protegido por las leyes de propiedad intelectual. Sólo puede utilizar el contenido para fines personales y no comerciales. No puede copiar, modificar, distribuir ni reutilizar ninguna parte del sitio web sin nuestro consentimiento previo por escrito.
+        - Nuestro sitio web puede contener enlaces a sitios web de terceros. No somos responsables de la disponibilidad, el contenido o las prácticas de privacidad de esos sitios externos.
+        - Proporcionamos este sitio web "tal cual", sin garantías ni declaraciones. No nos hacemos responsables de ningún daño derivado del uso del sitio web, incluidos, entre otros, los daños directos, indirectos, incidentales o consecuentes.
+        - En ningún caso nuestra empresa será responsable de reclamaciones, pérdidas o daños superiores a 100 dólares relacionados con el uso que usted haga de este sitio web.
+        - Estas condiciones se regirán por las leyes de Suiza. Cualquier litigio se resolverá en los tribunales de Suiza.
     privacy:
       title: Política de privacidad
       items:
-      - Podemos recopilar información proporcionada por usted, así como información recogida automáticamente por nuestro servidor web y navegador. Utilizamos esta información para ofrecer y mejorar nuestros servicios.
-      - Podemos compartir su información con terceros proveedores de servicios que nos ayudan a operar el sitio web y servir a nuestros clientes. No vendemos ni alquilamos su información personal a terceros.
-      - Utilizamos cookies y otras tecnologías de seguimiento para personalizar su experiencia y analizar el uso del sitio web. Puede controlar el uso de cookies a través de la configuración de su navegador.
-      - Podemos actualizar esta política de privacidad de vez en cuando. Su uso continuado del sitio web después de cualquier cambio constituye su aceptación de la nueva política.
+        - Podemos recopilar información proporcionada por usted, así como información recogida automáticamente por nuestro servidor web y navegador. Utilizamos esta información para ofrecer y mejorar nuestros servicios.
+        - Podemos compartir su información con terceros proveedores de servicios que nos ayudan a operar el sitio web y servir a nuestros clientes. No vendemos ni alquilamos su información personal a terceros.
+        - Utilizamos cookies y otras tecnologías de seguimiento para personalizar su experiencia y analizar el uso del sitio web. Puede controlar el uso de cookies a través de la configuración de su navegador.
+        - Podemos actualizar esta política de privacidad de vez en cuando. Su uso continuado del sitio web después de cualquier cambio constituye su aceptación de la nueva política.
   errors:
     not_found:
-      heading: '404'
+      heading: "404"
       message: La página que busca no existe o ha sido movida.
     internal_server_error:
-      heading: '500'
-      message: Algo ha fallado. Vuelva a intentarlo más tarde.
+      heading: "500"
+      message: Algo ha ido mal. Vuelva a intentarlo más tarde.
   team_members:
     bareket:
       name: Bareket Gelbhart
@@ -113,7 +113,7 @@ es:
       bio: Yaron estudió en el Technion, el Instituto de Tecnología de Israel, donde se licenció en Ingeniería con Gestión de Proyectos como asignatura principal. Yaron cuenta con más de 20 años de experiencia en la gestión de grandes proyectos, especialmente en el subcontinente indio. Habla inglés y hebreo con fluidez y tiene un nivel conversacional de italiano. En su tiempo libre, Yaron practica yoga y disfruta con una copa de buen vino italiano.
     tomer:
       name: Tomer Gelbhart
-      bio: Estudiante apasionado de Ciencias de la Computación con un BSc en Ciencias de la Computación. Con experiencia en desarrollo front-end e integración de API para desarrollar herramientas que aborden desafíos del mundo real.<br><br>Busco unas prácticas a partir de mayo de 2026 para fortalecer mis habilidades de desarrollo back-end y progresar para convertirme en un desarrollador full-stack.
+      bio: Estudiante apasionado de Ciencias de la Computación con un BSc en Ciencias de la Computación. Con experiencia en desarrollo front-end e integración de API para desarrollar herramientas que aborden desafíos del mundo real.<br><br>Comienzo de prácticas en abril de 2026 para fortalecer mis habilidades de desarrollo back-end y progresar para convertirme en un desarrollador full-stack.
   services_data:
     pharmaceutical:
       due_diligence:
@@ -144,30 +144,30 @@ es:
       land_identification:
         title: Identificación de terrenos y oportunidades
         description:
-        - Búsqueda de parcelas de gran potencial para proyectos inmobiliarios, hoteleros, de ocio y comerciales.
-        - Realización de estudios de mercado en profundidad y estudios de viabilidad.
-        - Evaluar la zonificación, la infraestructura y el valor a largo plazo.
+          - Búsqueda de parcelas de gran potencial para proyectos inmobiliarios, hoteleros, de ocio y comerciales.
+          - Realización de estudios de mercado en profundidad y estudios de viabilidad.
+          - Evaluar la zonificación, la infraestructura y el valor a largo plazo.
       acquisition:
         title: Adquisición y estructuración
         description:
-        - Gestión de las negociaciones de compra de terrenos y diligencia debida.
-        - Coordinación con asesores jurídicos, bancos e instituciones financieras.
-        - Estructuración de inversiones y modelos de propiedad alineados con los objetivos de clientes e inversores.
+          - Gestión de las negociaciones de compra de terrenos y diligencia debida.
+          - Coordinación con asesores jurídicos, bancos e instituciones financieras.
+          - Estructuración de inversiones y modelos de propiedad alineados con los objetivos de clientes e inversores.
       development:
         title: Gestión de diseño y desarrollo
         description:
-        - Dirigir los procesos de planificación general, arquitectura y diseño.
-        - Supervisión de consultores, contratistas y equipos de proyecto.
-        - Garantizar la calidad, la sostenibilidad y la puntualidad de las entregas.
+          - Dirigir los procesos de planificación general, arquitectura y diseño.
+          - Supervisión de consultores, contratistas y equipos de proyecto.
+          - Garantizar la calidad, la sostenibilidad y la puntualidad de las entregas.
       marketing:
         title: Ejecución de marketing y ventas
         description:
-        - Creación de identidad de marca y estrategia de comercialización.
-        - Diseño de campañas de marketing dirigidas a inversores y usuarios finales.
-        - Gestionar las redes de ventas y las relaciones con los clientes para lograr la máxima absorción.
+          - Creación de identidad de marca y estrategia de comercialización.
+          - Diseño de campañas de marketing dirigidas a inversores y usuarios finales.
+          - Gestionar las redes de ventas y las relaciones con los clientes para lograr la máxima absorción.
       financial:
         title: Coordinación financiera y normativa
         description:
-        - Trabajar en estrecha colaboración con bancos, contables y auditores para garantizar la financiación y mantener la conformidad.
-        - Gestión de informes financieros, relaciones con los inversores y aprobaciones reglamentarias.
-        - Supervisión transparente desde la concepción hasta la entrega del proyecto.
+          - Trabajar en estrecha colaboración con bancos, contables y auditores para garantizar la financiación y mantener la conformidad.
+          - Gestión de informes financieros, relaciones con los inversores y aprobaciones reglamentarias.
+          - Supervisión transparente desde la concepción hasta la entrega del proyecto.

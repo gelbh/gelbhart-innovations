@@ -28,7 +28,7 @@ de:
   common:
     loading_map: Karte laden...
     open_in_google_maps: In Google Maps öffnen
-    scroll_to_top: Top
+    scroll_to_top: Nach oben
     go_to_homepage: Zur Homepage gehen
     learn_more: Mehr erfahren
     view_full_profile: Vollständiges Profil anzeigen
@@ -84,25 +84,25 @@ de:
     tos:
       title: Bedingungen und Konditionen
       items:
-      - Willkommen auf unserer Website. Indem Sie auf unsere Website zugreifen oder sie nutzen, erklären Sie sich mit diesen Nutzungsbedingungen und unserer Datenschutzrichtlinie einverstanden.
-      - Der Inhalt unserer Website ist Eigentum unseres Unternehmens und durch Gesetze zum Schutz des geistigen Eigentums geschützt. Sie dürfen die Inhalte nur für persönliche, nicht-kommerzielle Zwecke nutzen. Sie dürfen keinen Teil der Website ohne unsere vorherige schriftliche Zustimmung kopieren, verändern, verteilen oder wiederverwenden.
-      - Unsere Website kann Links zu Websites Dritter enthalten. Wir sind nicht verantwortlich für die Verfügbarkeit, den Inhalt oder die Datenschutzpraktiken dieser externen Websites.
-      - Wir stellen diese Website "wie sie ist" zur Verfügung, ohne jegliche Garantien oder Zusicherungen. Wir haften nicht für Schäden, die durch die Nutzung der Website entstehen, einschließlich, aber nicht beschränkt auf direkte, indirekte, zufällige oder Folgeschäden.
-      - In keinem Fall haftet unser Unternehmen für Ansprüche, Verluste oder Schäden, die den Betrag von 100 $ übersteigen und mit der Nutzung dieser Website in Zusammenhang stehen.
-      - Diese Bedingungen unterliegen den Gesetzen der Schweiz. Alle Streitigkeiten werden vor den Gerichten in der Schweiz ausgetragen.
+        - Willkommen auf unserer Website. Indem Sie auf unsere Website zugreifen oder sie nutzen, erklären Sie sich mit diesen Nutzungsbedingungen und unserer Datenschutzrichtlinie einverstanden.
+        - Der Inhalt unserer Website ist Eigentum unseres Unternehmens und durch Gesetze zum Schutz des geistigen Eigentums geschützt. Sie dürfen die Inhalte nur für persönliche, nicht-kommerzielle Zwecke nutzen. Sie dürfen keinen Teil der Website ohne unsere vorherige schriftliche Zustimmung kopieren, verändern, verteilen oder wiederverwenden.
+        - Unsere Website kann Links zu Websites Dritter enthalten. Wir sind nicht verantwortlich für die Verfügbarkeit, den Inhalt oder die Datenschutzpraktiken dieser externen Websites.
+        - Wir stellen diese Website "wie sie ist" zur Verfügung, ohne jegliche Garantien oder Zusicherungen. Wir haften nicht für Schäden, die durch die Nutzung der Website entstehen, einschließlich, aber nicht beschränkt auf direkte, indirekte, zufällige oder Folgeschäden.
+        - In keinem Fall haftet unser Unternehmen für Ansprüche, Verluste oder Schäden, die den Betrag von 100 $ übersteigen und mit der Nutzung dieser Website in Zusammenhang stehen.
+        - Diese Bedingungen unterliegen den Gesetzen der Schweiz. Alle Streitigkeiten werden vor den Gerichten in der Schweiz ausgetragen.
     privacy:
       title: Datenschutzbestimmungen
       items:
-      - Wir können von Ihnen bereitgestellte Informationen sowie Informationen, die automatisch von unserem Webserver und Browser erfasst werden, sammeln. Wir verwenden diese Informationen, um unsere Dienste bereitzustellen und zu verbessern.
-      - Wir können Ihre Daten an Drittanbieter weitergeben, die uns beim Betrieb der Website und bei der Betreuung unserer Kunden unterstützen. Wir verkaufen oder vermieten Ihre persönlichen Daten nicht an Dritte.
-      - Wir verwenden Cookies und andere Tracking-Technologien, um Ihre Erfahrung zu personalisieren und die Nutzung der Website zu analysieren. Sie können die Verwendung von Cookies über Ihre Browsereinstellungen steuern.
-      - Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Wenn Sie die Website nach einer Änderung weiterhin nutzen, erklären Sie sich mit der neuen Richtlinie einverstanden.
+        - Wir können von Ihnen bereitgestellte Informationen sowie Informationen, die automatisch von unserem Webserver und Browser erfasst werden, sammeln. Wir verwenden diese Informationen, um unsere Dienste bereitzustellen und zu verbessern.
+        - Wir können Ihre Daten an Drittanbieter weitergeben, die uns beim Betrieb der Website und bei der Betreuung unserer Kunden unterstützen. Wir verkaufen oder vermieten Ihre persönlichen Daten nicht an Dritte.
+        - Wir verwenden Cookies und andere Tracking-Technologien, um Ihre Erfahrung zu personalisieren und die Nutzung der Website zu analysieren. Sie können die Verwendung von Cookies über Ihre Browsereinstellungen steuern.
+        - Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Wenn Sie die Website nach einer Änderung weiterhin nutzen, erklären Sie sich mit der neuen Richtlinie einverstanden.
   errors:
     not_found:
-      heading: '404'
+      heading: "404"
       message: Die Seite, die Sie suchen, existiert nicht oder wurde verschoben.
     internal_server_error:
-      heading: '500'
+      heading: "500"
       message: Auf unserer Seite ist etwas schief gelaufen. Bitte versuchen Sie es später noch einmal.
   team_members:
     bareket:
@@ -113,7 +113,7 @@ de:
       bio: Yaron besuchte das Technion, das Israelische Institut für Technologie, wo er seinen Bachelor of Science in Ingenieurwissenschaften mit dem Hauptfach Projektmanagement erwarb. Yaron verfügt über mehr als 20 Jahre Erfahrung im Management großer Projekte mit Schwerpunkt auf dem indischen Subkontinent.<br><br>Seine Interessen erstrecken sich auch auf die Bereiche Immobilien und Gastgewerbe. Er spricht fließend Englisch und Hebräisch und verfügt über Konversationskenntnisse in Italienisch. In seiner Freizeit macht Yaron Yoga und genießt ein Glas guten italienischen Weins.
     tomer:
       name: Tomer Gelbhart
-      bio: Leidenschaftlicher MSc-Informatikstudent mit einem BSc in Informatik. Erfahren in Front-End-Entwicklung und API-Integration, um Tools zu entwickeln, die reale Herausforderungen angehen.<br><br>Suche ein Praktikum ab Mai 2026, um meine Back-End-Entwicklungsfähigkeiten zu stärken und Fortschritte auf dem Weg zum Full-Stack-Entwickler zu machen.
+      bio: Leidenschaftlicher MSc-Informatikstudent mit einem BSc in Computerwissenschaften. Erfahren in Front-End-Entwicklung und API-Integration, um Tools zu entwickeln, die reale Herausforderungen angehen.<br><br>Beginne im April 2026 ein Praktikum, um meine Back-End-Entwicklungsfähigkeiten zu stärken und auf dem Weg zum Full-Stack-Entwickler voranzukommen.
   services_data:
     pharmaceutical:
       due_diligence:
@@ -144,30 +144,30 @@ de:
       land_identification:
         title: Identifizierung von Land und Gelegenheiten
         description:
-        - Beschaffung von Grundstücken mit hohem Potenzial für Wohnungs-, Gaststätten-, Freizeit- und Gewerbeprojekte.
-        - Durchführung eingehender Marktforschung und Machbarkeitsstudien.
-        - Bewertung von Gebietseinteilung, Infrastruktur und langfristigem Wert.
+          - Beschaffung von Grundstücken mit hohem Potenzial für Wohnungs-, Gaststätten-, Freizeit- und Gewerbeprojekte.
+          - Durchführung eingehender Marktforschung und Machbarkeitsstudien.
+          - Bewertung von Gebietseinteilung, Infrastruktur und langfristigem Wert.
       acquisition:
         title: Akquisition und Strukturierung
         description:
-        - Leitung von Grundstückskaufverhandlungen und Due-Diligence-Prüfungen.
-        - Koordinierung mit Rechtsberatern, Banken und Finanzinstituten.
-        - Strukturierung von Investitionen und Eigentumsmodellen im Einklang mit den Zielen von Kunden und Investoren.
+          - Leitung von Grundstückskaufverhandlungen und Due-Diligence-Prüfungen.
+          - Koordinierung mit Rechtsberatern, Banken und Finanzinstituten.
+          - Strukturierung von Investitionen und Eigentumsmodellen im Einklang mit den Zielen von Kunden und Investoren.
       development:
         title: Design- und Entwicklungsmanagement
         description:
-        - Leitung von Masterplanungs-, Architektur- und Designprozessen.
-        - Beaufsichtigung von Beratern, Auftragnehmern und Projektteams.
-        - Gewährleistung von Qualität, Nachhaltigkeit und pünktlicher Lieferung.
+          - Leitung von Masterplanungs-, Architektur- und Designprozessen.
+          - Beaufsichtigung von Beratern, Auftragnehmern und Projektteams.
+          - Gewährleistung von Qualität, Nachhaltigkeit und pünktlicher Lieferung.
       marketing:
         title: Marketing und Vertrieb
         description:
-        - Aufbau einer Markenidentität und Markteinführungsstrategie.
-        - Entwicklung von Marketingkampagnen für Investoren und Endverbraucher.
-        - Verwaltung von Vertriebsnetzen und Kundenbeziehungen für eine maximale Ausschöpfung.
+          - Aufbau einer Markenidentität und Markteinführungsstrategie.
+          - Entwicklung von Marketingkampagnen für Investoren und Endverbraucher.
+          - Verwaltung von Vertriebsnetzen und Kundenbeziehungen für eine maximale Absorption.
       financial:
         title: Finanzielle und regulatorische Koordinierung
         description:
-        - Enge Zusammenarbeit mit Banken, Buchhaltern und Wirtschaftsprüfern zur Sicherung der Finanzierung und Einhaltung der Vorschriften.
-        - Verwaltung der Finanzberichterstattung, Investor Relations und behördliche Genehmigungen.
-        - Transparente Überwachung vom Konzept bis zur Projektübergabe.
+          - Enge Zusammenarbeit mit Banken, Buchhaltern und Wirtschaftsprüfern zur Sicherung der Finanzierung und Einhaltung der Vorschriften.
+          - Verwaltung der Finanzberichterstattung, Investor Relations und behördliche Genehmigungen.
+          - Transparente Überwachung vom Konzept bis zur Projektübergabe.

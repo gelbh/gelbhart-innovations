@@ -88,7 +88,7 @@ it:
       - Il contenuto del nostro sito web è di proprietà della nostra azienda ed è protetto dalle leggi sulla proprietà intellettuale. È possibile utilizzare il contenuto solo per scopi personali e non commerciali. Non è consentito copiare, modificare, distribuire o riutilizzare alcuna parte del sito web senza il nostro previo consenso scritto.
       - Il nostro sito web può contenere link a siti web di terzi. Non siamo responsabili della disponibilità, del contenuto o delle pratiche sulla privacy di tali siti esterni.
       - Forniamo questo sito web "così com'è" senza alcuna garanzia o dichiarazione. Non siamo responsabili di alcun danno derivante dall'uso del sito web da parte dell'utente, compresi, ma non solo, i danni diretti, indiretti, incidentali o consequenziali.
-      - In nessun caso la nostra azienda sarà responsabile di eventuali reclami, perdite o danni superiori a 100 dollari relativi all'utilizzo di questo sito web da parte dell'utente.
+      - In nessun caso la nostra azienda sarà responsabile di eventuali reclami, perdite o danni superiori a 100 dollari relativi all'uso di questo sito web.
       - I presenti termini sono disciplinati dalle leggi della Svizzera. Eventuali controversie saranno risolte dai tribunali della Svizzera.
     privacy:
       title: Informativa sulla privacy
@@ -110,10 +110,10 @@ it:
       bio: Bareket ha frequentato il Technion, l'Istituto di Tecnologia di Israele, dove ha conseguito la laurea triennale in Chimica con indirizzo Chimica Organica.<br><br>Libera correntemente l'ebraico e l'inglese e sa conversare in italiano. Possiede una conoscenza avanzata di Microsoft Word, Excel e PowerPoint.<br><br>Risiede in Ticino, Svizzera, con la sua famiglia, da dove viaggia regolarmente in tutto il mondo per lavoro.<br><br>Bareket è un'appassionata di cucina e un'accanita tifosa di calcio.
     yaron:
       name: Yaron Gelbhart
-      bio: Yaron ha frequentato il Technion, l'Istituto di Tecnologia di Israele, dove ha conseguito una laurea in Ingegneria con specializzazione in Project Management. Yaron possiede oltre 20 anni di esperienza nella gestione di grandi progetti, con particolare attenzione al subcontinente indiano.<br><br>I suoi interessi si estendono anche al settore immobiliare e all'ospitalità. Parla correntemente inglese ed ebraico e ha un livello di conversazione in italiano. Nel tempo libero Yaron fa yoga e si gode un buon bicchiere di vino italiano.
+      bio: Yaron ha frequentato il Technion, l'Istituto di Tecnologia di Israele, dove ha conseguito la laurea in Ingegneria con specializzazione in Project Management. Yaron possiede oltre 20 anni di esperienza nella gestione di grandi progetti, con particolare attenzione al subcontinente indiano.<br><br>I suoi interessi si estendono anche al settore immobiliare e all'ospitalità. Parla correntemente inglese ed ebraico e ha un livello di conversazione in italiano. Nel tempo libero Yaron fa yoga e si gode un buon bicchiere di vino italiano.
     tomer:
       name: Tomer Gelbhart
-      bio: Studente appassionato di MSc Computer Science con una laurea in Informatica. Esperienza nello sviluppo front-end e nell'integrazione di API per sviluppare strumenti che affrontino le sfide del mondo reale.<br><br>Cerco uno stage a partire da maggio 2026 per rafforzare le mie capacità di sviluppo back-end e progredire verso la trasformazione in uno sviluppatore full-stack.
+      bio: Studente appassionato di MSc Computer Science con una laurea in Informatica. Esperienza nello sviluppo front-end e nell'integrazione di API per sviluppare strumenti che affrontino le sfide del mondo reale.<br><br>Inizio uno stage nell'aprile 2026 per rafforzare le mie capacità di sviluppo back-end e progredire verso la trasformazione in uno sviluppatore full-stack.
   services_data:
     pharmaceutical:
       due_diligence:
@@ -169,5 +169,5 @@ it:
         title: Coordinamento finanziario e normativo
         description:
         - Lavorare a stretto contatto con banche, contabili e revisori per garantire i finanziamenti e mantenere la conformità.
-        - Gestione delle relazioni finanziarie, delle relazioni con gli investitori e delle approvazioni normative.
+        - Gestione del reporting finanziario, delle relazioni con gli investitori e delle approvazioni normative.
         - Garantire una supervisione trasparente dall'ideazione alla consegna del progetto.

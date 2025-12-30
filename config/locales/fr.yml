@@ -60,7 +60,7 @@ fr:
       real_estate:
         title: Services immobiliers
         subtitle: Développement et investissement immobiliers de bout en bout
-        description: Identification et acquisition de terrains, gestion du développement, marketing et coordination financière pour des projets de logement, d'hôtellerie et de commerce.
+        description: Identification des terrains, acquisition, gestion du développement, marketing et coordination financière pour des projets de logement, d'hôtellerie et de commerce.
         page_title: Services immobiliers
         back_button: Tous les services
     team:
@@ -85,10 +85,10 @@ fr:
       title: Conditions générales d'utilisation
       items:
       - Bienvenue sur notre site web. En accédant à notre site web ou en l'utilisant, vous acceptez d'être lié par les présentes conditions de service et par notre politique de confidentialité.
-      - Le contenu de notre site web est la propriété de notre société et est protégé par les lois sur la propriété intellectuelle. Vous ne pouvez utiliser le contenu qu'à des fins personnelles et non commerciales. Il est interdit de copier, modifier, distribuer ou réutiliser toute partie du site web sans notre accord écrit préalable.
+      - Le contenu de notre site web est la propriété de notre société et est protégé par les lois sur la propriété intellectuelle. Vous ne pouvez utiliser le contenu qu'à des fins personnelles et non commerciales. Vous ne pouvez pas copier, modifier, distribuer ou réutiliser toute partie du site web sans notre accord écrit préalable.
       - Notre site web peut contenir des liens vers des sites web de tiers. Nous ne sommes pas responsables de la disponibilité, du contenu ou des pratiques de confidentialité de ces sites externes.
       - Nous fournissons ce site web "en l'état", sans aucune garantie ni représentation. Nous ne sommes pas responsables des dommages résultant de l'utilisation du site web, y compris, mais sans s'y limiter, les dommages directs, indirects, accessoires ou consécutifs.
-      - En aucun cas notre société ne sera responsable des réclamations, pertes ou dommages dépassant 100 dollars liés à votre utilisation de ce site web.
+      - En aucun cas, notre société ne sera responsable des réclamations, pertes ou dommages dépassant 100 dollars liés à votre utilisation de ce site web.
       - Les présentes conditions sont régies par le droit suisse. Tout litige sera résolu par les tribunaux suisses.
     privacy:
       title: Politique de confidentialité
@@ -113,19 +113,19 @@ fr:
       bio: Yaron a fréquenté le Technion, l'Institut israélien de technologie, où il a obtenu une licence en ingénierie, avec la gestion de projet comme matière principale. Yaron possède plus de 20 ans d'expérience dans la gestion de grands projets, en particulier dans le sous-continent indien.<br><br>Il s'intéresse également à l'immobilier et à l'hôtellerie. Il parle couramment l'anglais et l'hébreu et a un niveau de conversation en italien. Pendant son temps libre, Yaron fait du yoga et apprécie un verre de bon vin italien.
     tomer:
       name: Tomer Gelbhart
-      bio: Étudiant passionné de MSc Computer Science avec un BSc en informatique. Expérimenté dans le développement front-end et l'intégration d'API pour développer des outils qui répondent aux défis du monde réel.<br><br>Recherche d'un stage débutant en mai 2026 pour renforcer mes compétences en développement back-end et progresser pour devenir un développeur full-stack.
+      bio: Étudiant passionné de MSc Computer Science avec un BSc en informatique. Expérimenté dans le développement front-end et l'intégration d'API pour développer des outils qui répondent aux défis du monde réel.<br><br>Début d'un stage en avril 2026 pour renforcer mes compétences en développement back-end et progresser pour devenir un développeur full-stack.
   services_data:
     pharmaceutical:
       due_diligence:
         title: Diligence raisonnable
         subtitle: Vous envisagez d'acheter un nouvel actif pharmaceutique, qu'il s'agisse d'un produit ou d'une entreprise ?
-        description: Avec plus de 27 ans d'expérience dans l'industrie pharmaceutique, nous fournissons une assistance et des conseils dans le cadre de la due diligence d'un produit pharmaceutique et d'une entreprise pharmaceutique, y compris l'évaluation, la structuration, la négociation et la réalisation d'un investissement potentiel.
+        description: Avec plus de 27 ans d'expérience dans l'industrie pharmaceutique, nous fournissons une assistance et des conseils dans le cadre de toute due diligence d'un produit pharmaceutique et d'une entreprise pharmaceutique, y compris l'évaluation, la structuration, la négociation et la réalisation d'un investissement potentiel.
       business_development:
         title: Développement commercial (partenariats)
         subtitle: Vous développez un nouveau produit et recherchez le meilleur partenaire ou souhaitez concéder une licence pour votre produit ?
         description: Grâce à notre expérience et à nos connaissances de l'industrie, nous pouvons trouver le bon partenaire pour votre API, votre FDF et/ou votre médicament générique orphelin dans le monde entier.
       portfolio:
-        title: Le portefeuille
+        title: Portefeuille
         subtitle: Vous cherchez une nouvelle molécule mais vous ne savez pas par où commencer ?
         description: Grâce à notre expérience en chimie et à notre connaissance de l'industrie, nous pouvons vous aider à trouver les bonnes molécules à développer, qu'il s'agisse de petites molécules de niche ou de futurs blockbusters, de pain et de beurre ou de perles. Nous définirons la stratégie de développement en tenant compte de la propriété intellectuelle, de la tarification et de la concurrence.
       strategy:
