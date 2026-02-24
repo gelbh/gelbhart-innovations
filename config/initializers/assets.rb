@@ -29,6 +29,7 @@ Rails.application.config.assets.precompile += %w[
   covers/team_cover.jpg
 
   team/bareket.png
+  team/effie.png
   team/tomer.png
   team/yaron.png
 

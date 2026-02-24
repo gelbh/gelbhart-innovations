@@ -14,17 +14,19 @@
     </div>
   </div>
 
-  <div class="team-grid row g-3 g-md-4 row-cols-1 row-cols-sm-2 row-cols-lg-3 justify-content-center">
+  <div class="team-grid row g-3 g-md-4 row-cols-1 row-cols-sm-2 row-cols-lg-4 justify-content-center">
     <% @members.each do |member| %>
       <% modal_id = "team-member-#{member.first_name.parameterize}" %>
       <% social_links = capture do %>
-        <%= link_to member.linkedin_url,
-                    target: "_blank",
-                    rel: "noopener",
-                    class: "team-card-social-link linkedin",
-                    "aria-label": t('pages.team.linkedin_aria', name: member.name),
-                    onclick: "event.stopPropagation();" do %>
-          <i class="bx bxl-linkedin"></i>
+        <% if member.linkedin? %>
+          <%= link_to member.linkedin_url,
+                      target: "_blank",
+                      rel: "noopener",
+                      class: "team-card-social-link linkedin",
+                      "aria-label": t('pages.team.linkedin_aria', name: member.name),
+                      onclick: "event.stopPropagation();" do %>
+            <i class="bx bxl-linkedin"></i>
+          <% end %>
         <% end %>
         <% if member.github? %>
           <%= link_to member.github_url,
@@ -67,7 +69,7 @@
           <div class="team-card-body card-body text-center px-3 px-sm-4 py-3 py-md-4 d-flex flex-column">
             <h3 class="team-card-name h5 fw-semibold mb-2"><%= member.name %></h3>
             <p class="team-card-summary text-body-secondary fs-sm mb-3">
-              <%= truncate(strip_tags(member.bio.to_s), length: 140) %>
+              <%= truncate(strip_tags(member.bio.to_s), length: 130) %>
             </p>
             <div class="team-card-actions mt-auto">
               <div class="team-card-social team-card-social--inline justify-content-center">
@@ -108,12 +110,14 @@
               <div class="team-modal-summary text-start">
                 <h5 class="team-modal-name h4 mb-3" id="<%= "#{modal_id}-label" %>"><%= member.name %></h5>
                 <div class="team-modal-social d-flex flex-column flex-sm-row align-items-start gap-2">
-                  <%= link_to member.linkedin_url,
-                              target: "_blank",
-                              rel: "noopener",
-                              class: "team-modal-social-link linkedin" do %>
-                    <i class="bx bxl-linkedin"></i>
-                    <span><%= t('common.connect_on_linkedin') %></span>
+                  <% if member.linkedin? %>
+                    <%= link_to member.linkedin_url,
+                                target: "_blank",
+                                rel: "noopener",
+                                class: "team-modal-social-link linkedin" do %>
+                      <i class="bx bxl-linkedin"></i>
+                      <span><%= t('common.connect_on_linkedin') %></span>
+                    <% end %>
                   <% end %>
                   <% if member.github? %>
                     <%= link_to member.github_url,
