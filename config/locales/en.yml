@@ -136,6 +136,9 @@ en:
     tomer:
       name: "Tomer Gelbhart"
       bio: "Passionate MSc Computer Science student with a BSc in Computer Science. Experienced in front-end development and API integration to develop tools that address real-world challenges.<br><br>Starting an internship in April 2026 to strengthen my back-end development skills and progress toward becoming a full-stack developer."
+    effie:
+      name: "Effie Gelbhart"
+      bio: "Effie is an Innovation Management Masters Student with a Bachelors in Sustainable Innovation and a specialization in sustainability transitions. She has first-hand expertise with sustainable development and innovation, practical experience in CSR reporting and sustainability assessments of business models, and knowledge of state-of-the-art sustainability practices. With a keen eye for detail and a focus on efficiency and communication, she can guide you through all your sustainability needs."
 
   # Pharmaceutical services
   services_data:

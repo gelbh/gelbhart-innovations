@@ -114,6 +114,9 @@ fr:
     tomer:
       name: Tomer Gelbhart
       bio: Étudiant passionné de MSc Computer Science avec un BSc en informatique. Expérimenté dans le développement front-end et l'intégration d'API pour développer des outils qui répondent aux défis du monde réel.<br><br>Début d'un stage en avril 2026 pour renforcer mes compétences en développement back-end et progresser pour devenir un développeur full-stack.
+    effie:
+      name: Effie Gelbhart
+      bio: Effie est étudiante en master en gestion de l'innovation, titulaire d'une licence en innovation durable et spécialisée dans les transitions durables. Elle possède une expertise de première main en développement durable et en innovation, une expérience pratique en reporting RSE et en évaluation de la durabilité des modèles d'affaires, ainsi qu'une connaissance des pratiques de durabilité les plus avancées. Avec un souci du détail et une focalisation sur l'efficacité et la communication, elle peut vous accompagner dans tous vos besoins en matière de durabilité.
   services_data:
     pharmaceutical:
       due_diligence:
