@@ -35,8 +35,10 @@ ar:
     connect_on_linkedin: الاتصال على LinkedIn
     view_github_profile: عرض الملف الشخصي على GitHub
     close: إغلاق
+    back: رجوع
     light_mode: الوضع الفاتح
     dark_mode: الوضع الداكن
+    language: اللغة
   footer:
     copyright: جميع الحقوق محفوظة. صنع بواسطة
     legal_notice: يرجى الاطلاع على
@@ -70,6 +72,7 @@ ar:
       linkedin_aria: فتح ملف %{name} الشخصي على LinkedIn
       github_aria: فتح ملف %{name} الشخصي على GitHub
       open_profile_aria: فتح الملف الشخصي لـ %{name}
+      click_to_flip_tooltip: انقر لعرض الملف الشخصي الكامل
     contact:
       title: Gelbhart Innovations
       address_label: العنوان

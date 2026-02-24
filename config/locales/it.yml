@@ -35,8 +35,10 @@ it:
     connect_on_linkedin: Connettiti su LinkedIn
     view_github_profile: Visualizza il profilo GitHub
     close: Chiudere
+    back: Indietro
     light_mode: Modalità luce
     dark_mode: Modalità scura
+    language: Lingua
   footer:
     copyright: Tutti i diritti riservati. Realizzato da
     legal_notice: Si prega di consultare il nostro
@@ -70,6 +72,7 @@ it:
       linkedin_aria: Aprire il profilo LinkedIn di %{name}
       github_aria: Aprire il profilo GitHub di %{name}
       open_profile_aria: Profilo aperto per %{name}
+      click_to_flip_tooltip: Clic per vedere il profilo completo
     contact:
       title: Gelbhart Innovations
       address_label: Indirizzo
@@ -116,7 +119,7 @@ it:
       bio: Studente appassionato di MSc Computer Science con una laurea in Informatica. Esperienza nello sviluppo front-end e nell'integrazione di API per sviluppare strumenti che affrontino le sfide del mondo reale.<br><br>Inizio uno stage nell'aprile 2026 per rafforzare le mie capacità di sviluppo back-end e progredire verso la trasformazione in uno sviluppatore full-stack.
     effie:
       name: Effie Gelbhart
-      bio: Effie è una studentessa di master in gestione dell'innovazione con una laurea in innovazione sostenibile e una specializzazione nelle transizioni verso la sostenibilità. Ha un'esperienza diretta in sviluppo sostenibile e innovazione, esperienza pratica nella rendicontazione di sostenibilità (CSR) e nella valutazione della sostenibilità dei modelli di business, e conoscenza delle migliori pratiche di sostenibilità. Con grande attenzione ai dettagli e un focus su efficienza e comunicazione, può guidarvi in tutte le vostre esigenze di sostenibilità.
+      bio: Effie è una studentessa di master in gestione dell'innovazione con una laurea in innovazione sostenibile e una specializzazione nelle transizioni verso la sostenibilità. Ha un'esperienza diretta in sviluppo sostenibile e innovazione, esperienza pratica nella rendicontazione di sostenibilità (CSR) e nella valutazione della sostenibilità dei modelli di business, e conoscenza delle migliori pratiche di sostenibilità.<br><br>Con grande attenzione ai dettagli e un focus su efficienza e comunicazione, può guidarvi in tutte le vostre esigenze di sostenibilità.
   services_data:
     pharmaceutical:
       due_diligence:

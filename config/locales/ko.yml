@@ -35,8 +35,10 @@ ko:
     connect_on_linkedin: LinkedIn에서 연결
     view_github_profile: GitHub 프로필 보기
     close: 닫기
+    back: 뒤로
     light_mode: 라이트 모드
     dark_mode: 다크 모드
+    language: 언어
   footer:
     copyright: "모든 권리 보유. 제작:"
     legal_notice: 다음을 참조하십시오
@@ -70,6 +72,7 @@ ko:
       linkedin_aria: "%{name}의 LinkedIn 프로필 열기"
       github_aria: "%{name}의 GitHub 프로필 열기"
       open_profile_aria: "%{name}의 프로필 열기"
+      click_to_flip_tooltip: 클릭하여 전체 프로필 보기
     contact:
       title: Gelbhart Innovations
       address_label: 주소

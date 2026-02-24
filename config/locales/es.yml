@@ -35,8 +35,10 @@ es:
     connect_on_linkedin: Conectarse en LinkedIn
     view_github_profile: Ver perfil de GitHub
     close: Cerrar
+    back: Atrás
     light_mode: Modo Claro
     dark_mode: Modo oscuro
+    language: Idioma
   footer:
     copyright: Todos los derechos reservados. Fabricado por
     legal_notice: Consulte nuestro
@@ -70,6 +72,7 @@ es:
       linkedin_aria: Abrir el perfil LinkedIn de %{name}
       github_aria: Abrir el perfil GitHub de %{name}
       open_profile_aria: Perfil abierto para %{name}
+      click_to_flip_tooltip: Clic para ver perfil completo
     contact:
       title: Gelbhart Innovations
       address_label: Dirección
@@ -116,7 +119,7 @@ es:
       bio: Estudiante apasionado de Ciencias de la Computación con un BSc en Ciencias de la Computación. Con experiencia en desarrollo front-end e integración de API para desarrollar herramientas que aborden desafíos del mundo real.<br><br>Comienzo de prácticas en abril de 2026 para fortalecer mis habilidades de desarrollo back-end y progresar para convertirme en un desarrollador full-stack.
     effie:
       name: Effie Gelbhart
-      bio: Effie es estudiante de Máster en Gestión de la Innovación, con una licenciatura en Innovación Sostenible y especialización en transiciones sostenibles. Tiene experiencia directa en desarrollo sostenible e innovación, experiencia práctica en informes de RSC y evaluaciones de sostenibilidad de modelos de negocio, y conocimiento de las prácticas de sostenibilidad más avanzadas. Con gran atención al detalle y un enfoque en la eficiencia y la comunicación, puede guiarle en todas sus necesidades de sostenibilidad.
+      bio: Effie es estudiante de Máster en Gestión de la Innovación, con una licenciatura en Innovación Sostenible y especialización en transiciones sostenibles. Tiene experiencia directa en desarrollo sostenible e innovación, experiencia práctica en informes de RSC y evaluaciones de sostenibilidad de modelos de negocio, y conocimiento de las prácticas de sostenibilidad más avanzadas.<br><br>Con gran atención al detalle y un enfoque en la eficiencia y la comunicación, puede guiarle en todas sus necesidades de sostenibilidad.
   services_data:
     pharmaceutical:
       due_diligence:

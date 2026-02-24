@@ -35,8 +35,10 @@ ja:
     connect_on_linkedin: LinkedIn で接続
     view_github_profile: GitHub プロフィールを表示
     close: 閉じる
+    back: 戻る
     light_mode: ライトモード
     dark_mode: ダークモード
+    language: 言語
   footer:
     copyright: 全著作権所有。制作：
     legal_notice: 以下をご覧ください
@@ -70,6 +72,7 @@ ja:
       linkedin_aria: "%{name} の LinkedIn プロフィールを開く"
       github_aria: "%{name} の GitHub プロフィールを開く"
       open_profile_aria: "%{name} のプロフィールを開く"
+      click_to_flip_tooltip: クリックしてプロフィールを表示
     contact:
       title: Gelbhart Innovations
       address_label: 住所

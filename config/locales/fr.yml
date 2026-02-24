@@ -35,8 +35,10 @@ fr:
     connect_on_linkedin: Se connecter sur LinkedIn
     view_github_profile: Voir le profil GitHub
     close: Fermer
+    back: Retour
     light_mode: Mode lumineux
     dark_mode: Mode sombre
+    language: Langue
   footer:
     copyright: Tous droits réservés. Réalisé par
     legal_notice: Veuillez consulter notre
@@ -70,6 +72,7 @@ fr:
       linkedin_aria: Ouvrir le profil LinkedIn de %{name}
       github_aria: Ouvrir le profil GitHub de %{name}
       open_profile_aria: Profil ouvert pour %{name}
+      click_to_flip_tooltip: Cliquez pour voir le profil complet
     contact:
       title: Gelbhart Innovations
       address_label: Adresse
@@ -116,7 +119,7 @@ fr:
       bio: Étudiant passionné de MSc Computer Science avec un BSc en informatique. Expérimenté dans le développement front-end et l'intégration d'API pour développer des outils qui répondent aux défis du monde réel.<br><br>Début d'un stage en avril 2026 pour renforcer mes compétences en développement back-end et progresser pour devenir un développeur full-stack.
     effie:
       name: Effie Gelbhart
-      bio: Effie est étudiante en master en gestion de l'innovation, titulaire d'une licence en innovation durable et spécialisée dans les transitions durables. Elle possède une expertise de première main en développement durable et en innovation, une expérience pratique en reporting RSE et en évaluation de la durabilité des modèles d'affaires, ainsi qu'une connaissance des pratiques de durabilité les plus avancées. Avec un souci du détail et une focalisation sur l'efficacité et la communication, elle peut vous accompagner dans tous vos besoins en matière de durabilité.
+      bio: Effie est étudiante en master en gestion de l'innovation, titulaire d'une licence en innovation durable et spécialisée dans les transitions durables. Elle possède une expertise de première main en développement durable et en innovation, une expérience pratique en reporting RSE et en évaluation de la durabilité des modèles d'affaires, ainsi qu'une connaissance des pratiques de durabilité les plus avancées.<br><br>Avec un souci du détail et une focalisation sur l'efficacité et la communication, elle peut vous accompagner dans tous vos besoins en matière de durabilité.
   services_data:
     pharmaceutical:
       due_diligence:

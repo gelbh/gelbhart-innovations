@@ -35,8 +35,10 @@ zh:
     connect_on_linkedin: 在 LinkedIn 上联系
     view_github_profile: 查看 GitHub 简介
     close: 关闭
+    back: 返回
     light_mode: 灯光模式
     dark_mode: 黑暗模式
+    language: 语言
   footer:
     copyright: 保留所有权利。制作
     legal_notice: 请参阅我们的
@@ -70,6 +72,7 @@ zh:
       linkedin_aria: 打开 %{name} 的 LinkedIn 个人资料
       github_aria: 打开 %{name} 的 GitHub 简介
       open_profile_aria: 为 %{name} 打开配置文件
+      click_to_flip_tooltip: 点击查看完整简介
     contact:
       title: Gelbhart Innovations
       address_label: 地址
@@ -116,7 +119,7 @@ zh:
       bio: 热情的计算机科学理学硕士学生，拥有计算机科学理学士学位。在前端开发和 API 集成方面经验丰富，致力于开发解决现实世界挑战的工具。<br><br>将于 2026 年 4 月开始实习，以加强后端开发技能，并朝着成为全栈开发者的方向迈进。
     effie:
       name: Effie Gelbhart
-      bio: Effie是创新管理硕士生，拥有可持续创新学士学位，并专注于可持续转型。她在可持续发展和创新方面具有第一手专业知识，在CSR报告和商业模式可持续性评估方面具有实践经验，并了解最先进的可持续实践。她注重细节，讲求效率与沟通，能够满足您在可持续性方面的所有需求。
+      bio: Effie是创新管理硕士生，拥有可持续创新学士学位，并专注于可持续转型。她在可持续发展和创新方面具有第一手专业知识，在CSR报告和商业模式可持续性评估方面具有实践经验，并了解最先进的可持续实践。<br><br>她注重细节，讲求效率与沟通，能够满足您在可持续性方面的所有需求。
   services_data:
     pharmaceutical:
       due_diligence:
