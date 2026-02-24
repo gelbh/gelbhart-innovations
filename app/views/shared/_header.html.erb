@@ -51,8 +51,7 @@
     <% end %>
 
     <div class="d-flex align-items-center ms-auto">
-      <!-- Language Switcher -->
-      <%= render 'shared/language_switcher' %>
+      <%= render "shared/language_switcher" %>
 
       <div class="form-check form-switch mode-switch ms-2 ms-sm-3" data-bs-toggle="mode">
         <label class="form-check-label d-none d-sm-inline" for="theme-mode">
@@ -121,6 +120,18 @@
                 <i class="bx bx-envelope me-2"></i>
                 <span><%= t('nav.contact') %></span>
               <% end %>
+            </li>
+            <li class="mobile-nav-item">
+              <a class="mobile-nav-link" href="#" role="button" data-bs-toggle="collapse" data-bs-target="#mobileLanguageDropdown" aria-expanded="false" aria-controls="mobileLanguageDropdown">
+                <i class="bx bx-globe me-2"></i>
+                <span><%= t('common.language') %></span>
+                <i class="bx bx-chevron-down ms-auto mobile-nav-chevron"></i>
+              </a>
+              <div class="collapse" id="mobileLanguageDropdown">
+                <ul class="mobile-nav-sublist list-unstyled mb-0">
+                  <%= render "shared/language_switcher_links", link_class: "mobile-nav-sublink d-flex align-items-center" %>
+                </ul>
+              </div>
             </li>
           </ul>
         </nav>

@@ -1,22 +1,17 @@
-<% rtl_locales = %i[ar] %>
-<% current_is_rtl = rtl_locales.include?(I18n.locale) %>
+<% current_name = t("languages.#{I18n.locale}") %>
+<% aria_label = "#{t('common.language')}: #{current_name}" %>
 <div class="dropdown language-switcher">
-  <button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center px-2"
-          type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+  <button type="button"
+          id="languageDropdown"
+          class="btn btn-link nav-link dropdown-toggle d-flex align-items-center px-2"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          aria-label="<%= aria_label %>"
+          title="<%= current_name %>">
     <span class="fi fi-<%= locale_to_flag(I18n.locale) %> me-1"></span>
-    <span class="d-none d-sm-inline"><%= t("languages.#{I18n.locale}") %></span>
+    <span class="d-none d-sm-inline"><%= current_name %></span>
   </button>
-  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
-    <% I18n.available_locales.each do |locale| %>
-      <% needs_reload = current_is_rtl != rtl_locales.include?(locale) %>
-      <li>
-        <%= link_to url_for(locale: locale),
-                    class: "dropdown-item d-flex align-items-center #{'active' if I18n.locale == locale}",
-                    data: { turbo: needs_reload ? false : nil } do %>
-          <span class="fi fi-<%= locale_to_flag(locale) %> me-2"></span>
-          <span><%= t("languages.#{locale}") %></span>
-        <% end %>
-      </li>
-    <% end %>
+  <ul class="dropdown-menu dropdown-menu-end language-switcher-menu" aria-labelledby="languageDropdown">
+    <%= render "shared/language_switcher_links" %>
   </ul>
 </div>

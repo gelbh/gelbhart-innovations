@@ -1,0 +1,16 @@
+<% rtl = %i[ar] %>
+<% current_rtl = rtl.include?(I18n.locale) %>
+<% link_class = local_assigns[:link_class] || "dropdown-item d-flex align-items-center" %>
+<% I18n.available_locales.each do |locale| %>
+  <% full_reload = current_rtl != rtl.include?(locale) %>
+  <% active = I18n.locale == locale %>
+  <li>
+    <%= link_to url_for(locale: locale),
+                class: "#{link_class} #{'active' if active}",
+                data: { turbo: full_reload ? false : nil },
+                aria: (active ? { current: "true" } : {}) do %>
+      <span class="fi fi-<%= locale_to_flag(locale) %> me-2"></span>
+      <span><%= t("languages.#{locale}") %></span>
+    <% end %>
+  </li>
+<% end %>
