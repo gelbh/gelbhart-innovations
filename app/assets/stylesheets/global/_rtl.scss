@@ -253,6 +253,24 @@ html[dir="rtl"] {
   .team-card-summary {
     text-align: start;
   }
+
+  .team-page .team-card-flip.flipped .team-card-flip-inner {
+    transform: rotateY(-180deg);
+  }
+
+  .team-page .team-card-back {
+    transform: rotateY(-180deg);
+  }
+
+  .team-page .team-card-back-arrow i {
+    transform: scaleX(-1);
+  }
+
+  .team-page .team-card-back-arrow:hover,
+  .team-page .team-card-back-arrow:focus-visible {
+    transform: translateX(2px);
+  }
+
   .contact-info-item {
     text-align: start;
   }

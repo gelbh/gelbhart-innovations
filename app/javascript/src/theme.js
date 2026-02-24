@@ -19,6 +19,7 @@ import rangeSlider from "src/components/range-slider";
 import formValidation from "src/components/form-validation";
 import inputFormatter from "src/components/input-formatter";
 import tooltip from "src/components/tooltip";
+import bootstrapTurboCleanup from "src/components/bootstrap-turbo-cleanup";
 import popover from "src/components/popover";
 import toast from "src/components/toast";
 import videoButton from "src/components/video-button";
@@ -30,6 +31,7 @@ import audioPlayer from "src/components/audio-player";
 
 // Custom components
 import teamCardFocus from "src/components/team-card-focus";
+import teamCardFlip from "src/components/team-card-flip";
 import pageLoader from "src/components/page-loader";
 import mobileMenu from "src/components/mobile-menu";
 import navigation from "src/navigation";
