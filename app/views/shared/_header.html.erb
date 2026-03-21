@@ -47,7 +47,7 @@
     </div>
 
     <%= link_to root_path, class: "position-absolute position-sm-absolute start-50 translate-middle-x align-items-center navbar-brand px-2 px-sm-3 #{home_page? ? 'd-none' : 'd-flex'}", data: { turbo_preload: true } do %>
-      <%= image_tag "logo.png", alt: "Gelbhart Inn. Logo", width: 50 %>
+      <%= image_tag "logo.png", alt: "Gelbhart Inn. Logo", width: 50, height: 50 %>
     <% end %>
 
     <div class="d-flex align-items-center ms-auto">
@@ -72,7 +72,7 @@
     <div class="modal-content mobile-menu-popup">
       <div class="modal-header border-bottom">
         <h5 class="modal-title d-flex align-items-center" id="mobileMenuLabel">
-          <%= image_tag "logo.png", alt: "Gelbhart Inn. Logo", width: 30, class: "me-2" %>
+          <%= image_tag "logo.png", alt: "Gelbhart Inn. Logo", width: 30, height: 30, class: "me-2" %>
           <span><%= t('nav.menu') %></span>
         </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<%= t('common.close') %>"></button>

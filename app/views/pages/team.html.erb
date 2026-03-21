@@ -55,7 +55,9 @@
                 <div class="team-card-media position-relative rounded-4 overflow-hidden">
                   <%= image_tag member.image_filename,
                                 class: "team-card-image",
-                                alt: member.name %>
+                                alt: member.name,
+                                width: member.image_width,
+                                height: member.image_height %>
 
                   <div class="team-card-overlay">
                     <div class="team-card-overlay-content">
@@ -92,7 +94,9 @@
                   <div class="team-card-back-photo">
                     <%= image_tag member.image_filename,
                                   alt: member.name,
-                                  class: "w-100 h-100 object-fit-cover rounded-circle" %>
+                                  class: "w-100 h-100 object-fit-cover rounded-circle",
+                                  width: member.image_width,
+                                  height: member.image_height %>
                   </div>
                   <h3 class="team-card-back-name h5 fw-semibold mb-2"><%= member.name %></h3>
                 </div>

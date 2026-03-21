@@ -37,6 +37,13 @@ class TeamMemberTest < ActiveSupport::TestCase
     assert_equal "team/john_doe.png", member.image_filename
   end
 
+  test "image_width and image_height match intrinsic assets for roster members" do
+    TeamMember.all.each do |member|
+      assert_operator member.image_width, :>, 0
+      assert_operator member.image_height, :>, 0
+    end
+  end
+
   test "github? returns true when github_url is present" do
     member = TeamMember.new(
       key: :john_doe,
