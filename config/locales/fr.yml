@@ -44,6 +44,7 @@ fr:
     legal_notice: Veuillez consulter notre
     terms_and_conditions: Conditions générales d'utilisation
     privacy_policy: Politique de confidentialité
+    cookie_settings: Paramètres des cookies
     and: et
   pages:
     home:
@@ -87,25 +88,25 @@ fr:
     tos:
       title: Conditions générales d'utilisation
       items:
-      - Bienvenue sur notre site web. En accédant à notre site web ou en l'utilisant, vous acceptez d'être lié par les présentes conditions de service et par notre politique de confidentialité.
-      - Le contenu de notre site web est la propriété de notre société et est protégé par les lois sur la propriété intellectuelle. Vous ne pouvez utiliser le contenu qu'à des fins personnelles et non commerciales. Vous ne pouvez pas copier, modifier, distribuer ou réutiliser toute partie du site web sans notre accord écrit préalable.
-      - Notre site web peut contenir des liens vers des sites web de tiers. Nous ne sommes pas responsables de la disponibilité, du contenu ou des pratiques de confidentialité de ces sites externes.
-      - Nous fournissons ce site web "en l'état", sans aucune garantie ni représentation. Nous ne sommes pas responsables des dommages résultant de l'utilisation du site web, y compris, mais sans s'y limiter, les dommages directs, indirects, accessoires ou consécutifs.
-      - En aucun cas, notre société ne sera responsable des réclamations, pertes ou dommages dépassant 100 dollars liés à votre utilisation de ce site web.
-      - Les présentes conditions sont régies par le droit suisse. Tout litige sera résolu par les tribunaux suisses.
+        - Bienvenue sur notre site web. En accédant à notre site web ou en l'utilisant, vous acceptez d'être lié par les présentes conditions de service et par notre politique de confidentialité.
+        - Le contenu de notre site web est la propriété de notre société et est protégé par les lois sur la propriété intellectuelle. Vous ne pouvez utiliser le contenu qu'à des fins personnelles et non commerciales. Vous ne pouvez pas copier, modifier, distribuer ou réutiliser toute partie du site web sans notre accord écrit préalable.
+        - Notre site web peut contenir des liens vers des sites web de tiers. Nous ne sommes pas responsables de la disponibilité, du contenu ou des pratiques de confidentialité de ces sites externes.
+        - Nous fournissons ce site web "en l'état", sans aucune garantie ni représentation. Nous ne sommes pas responsables des dommages résultant de l'utilisation du site web, y compris, mais sans s'y limiter, les dommages directs, indirects, accessoires ou consécutifs.
+        - En aucun cas, notre société ne sera responsable des réclamations, pertes ou dommages dépassant 100 dollars liés à votre utilisation de ce site web.
+        - Les présentes conditions sont régies par le droit suisse. Tout litige sera résolu par les tribunaux suisses.
     privacy:
       title: Politique de confidentialité
       items:
-      - Nous pouvons recueillir des informations que vous nous fournissez, ainsi que des informations collectées automatiquement par notre serveur web et notre navigateur. Nous utilisons ces informations pour fournir et améliorer nos services.
-      - Nous pouvons partager vos informations avec des prestataires de services tiers qui nous aident à exploiter le site web et à servir nos clients. Nous ne vendons ni ne louons vos informations personnelles à des tiers.
-      - Nous utilisons des cookies et d'autres technologies de suivi pour personnaliser votre expérience et analyser l'utilisation du site web. Vous pouvez contrôler l'utilisation des cookies par le biais des paramètres de votre navigateur.
-      - Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. En continuant à utiliser le site web après toute modification, vous acceptez la nouvelle politique.
+        - Nous pouvons recueillir des informations que vous nous fournissez, ainsi que des informations collectées automatiquement par notre serveur web et notre navigateur. Nous utilisons ces informations pour fournir et améliorer nos services.
+        - Nous pouvons partager vos informations avec des prestataires de services tiers qui nous aident à exploiter le site web et à servir nos clients. Nous ne vendons ni ne louons vos informations personnelles à des tiers.
+        - Nous utilisons des cookies et d'autres technologies de suivi pour personnaliser votre expérience et analyser l'utilisation du site web. Vous pouvez contrôler l'utilisation des cookies par le biais des paramètres de votre navigateur.
+        - Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. En continuant à utiliser le site web après toute modification, vous acceptez la nouvelle politique.
   errors:
     not_found:
-      heading: '404'
+      heading: "404"
       message: La page que vous recherchez n'existe pas ou a été déplacée.
     internal_server_error:
-      heading: '500'
+      heading: "500"
       message: Un problème s'est produit de notre côté. Veuillez réessayer plus tard.
   team_members:
     bareket:
@@ -150,30 +151,30 @@ fr:
       land_identification:
         title: Identification des terres et des opportunités
         description:
-        - Recherche de terrains à fort potentiel pour des projets de logement, d'hôtellerie, de loisirs et de commerce.
-        - Réaliser des études de marché approfondies et des études de faisabilité.
-        - Évaluation du zonage, de l'infrastructure et de la valeur à long terme.
+          - Recherche de terrains à fort potentiel pour des projets de logement, d'hôtellerie, de loisirs et de commerce.
+          - Réaliser des études de marché approfondies et des études de faisabilité.
+          - Évaluation du zonage, de l'infrastructure et de la valeur à long terme.
       acquisition:
         title: Acquisition et structuration
         description:
-        - Gestion des négociations d'achat de terrains et de la diligence raisonnable.
-        - Assurer la coordination avec les conseillers juridiques, les banques et les institutions financières.
-        - Structurer les investissements et les modèles de propriété en fonction des objectifs des clients et des investisseurs.
+          - Gestion des négociations d'achat de terrains et de la diligence raisonnable.
+          - Assurer la coordination avec les conseillers juridiques, les banques et les institutions financières.
+          - Structurer les investissements et les modèles de propriété en fonction des objectifs des clients et des investisseurs.
       development:
         title: Gestion de la conception et du développement
         description:
-        - Diriger les processus de planification, d'architecture et de conception.
-        - Superviser les consultants, les entrepreneurs et les équipes de projet.
-        - Garantir la qualité, la durabilité et le respect des délais.
+          - Diriger les processus de planification, d'architecture et de conception.
+          - Superviser les consultants, les entrepreneurs et les équipes de projet.
+          - Garantir la qualité, la durabilité et le respect des délais.
       marketing:
         title: Marketing et exécution des ventes
         description:
-        - Construire l'identité de la marque et la stratégie de mise sur le marché.
-        - Concevoir des campagnes de marketing pour cibler les investisseurs et les utilisateurs finaux.
-        - Gérer les réseaux de vente et les relations avec les clients pour une absorption maximale.
+          - Construire l'identité de la marque et la stratégie de mise sur le marché.
+          - Concevoir des campagnes de marketing pour cibler les investisseurs et les utilisateurs finaux.
+          - Gérer les réseaux de vente et les relations avec les clients pour une absorption maximale.
       financial:
         title: Coordination financière et réglementaire
         description:
-        - Travailler en étroite collaboration avec les banques, les comptables et les auditeurs afin de garantir le financement et de maintenir la conformité.
-        - Gérer les rapports financiers, les relations avec les investisseurs et les approbations réglementaires.
-        - Assurer une supervision transparente de la conception à la remise du projet.
+          - Travailler en étroite collaboration avec les banques, les comptables et les auditeurs afin de garantir le financement et de maintenir la conformité.
+          - Gérer les rapports financiers, les relations avec les investisseurs et les approbations réglementaires.
+          - Assurer une supervision transparente de la conception à la remise du projet.

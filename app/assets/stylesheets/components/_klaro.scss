@@ -1,0 +1,37 @@
+// Klaro CMP: equal visual weight for accept vs reject (no dark patterns).
+.klaro {
+  .cookie-notice .cn-body .cn-buttons,
+  .cookie-modal .cm-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cookie-notice .cn-body .cn-buttons button.cm-btn,
+  .cookie-modal .cm-footer button.cm-btn {
+    min-width: 10rem;
+    min-height: 2.5rem;
+    font-weight: 600;
+  }
+
+  // Decline / neutral actions: outlined, same footprint as accept (not a muted text link).
+  .cookie-notice
+    .cn-body
+    .cn-buttons
+    button.cm-btn:not(.cm-btn-success):not(.cm-btn-info),
+  .cookie-modal
+    .cm-footer
+    button.cm-btn:not(.cm-btn-success):not(.cm-btn-info) {
+    background-color: transparent !important;
+    color: var(--si-body-color, #212529) !important;
+    border: 2px solid currentColor !important;
+    box-shadow: none;
+  }
+
+  .cookie-notice .cn-body .cn-buttons button.cm-btn.cm-btn-success,
+  .cookie-modal .cm-footer button.cm-btn.cm-btn-success {
+    border: 2px solid transparent;
+  }
+}

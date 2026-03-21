@@ -95,10 +95,16 @@ $theme-faded-colors: (
 // Gradients map
 $theme-gradients: (
   "primary": linear-gradient(90deg, $primary 0%, #8b5cf6 50%, #d946ef 100%),
-  "primary-translucent":
-    linear-gradient(180deg, rgba($primary, 0) 0%, rgba($primary, 0.6) 120%),
-  "dark-translucent":
-    linear-gradient(180deg, rgba($dark, 0.58) 0%, rgba($dark, 0.78) 100%),
+  "primary-translucent": linear-gradient(
+      180deg,
+      rgba($primary, 0) 0%,
+      rgba($primary, 0.6) 120%
+    ),
+  "dark-translucent": linear-gradient(
+      180deg,
+      rgba($dark, 0.58) 0%,
+      rgba($dark, 0.78) 100%
+    ),
 ) !default;
 
 // User selection color
@@ -184,11 +190,14 @@ $border-colors: (
 
 // Theme shadows
 
-$box-shadow-sm: 0 0.275rem 0.75rem -0.0625rem rgba($gray-900, 0.06),
+$box-shadow-sm:
+  0 0.275rem 0.75rem -0.0625rem rgba($gray-900, 0.06),
   0 0.125rem 0.4rem -0.0625rem rgba($gray-900, 0.03) !default;
-$box-shadow: 0 0.275rem 1.25rem rgba($gray-900, 0.05),
+$box-shadow:
+  0 0.275rem 1.25rem rgba($gray-900, 0.05),
   0 0.25rem 0.5625rem rgba($gray-900, 0.03) !default;
-$box-shadow-lg: 0 0.3rem 1.525rem -0.375rem rgba($gray-900, 0.1),
+$box-shadow-lg:
+  0 0.3rem 1.525rem -0.375rem rgba($gray-900, 0.1),
   0 0.25rem 0.8125rem -0.125rem rgba($gray-900, 0.06) !default;
 $box-shadow-inset: inset 0 0 0 transparent !default;
 
@@ -205,8 +214,7 @@ $text-shadow: 0 0.0625rem $gray-900 !default;
 // Fonts
 //
 // Font, line-height, and color for body text, headings, and more.
-
-$path-to-fonts: "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" !default;
+// Manrope stylesheet URL: config/initializers/font_stylesheet_urls.rb (loaded in application layout).
 
 $font-family-sans-serif: "Manrope", sans-serif !default;
 
@@ -341,8 +349,11 @@ $btn-active-box-shadow: unset !default;
 $btn-link-decoration: none !default;
 $btn-link-hover-decoration: none !default;
 
-$btn-transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
-  border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out !default;
+$btn-transition:
+  color 0.2s ease-in-out,
+  background-color 0.2s ease-in-out,
+  border-color 0.2s ease-in-out,
+  box-shadow 0.2s ease-in-out !default;
 
 // Icon buttons
 
@@ -414,8 +425,10 @@ $btn-scroll-top-bg: rgba($gray-900, 0.2) !default;
 $btn-scroll-top-hover-bg: rgba($gray-900, 0.4) !default;
 $btn-scroll-top-color: $white !default;
 $btn-scroll-top-hover-color: $white !default;
-$btn-scroll-top-transition: bottom 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55),
-  opacity 0.3s, background-color 0.25s ease-in-out !default;
+$btn-scroll-top-transition:
+  bottom 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55),
+  opacity 0.3s,
+  background-color 0.25s ease-in-out !default;
 
 // Forms
 
@@ -443,7 +456,9 @@ $input-focus-box-shadow: 0 0.5rem 1.125rem -0.5rem rgba($primary, 0.2) !default;
 $input-placeholder-color: $gray-500 !default;
 $input-disabled-placeholder-color: $gray-600 !default;
 
-$input-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !default;
+$input-transition:
+  border-color 0.15s ease-in-out,
+  box-shadow 0.15s ease-in-out !default;
 
 // Range
 $form-range-thumb-bg: $primary !default;
@@ -508,7 +523,8 @@ $range-slider-bg: color.adjust($gray-300, $lightness: +1%) !default;
 $range-slider-connect-bg: $primary !default;
 $range-slider-handle-size: 1.375rem !default;
 $range-slider-handle-bg: $white !default;
-$range-slider-handle-box-shadow: 0 0.125rem 0.5625rem -0.125rem rgba($black, 0.25) !default;
+$range-slider-handle-box-shadow: 0 0.125rem 0.5625rem -0.125rem
+  rgba($black, 0.25) !default;
 $range-slider-tooltip-font-size: $font-size-xs !default;
 $range-slider-tooltip-bg: color.adjust($gray-800, $lightness: -10%) !default;
 $range-slider-tooltip-color: $white !default;
@@ -523,7 +539,9 @@ $nav-link-color: $gray-800 !default;
 $nav-link-hover-color: $primary !default;
 $nav-link-active-color: $primary !default;
 $nav-link-disabled-color: $gray-600 !default;
-$nav-link-transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
+$nav-link-transition:
+  color 0.2s ease-in-out,
+  background-color 0.2s ease-in-out,
   border-color 0.2s ease-in-out !default;
 
 // Tabs
@@ -555,7 +573,9 @@ $side-nav-border-color: $border-color !default;
 $side-nav-link-font-size: $font-size-sm !default;
 $side-nav-link-padding-y: 0.375rem !default;
 $side-nav-link-padding-x: $side-nav-padding-x !default;
-$side-nav-link-trnasition: color 0.2s ease-in-out, border-color 0.2s ease-in-out,
+$side-nav-link-trnasition:
+  color 0.2s ease-in-out,
+  border-color 0.2s ease-in-out,
   background-color 0.2s ease-in-out !default;
 
 // Navbar
@@ -629,8 +649,8 @@ $dropdown-link-active-bg: transparent !default;
 $dropdown-link-disabled-color: $nav-link-disabled-color !default;
 
 $dropdown-dark-color: rgba($white, 0.7) !default;
-$dropdown-dark-bg: linear-gradient(0deg, rgba($white, 0.03), rgba($white, 0.03)),
-  $dark !default;
+$dropdown-dark-bg:
+  linear-gradient(0deg, rgba($white, 0.03), rgba($white, 0.03)), $dark !default;
 $dropdown-dark-border-color: $border-light-color !default;
 $dropdown-dark-divider-bg: $border-light-color !default;
 $dropdown-dark-link-color: rgba($white, 0.85) !default;
@@ -670,8 +690,10 @@ $pagination-active-bg: $primary !default;
 $pagination-active-box-shadow: $box-shadow-primary !default;
 
 $pagination-disabled-bg: transparent !default;
-$pagination-transition: color 0.2s ease-in-out,
-  background-color 0.2s ease-in-out, border-color 0.2s ease-in-out,
+$pagination-transition:
+  color 0.2s ease-in-out,
+  background-color 0.2s ease-in-out,
+  border-color 0.2s ease-in-out,
   box-shadow 0.2s ease-in-out !default;
 
 // Placeholders
@@ -690,8 +712,11 @@ $card-bg: var(--#{$prefix}body-bg) !default;
 $card-border-color: var(--#{$prefix}border-color) !default;
 $card-cap-padding-y: $card-spacer-y * 0.75 !default;
 $card-cap-bg: transparent !default;
-$card-transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out,
-  background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out !default;
+$card-transition:
+  transform 0.2s ease-in-out,
+  border-color 0.2s ease-in-out,
+  background-color 0.2s ease-in-out,
+  box-shadow 0.2s ease-in-out !default;
 $card-img-overlay-padding: $spacer * 1.5 !default;
 
 // Accordion
@@ -805,8 +830,10 @@ $list-group-action-hover-color: $primary !default;
 $list-group-action-font-weight: $font-weight-medium !default;
 $list-group-action-active-color: $list-group-active-color !default;
 $list-group-action-active-bg: $list-group-active-bg !default;
-$list-group-action-transition: color 0.2s ease-in-out,
-  background-color 0.2s ease-in-out, border-color 0.2s ease-in-out,
+$list-group-action-transition:
+  color 0.2s ease-in-out,
+  background-color 0.2s ease-in-out,
+  border-color 0.2s ease-in-out,
   box-shadow 0.2s ease-in-out !default;
 
 // Image thumbnails
@@ -881,15 +908,20 @@ $carousel-nav-btn-box-shadow: $box-shadow-sm !default;
 $carousel-nav-btn-hover-bg: $primary !default;
 $carousel-nav-btn-hover-color: $white !default;
 $carousel-nav-btn-hover-box-shadow: $box-shadow-primary !default;
-$carousel-nav-btn-transition: color 0.2s ease-in-out,
-  background-color 0.2s ease-in-out, border-color 0.2s ease-in-out,
-  box-shadow 0.2s ease-in-out, opacity 0.2s ease-in-out !default;
+$carousel-nav-btn-transition:
+  color 0.2s ease-in-out,
+  background-color 0.2s ease-in-out,
+  border-color 0.2s ease-in-out,
+  box-shadow 0.2s ease-in-out,
+  opacity 0.2s ease-in-out !default;
 
 $carousel-bullet-width: 0.3125rem !default;
 $carousel-bullet-height: 0.3125rem !default;
 $carousel-bullet-border-radius: $border-radius-pill !default;
 $carousel-bullet-spacer: $spacer * 0.875 !default;
-$carousel-bullet-transition: width 0.2s ease-in-out, height 0.2s ease-in-out,
+$carousel-bullet-transition:
+  width 0.2s ease-in-out,
+  height 0.2s ease-in-out,
   background-color 0.2s ease-in-out !default;
 
 $carousel-bullet-bg: $gray-500 !default;

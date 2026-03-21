@@ -2,7 +2,7 @@
   <div class="container text-center py-4 py-sm-5 px-3">
     <div class="justify-content-center mb-3 mb-sm-4 <%= 'd-none' if home_page? %>">
       <%= link_to root_path, data: { turbo_preload: true } do %>
-        <%= image_tag "logo.png", alt: "Gelbhart Inn. Logo", width: 80, class: "footer-logo" %>
+        <%= image_tag "logo.png", alt: "Gelbhart Inn. Logo", width: 80, height: 80, class: "footer-logo" %>
       <% end %>
     </div>
 
@@ -26,7 +26,12 @@
         <span class="text-light opacity-50 d-none d-sm-inline"><%= t('footer.legal_notice') %> </span>
         <%= link_to t('footer.terms_and_conditions'), tos_path, class: "nav-link d-inline p-0" %>
         <span class="text-light opacity-50"> <%= t('footer.and') %> </span>
-        <%= link_to t('footer.privacy_policy'), tos_path, class: "nav-link d-inline p-0" %>
+        <%= link_to t('footer.privacy_policy'), tos_path(anchor: 'privacy'), class: "nav-link d-inline p-0" %>
+        <% if cookie_consent_required? %>
+          <span class="text-light opacity-50"> · </span>
+          <%= link_to t('footer.cookie_settings'), "#", class: "nav-link d-inline p-0", role: "button", data: { turbo: false },
+              onclick: 'if (typeof klaro !== "undefined") { klaro.show(undefined, true); } return false;' %>
+        <% end %>
       </div>
     </div>
   </div>

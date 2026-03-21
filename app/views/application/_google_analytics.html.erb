@@ -1,10 +1,11 @@
 <% if Rails.env.production? %>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3QJEJ4YFR"></script>
+  <% mid = ga_measurement_id %>
+  <!-- Google tag (gtag.js) — non-EU visitors (no Klaro); EU uses deferred load via Klaro. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= mid %>"></script>
   <script nonce="<%= content_security_policy_nonce %>">
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-F3QJEJ4YFR');
+    gtag('config', '<%= mid %>');
   </script>
 <% end %>

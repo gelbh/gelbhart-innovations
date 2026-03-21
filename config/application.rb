@@ -28,5 +28,8 @@ module Innovations
     config.i18n.available_locales = %i[en es fr de it pt zh ja ko ar]
     config.i18n.default_locale = :en
     config.i18n.fallbacks = true
+
+    config.x.cookie_consent = ActiveSupport::OrderedOptions.new
+    config.x.cookie_consent.policy_version = ENV.fetch("COOKIE_CONSENT_POLICY_VERSION", "1")
   end
 end

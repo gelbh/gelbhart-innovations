@@ -55,7 +55,31 @@ en:
     legal_notice: "Please see our"
     terms_and_conditions: "Terms & Conditions"
     privacy_policy: "Privacy Policy"
+    cookie_settings: "Cookie settings"
     and: "and"
+
+  # Klaro CMP (EU/EEA/UK); other locales fall back to English via i18n.fallbacks
+  klaro:
+    consent_notice:
+      title: "Cookies & privacy"
+      description: "We use cookies to measure traffic and improve our site. You can accept analytics or decline non-essential cookies."
+      learn_more: "Customize"
+    consent_modal:
+      title: "Privacy preferences"
+      description: "Choose whether we may use analytics cookies. Required cookies needed for the site to work are always allowed."
+      privacy_policy_name: "Privacy Policy"
+      privacy_policy_text: "For more information, read our {privacyPolicy}."
+    accept_all: "Accept all"
+    accept_selected: "Accept selected"
+    decline: "Reject non-essential"
+    save: "Save"
+    close: "Close"
+    purposes:
+      analytics: "Analytics & performance"
+    services:
+      google_analytics:
+        title: "Google Analytics 4"
+        description: "Helps us understand how visitors use our website (aggregated, pseudonymous usage data)."
 
   # Pages
   pages:

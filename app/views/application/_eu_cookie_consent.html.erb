@@ -1,0 +1,143 @@
+<%# Klaro 0.7 + Google Consent Mode v2; gtag.js loads only after analytics consent. %>
+<%= stylesheet_link_tag "klaro/klaro.css", media: "screen" %>
+<script nonce="<%= content_security_policy_nonce %>">
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag("consent", "default", {
+  analytics_storage: "denied",
+  ad_storage: "denied",
+  ad_user_data: "denied",
+  ad_personalization: "denied",
+  wait_for_update: 800
+});
+</script>
+<script nonce="<%= content_security_policy_nonce %>">
+window.__KLARO_TRANSLATIONS_EMBED = <%= raw klaro_i18n_by_locale.to_json %>;
+</script>
+<script nonce="<%= content_security_policy_nonce %>">
+(function () {
+  var translations = window.__KLARO_TRANSLATIONS_EMBED || {};
+  try {
+    delete window.__KLARO_TRANSLATIONS_EMBED;
+  } catch (e) {}
+
+  var MEASUREMENT_ID = <%= raw ga_measurement_id.to_json %>;
+  var CONSENT_LOG_PATH = <%= raw consent_events_path.to_json %>;
+  var POLICY_VERSION = <%= raw cookie_consent_policy_version.to_json %>;
+
+  function allDenied() {
+    return {
+      analytics_storage: "denied",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied"
+    };
+  }
+
+  function analyticsGrantedOnly() {
+    return {
+      analytics_storage: "granted",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied"
+    };
+  }
+
+  function applyGtagConsent(granted) {
+    gtag("consent", "update", granted ? analyticsGrantedOnly() : allDenied());
+    if (granted && MEASUREMENT_ID) {
+      gtag("config", MEASUREMENT_ID, { anonymize_ip: true });
+    }
+  }
+
+  function ensureGtag(measurementId, granted) {
+    if (!measurementId) return;
+    if (window.__gelbhartGtagLoaded) {
+      applyGtagConsent(!!granted);
+      return;
+    }
+    if (!granted) {
+      applyGtagConsent(false);
+      return;
+    }
+    var s = document.createElement("script");
+    s.async = true;
+    s.src =
+      "https://www.googletagmanager.com/gtag/js?id=" +
+      encodeURIComponent(measurementId);
+    s.onload = function () {
+      window.__gelbhartGtagLoaded = true;
+      gtag("js", new Date());
+      applyGtagConsent(true);
+    };
+    document.head.appendChild(s);
+  }
+
+  var consentLogTimer = null;
+  function scheduleConsentLog() {
+    clearTimeout(consentLogTimer);
+    consentLogTimer = setTimeout(function () {
+      try {
+        var mgr = window.klaro && window.klaro.getManager();
+        if (!mgr || !mgr.confirmed) return;
+        var consents = mgr.consents || {};
+        var serialized = JSON.stringify(consents);
+        if (window.sessionStorage.getItem("klaro_consent_logged") === serialized) {
+          return;
+        }
+        window.sessionStorage.setItem("klaro_consent_logged", serialized);
+        var meta = document.querySelector('meta[name="csrf-token"]');
+        if (!meta) return;
+        fetch(CONSENT_LOG_PATH, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": meta.getAttribute("content"),
+            Accept: "application/json"
+          },
+          credentials: "same-origin",
+          body: JSON.stringify({
+            choices: consents,
+            policy_version: POLICY_VERSION,
+            client_locale:
+              document.documentElement.getAttribute("lang") || "en"
+          })
+        });
+      } catch (err) {}
+    }, 200);
+  }
+
+  window.klaroConfig = {
+    version: 1,
+    elementID: "klaro",
+    styling: { theme: ["light", "bottom", "wide"] },
+    storageMethod: "cookie",
+    cookieName: "klaro",
+    cookieExpiresAfterDays: 365,
+    htmlTexts: true,
+    groupByPurpose: true,
+    default: false,
+    mustConsent: false,
+    acceptAll: true,
+    hideDeclineAll: false,
+    hideLearnMore: false,
+    translations: translations,
+    lang: <%= raw I18n.locale.to_json %>,
+    services: [
+      {
+        name: "google-analytics",
+        purposes: ["analytics"],
+        cookies: [/^_ga($|_)/, /^_gid$/, /^_gat/],
+        required: false,
+        optOut: false,
+        onlyOnce: false,
+        callback: function (consent, _service) {
+          ensureGtag(MEASUREMENT_ID, !!consent);
+          scheduleConsentLog();
+        }
+      }
+    ]
+  };
+})();
+</script>
+<script defer src="<%= asset_path("klaro/klaro.js") %>" data-config="klaroConfig"></script>

@@ -1,6 +1,7 @@
 module ApplicationHelper
   include SeoHelper
   include StructuredDataHelper
+  include CookieConsentHelper
 
   SITE_NAME = "Gelbhart Innovations"
   MAX_TITLE_LENGTH = 60
@@ -14,6 +15,17 @@ module ApplicationHelper
   }.freeze
 
   HOME_PATH_PATTERN = %r{\A/(en|es|fr|de|it|pt|zh|ja|ko|ar)/?\z}
+
+  VENDOR_DEFERRED_STYLESHEETS = %w[
+    boxicons/css/boxicons.min.css
+    swiper/swiper-bundle.min.css
+    lightgallery/css/lightgallery-bundle.min.css
+    flag-icons/css/flag-icons.min.css
+  ].freeze
+
+  def deferred_vendor_stylesheet_hrefs
+    VENDOR_DEFERRED_STYLESHEETS.map { |path| asset_path(path) }
+  end
 
   def locale_to_flag(locale)
     LOCALE_FLAG_MAP[locale.to_sym] || locale.to_s[0..1]

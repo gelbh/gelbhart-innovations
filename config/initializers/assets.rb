@@ -50,4 +50,7 @@ Rails.application.config.assets.precompile += %w[
   swiper/swiper-bundle.min.js
   @lottiefiles/lottie-player/dist/lottie-player.js
   flag-icons/css/flag-icons.min.css
+
+  klaro/klaro.js
+  klaro/klaro.css
 ]

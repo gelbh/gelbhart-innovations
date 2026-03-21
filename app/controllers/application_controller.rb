@@ -2,8 +2,10 @@
 
 class ApplicationController < ActionController::Base
   include PageMetadata
+  include CookieConsentRegion
 
   before_action :set_locale
+  before_action :ensure_consent_session_fingerprint, if: :cookie_consent_required?
   after_action :store_locale_preference
 
   private
@@ -48,5 +50,9 @@ class ApplicationController < ActionController::Base
 
   def default_url_options
     { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale }
+  end
+
+  def ensure_consent_session_fingerprint
+    session[:consent_fingerprint] ||= SecureRandom.hex(24)
   end
 end

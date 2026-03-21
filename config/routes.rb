@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  post "/consent_events", to: "consent_events#create", as: :consent_events
+
   get "/robots.txt", to: "robots#show", as: "robots"
   get "/sitemap.xml", to: "sitemap#show", as: "sitemap"
   get "/sitemap.xml.gz", to: "sitemap#show_gz", as: "sitemap_gz"

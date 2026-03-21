@@ -1,0 +1,5 @@
+<% if cookie_consent_required? %>
+  <%= render "application/eu_cookie_consent" %>
+<% else %>
+  <%= render "application/google_analytics" %>
+<% end %>

@@ -44,6 +44,7 @@ it:
     legal_notice: Si prega di consultare il nostro
     terms_and_conditions: Termini e condizioni
     privacy_policy: Informativa sulla privacy
+    cookie_settings: Impostazioni cookie
     and: e
   pages:
     home:
@@ -87,25 +88,25 @@ it:
     tos:
       title: Termini e condizioni
       items:
-      - Benvenuti nel nostro sito web. Accedendo o utilizzando il nostro sito web, l'utente accetta di essere vincolato dai presenti termini di servizio e dalla nostra politica sulla privacy.
-      - Il contenuto del nostro sito web è di proprietà della nostra azienda ed è protetto dalle leggi sulla proprietà intellettuale. È possibile utilizzare il contenuto solo per scopi personali e non commerciali. Non è consentito copiare, modificare, distribuire o riutilizzare alcuna parte del sito web senza il nostro previo consenso scritto.
-      - Il nostro sito web può contenere link a siti web di terzi. Non siamo responsabili della disponibilità, del contenuto o delle pratiche sulla privacy di tali siti esterni.
-      - Forniamo questo sito web "così com'è" senza alcuna garanzia o dichiarazione. Non siamo responsabili di alcun danno derivante dall'uso del sito web da parte dell'utente, compresi, ma non solo, i danni diretti, indiretti, incidentali o consequenziali.
-      - In nessun caso la nostra azienda sarà responsabile di eventuali reclami, perdite o danni superiori a 100 dollari relativi all'uso di questo sito web.
-      - I presenti termini sono disciplinati dalle leggi della Svizzera. Eventuali controversie saranno risolte dai tribunali della Svizzera.
+        - Benvenuti nel nostro sito web. Accedendo o utilizzando il nostro sito web, l'utente accetta di essere vincolato dai presenti termini di servizio e dalla nostra politica sulla privacy.
+        - Il contenuto del nostro sito web è di proprietà della nostra azienda ed è protetto dalle leggi sulla proprietà intellettuale. È possibile utilizzare il contenuto solo per scopi personali e non commerciali. Non è consentito copiare, modificare, distribuire o riutilizzare alcuna parte del sito web senza il nostro previo consenso scritto.
+        - Il nostro sito web può contenere link a siti web di terzi. Non siamo responsabili della disponibilità, del contenuto o delle pratiche sulla privacy di tali siti esterni.
+        - Forniamo questo sito web "così com'è" senza alcuna garanzia o dichiarazione. Non siamo responsabili di alcun danno derivante dall'uso del sito web da parte dell'utente, compresi, ma non solo, i danni diretti, indiretti, incidentali o consequenziali.
+        - In nessun caso la nostra azienda sarà responsabile di eventuali reclami, perdite o danni superiori a 100 dollari relativi all'uso di questo sito web.
+        - I presenti termini sono disciplinati dalle leggi della Svizzera. Eventuali controversie saranno risolte dai tribunali della Svizzera.
     privacy:
       title: Informativa sulla privacy
       items:
-      - Possiamo raccogliere informazioni fornite dall'utente, nonché informazioni raccolte automaticamente dal nostro server web e dal browser. Utilizziamo queste informazioni per fornire e migliorare i nostri servizi.
-      - Possiamo condividere le vostre informazioni con fornitori di servizi terzi che ci assistono nella gestione del sito web e nel servizio ai nostri clienti. Non vendiamo né affittiamo le vostre informazioni personali a terzi.
-      - Utilizziamo i cookie e altre tecnologie di tracciamento per personalizzare la vostra esperienza e analizzare l'utilizzo del sito web. È possibile controllare l'uso dei cookie attraverso le impostazioni del browser.
-      - La presente informativa sulla privacy può essere aggiornata periodicamente. L'uso continuato del sito web dopo eventuali modifiche costituisce l'accettazione della nuova politica.
+        - Possiamo raccogliere informazioni fornite dall'utente, nonché informazioni raccolte automaticamente dal nostro server web e dal browser. Utilizziamo queste informazioni per fornire e migliorare i nostri servizi.
+        - Possiamo condividere le vostre informazioni con fornitori di servizi terzi che ci assistono nella gestione del sito web e nel servizio ai nostri clienti. Non vendiamo né affittiamo le vostre informazioni personali a terzi.
+        - Utilizziamo i cookie e altre tecnologie di tracciamento per personalizzare la vostra esperienza e analizzare l'utilizzo del sito web. È possibile controllare l'uso dei cookie attraverso le impostazioni del browser.
+        - La presente informativa sulla privacy può essere aggiornata periodicamente. L'uso continuato del sito web dopo eventuali modifiche costituisce l'accettazione della nuova politica.
   errors:
     not_found:
-      heading: '404'
+      heading: "404"
       message: La pagina che state cercando non esiste o è stata spostata.
     internal_server_error:
-      heading: '500'
+      heading: "500"
       message: Qualcosa non è andato per il verso giusto. Si prega di riprovare più tardi.
   team_members:
     bareket:
@@ -150,30 +151,30 @@ it:
       land_identification:
         title: Identificazione dei terreni e delle opportunità
         description:
-        - Ricerca di lotti di terreno ad alto potenziale per progetti abitativi, ricettivi, ricreativi e commerciali.
-        - Conduzione di ricerche di mercato approfondite e studi di fattibilità.
-        - Valutazione della zonizzazione, delle infrastrutture e del valore a lungo termine.
+          - Ricerca di lotti di terreno ad alto potenziale per progetti abitativi, ricettivi, ricreativi e commerciali.
+          - Conduzione di ricerche di mercato approfondite e studi di fattibilità.
+          - Valutazione della zonizzazione, delle infrastrutture e del valore a lungo termine.
       acquisition:
         title: Acquisizione e strutturazione
         description:
-        - Gestione delle trattative per l'acquisto di terreni e della due diligence.
-        - Coordinamento con consulenti legali, banche e istituzioni finanziarie.
-        - Strutturare investimenti e modelli di proprietà allineati agli obiettivi dei clienti e degli investitori.
+          - Gestione delle trattative per l'acquisto di terreni e della due diligence.
+          - Coordinamento con consulenti legali, banche e istituzioni finanziarie.
+          - Strutturare investimenti e modelli di proprietà allineati agli obiettivi dei clienti e degli investitori.
       development:
         title: Gestione della progettazione e dello sviluppo
         description:
-        - Guida dei processi di master planning, architettura e progettazione.
-        - Supervisione di consulenti, appaltatori e team di progetto.
-        - Garantire qualità, sostenibilità e puntualità nelle consegne.
+          - Guida dei processi di master planning, architettura e progettazione.
+          - Supervisione di consulenti, appaltatori e team di progetto.
+          - Garantire qualità, sostenibilità e puntualità nelle consegne.
       marketing:
         title: Esecuzione di marketing e vendite
         description:
-        - Costruire l'identità del marchio e la strategia di mercato.
-        - Progettazione di campagne di marketing rivolte a investitori e utenti finali.
-        - Gestire le reti di vendita e le relazioni con i clienti per ottenere il massimo assorbimento.
+          - Costruire l'identità del marchio e la strategia di mercato.
+          - Progettazione di campagne di marketing rivolte a investitori e utenti finali.
+          - Gestire le reti di vendita e le relazioni con i clienti per ottenere il massimo assorbimento.
       financial:
         title: Coordinamento finanziario e normativo
         description:
-        - Lavorare a stretto contatto con banche, contabili e revisori per garantire i finanziamenti e mantenere la conformità.
-        - Gestione del reporting finanziario, delle relazioni con gli investitori e delle approvazioni normative.
-        - Garantire una supervisione trasparente dall'ideazione alla consegna del progetto.
+          - Lavorare a stretto contatto con banche, contabili e revisori per garantire i finanziamenti e mantenere la conformità.
+          - Gestione del reporting finanziario, delle relazioni con gli investitori e delle approvazioni normative.
+          - Garantire una supervisione trasparente dall'ideazione alla consegna del progetto.
