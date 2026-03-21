@@ -1,5 +1,66 @@
-// Klaro CMP: equal visual weight for accept vs reject (no dark patterns).
+// Klaro CMP: Silicon theme tokens + equal prominence (accept vs reject).
+// Klaro maps --dark1 → notice + modal surface; --light1 → modal/chip text (see vendor klaro.css).
+
 .klaro {
+  --font-family: var(--bs-body-font-family, system-ui, sans-serif);
+  --title-font-family: var(--bs-body-font-family, system-ui, sans-serif);
+  --font-size: 0.9375rem;
+  --border-radius: var(--bs-border-radius-lg, 0.5rem);
+  --border-width: 1px;
+  --border-style: solid;
+
+  // Primary actions, toggles on, links accent
+  --green1: var(--si-primary);
+  --green2: color-mix(in srgb, var(--si-primary) 85%, #000);
+  --green3: color-mix(in srgb, var(--si-primary) 72%, #fff);
+
+  // Learn more / info
+  --blue1: var(--si-info);
+  --blue2: color-mix(in srgb, var(--si-info) 82%, #000);
+
+  // Surfaces: Klaro uses --dark1 for cookie bar + modal shell background
+  --dark1: var(--si-body-bg, var(--si-white));
+  // Text on those surfaces + close icon stroke (Klaro uses --light1 for ink on modal)
+  --light1: var(--si-body-color, var(--si-gray-800));
+  // Borders, dividers, neutral filled buttons, muted labels
+  --dark2: var(--si-gray-700);
+  --dark3: var(--si-gray-600);
+  --light2: var(--si-gray-200);
+  --light3: var(--si-gray-500);
+
+  --button-text-color: var(--si-white);
+
+  // Notice bar + modal card shadow (replaces generic Klaro shadow)
+  .cookie-notice:not(.cookie-modal-notice) {
+    @media (min-width: 1024px) {
+      box-shadow:
+        0 0.375rem 1.75rem rgba(var(--si-primary-rgb), 0.1),
+        0 0.125rem 0.5rem rgba(var(--si-dark-rgb), 0.08) !important;
+    }
+
+    border: 1px solid var(--si-gray-300);
+  }
+
+  .cookie-notice:not(.cookie-modal-notice) .cn-body p {
+    color: var(--si-body-color);
+  }
+
+  .cookie-modal .cm-modal.cm-klaro {
+    box-shadow:
+      0 0.5rem 2rem rgba(var(--si-primary-rgb), 0.12),
+      0 0.25rem 1rem rgba(var(--si-dark-rgb), 0.1) !important;
+    border: 1px solid var(--si-gray-300);
+  }
+
+  .cookie-modal .cm-bg {
+    background: rgba(var(--si-dark-rgb), 0.45) !important;
+  }
+
+  .cookie-modal .cm-modal .cm-footer .cm-powered-by a {
+    color: var(--si-gray-600) !important;
+  }
+
+  // Button row layout: equal prominence
   .cookie-notice .cn-body .cn-buttons,
   .cookie-modal .cm-footer {
     display: flex;
@@ -16,7 +77,7 @@
     font-weight: 600;
   }
 
-  // Decline / neutral actions: outlined, same footprint as accept (not a muted text link).
+  // Decline / neutral: outlined, same footprint as accept
   .cookie-notice
     .cn-body
     .cn-buttons
@@ -25,13 +86,43 @@
     .cm-footer
     button.cm-btn:not(.cm-btn-success):not(.cm-btn-info) {
     background-color: transparent !important;
-    color: var(--si-body-color, #212529) !important;
-    border: 2px solid currentColor !important;
+    color: var(--si-body-color) !important;
+    border: 2px solid var(--si-gray-500) !important;
     box-shadow: none;
   }
 
   .cookie-notice .cn-body .cn-buttons button.cm-btn.cm-btn-success,
   .cookie-modal .cm-footer button.cm-btn.cm-btn-success {
     border: 2px solid transparent;
+  }
+}
+
+// Dark theme: surfaces and text follow Bootstrap / Silicon dark tokens
+html[data-bs-theme="dark"] .klaro,
+html.dark-mode .klaro {
+  --dark1: var(--si-body-bg, var(--si-gray-900));
+  --light1: var(--si-body-color, var(--si-gray-100));
+  --dark2: var(--si-gray-700);
+  --dark3: var(--si-gray-500);
+  --light2: var(--si-gray-800);
+  --light3: var(--si-gray-600);
+
+  .cookie-notice:not(.cookie-modal-notice) {
+    border-color: var(--si-gray-700);
+  }
+
+  .cookie-modal .cm-modal.cm-klaro {
+    border-color: var(--si-gray-700);
+  }
+
+  .cookie-notice
+    .cn-body
+    .cn-buttons
+    button.cm-btn:not(.cm-btn-success):not(.cm-btn-info),
+  .cookie-modal
+    .cm-footer
+    button.cm-btn:not(.cm-btn-success):not(.cm-btn-info) {
+    color: var(--si-body-color) !important;
+    border-color: var(--si-gray-500) !important;
   }
 }
