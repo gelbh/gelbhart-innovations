@@ -29,8 +29,8 @@
         <%= link_to t('footer.privacy_policy'), tos_path(anchor: 'privacy'), class: "nav-link d-inline p-0" %>
         <% if cookie_consent_required? %>
           <span class="text-light opacity-50"> · </span>
-          <%= link_to t('footer.cookie_settings'), "#", class: "nav-link d-inline p-0", role: "button", data: { turbo: false },
-              onclick: 'if (typeof klaro !== "undefined") { klaro.show(undefined, true); } return false;' %>
+          <%= link_to t('footer.cookie_settings'), "#", class: "nav-link d-inline p-0", role: "button",
+              data: { turbo: false, controller: "cookie-settings", action: "click->cookie-settings#open" } %>
         <% end %>
       </div>
     </div>
