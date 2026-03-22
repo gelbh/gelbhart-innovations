@@ -15,13 +15,14 @@ ko:
     name: Gelbhart Innovations
     author: Gelbhart Innovations
     tagline: 가치를 창출하는 혁신적인 솔루션
-    description: 제약 및 부동산 산업을 위한 전략적 컨설팅
+    description: 제약, 부동산 및 풀스택 소프트웨어 컨설팅과 실행
   nav:
     home: 홈
     services: 서비스
     all_services: 모든 서비스
     pharmaceutical: 제약
     real_estate: 부동산
+    web_development: 풀스택
     team: 팀
     contact: 문의하기
     menu: 메뉴
@@ -54,22 +55,31 @@ ko:
       tagline_line2: 가치 창출
     services:
       title: 서비스
+      intro_lead: 규제 분야와 웹에서의 계획, 구축 및 지속적 지원.
       pharmaceutical:
         title: 제약 서비스
-        subtitle: 포괄적인 제약 산업 컨설팅
-        description: 실사, 비즈니스 개발, 포트폴리오 전략 및 제약 회사 및 제품에 대한 전문 컨설팅.
+        subtitle: 제약 산업 컨설팅
+        description: 실사, 파트너십, 포트폴리오 결정, 제약 회사를 위한 제품 수준 자문.
         page_title: 제약 서비스
         back_button: 모든 서비스
       real_estate:
         title: 부동산 서비스
-        subtitle: 엔드투엔드 부동산 개발 및 투자
-        description: 주택, 호스피탈리티 및 상업 프로젝트를 위한 토지 식별, 인수, 개발 관리, 마케팅 및 재무 조정.
+        subtitle: 토지 매입부터 판매까지 개발과 투자
+        description: 토지 탐색·매입, 프로젝트 이행, 마케팅 및 재무(주택, 호텔, 상업).
         page_title: 부동산 서비스
         back_button: 모든 서비스
+      web_development:
+        title: 풀스택 개발
+        subtitle: Rails, UI, API, 운영
+        description: Rails, 프런트엔드, API, 클라우드, ML. 포트폴리오와 사례는 gelbhart.dev.
+        page_title: 풀스택 개발
+        back_button: 모든 서비스
+        embed_iframe_title: Tomer Gelbhart — gelbhart.dev의 풀스택 개발자 포트폴리오
+        embed_section_title_suffix: " — Tomer Gelbhart 포트폴리오"
     team:
       badge: 팀 만나기
       title: 리더십
-      description: 산업과 대륙을 가로지르며 Gelbhart Innovations를 이끄는 전략적 사상가이자 실무 전문가.
+      description: 제약 컨설팅, 부동산, 풀스택 소프트웨어를 담당하는 파트너와 경영진.
       linkedin_aria: "%{name}의 LinkedIn 프로필 열기"
       github_aria: "%{name}의 GitHub 프로필 열기"
       open_profile_aria: "%{name}의 프로필 열기"
@@ -99,7 +109,7 @@ ko:
       items:
         - 저희는 귀하가 제공한 정보와 웹 서버 및 브라우저에서 자동으로 수집한 정보를 수집할 수 있습니다. 이 정보를 사용하여 서비스를 제공하고 개선합니다.
         - 저희는 웹사이트 운영 및 고객 서비스를 지원하는 제3자 서비스 제공업체와 정보를 공유할 수 있습니다. 저희는 개인정보를 제3자에게 판매하거나 임대하지 않습니다.
-        - 저희는 경험을 개인화하고 웹사이트 사용을 분석하기 위해 쿠키 및 기타 추적 기술을 사용합니다. 브라우저 설정을 통해 쿠키 사용을 제어할 수 있습니다.
+        - 필요 시 쿠키와 유사한 수단으로 설정을 기억하고 사이트 이용 방식을 파악합니다. 브라우저 설정에서 조정할 수 있습니다.
         - 저희는 이 개인정보 보호정책을 수시로 업데이트할 수 있습니다. 변경 후 웹사이트를 계속 사용하면 새 정책에 동의하는 것으로 간주됩니다.
   errors:
     not_found:
@@ -111,16 +121,16 @@ ko:
   team_members:
     bareket:
       name: Bareket Gelbhart
-      bio: Bareket은 이스라엘 공과대학(Technion)에서 유기화학을 전공으로 하는 화학 학사 학위를 취득했습니다.<br><br>히브리어와 영어에 유창하며 이탈리아어로 대화할 수 있습니다. Bareket은 Microsoft Word, Excel 및 PowerPoint에 대한 고급 지식을 보유하고 있습니다.<br><br>가족과 함께 스위스 티치노에 거주하며, 거기서 정기적으로 전 세계를 돌아다니며 일하고 있습니다.<br><br>Bareket은 열정적인 요리사이자 열렬한 축구 팬입니다.
+      bio: Bareket은 이스라엘 공과대학(Technion)에서 유기화학을 전공으로 하는 화학 학사 학위를 취득했습니다.<br><br>히브리어와 영어에 유창하며 이탈리아어로 대화할 수 있습니다. Bareket은 Microsoft Word, Excel 및 PowerPoint에 대한 고급 지식을 보유하고 있습니다.<br><br>가족과 함께 스위스 티치노에 거주하며 업무로 자주 출장합니다.<br><br>Bareket은 열정적인 요리사이자 열렬한 축구 팬입니다.
     yaron:
       name: Yaron Gelbhart
       bio: Yaron은 이스라엘 공과대학(Technion)에서 프로젝트 관리학을 전공으로 하는 공학 이학사 학위를 취득했습니다. Yaron은 인도 아대륙을 중심으로 대규모 프로젝트 관리에서 20년 이상의 경험을 보유하고 있습니다.<br><br>그의 관심사는 부동산 및 호스피탈리티로도 확장됩니다. 그는 영어와 히브리어에 유창하며 이탈리아어는 회화 수준입니다. 여가 시간에 Yaron은 요가를 하고 좋은 이탈리아 와인 한 잔을 즐깁니다.
     tomer:
       name: Tomer Gelbhart
-      bio: University College Dublin에서 컴퓨터 과학 석사 과정에 재학 중이며, 컴퓨터 과학 학사를 바탕으로 고전 및 양자 머신러닝에 대한 관심이 커지고 있습니다.<br><br>프론트엔드 개발 및 API 통합에 대한 실무 경험이 있으며, 실제 문제를 해결하는 도구를 만듭니다.<br><br>석사 과정을 통해 양자 컴퓨팅과 머신러닝의 교차점에 대한 관심이 깊어졌으며, 학업을 통해 적극적으로 탐구하는 신흥 분야입니다.<br><br>머신러닝, 양자 컴퓨팅 또는 소프트웨어 개발 분야의 전문가 및 연구자와 연결되고 싶습니다.
+      bio: University College Dublin 컴퓨터 과학 석사 과정. 학사와 고전·양자 머신러닝 관련 수업 이수.<br><br>일상 업무에 쓰는 도구를 위해 프론트엔드를 만들고 API를 연결합니다.<br><br>석사에서는 양자 컴퓨팅과 머신러닝의 접점을 수업과 프로젝트로 다룹니다.<br><br>ML, 양자 컴퓨팅, 소프트웨어 공학 분야 연락 환영합니다.
     effie:
       name: Effie Gelbhart
-      bio: 에피는 지속 가능한 혁신 학사 학위와 지속 가능성 전환 전문 분야를 가진 혁신 경영 석사 과정 학생입니다. 지속 가능한 개발과 혁신에 대한 직접적인 전문성, CSR 보고 및 비즈니스 모델의 지속 가능성 평가에 대한 실무 경험, 그리고 최신 지속 가능성 관행에 대한 지식을 보유하고 있습니다. 세부 사항에 대한 예리한 눈과 효율성 및 커뮤니케이션에 중점을 두어 모든 지속 가능성 요구 사항을 안내해 드릴 수 있습니다.
+      bio: 에피는 혁신 경영 석사 과정에 재학 중이며, 지속 가능한 혁신 학사와 지속 가능성 전환에 초점을 둡니다. 지속 가능한 개발·혁신, CSR 보고, 비즈니스 모델 지속 가능성 평가, 최근 현장 관행을 경험했습니다.<br><br>지속 가능성 이슈에서는 명확한 소통과 효율적인 프로세스를 중시합니다.
   services_data:
     pharmaceutical:
       due_diligence:
@@ -151,9 +161,9 @@ ko:
       land_identification:
         title: 토지 및 기회 식별
         description:
-          - 주택, 호스피탈리티, 여가 및 상업 프로젝트를 위한 고잠재력 토지 구획 조달.
-          - 심층 시장 조사 및 타당성 조사 수행.
-          - 구역 설정, 인프라 및 장기 가치 평가.
+          - 주택, 호텔, 레저, 상업을 위한 토지 탐색.
+          - 시장 조사와 타당성 조사.
+          - 구역, 인프라, 장기 가치.
       acquisition:
         title: 인수 및 구조화
         description:
@@ -163,18 +173,18 @@ ko:
       development:
         title: 디자인 및 개발 관리
         description:
-          - 마스터 계획, 건축 및 디자인 프로세스 선도.
-          - 컨설턴트, 계약자 및 프로젝트 팀 감독.
-          - 품질, 지속 가능성 및 정시 납품 보장.
+          - 마스터플랜, 건축, 설계.
+          - 컨설턴트, 시공사, 프로젝트 팀 조정.
+          - 품질, 환경 목표, 일정.
       marketing:
         title: 마케팅 및 영업 실행
         description:
-          - 브랜드 아이덴티티 및 시장 진입 전략 구축.
-          - 투자자 및 최종 사용자를 대상으로 하는 마케팅 캠페인 설계.
-          - 최대 흡수를 위한 영업 네트워크 및 고객 관계 관리.
+          - 브랜드와 시장 진입 계획.
+          - 투자자와 최종 구매자 대상 캠페인.
+          - 판매 채널과 고객 관계로 분양·판매 개선.
       financial:
         title: 재무 및 규제 조정
         description:
-          - 자금 조달을 확보하고 규정 준수를 유지하기 위해 은행, 회계사 및 감사인과 긴밀히 협력.
-          - 재무 보고, 투자자 관계 및 규제 승인 관리.
-          - 개념부터 프로젝트 인도까지 투명한 감독 제공.
+          - 은행, 회계사, 감사인(자금 조달·규정 준수).
+          - 재무 보고, 투자자 관계, 규제 승인.
+          - 초기 구상부터 인도까지 추적.

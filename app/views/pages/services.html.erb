@@ -1,34 +1,41 @@
-<%= render 'shared/jarallax' %>
+<%= render "shared/jarallax" %>
 
 <div class="bg-secondary">
-  <%= render 'shared/breadcrumb' %>
+  <%= render "shared/breadcrumb" %>
 
-  <section class="container py-2 pb-md-4 pb-lg-5 px-3 px-sm-4">
-    <h1 class="pb-3 pb-sm-4 fs-2 fs-sm-1"><%= t('pages.services.title') %></h1>
-    <div class="row row-cols-1 row-cols-md-2 justify-content-center">
-      <div class="col py-3 py-sm-4 my-1 my-sm-2 my-md-3">
-        <%= render "shared/service_card",
-                   title: t('pages.services.pharmaceutical.title'),
-                   subtitle: t('pages.services.pharmaceutical.subtitle'),
-                   description: t('pages.services.pharmaceutical.description'),
-                   icon: AppConstants::SERVICE_ICONS[:pharmaceutical],
-                   icon_modifier: AppConstants::SERVICE_ICON_MODIFIERS[:pharmaceutical],
-                   gradient: AppConstants::SERVICE_GRADIENTS[:pharmaceutical],
-                   href: pharmaceutical_path,
-                   wrapper_options: { data: { turbo_preload: true } } %>
-      </div>
+  <section class="services-hub container py-2 pb-md-5 px-3 px-sm-4">
+    <header class="services-hub__header mx-auto text-center mb-4 mb-md-5" style="max-width: 42rem;">
+      <h1 class="services-hub__heading display-6 fw-bold mb-3"><%= t("pages.services.title") %></h1>
+      <p class="services-hub__lead text-body-secondary fs-5 mb-0"><%= t("pages.services.intro_lead") %></p>
+    </header>
 
-      <div class="col py-3 py-sm-4 my-1 my-sm-2 my-md-3">
-        <%= render "shared/service_card",
-                   title: t('pages.services.real_estate.title'),
-                   subtitle: t('pages.services.real_estate.subtitle'),
-                   description: t('pages.services.real_estate.description'),
-                   icon: AppConstants::SERVICE_ICONS[:real_estate],
-                   icon_modifier: AppConstants::SERVICE_ICON_MODIFIERS[:real_estate],
-                   gradient: AppConstants::SERVICE_GRADIENTS[:real_estate],
-                   href: real_estate_path,
-                   wrapper_options: { data: { turbo_preload: true } } %>
-      </div>
+    <div class="services-hub__grid">
+      <%= render "shared/services_offering_tile",
+                 title: t("pages.services.pharmaceutical.title"),
+                 eyebrow: t("pages.services.pharmaceutical.subtitle"),
+                 body: t("pages.services.pharmaceutical.description"),
+                 icon: AppConstants::SERVICE_ICONS[:pharmaceutical],
+                 gradient: AppConstants::SERVICE_GRADIENTS[:pharmaceutical],
+                 href: pharmaceutical_path,
+                 wrapper_options: { data: { turbo_preload: true } } %>
+
+      <%= render "shared/services_offering_tile",
+                 title: t("pages.services.real_estate.title"),
+                 eyebrow: t("pages.services.real_estate.subtitle"),
+                 body: t("pages.services.real_estate.description"),
+                 icon: AppConstants::SERVICE_ICONS[:real_estate],
+                 gradient: AppConstants::SERVICE_GRADIENTS[:real_estate],
+                 href: real_estate_path,
+                 wrapper_options: { data: { turbo_preload: true } } %>
+
+      <%= render "shared/services_offering_tile",
+                 title: t("pages.services.web_development.title"),
+                 eyebrow: t("pages.services.web_development.subtitle"),
+                 body: t("pages.services.web_development.description"),
+                 icon: AppConstants::SERVICE_ICONS[:web_development],
+                 gradient: AppConstants::SERVICE_GRADIENTS[:web_development],
+                 href: web_development_path,
+                 wrapper_options: { data: { turbo_preload: true } } %>
     </div>
   </section>
 </div>

@@ -15,13 +15,14 @@ it:
     name: Gelbhart Innovations
     author: Gelbhart Innovations
     tagline: Soluzioni innovative che creano valore
-    description: Consulenza strategica per l'industria farmaceutica e immobiliare
+    description: Consulenza e realizzazione per industria farmaceutica, immobiliare e software full-stack
   nav:
     home: Casa
     services: Servizi
     all_services: Tutti i servizi
     pharmaceutical: Farmaceutico
     real_estate: Immobili
+    web_development: Full-stack
     team: Squadra
     contact: Contatto
     menu: Menu
@@ -54,22 +55,31 @@ it:
       tagline_line2: CREARE VALORE
     services:
       title: Servizi
+      intro_lead: Pianificazione, realizzazione e supporto continuativo in settori regolati e sul web.
       pharmaceutical:
         title: Servizi farmaceutici
-        subtitle: Consulenza completa per l'industria farmaceutica
-        description: Due diligence, sviluppo commerciale, strategia di portafoglio e consulenza specializzata per aziende e prodotti farmaceutici.
+        subtitle: Consulenza per l'industria farmaceutica
+        description: Due diligence, partnership, scelte di portafoglio e consulenza sui prodotti per le aziende farmaceutiche.
         page_title: Servizi farmaceutici
         back_button: Tutti i servizi
       real_estate:
         title: Servizi immobiliari
-        subtitle: Sviluppo e investimento immobiliare end-to-end
-        description: Identificazione del terreno, acquisizione, gestione dello sviluppo, marketing e coordinamento finanziario per progetti abitativi, alberghieri e commerciali.
+        subtitle: Sviluppo e investimento dal terreno alla vendita
+        description: Ricerca e acquisto del suolo, realizzazione dei progetti, commercializzazione e finanza per residenza, alberghi e commercio.
         page_title: Servizi immobiliari
         back_button: Tutti i servizi
+      web_development:
+        title: Sviluppo full-stack
+        subtitle: Rails, interfacce, API e operatività
+        description: Rails, front-end, API, cloud e ML; portfolio ed esempi su gelbhart.dev.
+        page_title: Sviluppo full-stack
+        back_button: Tutti i servizi
+        embed_iframe_title: Tomer Gelbhart — portfolio sviluppatore full-stack su gelbhart.dev
+        embed_section_title_suffix: " — Portfolio di Tomer Gelbhart"
     team:
       badge: Incontrare il team
       title: La nostra leadership
-      description: Pensatori strategici ed esperti pratici che guidano Gelbhart Innovations in tutti i settori e continenti.
+      description: Soci e responsabili per consulenza farmaceutica, immobiliare e software full-stack.
       linkedin_aria: Aprire il profilo LinkedIn di %{name}
       github_aria: Aprire il profilo GitHub di %{name}
       open_profile_aria: Profilo aperto per %{name}
@@ -99,7 +109,7 @@ it:
       items:
         - Possiamo raccogliere informazioni fornite dall'utente, nonché informazioni raccolte automaticamente dal nostro server web e dal browser. Utilizziamo queste informazioni per fornire e migliorare i nostri servizi.
         - Possiamo condividere le vostre informazioni con fornitori di servizi terzi che ci assistono nella gestione del sito web e nel servizio ai nostri clienti. Non vendiamo né affittiamo le vostre informazioni personali a terzi.
-        - Utilizziamo i cookie e altre tecnologie di tracciamento per personalizzare la vostra esperienza e analizzare l'utilizzo del sito web. È possibile controllare l'uso dei cookie attraverso le impostazioni del browser.
+        - Utilizziamo cookie e strumenti simili dove serve per ricordare le preferenze e capire come si usa il sito. Potete regolare tutto nelle impostazioni del browser.
         - La presente informativa sulla privacy può essere aggiornata periodicamente. L'uso continuato del sito web dopo eventuali modifiche costituisce l'accettazione della nuova politica.
   errors:
     not_found:
@@ -111,16 +121,16 @@ it:
   team_members:
     bareket:
       name: Bareket Gelbhart
-      bio: Bareket ha frequentato il Technion, l'Istituto di Tecnologia di Israele, dove ha conseguito la laurea triennale in Chimica con indirizzo Chimica Organica.<br><br>Libera correntemente l'ebraico e l'inglese e sa conversare in italiano. Possiede una conoscenza avanzata di Microsoft Word, Excel e PowerPoint.<br><br>Risiede in Ticino, Svizzera, con la sua famiglia, da dove viaggia regolarmente in tutto il mondo per lavoro.<br><br>Bareket è un'appassionata di cucina e un'accanita tifosa di calcio.
+      bio: Bareket ha frequentato il Technion, l'Istituto di Tecnologia di Israele, dove ha conseguito la laurea triennale in Chimica con indirizzo Chimica Organica.<br><br>Parla correntemente ebraico e inglese e sa conversare in italiano. Possiede una conoscenza avanzata di Microsoft Word, Excel e PowerPoint.<br><br>Risiede in Ticino, Svizzera, con la sua famiglia, e viaggia spesso per lavoro.<br><br>Bareket è un'appassionata di cucina e un'accanita tifosa di calcio.
     yaron:
       name: Yaron Gelbhart
       bio: Yaron ha frequentato il Technion, l'Istituto di Tecnologia di Israele, dove ha conseguito la laurea in Ingegneria con specializzazione in Project Management. Yaron possiede oltre 20 anni di esperienza nella gestione di grandi progetti, con particolare attenzione al subcontinente indiano.<br><br>I suoi interessi si estendono anche al settore immobiliare e all'ospitalità. Parla correntemente inglese ed ebraico e ha un livello di conversazione in italiano. Nel tempo libero Yaron fa yoga e si gode un buon bicchiere di vino italiano.
     tomer:
       name: Tomer Gelbhart
-      bio: Studente MSc in informatica presso l'University College Dublin, su basi di laurea triennale in informatica con crescente interesse per il machine learning classico e quantistico.<br><br>Ho esperienza pratica di sviluppo front-end e integrazione di API, creando strumenti che affrontano problemi reali.<br><br>Il mio master ha approfondito il mio interesse per l'intersezione tra calcolo quantistico e machine learning, un campo emergente che sto attivamente esplorando negli studi.<br><br>Sono interessato a entrare in contatto con professionisti e ricercatori attivi in ML, calcolo quantistico o sviluppo software.
+      bio: Studente MSc in informatica presso l'University College Dublin, con laurea triennale in informatica e corsi di machine learning classico e quantistico.<br><br>Realizzo interfacce e collego API per strumenti usati nel lavoro quotidiano.<br><br>Il master affronta l'incontro tra calcolo quantistico e machine learning, soprattutto con studio e progetti.<br><br>Aperto a contatti da chi lavora in ML, calcolo quantistico o ingegneria del software.
     effie:
       name: Effie Gelbhart
-      bio: Effie è una studentessa di master in gestione dell'innovazione con una laurea in innovazione sostenibile e una specializzazione nelle transizioni verso la sostenibilità. Ha un'esperienza diretta in sviluppo sostenibile e innovazione, esperienza pratica nella rendicontazione di sostenibilità (CSR) e nella valutazione della sostenibilità dei modelli di business, e conoscenza delle migliori pratiche di sostenibilità.<br><br>Con grande attenzione ai dettagli e un focus su efficienza e comunicazione, può guidarvi in tutte le vostre esigenze di sostenibilità.
+      bio: Effie studia management dell'innovazione al master, con laurea in innovazione sostenibile e attenzione alle transizioni di sostenibilità. Il suo percorso include sviluppo sostenibile e innovazione, reporting CSR, valutazioni di sostenibilità dei modelli di business e pratica aggiornata sul tema.<br><br>Dà peso a comunicazione chiara e processi efficienti sulle questioni di sostenibilità.
   services_data:
     pharmaceutical:
       due_diligence:
@@ -151,9 +161,9 @@ it:
       land_identification:
         title: Identificazione dei terreni e delle opportunità
         description:
-          - Ricerca di lotti di terreno ad alto potenziale per progetti abitativi, ricettivi, ricreativi e commerciali.
-          - Conduzione di ricerche di mercato approfondite e studi di fattibilità.
-          - Valutazione della zonizzazione, delle infrastrutture e del valore a lungo termine.
+          - Ricerca di terreni per residenza, ospitalità, tempo libero e commercio.
+          - Ricerche di mercato e studi di fattibilità.
+          - Zonizzazione, infrastrutture e valore a lungo termine.
       acquisition:
         title: Acquisizione e strutturazione
         description:
@@ -163,18 +173,18 @@ it:
       development:
         title: Gestione della progettazione e dello sviluppo
         description:
-          - Guida dei processi di master planning, architettura e progettazione.
-          - Supervisione di consulenti, appaltatori e team di progetto.
-          - Garantire qualità, sostenibilità e puntualità nelle consegne.
+          - Master plan, architettura e progettazione.
+          - Coordinamento di consulenti, appaltatori e team di progetto.
+          - Qualità, obiettivi ambientali e rispetto dei tempi.
       marketing:
         title: Esecuzione di marketing e vendite
         description:
-          - Costruire l'identità del marchio e la strategia di mercato.
-          - Progettazione di campagne di marketing rivolte a investitori e utenti finali.
-          - Gestire le reti di vendita e le relazioni con i clienti per ottenere il massimo assorbimento.
+          - Marchio e piano go-to-market.
+          - Campagne per investitori e acquirenti finali.
+          - Reti di vendita e rapporti con i clienti per migliorare il tasso di vendita.
       financial:
         title: Coordinamento finanziario e normativo
         description:
-          - Lavorare a stretto contatto con banche, contabili e revisori per garantire i finanziamenti e mantenere la conformità.
-          - Gestione del reporting finanziario, delle relazioni con gli investitori e delle approvazioni normative.
-          - Garantire una supervisione trasparente dall'ideazione alla consegna del progetto.
+          - Banche, contabili e revisori per finanziamenti e conformità.
+          - Reporting finanziario, relazioni con gli investitori e autorizzazioni.
+          - Controllo dalla prima idea al completamento del progetto.

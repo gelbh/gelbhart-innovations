@@ -48,7 +48,18 @@ class BreadcrumbHelperTest < ActionView::TestCase
     assert_equal "Home", trail[0][:name]
     assert_equal "Services", trail[1][:name]
     assert_not_nil trail[1][:path]
-    assert_equal "Pharmaceutical", trail[2][:name]
+    assert_equal I18n.t("nav.pharmaceutical"), trail[2][:name]
+    assert trail[2][:current]
+  end
+
+  test "breadcrumb_trail includes Full-stack label for web_development action" do
+    @mock_action = "web_development"
+    @title = "Full-stack development"
+
+    trail = breadcrumb_trail
+
+    assert_equal 3, trail.size
+    assert_equal I18n.t("nav.web_development"), trail[2][:name]
     assert trail[2][:current]
   end
 end

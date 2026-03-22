@@ -10,7 +10,7 @@ Rails.application.configure do
     policy.style_src :self, :unsafe_inline, "https://fonts.googleapis.com", "https://maps.googleapis.com"
     policy.connect_src :self, :data, "https://maps.googleapis.com", "https://*.googleapis.com", "https://*.gstatic.com", "https://www.google-analytics.com", "https://*.google-analytics.com", "https://analytics.google.com", "https://*.googletagmanager.com"
     policy.worker_src :self, "blob:"
-    policy.frame_src "https://www.google.com", "https://*.google.com"
+    policy.frame_src "https://www.google.com", "https://*.google.com", "https://gelbhart.dev"
     policy.base_uri :self
     policy.form_action :self
   end

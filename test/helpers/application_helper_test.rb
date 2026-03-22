@@ -40,7 +40,7 @@ class ApplicationHelperTest < ActionView::TestCase
   end
 
   test "page_description returns default description when nil" do
-    expected = "Gelbhart Innovations provides innovative solutions creating value through comprehensive consulting services in pharmaceutical and real estate industries."
+    expected = "Gelbhart Innovations: consulting and delivery in pharmaceutical services, real estate, and full-stack software."
     assert_equal expected, page_description(nil)
   end
 end

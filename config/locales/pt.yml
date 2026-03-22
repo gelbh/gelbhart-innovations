@@ -15,13 +15,14 @@ pt:
     name: Gelbhart Innovations
     author: Gelbhart Innovations
     tagline: Soluções inovadoras que criam valor
-    description: Consultoria estratégica para os sectores farmacêutico e imobiliário
+    description: Consultoria e execução para os sectores farmacêutico, imobiliário e software full-stack
   nav:
     home: Início
     services: Serviços
     all_services: Todos os serviços
     pharmaceutical: Farmacêutico
     real_estate: Imóveis
+    web_development: Full-stack
     team: Equipa
     contact: Contactar-nos
     menu: Menu
@@ -54,22 +55,31 @@ pt:
       tagline_line2: CRIAR VALOR
     services:
       title: Serviços
+      intro_lead: Planeamento, execução e apoio contínuo em sectores regulados e na web.
       pharmaceutical:
         title: Serviços farmacêuticos
-        subtitle: Consultoria abrangente no sector farmacêutico
-        description: Due diligence, desenvolvimento de negócios, estratégia de portfólio e consultoria especializada para empresas e produtos farmacêuticos.
+        subtitle: Consultoria para o sector farmacêutico
+        description: Due diligence, parcerias, decisões de portfólio e aconselhamento sobre produtos para empresas farmacêuticas.
         page_title: Serviços farmacêuticos
         back_button: Todos os serviços
       real_estate:
         title: Serviços imobiliários
-        subtitle: Desenvolvimento e investimento imobiliário de ponta a ponta
-        description: Identificação de terrenos, aquisição, gestão do desenvolvimento, marketing e coordenação financeira de projectos de habitação, hotelaria e comércio.
+        subtitle: Promoção e investimento do terreno à venda
+        description: Procura e compra de terrenos, execução de projectos, comercialização e finanças para habitação, hotelaria e comércio.
         page_title: Serviços imobiliários
         back_button: Todos os serviços
+      web_development:
+        title: Desenvolvimento full-stack
+        subtitle: Rails, interfaces, APIs e infraestrutura
+        description: Rails, front-end, APIs, cloud e ML; portfólio e exemplos em gelbhart.dev.
+        page_title: Desenvolvimento full-stack
+        back_button: Todos os serviços
+        embed_iframe_title: Tomer Gelbhart — portfólio de programador full-stack em gelbhart.dev
+        embed_section_title_suffix: " — Portfólio de Tomer Gelbhart"
     team:
       badge: Conheça a equipa
       title: A nossa liderança
-      description: Pensadores estratégicos e especialistas práticos que orientam a Gelbhart Innovations em todos os sectores e continentes.
+      description: Sócios e responsáveis pela consultoria farmacêutica, imobiliária e software full-stack.
       linkedin_aria: Abrir o perfil LinkedIn de %{name}
       github_aria: Abrir o perfil de %{name} no GitHub
       open_profile_aria: Abrir perfil para %{name}
@@ -99,7 +109,7 @@ pt:
       items:
         - Podemos recolher informações fornecidas por si, bem como informações recolhidas automaticamente pelo nosso servidor web e navegador. Utilizamos estas informações para fornecer e melhorar os nossos serviços.
         - Podemos partilhar as suas informações com prestadores de serviços terceiros que nos ajudam a operar o website e a servir os nossos clientes. Não vendemos nem alugamos as suas informações pessoais a terceiros.
-        - Utilizamos cookies e outras tecnologias de rastreio para personalizar a sua experiência e analisar o uso do website. Pode controlar o uso de cookies através das definições do seu navegador.
+        - Utilizamos cookies e ferramentas semelhantes quando necessário para memorizar preferências e perceber como o site é usado. Pode ajustar isto nas definições do navegador.
         - Podemos atualizar esta política de privacidade de vez em quando. O seu uso continuado do website após quaisquer alterações constitui a sua aceitação da nova política.
   errors:
     not_found:
@@ -111,16 +121,16 @@ pt:
   team_members:
     bareket:
       name: Bareket Gelbhart
-      bio: Bareket frequentou o Technion, Instituto de Tecnologia de Israel, onde obteve o seu diploma de licenciatura em Química com Química Orgânica como disciplina principal.<br><br>É fluente em hebraico e inglês e pode conversar em italiano. Bareket possui conhecimentos avançados de Microsoft Word, Excel e PowerPoint.<br><br>Reside no Ticino, Suíça, com a sua família, de onde viaja regularmente pelo mundo para trabalho.<br><br>Bareket é uma cozinheira apaixonada e uma fã incondicional de futebol.
+      bio: Bareket frequentou o Technion, Instituto de Tecnologia de Israel, onde obteve o seu diploma de licenciatura em Química com Química Orgânica como disciplina principal.<br><br>É fluente em hebraico e inglês e pode conversar em italiano. Bareket possui conhecimentos avançados de Microsoft Word, Excel e PowerPoint.<br><br>Reside no Ticino, Suíça, com a sua família, e viaja frequentemente por motivos profissionais.<br><br>Bareket é uma cozinheira apaixonada e uma fã incondicional de futebol.
     yaron:
       name: Yaron Gelbhart
       bio: Yaron frequentou o Technion, Instituto de Tecnologia de Israel, onde obteve o seu diploma de licenciatura em Engenharia com Gestão de Projetos como disciplina principal. Yaron possui mais de 20 anos de experiência na gestão de grandes projetos, com ênfase no subcontinente indiano.<br><br>Os seus interesses também se estendem ao setor imobiliário e à hotelaria. É fluente em inglês e hebraico e tem um nível conversacional de italiano. No seu tempo livre, Yaron pratica yoga e aprecia um copo de bom vinho italiano.
     tomer:
       name: Tomer Gelbhart
-      bio: Estudante de mestrado em Ciências da Computação na University College Dublin, com base numa licenciatura em Ciências da Computação e foco crescente em aprendizagem automática clássica e quântica.<br><br>Tenho experiência prática em desenvolvimento front-end e integração de API, criando ferramentas que resolvem problemas reais.<br><br>O meu mestrado aprofundou o meu interesse na intersecção entre computação quântica e aprendizagem automática, um campo emergente que estou a explorar ativamente nos estudos.<br><br>Gostaria de contactar profissionais e investigadores que trabalhem em ML, computação quântica ou desenvolvimento de software.
+      bio: Estudante de mestrado em Ciências da Computação na University College Dublin, com licenciatura na mesma área e formação em aprendizagem automática clássica e quântica.<br><br>Construo interfaces e ligo APIs para ferramentas do dia a dia profissional.<br><br>No mestrado trabalho o cruzamento entre computação quântica e aprendizagem automática, sobretudo em estudo e projectos.<br><br>Aberto a contacto de profissionais e investigadores em ML, computação quântica ou engenharia de software.
     effie:
       name: Effie Gelbhart
-      bio: Effie é estudante de Mestrado em Gestão da Inovação, com licenciatura em Inovação Sustentável e especialização em transições para a sustentabilidade. Tem experiência direta em desenvolvimento sustentável e inovação, experiência prática em relatórios de RSC e avaliações de sustentabilidade de modelos de negócio, e conhecimento das melhores práticas de sustentabilidade.<br><br>Com grande atenção ao pormenor e foco na eficiência e na comunicação, pode guiá-lo em todas as suas necessidades de sustentabilidade.
+      bio: Effie cursa mestrado em Gestão da Inovação, com licenciatura em Inovação Sustentável e foco em transições de sustentabilidade. O seu percurso inclui desenvolvimento sustentável e inovação, relatórios de RSC, avaliações de sustentabilidade de modelos de negócio e prática recente na área.<br><br>Prioriza comunicação clara e processos eficientes em matéria de sustentabilidade.
   services_data:
     pharmaceutical:
       due_diligence:
@@ -151,9 +161,9 @@ pt:
       land_identification:
         title: Identificação de terrenos e oportunidades
         description:
-          - Procura de parcelas de terreno com alto potencial para projetos habitacionais, hoteleiros, de lazer e comerciais.
-          - Realização de pesquisas de mercado aprofundadas e estudos de viabilidade.
-          - Avaliação da zonagem, infraestrutura e valor a longo prazo.
+          - Procura de terrenos para habitação, hotelaria, lazer e comércio.
+          - Estudos de mercado e de viabilidade.
+          - Zonagem, infraestruturas e valor a longo prazo.
       acquisition:
         title: Aquisição e estruturação
         description:
@@ -163,18 +173,18 @@ pt:
       development:
         title: Gestão da conceção e do desenvolvimento
         description:
-          - Liderar processos de planeamento, arquitetura e design.
-          - Supervisão de consultores, contratantes e equipas de projeto.
-          - Garantir a qualidade, a sustentabilidade e a entrega atempada.
+          - Planeamento mestre, arquitetura e design.
+          - Coordenação de consultores, empreiteiros e equipas de projeto.
+          - Qualidade, metas ambientais e calendário.
       marketing:
         title: Execução de marketing e vendas
         description:
-          - Criação de uma identidade de marca e de uma estratégia de entrada no mercado.
-          - Conceção de campanhas de marketing destinadas a investidores e utilizadores finais.
-          - Gerir as redes de vendas e as relações com os clientes para uma absorção máxima.
+          - Marca e plano go-to-market.
+          - Campanhas para investidores e compradores finais.
+          - Canais de venda e relações com clientes para melhorar a absorção.
       financial:
         title: Coordenação financeira e regulamentar
         description:
-          - Trabalhar em estreita colaboração com bancos, contabilistas e auditores para garantir o financiamento e manter a conformidade.
-          - Gerir os relatórios financeiros, as relações com os investidores e as aprovações regulamentares.
-          - Proporcionar uma supervisão transparente desde a conceção até à entrega do projeto.
+          - Bancos, contabilistas e auditores para financiamento e conformidade.
+          - Relatórios financeiros, relações com investidores e aprovações.
+          - Acompanhamento da ideia inicial à entrega do projeto.

@@ -15,13 +15,14 @@ de:
     name: Gelbhart Innovations
     author: Gelbhart Innovations
     tagline: Innovative Lösungen schaffen Werte
-    description: Strategische Beratung für die Pharma- und Immobilienbranche
+    description: Beratung und Umsetzung für Pharma, Immobilien und Full-Stack-Software
   nav:
     home: Startseite
     services: Dienstleistungen
     all_services: Alle Dienstleistungen
     pharmaceutical: Pharmazeutische
     real_estate: Liegenschaften
+    web_development: Full-Stack
     team: Team
     contact: Kontakt
     menu: Menü
@@ -54,22 +55,31 @@ de:
       tagline_line2: WERT SCHAFFEN
     services:
       title: Dienstleistungen
+      intro_lead: Planung, Umsetzung und laufende Betreuung in regulierten Bereichen und im Web.
       pharmaceutical:
         title: Pharmazeutische Dienstleistungen
-        subtitle: Umfassende Beratung der Pharmaindustrie
-        description: Due Diligence, Geschäftsentwicklung, Portfoliostrategie und spezialisierte Beratung für pharmazeutische Unternehmen und Produkte.
+        subtitle: Beratung für die Pharmaindustrie
+        description: Due Diligence, Partnerschaften, Portfolioentscheidungen und produktnahe Beratung für Pharmaunternehmen.
         page_title: Pharmazeutische Dienstleistungen
         back_button: Alle Dienstleistungen
       real_estate:
         title: Immobilien-Dienstleistungen
-        subtitle: Umfassende Immobilienentwicklung und -investition
-        description: Identifizierung von Grundstücken, Erwerb, Erschließungsmanagement, Marketing und finanzielle Koordinierung von Projekten in den Bereichen Wohnen, Gastgewerbe und Handel.
+        subtitle: Entwicklung und Investment vom Grundstück bis zum Verkauf
+        description: Grundstückssuche und -kauf, Projektabwicklung, Vermarktung und Finanzierung für Wohnen, Gastgewerbe und Gewerbe.
         page_title: Immobilien-Dienstleistungen
         back_button: Alle Dienstleistungen
+      web_development:
+        title: Full-Stack-Entwicklung
+        subtitle: Rails, Oberflächen, APIs und Betrieb
+        description: Rails, Front-end, APIs, Cloud und ML; Portfolio und Beispiele auf gelbhart.dev.
+        page_title: Full-Stack-Entwicklung
+        back_button: Alle Dienstleistungen
+        embed_iframe_title: Tomer Gelbhart — Full-Stack-Entwickler-Portfolio auf gelbhart.dev
+        embed_section_title_suffix: " — Portfolio von Tomer Gelbhart"
     team:
       badge: Treffen Sie das Team
       title: Unsere Führung
-      description: Strategische Denker und praktische Experten leiten Gelbhart Innovations über Branchen und Kontinente hinweg.
+      description: Gesellschafter und Führung für Pharmaberatung, Immobilien und Full-Stack-Software.
       linkedin_aria: Öffnen Sie das LinkedIn-Profil von %{name}
       github_aria: Das GitHub-Profil von %{name} öffnen
       open_profile_aria: Profil für %{name} öffnen
@@ -99,7 +109,7 @@ de:
       items:
         - Wir können von Ihnen bereitgestellte Informationen sowie Informationen, die automatisch von unserem Webserver und Browser erfasst werden, sammeln. Wir verwenden diese Informationen, um unsere Dienste bereitzustellen und zu verbessern.
         - Wir können Ihre Daten an Drittanbieter weitergeben, die uns beim Betrieb der Website und bei der Betreuung unserer Kunden unterstützen. Wir verkaufen oder vermieten Ihre persönlichen Daten nicht an Dritte.
-        - Wir verwenden Cookies und andere Tracking-Technologien, um Ihre Erfahrung zu personalisieren und die Nutzung der Website zu analysieren. Sie können die Verwendung von Cookies über Ihre Browsereinstellungen steuern.
+        - Wir setzen Cookies und ähnliche Mittel ein, wo nötig, um Einstellungen zu speichern und die Nutzung der Website zu messen. Das können Sie in den Browsereinstellungen anpassen.
         - Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Wenn Sie die Website nach einer Änderung weiterhin nutzen, erklären Sie sich mit der neuen Richtlinie einverstanden.
   errors:
     not_found:
@@ -111,16 +121,16 @@ de:
   team_members:
     bareket:
       name: Bareket Gelbhart
-      bio: Bareket besuchte das Technion, Israel Institute of Technology, wo sie ihren Bachelor-Abschluss in Chemie mit dem Hauptfach Organische Chemie machte.<br><br>Sie spricht fließend Hebräisch und Englisch und kann sich auf Italienisch unterhalten. Bareket verfügt über fortgeschrittene Kenntnisse in Microsoft Word, Excel und PowerPoint.<br><br>Sie wohnt mit ihrer Familie im Tessin, von wo aus sie regelmäßig beruflich in die ganze Welt reist.<br><br>Bareket ist eine leidenschaftliche Köchin und ein eingefleischter Fußballfan.
+      bio: Bareket besuchte das Technion, Israel Institute of Technology, wo sie ihren Bachelor-Abschluss in Chemie mit dem Hauptfach Organische Chemie machte.<br><br>Sie spricht fließend Hebräisch und Englisch und kann sich auf Italienisch unterhalten. Bareket verfügt über fortgeschrittene Kenntnisse in Microsoft Word, Excel und PowerPoint.<br><br>Sie wohnt mit ihrer Familie im Tessin und reist regelmäßig beruflich.<br><br>Bareket ist eine leidenschaftliche Köchin und ein eingefleischter Fußballfan.
     yaron:
       name: Yaron Gelbhart
       bio: Yaron besuchte das Technion, das Israelische Institut für Technologie, wo er seinen Bachelor of Science in Ingenieurwissenschaften mit dem Hauptfach Projektmanagement erwarb. Yaron verfügt über mehr als 20 Jahre Erfahrung im Management großer Projekte mit Schwerpunkt auf dem indischen Subkontinent.<br><br>Seine Interessen erstrecken sich auch auf die Bereiche Immobilien und Gastgewerbe. Er spricht fließend Englisch und Hebräisch und verfügt über Konversationskenntnisse in Italienisch. In seiner Freizeit macht Yaron Yoga und genießt ein Glas guten italienischen Weins.
     tomer:
       name: Tomer Gelbhart
-      bio: MSc-Informatikstudent am University College Dublin, aufbauend auf einem BSc Informatik mit wachsendem Fokus auf klassisches und quantenorientiertes maschinelles Lernen.<br><br>Ich habe praktische Erfahrung in Frontend-Entwicklung und API-Integration und entwickle Tools für reale Probleme.<br><br>Mein Masterstudium hat mein Interesse an der Schnittstelle von Quantencomputing und maschinellem Lernen vertieft – ein aufstrebendes Feld, das ich in meinem Studium aktiv erforsche.<br><br>Ich freue mich auf den Austausch mit Fachleuten und Forschenden in den Bereichen ML, Quantencomputing oder Softwareentwicklung.
+      bio: MSc-Informatikstudent am University College Dublin, mit BSc Informatik und Kursen zu klassischem und quantenbasiertem maschinellem Lernen.<br><br>Ich baue Frontends und binde APIs für Tools, die im Arbeitsalltag genutzt werden.<br><br>Im Master geht es um die Schnittstelle von Quantencomputing und maschinellem Lernen, vor allem in Studium und Projekten.<br><br>Offen für Kontakt zu Personen in ML, Quantencomputing oder Softwaretechnik.
     effie:
       name: Effie Gelbhart
-      bio: Effie ist Masterstudentin in Innovationsmanagement mit einem Bachelor in Nachhaltige Innovation und einer Spezialisierung in Nachhaltigkeitstransitionen. Sie verfügt über praktische Expertise in nachhaltiger Entwicklung und Innovation, Erfahrung in CSR-Berichterstattung und Nachhaltigkeitsbewertungen von Geschäftsmodellen sowie Kenntnisse modernster Nachhaltigkeitspraktiken.<br><br>Mit einem Gespür für Details und einem Fokus auf Effizienz und Kommunikation kann sie Sie in allen Nachhaltigkeitsfragen begleiten.
+      bio: Effie studiert Innovationsmanagement im Master, mit Bachelor in Nachhaltige Innovation und Schwerpunkt Nachhaltigkeitstransitionen. Ihr Hintergrund umfasst nachhaltige Entwicklung und Innovation, CSR-Berichterstattung, Nachhaltigkeitsbewertungen von Geschäftsmodellen und aktuelle Praxis im Feld.<br><br>Sie legt Wert auf klare Kommunikation und effiziente Abläufe bei Nachhaltigkeitsthemen.
   services_data:
     pharmaceutical:
       due_diligence:
@@ -151,9 +161,9 @@ de:
       land_identification:
         title: Identifizierung von Land und Gelegenheiten
         description:
-          - Beschaffung von Grundstücken mit hohem Potenzial für Wohnungs-, Gaststätten-, Freizeit- und Gewerbeprojekte.
-          - Durchführung eingehender Marktforschung und Machbarkeitsstudien.
-          - Bewertung von Gebietseinteilung, Infrastruktur und langfristigem Wert.
+          - Grundstückssuche für Wohnen, Gastgewerbe, Freizeit und Gewerbe.
+          - Markt- und Machbarkeitsstudien.
+          - Zonierung, Infrastruktur und langfristiger Wert.
       acquisition:
         title: Akquisition und Strukturierung
         description:
@@ -163,18 +173,18 @@ de:
       development:
         title: Design- und Entwicklungsmanagement
         description:
-          - Leitung von Masterplanungs-, Architektur- und Designprozessen.
-          - Beaufsichtigung von Beratern, Auftragnehmern und Projektteams.
-          - Gewährleistung von Qualität, Nachhaltigkeit und pünktlicher Lieferung.
+          - Gesamtplanung, Architektur und Design.
+          - Koordination von Beratern, Auftragnehmern und Projektteams.
+          - Qualität, Umweltziele und Terminplan.
       marketing:
         title: Marketing und Vertrieb
         description:
-          - Aufbau einer Markenidentität und Markteinführungsstrategie.
-          - Entwicklung von Marketingkampagnen für Investoren und Endverbraucher.
-          - Verwaltung von Vertriebsnetzen und Kundenbeziehungen für eine maximale Absorption.
+          - Marke und Go-to-Market-Planung.
+          - Kampagnen für Investoren und Endkäufer.
+          - Vertriebswege und Kundenbeziehungen zur besseren Vermarktung.
       financial:
         title: Finanzielle und regulatorische Koordinierung
         description:
-          - Enge Zusammenarbeit mit Banken, Buchhaltern und Wirtschaftsprüfern zur Sicherung der Finanzierung und Einhaltung der Vorschriften.
-          - Verwaltung der Finanzberichterstattung, Investor Relations und behördliche Genehmigungen.
-          - Transparente Überwachung vom Konzept bis zur Projektübergabe.
+          - Banken, Buchhalter und Wirtschaftsprüfer für Finanzierung und Compliance.
+          - Finanzberichterstattung, Investor Relations und behördliche Freigaben.
+          - Nachverfolgung von der ersten Idee bis zur Übergabe.

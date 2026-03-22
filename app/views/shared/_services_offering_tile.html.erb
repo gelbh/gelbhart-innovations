@@ -1,0 +1,37 @@
+<%
+  title = local_assigns.fetch(:title)
+  body = local_assigns.fetch(:body)
+  icon = local_assigns.fetch(:icon)
+  gradient = local_assigns.fetch(:gradient)
+  eyebrow = local_assigns[:eyebrow]
+  href = local_assigns[:href]
+  wrapper_options = local_assigns.fetch(:wrapper_options, {}).dup
+  extra_classes = [wrapper_options.delete(:class), "services-hub__tile"].compact.join(" ")
+  extra_classes = "#{extra_classes} services-hub__tile--static" if href.blank?
+  tile_inner = capture do
+%>
+  <span class="services-hub__top-accent" style="background: <%= gradient %>;"></span>
+  <div class="services-hub__tile-body">
+    <div class="services-hub__icon-wrap" style="background: <%= gradient %>;">
+      <i class="<%= icon %> services-hub__icon" aria-hidden="true"></i>
+    </div>
+    <% if eyebrow.present? %>
+      <p class="services-hub__eyebrow small fw-semibold text-uppercase mb-2"><%= eyebrow %></p>
+    <% end %>
+    <h2 class="services-hub__title h4 mb-2"><%= title %></h2>
+    <p class="services-hub__body text-body-secondary mb-0"><%= body %></p>
+    <% if href.present? %>
+      <span class="services-hub__cta mt-3 d-inline-flex align-items-center gap-1 fw-semibold text-primary">
+        <%= t("common.learn_more") %>
+        <i class="bx bx-right-arrow-alt services-hub__cta-icon" aria-hidden="true"></i>
+      </span>
+    <% end %>
+  </div>
+<% end %>
+<% if href.present? %>
+  <%= link_to href, wrapper_options.merge(class: extra_classes) do %>
+    <%= tile_inner %>
+  <% end %>
+<% else %>
+  <%= content_tag :article, tile_inner, wrapper_options.merge(class: extra_classes) %>
+<% end %>

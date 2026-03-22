@@ -15,13 +15,14 @@ fr:
     name: Gelbhart Innovations
     author: Gelbhart Innovations
     tagline: Des solutions innovantes qui créent de la valeur
-    description: Conseil stratégique pour les industries pharmaceutiques et immobilières
+    description: Conseil et mise en œuvre pour l'industrie pharmaceutique, l'immobilier et les logiciels full-stack
   nav:
     home: Accueil
     services: Services
     all_services: Tous les services
     pharmaceutical: Pharmaceutique
     real_estate: Immobilier
+    web_development: Full-stack
     team: L'équipe
     contact: Nous contacter
     menu: Menu
@@ -54,22 +55,31 @@ fr:
       tagline_line2: CRÉER DE LA VALEUR
     services:
       title: Services
+      intro_lead: Planification, réalisation et suivi dans les secteurs régulés et sur le web.
       pharmaceutical:
         title: Services pharmaceutiques
-        subtitle: Conseil global à l'industrie pharmaceutique
-        description: Due diligence, développement commercial, stratégie de portefeuille et conseil spécialisé pour les entreprises et les produits pharmaceutiques.
+        subtitle: Conseil à l'industrie pharmaceutique
+        description: Due diligence, partenariats, arbitrages de portefeuille et conseil produit pour les entreprises pharmaceutiques.
         page_title: Services pharmaceutiques
         back_button: Tous les services
       real_estate:
         title: Services immobiliers
-        subtitle: Développement et investissement immobiliers de bout en bout
-        description: Identification des terrains, acquisition, gestion du développement, marketing et coordination financière pour des projets de logement, d'hôtellerie et de commerce.
+        subtitle: Promotion et investissement du terrain à la vente
+        description: Recherche et achat de terrains, réalisation de projets, commercialisation et financement pour le logement, l'hôtellerie et le commerce.
         page_title: Services immobiliers
         back_button: Tous les services
+      web_development:
+        title: Développement full-stack
+        subtitle: Rails, interfaces, APIs et hébergement
+        description: Rails, front-end, APIs, cloud et ML ; portfolio et exemples sur gelbhart.dev.
+        page_title: Développement full-stack
+        back_button: Tous les services
+        embed_iframe_title: Tomer Gelbhart — portfolio développeur full-stack sur gelbhart.dev
+        embed_section_title_suffix: " — Portfolio de Tomer Gelbhart"
     team:
       badge: Rencontrer l'équipe
       title: Notre leadership
-      description: Des penseurs stratégiques et des experts pratiques qui guident Gelbhart Innovations à travers les industries et les continents.
+      description: Associés et responsables du conseil pharmaceutique, immobilier et logiciels full-stack.
       linkedin_aria: Ouvrir le profil LinkedIn de %{name}
       github_aria: Ouvrir le profil GitHub de %{name}
       open_profile_aria: Profil ouvert pour %{name}
@@ -99,7 +109,7 @@ fr:
       items:
         - Nous pouvons recueillir des informations que vous nous fournissez, ainsi que des informations collectées automatiquement par notre serveur web et notre navigateur. Nous utilisons ces informations pour fournir et améliorer nos services.
         - Nous pouvons partager vos informations avec des prestataires de services tiers qui nous aident à exploiter le site web et à servir nos clients. Nous ne vendons ni ne louons vos informations personnelles à des tiers.
-        - Nous utilisons des cookies et d'autres technologies de suivi pour personnaliser votre expérience et analyser l'utilisation du site web. Vous pouvez contrôler l'utilisation des cookies par le biais des paramètres de votre navigateur.
+        - Nous utilisons des cookies et outils similaires lorsque nécessaire pour mémoriser des préférences et mesurer l'utilisation du site. Vous pouvez régler cela dans les paramètres de votre navigateur.
         - Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. En continuant à utiliser le site web après toute modification, vous acceptez la nouvelle politique.
   errors:
     not_found:
@@ -111,16 +121,16 @@ fr:
   team_members:
     bareket:
       name: Bareket Gelbhart
-      bio: Bareket a fréquenté le Technion, l'Institut israélien de technologie, où elle est titulaire d'une licence en chimie, avec la chimie organique comme matière principale.<br><br>Elle parle couramment l'hébreu et l'anglais et peut converser en italien. Elle possède des connaissances avancées de Microsoft Word, Excel et PowerPoint.<br><br>Elle réside au Tessin, en Suisse, avec sa famille, d'où elle voyage régulièrement à travers le monde pour son travail.<br><br>Bareket est une cuisinière passionnée et une fan inconditionnelle de football.
+      bio: Bareket a fréquenté le Technion, l'Institut israélien de technologie, où elle est titulaire d'une licence en chimie, avec la chimie organique comme matière principale.<br><br>Elle parle couramment l'hébreu et l'anglais et peut converser en italien. Elle possède des connaissances avancées de Microsoft Word, Excel et PowerPoint.<br><br>Elle réside au Tessin, en Suisse, avec sa famille, et voyage souvent pour son travail.<br><br>Bareket est une cuisinière passionnée et une fan inconditionnelle de football.
     yaron:
       name: Yaron Gelbhart
       bio: Yaron a fréquenté le Technion, l'Institut israélien de technologie, où il a obtenu une licence en ingénierie, avec la gestion de projet comme matière principale. Yaron possède plus de 20 ans d'expérience dans la gestion de grands projets, en particulier dans le sous-continent indien.<br><br>Il s'intéresse également à l'immobilier et à l'hôtellerie. Il parle couramment l'anglais et l'hébreu et a un niveau de conversation en italien. Pendant son temps libre, Yaron fait du yoga et apprécie un verre de bon vin italien.
     tomer:
       name: Tomer Gelbhart
-      bio: Étudiant en MSc informatique à l'University College Dublin, avec un BSc en informatique et un intérêt croissant pour l'apprentissage automatique classique et quantique.<br><br>J'ai une expérience pratique du développement front-end et de l'intégration d'API, au service d'outils qui résolvent des problèmes concrets.<br><br>Mon master a approfondi mon intérêt pour la jonction entre l'informatique quantique et l'apprentissage automatique, un domaine émergent que j'explore activement dans mes études.<br><br>Je souhaite entrer en contact avec des professionnels et des chercheurs en ML, informatique quantique ou développement logiciel.
+      bio: Étudiant en MSc informatique à l'University College Dublin, avec un BSc en informatique et des cours d'apprentissage automatique classique et quantique.<br><br>Je construis des interfaces et branche des API pour des outils du quotidien professionnel.<br><br>Mon master porte sur la rencontre entre informatique quantique et apprentissage automatique, surtout via les cours et les projets.<br><br>Ouvert aux échanges avec des personnes en ML, informatique quantique ou génie logiciel.
     effie:
       name: Effie Gelbhart
-      bio: Effie est étudiante en master en gestion de l'innovation, titulaire d'une licence en innovation durable et spécialisée dans les transitions durables. Elle possède une expertise de première main en développement durable et en innovation, une expérience pratique en reporting RSE et en évaluation de la durabilité des modèles d'affaires, ainsi qu'une connaissance des pratiques de durabilité les plus avancées.<br><br>Avec un souci du détail et une focalisation sur l'efficacité et la communication, elle peut vous accompagner dans tous vos besoins en matière de durabilité.
+      bio: Effie est étudiante en master en gestion de l'innovation, avec une licence en innovation durable et un accent sur les transitions durables. Son parcours couvre développement durable et innovation, reporting RSE, évaluation de la durabilité des modèles d'affaires et pratiques récentes du domaine.<br><br>Elle privilégie une communication claire et des processus efficaces sur les questions de durabilité.
   services_data:
     pharmaceutical:
       due_diligence:
@@ -151,9 +161,9 @@ fr:
       land_identification:
         title: Identification des terres et des opportunités
         description:
-          - Recherche de terrains à fort potentiel pour des projets de logement, d'hôtellerie, de loisirs et de commerce.
-          - Réaliser des études de marché approfondies et des études de faisabilité.
-          - Évaluation du zonage, de l'infrastructure et de la valeur à long terme.
+          - Recherche de terrains pour logement, hôtellerie, loisirs et commerce.
+          - Études de marché et de faisabilité.
+          - Zonage, infrastructure et valeur à long terme.
       acquisition:
         title: Acquisition et structuration
         description:
@@ -163,18 +173,18 @@ fr:
       development:
         title: Gestion de la conception et du développement
         description:
-          - Diriger les processus de planification, d'architecture et de conception.
-          - Superviser les consultants, les entrepreneurs et les équipes de projet.
-          - Garantir la qualité, la durabilité et le respect des délais.
+          - Plan directeur, architecture et conception.
+          - Coordination des consultants, entreprises et équipes de projet.
+          - Qualité, objectifs environnementaux et calendrier.
       marketing:
         title: Marketing et exécution des ventes
         description:
-          - Construire l'identité de la marque et la stratégie de mise sur le marché.
-          - Concevoir des campagnes de marketing pour cibler les investisseurs et les utilisateurs finaux.
-          - Gérer les réseaux de vente et les relations avec les clients pour une absorption maximale.
+          - Marque et stratégie go-to-market.
+          - Campagnes visant investisseurs et acheteurs finaux.
+          - Canaux de vente et relations clients pour améliorer le taux de commercialisation.
       financial:
         title: Coordination financière et réglementaire
         description:
-          - Travailler en étroite collaboration avec les banques, les comptables et les auditeurs afin de garantir le financement et de maintenir la conformité.
-          - Gérer les rapports financiers, les relations avec les investisseurs et les approbations réglementaires.
-          - Assurer une supervision transparente de la conception à la remise du projet.
+          - Banques, comptables et auditeurs pour financement et conformité.
+          - Rapports financiers, relations investisseurs et autorisations.
+          - Suivi du concept initial jusqu'à la remise du projet.

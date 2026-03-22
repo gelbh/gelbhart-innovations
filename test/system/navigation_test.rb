@@ -17,6 +17,7 @@ class NavigationTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Services"
     assert_selector "h2", text: "Pharmaceutical Services"
     assert_selector "h2", text: "Real Estate Services"
+    assert_selector "h2", text: "Full-stack development"
   end
 
   test "navigating to pharmaceutical services" do
@@ -31,6 +32,13 @@ class NavigationTest < ApplicationSystemTestCase
     click_on "Real Estate Services"
 
     assert_selector "h1", text: "Real Estate Services"
+  end
+
+  test "navigating to full-stack services" do
+    visit services_url
+    click_on "Full-stack", match: :first
+
+    assert_selector "iframe.webdev-embed__frame"
   end
 
   test "navigating to team page" do

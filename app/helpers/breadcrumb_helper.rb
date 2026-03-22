@@ -26,6 +26,11 @@ module BreadcrumbHelper
   end
 
   def service_action_label
-    action_name == "pharmaceutical" ? "Pharmaceutical" : "Real Estate"
+    case action_name
+    when "pharmaceutical" then I18n.t("nav.pharmaceutical")
+    when "real_estate" then I18n.t("nav.real_estate")
+    when "web_development" then I18n.t("nav.web_development")
+    else action_name.titleize
+    end
   end
 end

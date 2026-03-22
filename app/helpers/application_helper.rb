@@ -6,8 +6,8 @@ module ApplicationHelper
   SITE_NAME = "Gelbhart Innovations"
   MAX_TITLE_LENGTH = 60
   MAX_DESCRIPTION_LENGTH = 160
-  DEFAULT_DESCRIPTION = "Gelbhart Innovations provides innovative solutions creating value through " \
-                        "comprehensive consulting services in pharmaceutical and real estate industries."
+  DEFAULT_DESCRIPTION = "Gelbhart Innovations: consulting and delivery in pharmaceutical services, " \
+                        "real estate, and full-stack software."
 
   LOCALE_FLAG_MAP = {
     en: "gb", es: "es", fr: "fr", de: "de", it: "it",

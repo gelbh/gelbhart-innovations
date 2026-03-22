@@ -1,0 +1,90 @@
+// Web development subpage — embedded portfolio (gelbhart.dev)
+
+.webdev-embed__section-title {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+
+  .webdev-embed__section-domain {
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--bs-primary);
+      outline-offset: 2px;
+      border-radius: 0.125rem;
+    }
+  }
+}
+
+.webdev-embed {
+  position: relative;
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  background-color: var(--bs-body-bg);
+  border-block-start: 1px solid var(--bs-border-color);
+}
+
+// gelbhart.dev header: .header { padding: 1rem 0 } + 40px logo → vertical mid ≈ 2.25rem from iframe top
+$webdev-portfolio-accent: #6366f1;
+
+.webdev-embed__back {
+  position: absolute;
+  z-index: 2;
+  top: 2.25rem;
+  inset-inline-start: 1.5rem;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+
+  &:hover {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    transform: translateY(-50%);
+  }
+
+  &:focus-visible {
+    color: #fff;
+    outline: 2px solid $webdev-portfolio-accent;
+    outline-offset: 3px;
+    border-radius: 0.125rem;
+    transform: translateY(-50%);
+  }
+}
+
+.webdev-embed__back-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.webdev-embed__frame {
+  display: block;
+  border: 0;
+  width: 100%;
+  min-height: min(85vh, 900px);
+  height: 85vh;
+}
+
+@media (max-width: 575.98px) {
+  .webdev-embed__frame {
+    min-height: 70vh;
+    height: 75vh;
+  }
+}

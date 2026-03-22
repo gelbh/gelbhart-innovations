@@ -3,18 +3,23 @@
 module AppConstants
   SERVICE_GRADIENTS = {
     pharmaceutical: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-    real_estate: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)"
+    real_estate: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)",
+    web_development: "linear-gradient(135deg, #6366f1 0%, #22d3ee 100%)"
   }.freeze
 
   SERVICE_ICONS = {
     pharmaceutical: "bx bxs-capsule",
-    real_estate: "bx bxs-buildings"
+    real_estate: "bx bxs-buildings",
+    web_development: "bx bx-code-alt"
   }.freeze
 
   SERVICE_ICON_MODIFIERS = {
     pharmaceutical: "pharma-icon",
     real_estate: "realestate-icon"
   }.freeze
+
+  # Embedded on /services/web-development (portfolio must allow frame-ancestors for this origin)
+  PORTFOLIO_SITE_URL = "https://gelbhart.dev/".freeze
 
   JARALLAX_IMAGES = {
     services: "covers/services_cover.jpg",
@@ -24,7 +29,7 @@ module AppConstants
 
   BREADCRUMB_EXCLUDED_CONTROLLERS = %w[pages contact documents].freeze
 
-  SERVICE_ACTIONS = %w[pharmaceutical real_estate].freeze
+  SERVICE_ACTIONS = %w[pharmaceutical real_estate web_development].freeze
 
   CONTACT_INFO = {
     address: {

@@ -48,6 +48,7 @@ SitemapGenerator::Sitemap.create do
     add services_path(locale: locale_param), lastmod: view_lastmod("pages/services.html.erb"), alternates: alternate_links_for(:services_path)
     add pharmaceutical_path(locale: locale_param), lastmod: view_lastmod("pages/pharmaceutical.html.erb"), alternates: alternate_links_for(:pharmaceutical_path)
     add real_estate_path(locale: locale_param), lastmod: view_lastmod("pages/real_estate.html.erb"), alternates: alternate_links_for(:real_estate_path)
+    add web_development_path(locale: locale_param), lastmod: view_lastmod("pages/web_development.html.erb"), alternates: alternate_links_for(:web_development_path)
     add team_path(locale: locale_param), lastmod: view_lastmod("pages/team.html.erb"), alternates: alternate_links_for(:team_path)
     add contact_path(locale: locale_param), lastmod: view_lastmod("pages/contact.html.erb"), alternates: alternate_links_for(:contact_path)
     add tos_path(locale: locale_param), lastmod: view_lastmod("documents/tos.html.erb"), alternates: alternate_links_for(:tos_path)

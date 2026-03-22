@@ -20,7 +20,7 @@ en:
     name: "Gelbhart Innovations"
     author: "Gelbhart Innovations"
     tagline: "Innovative Solutions Creating Value"
-    description: "Strategic consulting for pharmaceutical and real estate industries"
+    description: "Consulting and delivery for pharmaceutical, real estate, and full-stack software"
 
   # Navigation
   nav:
@@ -29,6 +29,7 @@ en:
     all_services: "All Services"
     pharmaceutical: "Pharmaceutical"
     real_estate: "Real Estate"
+    web_development: "Full-stack"
     team: "Team"
     contact: "Contact Us"
     menu: "Menu"
@@ -91,23 +92,32 @@ en:
 
     services:
       title: "Services"
+      intro_lead: "Planning, build-out, and ongoing support in regulated fields and on the web."
       pharmaceutical:
         title: "Pharmaceutical Services"
-        subtitle: "Comprehensive pharmaceutical industry consulting"
-        description: "Due diligence, business development, portfolio strategy, and specialized consulting for pharmaceutical companies and products."
+        subtitle: "Pharmaceutical industry consulting"
+        description: "Due diligence, partnerships, portfolio choices, and product-level advice for pharma companies."
         page_title: "Pharmaceutical Services"
         back_button: "All Services"
       real_estate:
         title: "Real Estate Services"
-        subtitle: "End-to-end real estate development and investment"
-        description: "Land identification, acquisition, development management, marketing, and financial coordination for housing, hospitality, and commercial projects."
+        subtitle: "Development and investment from land to sales"
+        description: "Land search, purchase, project delivery, marketing, and finance for housing, hospitality, and commercial schemes."
         page_title: "Real Estate Services"
         back_button: "All Services"
+      web_development:
+        title: "Full-stack development"
+        subtitle: "Rails, interfaces, APIs, and hosting"
+        description: "Rails, front-end, APIs, cloud, and ML work; portfolio and samples at gelbhart.dev."
+        page_title: "Full-stack development"
+        back_button: "All Services"
+        embed_iframe_title: "Tomer Gelbhart — full-stack developer portfolio at gelbhart.dev"
+        embed_section_title_suffix: " — Tomer Gelbhart's portfolio"
 
     team:
       badge: "Meet the team"
       title: "Our leadership"
-      description: "Strategic thinkers and hands-on experts guiding Gelbhart Innovations across industries and continents."
+      description: "Partners and managers for pharmaceutical consulting, real estate, and full-stack software."
       linkedin_aria: "Open %{name}'s LinkedIn profile"
       github_aria: "Open %{name}'s GitHub profile"
       open_profile_aria: "Open profile for %{name}"
@@ -140,7 +150,7 @@ en:
       items:
         - "We may collect information provided by you, as well as information automatically collected by our web server and browser. We use this information to provide and improve our services."
         - "We may share your information with third-party service providers who assist us in operating the website and serving our customers. We do not sell or rent your personal information to any third parties."
-        - "We use cookies and other tracking technologies to personalize your experience and analyze website usage. You can control the use of cookies through your browser settings."
+        - "We use cookies and similar tools where needed to remember preferences and to see how the site is used. You can adjust this in your browser settings."
         - "We may update this privacy policy from time to time. Your continued use of the website after any changes constitutes your acceptance of the new policy."
 
   # Error pages
@@ -156,16 +166,16 @@ en:
   team_members:
     bareket:
       name: "Bareket Gelbhart"
-      bio: "Bareket attended the Technion, Israel Institute of Technology, from where she holds her Bachelor degree in Chemistry with Organic Chemistry as the principal subject.<br><br>She is fluent in Hebrew and English and can converse in Italian. Bareket posses advanced knowledge of Microsoft Word, Excel and PowerPoint.<br><br>She resides in Ticino, Switzerland with her family, from where she travels across the globe regularly for work.<br><br>Bareket is a passionate cook and a die hard football fan."
+      bio: "Bareket attended the Technion, Israel Institute of Technology, from where she holds her Bachelor degree in Chemistry with Organic Chemistry as the principal subject.<br><br>She is fluent in Hebrew and English and can converse in Italian. Bareket possesses advanced knowledge of Microsoft Word, Excel and PowerPoint.<br><br>She resides in Ticino, Switzerland with her family, from where she travels regularly for work.<br><br>Bareket is a passionate cook and a die-hard football fan."
     yaron:
       name: "Yaron Gelbhart"
       bio: "Yaron attended the Technion, Israel Institute of Technology, from where he holds his Bachelor of Science degree in Engineering with Project Management as a principal subject. Yaron possesses over 20 years of experience in large projects management with emphasis on the Indian subcontinent.<br><br>His interests also spread across real estate and hospitality. He is fluent in English and Hebrew and has conversational level in Italian. In his free time Yaron does yoga and enjoys a glass of good Italian wine."
     tomer:
       name: "Tomer Gelbhart"
-      bio: "MSc Computer Science student at University College Dublin, building on a BSc in Computer Science with a growing focus on Classical & Quantum Machine Learning.<br><br>I have hands-on experience in front-end development and API integration, creating tools that solve real-world problems.<br><br>My master's has deepened my interest in the intersection of quantum computing and machine learning, an emerging field I'm actively exploring through my studies.<br><br>I'm keen to connect with professionals and researchers working in ML, quantum computing, or software development."
+      bio: "MSc Computer Science student at University College Dublin, with a BSc in Computer Science and coursework in classical and quantum machine learning.<br><br>I build front ends and wire up APIs for tools people use in daily work.<br><br>My master's work looks at how quantum computing meets machine learning; I pursue that mainly through study and projects.<br><br>Open to hearing from people in ML, quantum computing, or software engineering."
     effie:
       name: "Effie Gelbhart"
-      bio: "Effie is an Innovation Management Masters Student with a Bachelors in Sustainable Innovation and a specialization in sustainability transitions. She has first-hand expertise with sustainable development and innovation, practical experience in CSR reporting and sustainability assessments of business models, and knowledge of state-of-the-art sustainability practices.<br><br>With a keen eye for detail and a focus on efficiency and communication, she can guide you through all your sustainability needs."
+      bio: "Effie is an Innovation Management master's student with a bachelor's in Sustainable Innovation and a focus on sustainability transitions. Her background includes sustainable development and innovation, CSR reporting, sustainability assessments of business models, and current practice in the field.<br><br>She cares about clear communication and efficient processes on sustainability questions."
 
   # Pharmaceutical services
   services_data:
@@ -198,9 +208,9 @@ en:
       land_identification:
         title: "Land & Opportunity Identification"
         description:
-          - "Sourcing high-potential land parcels for housing, hospitality, leisure, and commercial projects."
-          - "Conducting in-depth market research and feasibility studies."
-          - "Evaluating zoning, infrastructure, and long-term value."
+          - "Finding land for housing, hospitality, leisure, and commercial schemes."
+          - "Market research and feasibility studies."
+          - "Zoning, infrastructure, and long-term value."
       acquisition:
         title: "Acquisition & Structuring"
         description:
@@ -210,18 +220,18 @@ en:
       development:
         title: "Design & Development Management"
         description:
-          - "Leading master planning, architecture, and design processes."
-          - "Overseeing consultants, contractors, and project teams."
-          - "Ensuring quality, sustainability, and on-time delivery."
+          - "Master planning, architecture, and design."
+          - "Coordinating consultants, contractors, and project teams."
+          - "Quality, environmental targets, and schedule."
       marketing:
         title: "Marketing & Sales Execution"
         description:
-          - "Building brand identity and go-to-market strategy."
-          - "Designing marketing campaigns to target investors and end-users."
-          - "Managing sales networks and client relationships for maximum absorption."
+          - "Brand and go-to-market planning."
+          - "Campaigns aimed at investors and end buyers."
+          - "Sales channels and client relationships to improve take-up."
       financial:
         title: "Financial & Regulatory Coordination"
         description:
-          - "Working closely with banks, accountants, and auditors to secure financing and maintain compliance."
-          - "Managing financial reporting, investor relations, and regulatory approvals."
-          - "Providing transparent oversight from concept to project handover."
+          - "Banks, accountants, and auditors for financing and compliance."
+          - "Financial reporting, investor relations, and regulatory approvals."
+          - "Reporting from first concept through handover."

@@ -29,6 +29,13 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_select ".service-card", minimum: 1
   end
 
+  test "should get web_development" do
+    get web_development_url
+    assert_response :success
+    assert_select "h1.visually-hidden", "Full-stack development"
+    assert_select "iframe.webdev-embed__frame[src=?]", AppConstants::PORTFOLIO_SITE_URL
+  end
+
   test "should get team" do
     get team_url
     assert_response :success

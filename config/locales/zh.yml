@@ -15,13 +15,14 @@ zh:
     name: Gelbhart Innovations
     author: Gelbhart Innovations
     tagline: 创造价值的创新解决方案
-    description: 为制药业和房地产业提供战略咨询
+    description: 制药、房地产与全栈软件的咨询与交付
   nav:
     home: 首页
     services: 服务
     all_services: 所有服务
     pharmaceutical: 制药
     real_estate: 房地产
+    web_development: 全栈
     team: 团队
     contact: 联系我们
     menu: 菜单
@@ -54,22 +55,31 @@ zh:
       tagline_line2: 创造价值
     services:
       title: 服务
+      intro_lead: 在受监管行业与网络上提供规划、建设与持续支持。
       pharmaceutical:
         title: 制药服务
-        subtitle: 全面的制药行业咨询
-        description: 为制药公司和产品提供尽职调查、业务开发、投资组合战略和专业咨询。
+        subtitle: 制药行业咨询
+        description: 尽职调查、合作、组合决策与面向制药公司的产品层面建议。
         page_title: 制药服务
         back_button: 所有服务
       real_estate:
         title: 房地产服务
-        subtitle: 端到端的房地产开发和投资
-        description: 住房、酒店和商业项目的土地识别、收购、开发管理、营销和财务协调。
+        subtitle: 从土地到销售的开发与投资
+        description: 土地搜寻与购买、项目交付、营销与融资，面向住宅、酒店和商业。
         page_title: 房地产服务
         back_button: 所有服务
+      web_development:
+        title: 全栈开发
+        subtitle: Rails、界面、API 与运维
+        description: Rails、前端、API、云与机器学习；作品集与示例见 gelbhart.dev。
+        page_title: 全栈开发
+        back_button: 所有服务
+        embed_iframe_title: Tomer Gelbhart — gelbhart.dev 上的全栈开发者作品集
+        embed_section_title_suffix: " — Tomer Gelbhart 的作品集"
     team:
       badge: 认识团队
       title: 我们的领导层
-      description: 指导 Gelbhart 创新的战略思想家和实践专家遍布各行业和各大洲。
+      description: 负责制药咨询、房地产与全栈软件的合伙人与管理者。
       linkedin_aria: 打开 %{name} 的 LinkedIn 个人资料
       github_aria: 打开 %{name} 的 GitHub 简介
       open_profile_aria: 为 %{name} 打开配置文件
@@ -99,7 +109,7 @@ zh:
       items:
         - 我们可能会收集您提供的信息，以及由我们的网络服务器和浏览器自动收集的信息。我们使用这些信息来提供和改进我们的服务。
         - 我们可能会与协助我们运营网站和为客户服务的第三方服务提供商共享您的信息。我们不会向任何第三方出售或出租您的个人信息。
-        - 我们使用 cookie 和其他跟踪技术来个性化您的体验并分析网站使用情况。您可以通过浏览器设置控制 cookie 的使用。
+        - 我们在需要时使用 cookie 和类似技术记录偏好并了解网站使用情况。您可在浏览器设置中调整。
         - 我们可能会不时更新此隐私政策。您在更改后继续使用网站即表示您接受新政策。
   errors:
     not_found:
@@ -111,16 +121,16 @@ zh:
   team_members:
     bareket:
       name: Bareket Gelbhart
-      bio: Bareket 就读于以色列理工学院（Technion），获得化学学士学位，主修有机化学。<br><br>她精通希伯来语和英语，可以用意大利语交流。Bareket 拥有 Microsoft Word、Excel 和 PowerPoint 的高级知识。<br><br>她与家人居住在瑞士提契诺州，经常因工作前往世界各地。<br><br>Bareket 是一位热情的厨师和忠实的足球迷。
+      bio: Bareket 就读于以色列理工学院（Technion），获得化学学士学位，主修有机化学。<br><br>她精通希伯来语和英语，可以用意大利语交流。Bareket 拥有 Microsoft Word、Excel 和 PowerPoint 的高级知识。<br><br>她与家人居住在瑞士提契诺州，因工作经常出行。<br><br>Bareket 是一位热情的厨师和忠实的足球迷。
     yaron:
       name: Yaron Gelbhart
       bio: Yaron 就读于以色列理工学院（Technion），获得工程学理学士学位，主修项目管理。Yaron 拥有超过 20 年的大型项目管理经验，重点关注印度次大陆。<br><br>他的兴趣还涉及房地产和酒店业。他精通英语和希伯来语，意大利语达到会话水平。在业余时间，Yaron 练习瑜伽并喜欢喝一杯好意大利葡萄酒。
     tomer:
       name: Tomer Gelbhart
-      bio: 都柏林大学学院（University College Dublin）计算机科学硕士生，在计算机科学本科基础上，日益关注经典与量子机器学习。<br><br>我在前端开发和 API 集成方面有实践经验，致力于开发解决现实问题的工具。<br><br>硕士学习加深了我对量子计算与机器学习交叉领域的兴趣，这是我在学业中积极探索的新兴领域。<br><br>我希望与从事机器学习、量子计算或软件开发的专业人士和研究人员建立联系。
+      bio: 都柏林大学学院计算机科学硕士生，计算机科学本科，并修读经典与量子机器学习相关课程。<br><br>我搭建前端并对接 API，做日常工作中使用的工具。<br><br>硕士阶段主要在学习与项目中接触量子计算与机器学习的结合。<br><br>欢迎机器学习、量子计算或软件工程方向的人联系。
     effie:
       name: Effie Gelbhart
-      bio: Effie是创新管理硕士生，拥有可持续创新学士学位，并专注于可持续转型。她在可持续发展和创新方面具有第一手专业知识，在CSR报告和商业模式可持续性评估方面具有实践经验，并了解最先进的可持续实践。<br><br>她注重细节，讲求效率与沟通，能够满足您在可持续性方面的所有需求。
+      bio: Effie 在读创新管理硕士，可持续创新学士，关注可持续转型。背景包括可持续发展与创新、CSR 报告、商业模式可持续性评估以及该领域的近期实践。<br><br>她重视可持续议题上的清晰沟通与高效流程。
   services_data:
     pharmaceutical:
       due_diligence:
@@ -151,9 +161,9 @@ zh:
       land_identification:
         title: 土地和机会识别
         description:
-          - 为住房、酒店、休闲和商业项目采购高潜力地块。
-          - 进行深入的市场研究和可行性研究。
-          - 评估分区、基础设施和长期价值。
+          - 为住宅、酒店、休闲与商业寻找土地。
+          - 市场研究与可行性研究。
+          - 分区、基础设施与长期价值。
       acquisition:
         title: 收购和构建
         description:
@@ -163,18 +173,18 @@ zh:
       development:
         title: 设计和开发管理
         description:
-          - 领导总体规划、架构和设计流程。
-          - 监督顾问、承包商和项目团队。
-          - 确保质量、可持续性和按时交付。
+          - 总体规划、建筑与设计。
+          - 协调顾问、承包商与项目团队。
+          - 质量、环境目标与进度。
       marketing:
         title: 营销和销售执行
         description:
-          - 建立品牌形象和进入市场策略。
-          - 设计针对投资者和最终用户的营销活动。
-          - 管理销售网络和客户关系以实现最大吸收。
+          - 品牌与上市策略。
+          - 面向投资者与终端买家的推广。
+          - 销售渠道与客户关系，以提高去化。
       financial:
         title: 财务和监管协调
         description:
-          - 与银行、会计师和审计师密切合作，以确保融资并保持合规性。
-          - 管理财务报告、投资者关系和监管批准。
-          - 从概念到项目移交提供透明监督。
+          - 银行、会计师与审计师，对接融资与合规。
+          - 财务报告、投资者关系与监管审批。
+          - 从最初设想跟进到项目移交。
