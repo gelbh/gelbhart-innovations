@@ -48,12 +48,14 @@ class ServiceTest < ActiveSupport::TestCase
     service = Service.new(
       key: "test_service",
       icon: "bx bx-test",
-      category: :pharmaceutical
+      category: :pharmaceutical,
+      member_key: :bareket
     )
 
     assert_equal "test_service", service.key
     assert_equal "bx bx-test", service.icon
     assert_equal :pharmaceutical, service.category
+    assert_equal :bareket, service.member_key
     assert_respond_to service, :title
     assert_respond_to service, :subtitle
     assert_respond_to service, :description
