@@ -74,11 +74,28 @@
 
                 <div class="team-card-body card-body text-center px-3 px-sm-4 py-3 py-md-4 d-flex flex-column">
                   <h3 class="team-card-name h5 fw-semibold mb-2"><%= member.name %></h3>
-                  <p class="team-card-summary text-body-secondary fs-sm mb-3">
+                  <p class="team-card-summary text-body-secondary fs-sm mb-0">
                     <%= truncate(strip_tags(member.bio.to_s), length: 130) %>
                   </p>
                   <div class="team-card-actions mt-auto">
-                    <div class="team-card-social team-card-social--inline justify-content-center">
+                    <% if team_member_lead_service_path(member).present? %>
+                      <% nav_key = team_member_lead_service_key(member) %>
+                      <div class="team-card-service-wrap d-flex align-items-center flex-shrink-0">
+                        <%= link_to team_member_lead_service_path(member),
+                                    class: "team-card-service-link",
+                                    data: { turbo_preload: true },
+                                    onclick: "event.stopPropagation();",
+                                    aria: { label: t("pages.team.lead_service_link_aria", name: member.name, service: t("nav.#{nav_key}")) } do %>
+                          <span class="team-card-service-link-inner" style="background: <%= team_member_lead_service_gradient(member) %>;">
+                            <i class="<%= team_member_lead_service_icon(member) %> team-card-service-link-icon" aria-hidden="true"></i>
+                          </span>
+                        <% end %>
+                      </div>
+                      <% if member.linkedin? || member.github? %>
+                        <span class="team-card-actions-vsep" aria-hidden="true"></span>
+                      <% end %>
+                    <% end %>
+                    <div class="team-card-social team-card-social--inline d-flex align-items-center flex-shrink-0">
                       <%= social_links %>
                     </div>
                   </div>
@@ -103,6 +120,21 @@
                 <div class="team-card-back-bio">
                   <%= team_member_bio(member) %>
                 </div>
+                <% if team_member_lead_service_path(member).present? %>
+                  <% nav_key = team_member_lead_service_key(member) %>
+                  <div class="team-card-back-service">
+                    <%= link_to team_member_lead_service_path(member),
+                                class: "team-card-back-service-link",
+                                data: { turbo_preload: true },
+                                aria: { label: t("pages.team.lead_service_link_aria", name: member.name, service: t("nav.#{nav_key}")) } do %>
+                      <span class="team-card-service-link-inner team-card-service-link-inner--sm" style="background: <%= team_member_lead_service_gradient(member) %>;">
+                        <i class="<%= team_member_lead_service_icon(member) %> team-card-service-link-icon" aria-hidden="true"></i>
+                      </span>
+                      <span class="team-card-back-service-label"><%= t("nav.#{nav_key}") %></span>
+                      <i class="bx bx-chevron-right team-card-back-service-chevron" aria-hidden="true"></i>
+                    <% end %>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>

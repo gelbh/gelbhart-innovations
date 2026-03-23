@@ -22,7 +22,8 @@ es:
     all_services: Todos los servicios
     pharmaceutical: Farmacéutica
     real_estate: Inmobiliario
-    web_development: Full-stack
+    full_stack: Full-stack
+    sustainability: Sostenibilidad
     team: Equipo
     contact: Póngase en contacto con nosotros
     menu: Menú
@@ -56,26 +57,147 @@ es:
     services:
       title: Servicios
       intro_lead: Planificación, ejecución y soporte continuo en sectores regulados y en la web.
+      member_label: "Responsable: %{name}"
       pharmaceutical:
         title: Servicios farmacéuticos
         subtitle: Consultoría para la industria farmacéutica
         description: Diligencia debida, alianzas, decisiones de cartera y asesoramiento sobre productos para empresas farmacéuticas.
         page_title: Servicios farmacéuticos
         back_button: Todos los servicios
+        spotlight:
+          title: Consultora del sector farmacéutico
+          cta_primary: Hablar de servicios farmacéuticos
+          cta_secondary: Conectar en LinkedIn
       real_estate:
         title: Servicios inmobiliarios
         subtitle: Promoción e inversión desde el terreno hasta la venta
         description: Búsqueda y compra de suelo, entrega de proyectos, comercialización y finanzas para vivienda, hostelería y uso comercial.
         page_title: Servicios inmobiliarios
         back_button: Todos los servicios
-      web_development:
+        spotlight:
+          title: Liderazgo inmobiliario y de proyectos
+          cta_primary: Hablar de servicios inmobiliarios
+          cta_secondary: Conectar en LinkedIn
+      full_stack:
         title: Desarrollo full-stack
         subtitle: Rails, interfaces, APIs e infraestructura
         description: Rails, front-end, APIs, nube y ML; portafolio y ejemplos en gelbhart.dev.
         page_title: Desarrollo full-stack
-        back_button: Todos los servicios
         embed_iframe_title: Tomer Gelbhart — portafolio de desarrollador full-stack en gelbhart.dev
         embed_section_title_suffix: " — Portafolio de Tomer Gelbhart"
+        spotlight:
+          title: Desarrollador full-stack
+          cta_primary: Hablar de proyectos de software
+          cta_secondary: Conectar en LinkedIn
+      sustainability:
+        title: Servicios de sostenibilidad
+        subtitle: Plan de transición, cumplimiento y diseño circular
+        description: Servicios prácticos de sostenibilidad para LCA, cumplimiento normativo, diseño circular y mejoras eficientes.
+        page_title: Servicios de sostenibilidad
+        intro: Servicios de sostenibilidad a medida para equipos que buscan impacto medible, mayor preparación y ejecución práctica.
+        offerings_title: Servicios de sostenibilidad a medida
+        deep_dive_title: Detalle de servicios
+        roadmap_title: Cómo trabajamos juntos
+        back_button: Todos los servicios
+        step_label: "Paso %{number}"
+        metrics:
+          impact_readiness:
+            label: Preparación normativa
+            value: Preparado al futuro
+            description: Prepárese para próximas regulaciones climáticas antes de que sean urgentes.
+          impact_clarity:
+            label: Visibilidad del ciclo de vida
+            value: Integral
+            description: Mapee el impacto real de productos y operaciones con métodos modernos.
+          impact_circularity:
+            label: Potencial circular
+            value: Estratégico
+            description: Identifique bucles prácticos de diseño, recuperación y conservación de valor.
+          impact_efficiency:
+            label: Ruta de eficiencia
+            value: Bajo coste
+            description: Empiece con cambios de alto impacto y baja fricción que su equipo puede ejecutar ya.
+        services:
+          lca:
+            title: Evaluaciones de ciclo de vida
+            outcome: Comprenda y reporte el impacto total de productos y operaciones.
+            tags:
+              - LCA
+              - Reporte de impacto
+              - Soporte de decisión
+            prompt: "¿Quiere conocer o reportar el impacto real de su producto y de sus operaciones?"
+            details: Con herramientas y metodologías de inventario actuales, evaluamos y revisamos el impacto de ciclo de vida en toda su oferta. El resultado son datos accionables para priorizar transiciones sostenibles y orientar su estrategia futura.
+          business_model:
+            title: Revisión y evaluación del modelo de negocio
+            outcome: Transicione su modelo hacia operaciones más resilientes y centradas en sostenibilidad.
+            tags:
+              - Modelo de negocio
+              - Estrategia de transición
+              - Plan 2030+
+            prompt: "¿Quiere entender y avanzar hacia operaciones y diseño más sostenibles?"
+            details: Evaluamos prácticas sostenibles actuales y emergentes, y ayudamos a transformar parte o todo su modelo operativo. Así su organización se mantiene competitiva en una industria cada vez más centrada en sostenibilidad hacia 2030 y más allá.
+          compliance:
+            title: Cumplimiento en sostenibilidad
+            outcome: Aumente su preparación frente a normativa climática en toda la operación.
+            tags:
+              - Cumplimiento
+              - Reducción de riesgo
+              - Revisión de preparación
+            prompt: "¿Quiere estar preparado e incluso adelantarse a la legislación climática que puede afectar a su empresa?"
+            details: Realizamos una revisión de cumplimiento paso a paso en toda su operación y evaluamos su preparación para futuras regulaciones climáticas. Obtendrá un plan claro para aumentar transparencia, reducir exposición y adelantarse a la competencia.
+          circular_design:
+            title: Diseño y desarrollo de negocio circular
+            outcome: Rediseñe operaciones y modelo de negocio para capturar valor circular.
+            tags:
+              - Circularidad
+              - Diseño operativo
+              - Retención de valor
+            prompt: "¿Quiere convertirse en una empresa circular o saber qué puede aportar el diseño circular a su firma?"
+            details: Identificamos oportunidades estratégicas de rediseño para avanzar hacia operaciones circulares. El enfoque es tomar decisiones realistas y de alto impacto para posicionar su empresa en la siguiente etapa del sector.
+          low_cost:
+            title: Transformaciones de bajo coste y bajo impacto operativo
+            outcome: Inicie mejoras sostenibles eficientes sin cambios iniciales pesados.
+            tags:
+              - Baja inversión
+              - Quick wins
+              - Productividad del equipo
+            prompt: "¿Aún no ve claramente los beneficios financieros de una transición sostenible para su empresa?"
+            details: Diseñamos intervenciones concretas y de bajo coste que mejoran el desempeño sostenible y crean entendimiento interno. En lugar de grandes cambios operativos, priorizamos mejoras de infraestructura y espacios de trabajo para impulsar eficiencia y productividad.
+        roadmap:
+          assess:
+            title: Evaluar
+            description: Mapear operaciones actuales, limitaciones y prioridades de sostenibilidad.
+          prioritize:
+            title: Priorizar
+            description: Ordenar oportunidades por impacto, viabilidad y urgencia regulatoria.
+          implement:
+            title: Implementar
+            description: Lanzar iniciativas prácticas con responsables y pasos claros.
+          report:
+            title: Reportar
+            description: Medir resultados, documentar avances y ajustar la hoja de ruta.
+        loop:
+          title: Bucle de valor circular
+          description: Mantenga el impulso con ciclos continuos de diseño, uso, recuperación y reutilización.
+          nodes:
+            design:
+              title: Diseñar
+              description: Diseñar para durabilidad, adaptabilidad y menor desperdicio.
+            use:
+              title: Usar
+              description: Operar con eficiencia, medición y responsabilidad.
+            recover:
+              title: Recuperar
+              description: Capturar valor con devolución, clasificación y procesamiento.
+            reuse:
+              title: Reutilizar
+              description: Reincorporar materiales y componentes a nuevos flujos de trabajo.
+        venn_aria: Diagrama de Venn animado que muestra la intersección entre lo ambiental, social y gobernanza.
+        spotlight:
+          title: Especialista en sostenibilidad e innovación
+          bio: Effie apoya transiciones de sostenibilidad con evaluación práctica de modelos de negocio, comunicación clara y planes orientados a implementación.
+          cta_primary: Reservar una consulta de sostenibilidad
+          cta_secondary: Conectar en LinkedIn
     team:
       badge: Conozca al equipo
       title: Nuestro liderazgo
@@ -84,6 +206,7 @@ es:
       github_aria: Abrir el perfil GitHub de %{name}
       open_profile_aria: Perfil abierto para %{name}
       click_to_flip_tooltip: Clic para ver perfil completo
+      lead_service_link_aria: Ver servicios de %{service} — %{name}
     contact:
       title: Gelbhart Innovations
       address_label: Dirección

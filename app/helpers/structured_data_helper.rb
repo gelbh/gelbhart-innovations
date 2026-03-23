@@ -4,6 +4,7 @@ module StructuredDataHelper
     "https://www.linkedin.com/in/tomer-gelbhart/",
     "https://www.linkedin.com/in/yaron-gelbhart/",
     "https://www.linkedin.com/in/bareket-gelbhart-83904a16/",
+    "https://www.linkedin.com/in/effie-gelbhart-17325a3b4/",
     "https://github.com/gelbh",
     "https://github.com/gelbh/gelbhart-innovations",
     "https://gelbhart.dev"

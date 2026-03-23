@@ -22,7 +22,8 @@ ko:
     all_services: 모든 서비스
     pharmaceutical: 제약
     real_estate: 부동산
-    web_development: 풀스택
+    full_stack: 풀스택
+    sustainability: 지속가능성
     team: 팀
     contact: 문의하기
     menu: 메뉴
@@ -68,12 +69,11 @@ ko:
         description: 토지 탐색·매입, 프로젝트 이행, 마케팅 및 재무(주택, 호텔, 상업).
         page_title: 부동산 서비스
         back_button: 모든 서비스
-      web_development:
+      full_stack:
         title: 풀스택 개발
         subtitle: Rails, UI, API, 운영
         description: Rails, 프런트엔드, API, 클라우드, ML. 포트폴리오와 사례는 gelbhart.dev.
         page_title: 풀스택 개발
-        back_button: 모든 서비스
         embed_iframe_title: Tomer Gelbhart — gelbhart.dev의 풀스택 개발자 포트폴리오
         embed_section_title_suffix: " — Tomer Gelbhart 포트폴리오"
     team:
@@ -84,6 +84,7 @@ ko:
       github_aria: "%{name}의 GitHub 프로필 열기"
       open_profile_aria: "%{name}의 프로필 열기"
       click_to_flip_tooltip: 클릭하여 전체 프로필 보기
+      lead_service_link_aria: "%{service} 서비스 보기 — %{name}"
     contact:
       title: Gelbhart Innovations
       address_label: 주소

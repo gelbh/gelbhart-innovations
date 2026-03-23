@@ -1,0 +1,97 @@
+<%= render "shared/jarallax" %>
+
+<div class="bg-secondary">
+  <%= render "shared/breadcrumb" %>
+
+  <section class="sustainability-page sustainability-page--calm container py-4 py-lg-5 px-3 px-sm-4">
+    <header class="sustainability-page__intro mx-auto mb-5 pb-lg-1">
+      <div class="d-flex flex-column flex-md-row align-items-md-start justify-content-between gap-4">
+        <div class="flex-grow-1 text-center text-md-start">
+          <p class="sustainability-page__eyebrow small text-body-secondary mb-2"><%= t("nav.sustainability") %></p>
+          <h1 class="sustainability-page__title display-5 fw-semibold text-body mb-3"><%= t("pages.services.sustainability.page_title") %></h1>
+          <p class="sustainability-page__lead fs-5 text-body-secondary mb-3 mb-md-4"><%= t("pages.services.sustainability.intro") %></p>
+        </div>
+        <%= link_to services_path, class: "btn btn-outline-secondary btn-sm align-self-center align-self-md-start flex-shrink-0", data: { turbo_preload: true } do %>
+          <i class="bx bx-arrow-back me-1"></i><%= t("pages.services.sustainability.back_button") %>
+        <% end %>
+      </div>
+    </header>
+
+    <section class="mb-5 pb-lg-2" aria-labelledby="sustainability-services-title">
+      <h2 class="h4 fw-semibold mb-4 text-body" id="sustainability-services-title"><%= t("pages.services.sustainability.offerings_title") %></h2>
+      <div class="accordion sustainability-page__accordion" id="sustainability-accordion">
+        <% %w[lca business_model compliance circular_design low_cost].each_with_index do |service_key, index| %>
+          <% header_id = "sustainability-heading-#{service_key}" %>
+          <% collapse_id = "sustainability-collapse-#{service_key}" %>
+          <article class="accordion-item sustainability-page__accordion-item mb-2">
+            <h3 class="accordion-header mb-0" id="<%= header_id %>">
+              <button class="accordion-button sustainability-page__accordion-btn <%= "collapsed" if index.positive? %>"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#<%= collapse_id %>"
+                      aria-expanded="<%= index.zero? %>"
+                      aria-controls="<%= collapse_id %>">
+                <%= t("pages.services.sustainability.services.#{service_key}.title") %>
+              </button>
+            </h3>
+            <div id="<%= collapse_id %>"
+                 class="accordion-collapse collapse <%= "show" if index.zero? %>"
+                 aria-labelledby="<%= header_id %>"
+                 data-bs-parent="#sustainability-accordion">
+              <div class="accordion-body sustainability-page__accordion-body">
+                <p class="fw-medium text-body mb-2"><%= t("pages.services.sustainability.services.#{service_key}.prompt") %></p>
+                <p class="text-body-secondary mb-3"><%= t("pages.services.sustainability.services.#{service_key}.details") %></p>
+                <ul class="sustainability-page__tag-list list-inline mb-0">
+                  <% t("pages.services.sustainability.services.#{service_key}.tags").each do |tag| %>
+                    <li class="list-inline-item"><span class="sustainability-page__tag"><%= tag %></span></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </article>
+        <% end %>
+      </div>
+    </section>
+
+    <section class="sustainability-page__esg-block mb-5 pb-lg-2" aria-labelledby="sustainability-esg-title">
+      <h2 class="h4 fw-semibold mb-4 text-body" id="sustainability-esg-title"><%= t("pages.services.sustainability.loop.title") %></h2>
+      <div class="row g-4 g-lg-5 align-items-center">
+        <div class="col-lg-6 order-lg-2">
+          <div class="sustainability-page__venn-panel mx-auto">
+            <lottie-player
+              class="sustainability-page__venn-animation"
+              src="/json/sustainability-venn.json"
+              background="transparent"
+              speed="1"
+              loop
+              autoplay
+              mode="normal"
+              aria-label="<%= t("pages.services.sustainability.venn_aria") %>">
+            </lottie-player>
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <p class="text-body-secondary fs-6 mb-4"><%= t("pages.services.sustainability.loop.description") %></p>
+          <ul class="sustainability-page__simple-list list-unstyled mb-0">
+            <% %w[design use recover reuse].each do |loop_key| %>
+              <li class="sustainability-page__simple-list-item">
+                <span class="sustainability-page__simple-list-title"><%= t("pages.services.sustainability.loop.nodes.#{loop_key}.title") %></span>
+                <span class="text-body-secondary"> — <%= t("pages.services.sustainability.loop.nodes.#{loop_key}.description") %></span>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <% if @sustainability_member.present? %>
+      <%= render "shared/service_member_spotlight",
+                 member: @sustainability_member,
+                 heading_id: "sustainability-member-title",
+                 role_emphasis_class: "text-success-emphasis",
+                 primary_btn_class: "btn-success",
+                 i18n_scope: "pages.services.sustainability.spotlight",
+                 bio_text: t("pages.services.sustainability.spotlight.bio") %>
+    <% end %>
+  </section>
+</div>

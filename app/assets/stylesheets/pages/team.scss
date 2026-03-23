@@ -121,6 +121,119 @@
   gap: 0.75rem;
 }
 
+.team-card-service-wrap {
+  flex-shrink: 0;
+}
+
+.team-card-actions-vsep {
+  flex-shrink: 0;
+  width: 1px;
+  height: 2rem;
+  align-self: center;
+  background: rgba(11, 15, 25, 0.12);
+}
+
+.team-card-service-link {
+  display: inline-flex;
+  text-decoration: none;
+  border-radius: 0.9rem;
+
+  &:focus-visible {
+    outline: 2px solid var(--si-primary);
+    outline-offset: 3px;
+  }
+}
+
+.team-card-service-link-inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.85rem;
+  box-shadow: 0 6px 18px rgba(11, 15, 25, 0.15);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+  &--sm {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.75rem;
+
+    .team-card-service-link-icon {
+      font-size: 1.15rem;
+    }
+  }
+}
+
+.team-card-service-link-icon {
+  font-size: 1.35rem;
+  color: #fff;
+  line-height: 1;
+}
+
+.team-card-service-link:hover .team-card-service-link-inner,
+.team-card-service-link:focus-visible .team-card-service-link-inner {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(11, 15, 25, 0.22);
+}
+
+.team-card-back-service {
+  flex-shrink: 0;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(11, 15, 25, 0.08);
+}
+
+.team-card-back-service-link {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.25rem 0;
+  text-decoration: none;
+  color: var(--si-heading-color);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 0.5rem;
+  transition: color 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--si-primary);
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--si-primary);
+    outline-offset: 2px;
+  }
+
+  &:hover .team-card-back-service-chevron,
+  &:focus-visible .team-card-back-service-chevron {
+    color: var(--si-primary);
+  }
+}
+
+.team-card-back-service-label {
+  flex: 1;
+  text-align: start;
+}
+
+html[dir="rtl"] .team-card-back-service-label {
+  text-align: end;
+}
+
+.team-card-back-service-chevron {
+  font-size: 1.25rem;
+  color: var(--si-secondary-color);
+  transition: color 0.2s ease;
+}
+
+html[dir="rtl"] .team-card-back-service-chevron {
+  transform: scaleX(-1);
+}
+
 // Team Card Social Links
 .team-card-social {
   display: inline-flex;
@@ -392,11 +505,22 @@
   font-size: 0.95rem;
   line-height: 1.7;
   color: rgba(51, 53, 77, 0.7);
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 
   @media (max-width: 575.98px) {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
   }
+}
+
+.team-page .team-card-actions {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding-top: 1.2rem;
+  margin-top: auto;
+  border-top: 1px solid rgba(11, 15, 25, 0.1);
 }
 
 .team-page .team-card-social--inline {

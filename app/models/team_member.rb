@@ -15,7 +15,7 @@ class TeamMember
     { key: :bareket, linkedin_url: "https://www.linkedin.com/in/bareket-gelbhart-83904a16/" },
     { key: :yaron, linkedin_url: "https://www.linkedin.com/in/yaron-gelbhart/" },
     { key: :tomer, linkedin_url: "https://www.linkedin.com/in/tomer-gelbhart/", github_url: "https://github.com/gelbh" },
-    { key: :effie, linkedin_url: "" }
+    { key: :effie, linkedin_url: "https://www.linkedin.com/in/effie-gelbhart-17325a3b4/" }
   ].freeze
 
   def initialize(key:, linkedin_url:, github_url: nil)
@@ -35,5 +35,13 @@ class TeamMember
 
   def self.all
     MEMBERS.map { |attrs| new(**attrs) }
+  end
+
+  def self.index_by_key
+    @index_by_key ||= all.index_by(&:key)
+  end
+
+  def self.find_by_key(key)
+    index_by_key[key.to_sym]
   end
 end

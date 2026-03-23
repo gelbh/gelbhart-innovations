@@ -29,12 +29,21 @@
                  wrapper_options: { data: { turbo_preload: true } } %>
 
       <%= render "shared/services_offering_tile",
-                 title: t("pages.services.web_development.title"),
-                 eyebrow: t("pages.services.web_development.subtitle"),
-                 body: t("pages.services.web_development.description"),
-                 icon: AppConstants::SERVICE_ICONS[:web_development],
-                 gradient: AppConstants::SERVICE_GRADIENTS[:web_development],
-                 href: web_development_path,
+                 title: t("pages.services.full_stack.title"),
+                 eyebrow: t("pages.services.full_stack.subtitle"),
+                 body: t("pages.services.full_stack.description"),
+                 icon: AppConstants::SERVICE_ICONS[:full_stack],
+                 gradient: AppConstants::SERVICE_GRADIENTS[:full_stack],
+                 href: full_stack_path,
+                 wrapper_options: { data: { turbo_preload: true } } %>
+
+      <%= render "shared/services_offering_tile",
+                 title: t("pages.services.sustainability.title"),
+                 eyebrow: t("pages.services.sustainability.subtitle"),
+                 body: t("pages.services.sustainability.description"),
+                 icon: AppConstants::SERVICE_ICONS[:sustainability],
+                 gradient: AppConstants::SERVICE_GRADIENTS[:sustainability],
+                 href: sustainability_path,
                  wrapper_options: { data: { turbo_preload: true } } %>
     </div>
   </section>

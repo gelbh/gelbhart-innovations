@@ -29,7 +29,8 @@ en:
     all_services: "All Services"
     pharmaceutical: "Pharmaceutical"
     real_estate: "Real Estate"
-    web_development: "Full-stack"
+    full_stack: "Full-stack"
+    sustainability: "Sustainability"
     team: "Team"
     contact: "Contact Us"
     menu: "Menu"
@@ -93,26 +94,147 @@ en:
     services:
       title: "Services"
       intro_lead: "Planning, build-out, and ongoing support in regulated fields and on the web."
+      member_label: "Lead: %{name}"
       pharmaceutical:
         title: "Pharmaceutical Services"
         subtitle: "Pharmaceutical industry consulting"
         description: "Due diligence, partnerships, portfolio choices, and product-level advice for pharma companies."
         page_title: "Pharmaceutical Services"
         back_button: "All Services"
+        spotlight:
+          title: "Pharmaceutical industry consultant"
+          cta_primary: "Discuss pharmaceutical services"
+          cta_secondary: "Connect on LinkedIn"
       real_estate:
         title: "Real Estate Services"
         subtitle: "Development and investment from land to sales"
         description: "Land search, purchase, project delivery, marketing, and finance for housing, hospitality, and commercial schemes."
         page_title: "Real Estate Services"
         back_button: "All Services"
-      web_development:
+        spotlight:
+          title: "Real estate and project leadership"
+          cta_primary: "Discuss real estate services"
+          cta_secondary: "Connect on LinkedIn"
+      full_stack:
         title: "Full-stack development"
         subtitle: "Rails, interfaces, APIs, and hosting"
         description: "Rails, front-end, APIs, cloud, and ML work; portfolio and samples at gelbhart.dev."
         page_title: "Full-stack development"
-        back_button: "All Services"
         embed_iframe_title: "Tomer Gelbhart — full-stack developer portfolio at gelbhart.dev"
         embed_section_title_suffix: " — Tomer Gelbhart's portfolio"
+        spotlight:
+          title: "Full-stack developer"
+          cta_primary: "Discuss software engagements"
+          cta_secondary: "Connect on LinkedIn"
+      sustainability:
+        title: "Sustainability Services"
+        subtitle: "Transition planning, compliance, and circular design"
+        description: "Practical sustainability services covering LCA, compliance, circular business design, and efficient transformation pathways."
+        page_title: "Sustainability Services"
+        intro: "Tailored sustainability services for teams that want measurable impact, stronger readiness, and practical execution."
+        offerings_title: "Tailored Sustainability Services"
+        deep_dive_title: "Service Deep Dives"
+        roadmap_title: "How We Work Together"
+        back_button: "All Services"
+        step_label: "Step %{number}"
+        metrics:
+          impact_readiness:
+            label: "Compliance readiness"
+            value: "Future-ready"
+            description: "Prepare for upcoming climate regulations before they become urgent."
+          impact_clarity:
+            label: "Lifecycle visibility"
+            value: "End-to-end"
+            description: "Map true product and operations impact with modern inventory methods."
+          impact_circularity:
+            label: "Circular potential"
+            value: "Strategic"
+            description: "Identify practical loops for design, recovery, and value retention."
+          impact_efficiency:
+            label: "Efficiency path"
+            value: "Low-cost"
+            description: "Start with high-impact, low-friction changes that teams can execute now."
+        services:
+          lca:
+            title: "Life Cycle Assessments"
+            outcome: "Understand and report the full impact of products and operations."
+            tags:
+              - "LCA"
+              - "Impact Reporting"
+              - "Decision Support"
+            prompt: "Want to know or report the true impact of your product and operations?"
+            details: "Using current inventory tools and methodologies, we evaluate and review lifecycle impact across your offerings. The result is decision-grade insight you can use to prioritize sustainable transitions and shape future strategy."
+          business_model:
+            title: "Business Model Review and Assessment"
+            outcome: "Transition parts of your model toward resilient, sustainability-centered operations."
+            tags:
+              - "Business Model"
+              - "Transition Strategy"
+              - "2030+ Planning"
+            prompt: "Want to understand and transition towards more sustainable operations and design?"
+            details: "We assess current and upcoming sustainable practices and help transform part or all of your operating model. This keeps your organization competitive in a fast-moving sustainability-centric market through 2030 and beyond."
+          compliance:
+            title: "Sustainability Compliance"
+            outcome: "Build confidence in climate-regulation readiness across your operation."
+            tags:
+              - "Compliance"
+              - "Risk Reduction"
+              - "Readiness Review"
+            prompt: "Want to be prepared and even ahead of all upcoming climate legislation that may affect your business?"
+            details: "We run a step-by-step compliance review across your operations and evaluate preparedness for future climate regulation. You get a clear action path to strengthen transparency, reduce exposure, and move ahead of competitors."
+          circular_design:
+            title: "Circular Business Design and Development"
+            outcome: "Redesign operations and business models to unlock circular value."
+            tags:
+              - "Circularity"
+              - "Operations Design"
+              - "Value Retention"
+            prompt: "Want to become circular or interested in what circular design can do for your firm?"
+            details: "We identify strategic redesign opportunities that move your business toward circular operations. The focus is on realistic, high-impact decisions that position your company for the next phase of industry development."
+          low_cost:
+            title: "Low-Cost, Low-Impact Transformations"
+            outcome: "Launch efficient sustainability improvements without heavy upfront change."
+            tags:
+              - "Low Capex"
+              - "Quick Wins"
+              - "Team Productivity"
+            prompt: "Can't currently see the financial benefits of sustainable transitions for your firm?"
+            details: "We shape focused, low-cost interventions that improve sustainability performance while building internal understanding. Instead of broad operational disruption, we prioritize infrastructure and workspace improvements that support efficiency and productivity."
+        roadmap:
+          assess:
+            title: "Assess"
+            description: "Map current operations, constraints, and sustainability priorities."
+          prioritize:
+            title: "Prioritize"
+            description: "Rank opportunities by impact, feasibility, and regulatory urgency."
+          implement:
+            title: "Implement"
+            description: "Launch practical initiatives with clear owners and execution steps."
+          report:
+            title: "Report"
+            description: "Track outcomes, document progress, and refine the roadmap."
+        loop:
+          title: "Circular Value Loop"
+          description: "Build momentum through continuous design, use, recovery, and reuse cycles."
+          nodes:
+            design:
+              title: "Design"
+              description: "Define for durability, adaptability, and reduced waste."
+            use:
+              title: "Use"
+              description: "Operate with efficiency, measurement, and accountability."
+            recover:
+              title: "Recover"
+              description: "Capture value through take-back, sorting, and processing."
+            reuse:
+              title: "Reuse"
+              description: "Reintroduce materials and components into new workflows."
+        venn_aria: "Animated Venn diagram showing environmental, social, and governance overlap."
+        spotlight:
+          title: "Sustainability and Innovation Specialist"
+          bio: "Effie supports sustainability transitions with practical business-model assessment, clear communication, and implementation-focused planning."
+          cta_primary: "Book a sustainability consultation"
+          cta_secondary: "Connect on LinkedIn"
 
     team:
       badge: "Meet the team"
@@ -122,6 +244,7 @@ en:
       github_aria: "Open %{name}'s GitHub profile"
       open_profile_aria: "Open profile for %{name}"
       click_to_flip_tooltip: "Click to view full profile"
+      lead_service_link_aria: "View %{service} services — %{name}"
 
     contact:
       title: "Gelbhart Innovations"

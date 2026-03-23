@@ -1,0 +1,46 @@
+// Full-stack subpage — embedded portfolio (gelbhart.dev)
+
+.webdev-embed__section-title {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+
+  .webdev-embed__section-domain {
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--bs-primary);
+      outline-offset: 2px;
+      border-radius: 0.125rem;
+    }
+  }
+}
+
+.webdev-embed {
+  position: relative;
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  background-color: var(--bs-body-bg);
+  border-block-start: 1px solid var(--bs-border-color);
+}
+
+.webdev-embed__frame {
+  display: block;
+  border: 0;
+  width: 100%;
+  min-height: min(85vh, 900px);
+  height: 85vh;
+}
+
+@media (max-width: 575.98px) {
+  .webdev-embed__frame {
+    min-height: 70vh;
+    height: 75vh;
+  }
+}

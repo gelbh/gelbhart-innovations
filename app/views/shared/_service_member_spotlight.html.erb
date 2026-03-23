@@ -1,0 +1,55 @@
+<%# locals: member, heading_id, i18n_scope, role_emphasis_class, primary_btn_class, bio_text (optional) %>
+<% member = local_assigns.fetch(:member) %>
+<% heading_id = local_assigns.fetch(:heading_id) %>
+<% i18n_scope = local_assigns.fetch(:i18n_scope) %>
+<% role_emphasis = local_assigns.fetch(:role_emphasis_class, "text-primary-emphasis") %>
+<% primary_btn = local_assigns.fetch(:primary_btn_class, "btn-primary") %>
+<% bio_text = local_assigns[:bio_text] %>
+
+<section class="service-member-spotlight card border-0 overflow-hidden" aria-labelledby="<%= heading_id %>">
+  <div class="row g-0 align-items-stretch">
+    <div class="col-md-4 col-lg-3">
+      <%= image_tag member.image_filename,
+                    class: "service-member-spotlight__image",
+                    alt: member.name,
+                    width: member.image_width,
+                    height: member.image_height %>
+    </div>
+    <div class="col-md-8 col-lg-9">
+      <div class="card-body p-4 p-lg-5 h-100 d-flex flex-column bg-body">
+        <h2 class="h4 fw-semibold mb-1 text-body" id="<%= heading_id %>"><%= member.name %></h2>
+        <p class="<%= role_emphasis %> fw-medium mb-3"><%= t("#{i18n_scope}.title") %></p>
+        <div class="text-body-secondary mb-4 service-member-spotlight__bio">
+          <% if bio_text.present? %>
+            <%= simple_format(bio_text, {}, sanitize: true) %>
+          <% else %>
+            <%= team_member_bio(member) %>
+          <% end %>
+        </div>
+        <div class="mt-auto d-flex flex-wrap gap-2">
+          <%= link_to contact_path(anchor: "contact-form"), class: "btn #{primary_btn}", data: { turbo_preload: true } do %>
+            <%= t("#{i18n_scope}.cta_primary") %>
+          <% end %>
+          <% if member.linkedin? %>
+            <%= link_to member.linkedin_url,
+                        class: "btn btn-outline-secondary",
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                        aria: { label: t("pages.team.linkedin_aria", name: member.name) } do %>
+              <%= t("#{i18n_scope}.cta_secondary") %>
+            <% end %>
+          <% end %>
+          <% if member.github? %>
+            <%= link_to member.github_url,
+                        class: "btn btn-outline-secondary",
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                        aria: { label: t("pages.team.github_aria", name: member.name) } do %>
+              <%= t("common.view_github_profile") %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

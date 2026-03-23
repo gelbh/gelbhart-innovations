@@ -22,7 +22,8 @@ ja:
     all_services: すべてのサービス
     pharmaceutical: 製薬
     real_estate: 不動産
-    web_development: フルスタック
+    full_stack: フルスタック
+    sustainability: サステナビリティ
     team: チーム
     contact: お問い合わせ
     menu: メニュー
@@ -68,12 +69,11 @@ ja:
         description: 土地の探索・取得、プロジェクトの遂行、販売促進と資金調整（住宅、ホテル、商業向け）。
         page_title: 不動産サービス
         back_button: すべてのサービス
-      web_development:
+      full_stack:
         title: フルスタック開発
         subtitle: Rails、UI、API、運用
         description: Rails、フロントエンド、API、クラウド、ML。ポートフォリオと事例は gelbhart.dev。
         page_title: フルスタック開発
-        back_button: すべてのサービス
         embed_iframe_title: Tomer Gelbhart — gelbhart.dev のフルスタック開発者ポートフォリオ
         embed_section_title_suffix: " — Tomer Gelbhart のポートフォリオ"
     team:
@@ -84,6 +84,7 @@ ja:
       github_aria: "%{name} の GitHub プロフィールを開く"
       open_profile_aria: "%{name} のプロフィールを開く"
       click_to_flip_tooltip: クリックしてプロフィールを表示
+      lead_service_link_aria: "%{service}のサービスを見る — %{name}"
     contact:
       title: Gelbhart Innovations
       address_label: 住所

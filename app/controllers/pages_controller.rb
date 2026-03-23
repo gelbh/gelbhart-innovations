@@ -21,8 +21,11 @@ class PagesController < ApplicationController
       title: "Pharmaceutical Services",
       description: "Pharmaceutical consulting: due diligence, partnerships, portfolio choices, and product-level advice."
     )
-    assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:services])
+    assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:pharmaceutical], height: AppConstants::SERVICE_HERO_JARALLAX_HEIGHT, speed: 0.35)
+    @jarallax_extra_class = "jarallax--service-hero"
+    @jarallax_hide_overlay = true
     @services = Service.pharmaceutical
+    @pharmaceutical_member = TeamMember.find_by_key(:bareket)
   end
 
   def real_estate
@@ -30,15 +33,33 @@ class PagesController < ApplicationController
       title: "Real Estate Services",
       description: "Real estate consulting: land and projects, investment analysis, market research, and portfolio structure."
     )
-    assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:services])
+    assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:real_estate], height: AppConstants::SERVICE_HERO_JARALLAX_HEIGHT, speed: 0.35)
+    @jarallax_extra_class = "jarallax--service-hero"
+    @jarallax_hide_overlay = true
     @real_estate_services = Service.real_estate
+    @real_estate_member = TeamMember.find_by_key(:yaron)
   end
 
-  def web_development
+  def full_stack
     assign_page_metadata(
       title: "Full-stack development",
       description: "Full-stack developer portfolio at gelbhart.dev: Rails, web stacks, projects, and tech notes."
     )
+    assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:full_stack], height: AppConstants::SERVICE_HERO_JARALLAX_HEIGHT, speed: 0.35)
+    @jarallax_extra_class = "jarallax--service-hero"
+    @jarallax_hide_overlay = true
+    @full_stack_member = TeamMember.find_by_key(:tomer)
+  end
+
+  def sustainability
+    assign_page_metadata(
+      title: "Sustainability Services",
+      description: "Sustainability consulting: life-cycle assessments, compliance readiness, circular business design, and practical transition roadmaps."
+    )
+    assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:sustainability], height: AppConstants::SERVICE_HERO_JARALLAX_HEIGHT, speed: 0.35)
+    @jarallax_extra_class = "jarallax--sustainability-hero"
+    @jarallax_hide_overlay = true
+    @sustainability_member = TeamMember.find_by_key(:effie)
   end
 
   def team

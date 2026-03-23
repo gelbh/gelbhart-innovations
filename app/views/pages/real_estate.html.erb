@@ -22,5 +22,16 @@
         </div>
       <% end %>
     </div>
+
+    <% if @real_estate_member.present? %>
+      <div class="pt-4 pt-md-5 mt-2 mt-md-3">
+        <%= render "shared/service_member_spotlight",
+                   member: @real_estate_member,
+                   heading_id: "real-estate-member-title",
+                   role_emphasis_class: "text-success-emphasis",
+                   primary_btn_class: "btn-success",
+                   i18n_scope: "pages.services.real_estate.spotlight" %>
+      </div>
+    <% end %>
   </section>
 </div>

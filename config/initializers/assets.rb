@@ -25,7 +25,11 @@ Rails.application.config.assets.precompile += %w[
   web-app-manifest-512x512.png
 
   covers/contacts_cover.jpg
+  covers/full_stack_hero.jpg
+  covers/pharmaceutical_hero.jpg
+  covers/real_estate_hero.jpg
   covers/services_cover.jpg
+  covers/sustainability_hero.jpg
   covers/team_cover.jpg
 
   team/bareket.png

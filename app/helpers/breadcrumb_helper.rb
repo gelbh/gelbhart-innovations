@@ -29,7 +29,8 @@ module BreadcrumbHelper
     case action_name
     when "pharmaceutical" then I18n.t("nav.pharmaceutical")
     when "real_estate" then I18n.t("nav.real_estate")
-    when "web_development" then I18n.t("nav.web_development")
+    when "full_stack" then I18n.t("nav.full_stack")
+    when "sustainability" then I18n.t("nav.sustainability")
     else action_name.titleize
     end
   end

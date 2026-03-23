@@ -23,5 +23,16 @@
         </div>
       <% end %>
     </div>
+
+    <% if @pharmaceutical_member.present? %>
+      <div class="pt-4 pt-md-5 mt-2 mt-md-3">
+        <%= render "shared/service_member_spotlight",
+                   member: @pharmaceutical_member,
+                   heading_id: "pharmaceutical-member-title",
+                   role_emphasis_class: "text-primary-emphasis",
+                   primary_btn_class: "btn-primary",
+                   i18n_scope: "pages.services.pharmaceutical.spotlight" %>
+      </div>
+    <% end %>
   </section>
 </div>

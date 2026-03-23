@@ -17,7 +17,16 @@ Rails.application.routes.draw do
     get "contact", to: "pages#contact"
     get "services/pharmaceutical", to: "pages#pharmaceutical", as: "pharmaceutical"
     get "services/real-estate", to: "pages#real_estate", as: "real_estate"
-    get "services/web-development", to: "pages#web_development", as: "web_development"
+    get "services/full-stack", to: "pages#full_stack", as: "full_stack"
+    get "services/sustainability", to: "pages#sustainability", as: "sustainability"
+    get "services/web-development",
+        to: redirect(status: 301) { |params, _request|
+          if params[:locale].present?
+            "/#{params[:locale]}/services/full-stack"
+          else
+            "/services/full-stack"
+          end
+        }
     get "tos", to: "documents#tos"
 
     match "/404", to: "errors#not_found", via: :all
@@ -26,7 +35,7 @@ Rails.application.routes.draw do
 
   get "pharmaceutical", to: redirect("/services/pharmaceutical", status: 301)
   get "real_estate", to: redirect("/services/real-estate", status: 301)
-  get "web_development", to: redirect("/services/web-development", status: 301)
+  get "full_stack", to: redirect("/services/full-stack", status: 301)
   get "contacts", to: redirect("/contact", status: 301)
 
   match "*unmatched", to: "errors#not_found", via: :all

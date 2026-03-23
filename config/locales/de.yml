@@ -22,7 +22,8 @@ de:
     all_services: Alle Dienstleistungen
     pharmaceutical: Pharmazeutische
     real_estate: Liegenschaften
-    web_development: Full-Stack
+    full_stack: Full-Stack
+    sustainability: Nachhaltigkeit
     team: Team
     contact: Kontakt
     menu: Menü
@@ -68,12 +69,11 @@ de:
         description: Grundstückssuche und -kauf, Projektabwicklung, Vermarktung und Finanzierung für Wohnen, Gastgewerbe und Gewerbe.
         page_title: Immobilien-Dienstleistungen
         back_button: Alle Dienstleistungen
-      web_development:
+      full_stack:
         title: Full-Stack-Entwicklung
         subtitle: Rails, Oberflächen, APIs und Betrieb
         description: Rails, Front-end, APIs, Cloud und ML; Portfolio und Beispiele auf gelbhart.dev.
         page_title: Full-Stack-Entwicklung
-        back_button: Alle Dienstleistungen
         embed_iframe_title: Tomer Gelbhart — Full-Stack-Entwickler-Portfolio auf gelbhart.dev
         embed_section_title_suffix: " — Portfolio von Tomer Gelbhart"
     team:
@@ -84,6 +84,7 @@ de:
       github_aria: Das GitHub-Profil von %{name} öffnen
       open_profile_aria: Profil für %{name} öffnen
       click_to_flip_tooltip: Klicken für vollständiges Profil
+      lead_service_link_aria: "%{service}-Services ansehen — %{name}"
     contact:
       title: Gelbhart Innovations
       address_label: Adresse

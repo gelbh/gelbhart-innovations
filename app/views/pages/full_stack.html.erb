@@ -1,0 +1,32 @@
+<%= render "shared/jarallax" %>
+
+<div class="bg-secondary">
+  <%= render "shared/breadcrumb" %>
+
+  <div class="container py-2 py-md-3 px-3 px-sm-4">
+    <h1 class="visually-hidden"><%= t("pages.services.full_stack.page_title") %></h1>
+    <h2 class="webdev-embed__section-title h5 text-body text-center mb-0" id="webdev-portfolio-embed-heading">
+      <%= link_to "gelbhart.dev", AppConstants::PORTFOLIO_SITE_URL, class: "webdev-embed__section-domain link-primary", target: "_blank", rel: "noopener noreferrer" %><%= t("pages.services.full_stack.embed_section_title_suffix") %>
+    </h2>
+  </div>
+
+  <div class="webdev-embed" role="region" aria-labelledby="webdev-portfolio-embed-heading">
+    <iframe class="webdev-embed__frame"
+            src="<%= AppConstants::PORTFOLIO_SITE_URL %>"
+            title="<%= t("pages.services.full_stack.embed_iframe_title") %>"
+            allow="fullscreen"
+            referrerpolicy="strict-origin-when-cross-origin"
+            loading="lazy"></iframe>
+  </div>
+
+  <% if @full_stack_member.present? %>
+    <div class="container py-4 py-lg-5 px-3 px-sm-4">
+      <%= render "shared/service_member_spotlight",
+                 member: @full_stack_member,
+                 heading_id: "full-stack-member-title",
+                 role_emphasis_class: "text-primary-emphasis",
+                 primary_btn_class: "btn-primary",
+                 i18n_scope: "pages.services.full_stack.spotlight" %>
+    </div>
+  <% end %>
+</div>

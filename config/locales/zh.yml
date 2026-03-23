@@ -22,7 +22,8 @@ zh:
     all_services: 所有服务
     pharmaceutical: 制药
     real_estate: 房地产
-    web_development: 全栈
+    full_stack: 全栈
+    sustainability: 可持续发展
     team: 团队
     contact: 联系我们
     menu: 菜单
@@ -68,12 +69,11 @@ zh:
         description: 土地搜寻与购买、项目交付、营销与融资，面向住宅、酒店和商业。
         page_title: 房地产服务
         back_button: 所有服务
-      web_development:
+      full_stack:
         title: 全栈开发
         subtitle: Rails、界面、API 与运维
         description: Rails、前端、API、云与机器学习；作品集与示例见 gelbhart.dev。
         page_title: 全栈开发
-        back_button: 所有服务
         embed_iframe_title: Tomer Gelbhart — gelbhart.dev 上的全栈开发者作品集
         embed_section_title_suffix: " — Tomer Gelbhart 的作品集"
     team:
@@ -84,6 +84,7 @@ zh:
       github_aria: 打开 %{name} 的 GitHub 简介
       open_profile_aria: 为 %{name} 打开配置文件
       click_to_flip_tooltip: 点击查看完整简介
+      lead_service_link_aria: 查看 %{service} 服务 — %{name}
     contact:
       title: Gelbhart Innovations
       address_label: 地址
