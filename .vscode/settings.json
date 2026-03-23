@@ -17,5 +17,19 @@
     "**/node_modules/**": true,
     "**/tmp/**": true,
     "**/log/**": true
+  },
+
+  // Exclude certain folders from file explorer
+  "files.exclude": {
+    "node_modules/**": true,
+    "tmp/**": true,
+    "log/**": true,
+    "public/assets/**": true,
+    "app/assets/builds/**": true,
+    "storage/**": true,
+    "tmp/storage/**": true,
+    ".bundle/**": true,
+    "vendor/bundle/**": true,
+    "coverage/**": true
   }
 }
