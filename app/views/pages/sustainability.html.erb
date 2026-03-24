@@ -53,37 +53,6 @@
       </div>
     </section>
 
-    <section class="sustainability-page__esg-block mb-5 pb-lg-2" aria-labelledby="sustainability-esg-title">
-      <h2 class="h4 fw-semibold mb-4 text-body" id="sustainability-esg-title"><%= t("pages.services.sustainability.loop.title") %></h2>
-      <div class="row g-4 g-lg-5 align-items-center">
-        <div class="col-lg-6 order-lg-2">
-          <div class="sustainability-page__venn-panel mx-auto">
-            <lottie-player
-              class="sustainability-page__venn-animation"
-              src="/json/sustainability-venn.json"
-              background="transparent"
-              speed="1"
-              loop
-              autoplay
-              mode="normal"
-              aria-label="<%= t("pages.services.sustainability.venn_aria") %>">
-            </lottie-player>
-          </div>
-        </div>
-        <div class="col-lg-6 order-lg-1">
-          <p class="text-body-secondary fs-6 mb-4"><%= t("pages.services.sustainability.loop.description") %></p>
-          <ul class="sustainability-page__simple-list list-unstyled mb-0">
-            <% %w[design use recover reuse].each do |loop_key| %>
-              <li class="sustainability-page__simple-list-item">
-                <span class="sustainability-page__simple-list-title"><%= t("pages.services.sustainability.loop.nodes.#{loop_key}.title") %></span>
-                <span class="text-body-secondary"> — <%= t("pages.services.sustainability.loop.nodes.#{loop_key}.description") %></span>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </section>
-
     <% if @sustainability_member.present? %>
       <%= render "shared/service_member_spotlight",
                  member: @sustainability_member,
