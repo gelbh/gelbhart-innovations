@@ -29,6 +29,7 @@
 
 # Security
 /config/master.key
+**/*.env
 
 # Dependencies
 node_modules
@@ -38,6 +39,3 @@ node_modules
 !/public/robots.txt
 /public/sitemap.xml
 /public/sitemap.xml.gz
-
-# Documentation
-/docs
