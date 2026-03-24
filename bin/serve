@@ -5,21 +5,70 @@
 
 set -euo pipefail
 
+PID_FILE="tmp/pids/server.pid"
+DEVELOPMENT_LOG_FILE="log/development.log"
+SERVER_LOG_FILE="log/server.log"
+DEFAULT_PORT=3000
+IDLE_CHECK_INTERVAL_SECONDS=15
+
 # Ensure we're in a Rails directory
 if [[ ! -f "bin/rails" ]]; then
   echo "Error: Not in a Rails application directory" >&2
   exit 1
 fi
 
+print_section() {
+  echo ""
+  echo "== $1 =="
+}
+
+load_env_file() {
+  local env_file="$1"
+  if [[ ! -f "$env_file" ]]; then
+    return 0
+  fi
+
+  while IFS= read -r line || [[ -n "$line" ]]; do
+    # Skip blank lines and full-line comments.
+    [[ "$line" =~ ^[[:space:]]*$ ]] && continue
+    [[ "$line" =~ ^[[:space:]]*# ]] && continue
+
+    # Support optional `export KEY=VALUE`.
+    line="${line#export }"
+
+    if [[ "$line" =~ ^[[:space:]]*([A-Za-z_][A-Za-z0-9_]*)[[:space:]]*=(.*)$ ]]; then
+      local key="${BASH_REMATCH[1]}"
+      local value="${BASH_REMATCH[2]}"
+
+      # Keep existing shell env values as highest priority.
+      if [[ -z "${!key+x}" ]]; then
+        # Trim leading/trailing whitespace around the value.
+        value="${value#"${value%%[![:space:]]*}"}"
+        value="${value%"${value##*[![:space:]]}"}"
+
+        # Strip matching single/double wrapping quotes.
+        if [[ "$value" =~ ^\".*\"$ ]] || [[ "$value" =~ ^\'.*\'$ ]]; then
+          value="${value:1:${#value}-2}"
+        fi
+
+        export "$key=$value"
+      fi
+    fi
+  done < "$env_file"
+}
+
+# Load root env files if present.
+load_env_file ".env"
+load_env_file ".env.local"
+
 # Kill any existing Rails servers
 kill_rails_servers() {
   local killed=false
-  local pid_file="tmp/pids/server.pid"
-  
+
   # If PID file exists, try to kill that process
-  if [[ -f "$pid_file" ]]; then
+  if [[ -f "$PID_FILE" ]]; then
     local pid
-    pid=$(cat "$pid_file" 2>/dev/null || echo "")
+    pid="$(<"$PID_FILE")"
     if [[ -n "$pid" ]] && kill -0 "$pid" 2>/dev/null; then
       echo "Killing Rails server (PID: $pid)"
       kill "$pid" 2>/dev/null || true
@@ -32,19 +81,19 @@ kill_rails_servers() {
       fi
     fi
     # Remove PID file regardless
-    rm -f "$pid_file"
+    rm -f "$PID_FILE"
   fi
-  
+
   # Kill processes matching Rails server patterns
   if pkill -f "bin/rails server" 2>/dev/null; then
     killed=true
   fi
-  
+
   # Also kill Puma processes (Rails default server)
   if pkill -f "puma.*rails" 2>/dev/null; then
     killed=true
   fi
-  
+
   if [[ "$killed" == true ]]; then
     echo "Cleaned up existing Rails server(s)"
     # Give processes a moment to clean up
@@ -52,64 +101,273 @@ kill_rails_servers() {
   fi
 }
 
-echo "== Stopping any existing Rails servers =="
+print_section "Stopping any existing Rails servers"
 kill_rails_servers
 
-echo ""
-echo "== Clobbering assets =="
-bin/rails assets:clobber
+run_assets_task_with_compact_output() {
+  local task_label="$1"
+  shift
 
-echo ""
-echo "== Precompiling assets =="
-bin/rails assets:precompile
+  "$@" 2>&1 | awk -v task_label="$task_label" '
+    function render_progress(count,    width, filled, i, bar) {
+      width = 24
+      filled = int(count / 100)
+      if (filled > width) {
+        filled = width
+      }
+
+      bar = ""
+      for (i = 1; i <= width; i++) {
+        bar = bar (i <= filled ? "#" : "-")
+      }
+
+      printf("\r[%s] %d files written", bar, count)
+      fflush()
+      progress_visible = 1
+    }
+
+    {
+      if (sass_block_lines_remaining > 0) {
+        deprecation_count += 1
+        if ($0 ~ /^[[:space:]]*$/) {
+          sass_block_lines_remaining = 0
+        } else {
+          sass_block_lines_remaining -= 1
+        }
+        next
+      }
+
+      if (match($0, /Writing (.+)$/, match_data)) {
+        write_count += 1
+
+        if (write_count % 25 == 0) {
+          render_progress(write_count)
+        }
+        next
+      }
+
+      if ($0 ~ /DEPRECATION WARNING/) {
+        deprecation_count += 1
+        sass_block_lines_remaining = 20
+        next
+      }
+
+      if ($0 ~ /^More info: https:\/\/sass-lang\.com\/d\//) {
+        deprecation_count += 1
+        sass_block_lines_remaining = 20
+        next
+      }
+
+      if ($0 ~ /^More info and automated migrator: https:\/\/sass-lang\.com\/d\//) {
+        deprecation_count += 1
+        sass_block_lines_remaining = 20
+        next
+      }
+
+      if ($0 ~ /^color\.channel\(\$color, "([a-z]+)", \$space: rgb\)$/) {
+        deprecation_count += 1
+        sass_block_lines_remaining = 20
+        next
+      }
+
+      if ($0 ~ /^[[:space:]]*╷$/ || $0 ~ /^[[:space:]]*╵$/) {
+        deprecation_count += 1
+        next
+      }
+
+      if ($0 ~ /^[[:space:]]*[0-9]+[[:space:]]*│/ || $0 ~ /^[[:space:]]*│/) {
+        deprecation_count += 1
+        next
+      }
+
+      if ($0 ~ /^[[:space:]]+bootstrap\/scss\/_functions\.scss[[:space:]]+[0-9]+:[0-9]+/ ||
+          $0 ~ /^[[:space:]]+bootstrap\/scss\/_variables\.scss[[:space:]]+[0-9]+:[0-9]+/ ||
+          $0 ~ /^[[:space:]]+app\/assets\/stylesheets\/application\.scss[[:space:]]+[0-9]+:[0-9]+/) {
+        deprecation_count += 1
+        next
+      }
+
+      if ($0 ~ /^[[:space:]]+[[:alnum:]_\/\.\-]+\.scss[[:space:]]+[0-9]+:[0-9]+/) {
+        deprecation_count += 1
+        next
+      }
+
+      if ($0 ~ /^WARNING: [0-9]+ repetitive deprecation warnings omitted\.$/) {
+        deprecation_count += 1
+        next
+      }
+
+      if ($0 ~ /^Run in verbose mode to see all warnings\.$/) {
+        deprecation_count += 1
+        next
+      }
+
+      if ($0 ~ /^[[:space:]]*$/) {
+        next
+      }
+
+      if (progress_visible == 1) {
+        printf("\n")
+        progress_visible = 0
+      }
+      print
+    }
+
+    END {
+      if (write_count == 0) {
+        exit
+      }
+
+      if (progress_visible == 1) {
+        printf("\n")
+      }
+
+      print ""
+      printf("%s write summary: %d files\n", task_label, write_count)
+      if (deprecation_count > 0) {
+        printf("%s deprecations suppressed: %d\n", task_label, deprecation_count)
+      }
+      print ""
+    }
+  '
+}
+
+print_section "Clobbering assets"
+run_assets_task_with_compact_output "Clobber" bin/rails assets:clobber
+
+print_section "Precompiling assets"
+run_assets_task_with_compact_output "Precompile" bin/rails assets:precompile
 
 # Parse arguments for background flag and port
 background=false
-port=3000
+port="$DEFAULT_PORT"
+idle_timeout_seconds="${SERVE_IDLE_TIMEOUT_SECONDS:-0}"
 rails_args=()
-prev_arg=""
 
-for arg in "$@"; do
-  case "$arg" in
-    -b|--background)
-      background=true
-      ;;
-    -p|--port)
-      prev_arg="$arg"
-      ;;
-    --port=*)
-      port="${arg#*=}"
-      rails_args+=("$arg")
-      ;;
-    *)
-      if [[ "$prev_arg" == "-p" ]] || [[ "$prev_arg" == "--port" ]]; then
-        port="$arg"
-        rails_args+=("$prev_arg" "$arg")
-        prev_arg=""
-      else
+parse_cli_args() {
+  local prev_arg=""
+  local arg
+
+  for arg in "$@"; do
+    case "$arg" in
+      -b|--background)
+        background=true
+        ;;
+      -p|--port)
+        prev_arg="$arg"
+        ;;
+      --port=*)
+        port="${arg#*=}"
         rails_args+=("$arg")
+        ;;
+      --idle-timeout)
+        prev_arg="$arg"
+        ;;
+      --idle-timeout=*)
+        idle_timeout_seconds="${arg#*=}"
+        ;;
+      *)
+        if [[ "$prev_arg" == "-p" || "$prev_arg" == "--port" ]]; then
+          port="$arg"
+          rails_args+=("$prev_arg" "$arg")
+          prev_arg=""
+        elif [[ "$prev_arg" == "--idle-timeout" ]]; then
+          idle_timeout_seconds="$arg"
+          prev_arg=""
+        else
+          rails_args+=("$arg")
+        fi
+        ;;
+    esac
+  done
+}
+
+parse_cli_args "$@"
+
+if ! [[ "$idle_timeout_seconds" =~ ^[0-9]+$ ]]; then
+  echo "Error: --idle-timeout (or SERVE_IDLE_TIMEOUT_SECONDS) must be a non-negative integer (seconds)." >&2
+  exit 1
+fi
+
+start_idle_monitor() {
+  local server_pid="$1"
+  local timeout_seconds="$2"
+
+  if (( timeout_seconds <= 0 )); then
+    return
+  fi
+
+  mkdir -p log
+  touch "$DEVELOPMENT_LOG_FILE"
+
+  (
+    while kill -0 "$server_pid" 2>/dev/null; do
+      sleep "$IDLE_CHECK_INTERVAL_SECONDS"
+
+      local now
+      local last_activity
+      local idle_for
+
+      now=$(date +%s)
+      last_activity=$(stat -c %Y "$DEVELOPMENT_LOG_FILE" 2>/dev/null || echo "$now")
+      idle_for=$((now - last_activity))
+
+      if (( idle_for >= timeout_seconds )); then
+        echo ""
+        echo "== Idle timeout reached (${timeout_seconds}s); stopping Rails server =="
+        kill -TERM "$server_pid" 2>/dev/null || true
+        sleep 5
+        if kill -0 "$server_pid" 2>/dev/null; then
+          kill -KILL "$server_pid" 2>/dev/null || true
+        fi
+        break
       fi
-      ;;
-  esac
-done
+    done
+  ) &
+  idle_monitor_pid=$!
+}
 
 echo ""
 if [[ "$background" == true ]]; then
   echo "== Starting Rails server in background =="
   mkdir -p log
-  bin/rails server "${rails_args[@]}" > log/server.log 2>&1 &
+  bin/rails server "${rails_args[@]}" > "$SERVER_LOG_FILE" 2>&1 &
   server_pid=$!
+  idle_monitor_pid=""
+  start_idle_monitor "$server_pid" "$idle_timeout_seconds"
   # Wait a moment for server to start
   sleep 2
   echo "Rails server started in background (PID: $server_pid)"
-  echo "Logs: tail -f log/server.log"
+  echo "Logs: tail -f $SERVER_LOG_FILE"
   echo "Stop server: kill $server_pid"
+  if (( idle_timeout_seconds > 0 )); then
+    echo "Idle auto-stop: enabled (${idle_timeout_seconds}s without activity)"
+  fi
   echo ""
   echo "Server running at: http://localhost:$port"
 else
   echo "== Starting Rails server =="
   echo "Server will be available at: http://localhost:$port"
+  if (( idle_timeout_seconds > 0 )); then
+    echo "Idle auto-stop: enabled (${idle_timeout_seconds}s without activity)"
+  fi
   echo ""
-  exec bin/rails server "${rails_args[@]}"
+  bin/rails server "${rails_args[@]}" &
+  server_pid=$!
+  idle_monitor_pid=""
+  start_idle_monitor "$server_pid" "$idle_timeout_seconds"
+
+  cleanup() {
+    if [[ -n "${idle_monitor_pid:-}" ]]; then
+      kill "$idle_monitor_pid" 2>/dev/null || true
+    fi
+    if kill -0 "$server_pid" 2>/dev/null; then
+      kill -TERM "$server_pid" 2>/dev/null || true
+      wait "$server_pid" 2>/dev/null || true
+    fi
+  }
+
+  trap cleanup INT TERM EXIT
+  wait "$server_pid"
 fi
 
