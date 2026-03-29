@@ -16,6 +16,24 @@ fr:
     author: Gelbhart Innovations
     tagline: Des solutions innovantes qui créent de la valeur
     description: Conseil et mise en œuvre pour l'industrie pharmaceutique, l'immobilier et les logiciels full-stack
+  seo:
+    pages:
+      home:
+        description: "Gelbhart Innovations : conseil et mise en œuvre dans les services pharmaceutiques, immobiliers et le développement full-stack."
+      services:
+        description: "Conseil et mise en œuvre dans les services pharmaceutiques, immobiliers et logiciels full-stack, de la première planification au lancement et au support ultérieur."
+      contact:
+        description: "Téléphone, e-mail et adresse de Gelbhart Innovations. Demandes bienvenues pour les projets pharmaceutiques, immobiliers et logiciels."
+      tos:
+        title: Conditions générales et politique de confidentialité
+        description: L'utilisation de ce site est soumise à l'ensemble des conditions du présent avis juridique et aux lois applicables.
+    errors:
+      not_found:
+        title: Erreur 404
+        description: La page recherchée a été déplacée, supprimée ou n'a peut-être jamais existé.
+      internal_server_error:
+        title: Erreur 500
+        description: Une erreur s'est produite. Actualisez la page ou contactez-nous si le problème persiste.
   nav:
     home: Accueil
     services: Services

@@ -3,23 +3,23 @@ class PagesController < ApplicationController
 
   def index
     assign_page_metadata(
-      title: "Home",
-      description: "Gelbhart Innovations: consulting and delivery in pharmaceutical services, real estate, and full-stack software."
+      title: t("nav.home"),
+      description: t("seo.pages.home.description")
     )
   end
 
   def services
     assign_page_metadata(
-      title: "Services",
-      description: "Consulting and delivery in pharmaceutical services, real estate, and full-stack software, from first plan through launch and later support."
+      title: t("nav.services"),
+      description: t("seo.pages.services.description")
     )
     assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:services])
   end
 
   def pharmaceutical
     assign_page_metadata(
-      title: "Pharmaceutical Services",
-      description: "Pharmaceutical consulting: due diligence, partnerships, portfolio choices, and product-level advice."
+      title: t("pages.services.pharmaceutical.page_title"),
+      description: t("pages.services.pharmaceutical.description")
     )
     assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:pharmaceutical], height: AppConstants::SERVICE_HERO_JARALLAX_HEIGHT, speed: 0.35)
     @jarallax_extra_class = "jarallax--service-hero"
@@ -30,8 +30,8 @@ class PagesController < ApplicationController
 
   def real_estate
     assign_page_metadata(
-      title: "Real Estate Services",
-      description: "Real estate consulting: land and projects, investment analysis, market research, and portfolio structure."
+      title: t("pages.services.real_estate.page_title"),
+      description: t("pages.services.real_estate.description")
     )
     assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:real_estate], height: AppConstants::SERVICE_HERO_JARALLAX_HEIGHT, speed: 0.35)
     @jarallax_extra_class = "jarallax--service-hero"
@@ -42,8 +42,8 @@ class PagesController < ApplicationController
 
   def full_stack
     assign_page_metadata(
-      title: "Full-stack development",
-      description: "Full-stack developer portfolio at gelbhart.dev: Rails, web stacks, projects, and tech notes."
+      title: t("pages.services.full_stack.page_title"),
+      description: t("pages.services.full_stack.description")
     )
     assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:full_stack], height: AppConstants::SERVICE_HERO_JARALLAX_HEIGHT, speed: 0.35)
     @jarallax_extra_class = "jarallax--service-hero"
@@ -53,8 +53,8 @@ class PagesController < ApplicationController
 
   def sustainability
     assign_page_metadata(
-      title: "Sustainability Services",
-      description: "Sustainability consulting: life-cycle assessments, compliance readiness, circular business design, and practical transition roadmaps."
+      title: t("pages.services.sustainability.page_title"),
+      description: t("pages.services.sustainability.description")
     )
     assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:sustainability], height: AppConstants::SERVICE_HERO_JARALLAX_HEIGHT, speed: 0.35)
     @jarallax_extra_class = "jarallax--sustainability-hero"
@@ -64,8 +64,8 @@ class PagesController < ApplicationController
 
   def team
     assign_page_metadata(
-      title: "Team",
-      description: "Leadership across pharmaceutical consulting, real estate, and full-stack software."
+      title: t("nav.team"),
+      description: t("pages.team.description")
     )
     assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:team])
     @members = TeamMember.all
@@ -73,8 +73,8 @@ class PagesController < ApplicationController
 
   def contact
     assign_page_metadata(
-      title: "Contact Us",
-      description: "Phone, email, and address for Gelbhart Innovations. Inquiries welcome on pharmaceutical, real estate, and software work."
+      title: t("nav.contact"),
+      description: t("seo.pages.contact.description")
     )
     assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:contact], height: 300, speed: 0.1)
 

@@ -27,15 +27,7 @@ module StructuredDataHelper
       "@context" => "https://schema.org",
       "@type" => "WebSite",
       "name" => ORGANIZATION_NAME,
-      "url" => root_url,
-      "potentialAction" => {
-        "@type" => "SearchAction",
-        "target" => {
-          "@type" => "EntryPoint",
-          "urlTemplate" => "#{root_url}?q={search_term_string}"
-        },
-        "query-input" => "required name=search_term_string"
-      }
+      "url" => root_url
     }
   end
 

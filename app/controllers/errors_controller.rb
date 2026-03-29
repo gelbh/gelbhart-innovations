@@ -13,8 +13,8 @@ class ErrorsController < ApplicationController
 
   def internal_server_error
     assign_page_metadata(
-      title: "Error 500",
-      description: "Oops, something went wrong. Try to refresh this page or feel free to contact us if the problem persists."
+      title: t("seo.errors.internal_server_error.title"),
+      description: t("seo.errors.internal_server_error.description")
     )
     @heading = "Error 500"
     @message = "Oops, something went wrong.<br>Try to refresh this page or feel free to contact us if the problem persists."
@@ -27,8 +27,8 @@ class ErrorsController < ApplicationController
     respond_to do |format|
       format.html do
         assign_page_metadata(
-          title: "Error 404",
-          description: "The page you are looking for was moved, removed or might have never existed."
+          title: t("seo.errors.not_found.title"),
+          description: t("seo.errors.not_found.description")
         )
         @heading = "Error 404"
         @message = "The page you are looking for was moved, removed or might have never existed."

@@ -22,6 +22,26 @@ en:
     tagline: "Innovative Solutions Creating Value"
     description: "Consulting and delivery for pharmaceutical, real estate, and full-stack software"
 
+  # Meta title/description for <head> (per-locale SEO)
+  seo:
+    pages:
+      home:
+        description: "Gelbhart Innovations: consulting and delivery in pharmaceutical services, real estate, and full-stack software."
+      services:
+        description: "Consulting and delivery in pharmaceutical services, real estate, and full-stack software, from first plan through launch and later support."
+      contact:
+        description: "Phone, email, and address for Gelbhart Innovations. Inquiries welcome on pharmaceutical, real estate, and software work."
+      tos:
+        title: "Terms & Conditions and Privacy Policy"
+        description: "Use of this website is subject to all of the terms and conditions of this legal notice and to all applicable laws."
+    errors:
+      not_found:
+        title: "Error 404"
+        description: "The page you are looking for was moved, removed or might have never existed."
+      internal_server_error:
+        title: "Error 500"
+        description: "Oops, something went wrong. Try to refresh this page or feel free to contact us if the problem persists."
+
   # Navigation
   nav:
     home: "Home"

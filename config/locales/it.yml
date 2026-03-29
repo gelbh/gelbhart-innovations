@@ -16,6 +16,24 @@ it:
     author: Gelbhart Innovations
     tagline: Soluzioni innovative che creano valore
     description: Consulenza e realizzazione per industria farmaceutica, immobiliare e software full-stack
+  seo:
+    pages:
+      home:
+        description: "Gelbhart Innovations: consulenza e realizzazione nei servizi farmaceutici, immobiliari e nello sviluppo full-stack."
+      services:
+        description: "Consulenza e realizzazione nei servizi farmaceutici, immobiliari e software full-stack, dalla prima pianificazione al lancio e al supporto successivo."
+      contact:
+        description: "Telefono, e-mail e indirizzo di Gelbhart Innovations. Accettiamo richieste su progetti farmaceutici, immobiliari e software."
+      tos:
+        title: Termini e condizioni e informativa sulla privacy
+        description: L'uso di questo sito è soggetto a tutti i termini e condizioni del presente avviso legale e alle leggi applicabili.
+    errors:
+      not_found:
+        title: Errore 404
+        description: La pagina cercata è stata spostata, rimossa o potrebbe non essere mai esistita.
+      internal_server_error:
+        title: Errore 500
+        description: Si è verificato un errore. Prova ad aggiornare la pagina o contattaci se il problema persiste.
   nav:
     home: Casa
     services: Servizi

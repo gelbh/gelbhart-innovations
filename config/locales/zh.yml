@@ -16,6 +16,24 @@ zh:
     author: Gelbhart Innovations
     tagline: 创造价值的创新解决方案
     description: 制药、房地产与全栈软件的咨询与交付
+  seo:
+    pages:
+      home:
+        description: "Gelbhart Innovations：在制药服务、房地产与全栈软件开发领域提供咨询与交付。"
+      services:
+        description: "在制药、房地产与全栈软件领域提供咨询与交付，涵盖从初期规划、上线到后续支持。"
+      contact:
+        description: "Gelbhart Innovations 的电话、电子邮件与地址。欢迎就制药、房地产与软件业务进行咨询。"
+      tos:
+        title: 条款与条件及隐私政策
+        description: 使用本网站须遵守本法律声明中的全部条款以及适用法律。
+    errors:
+      not_found:
+        title: 错误 404
+        description: 您查找的页面已被移动、删除或可能从未存在。
+      internal_server_error:
+        title: 错误 500
+        description: 出现问题。请刷新页面；若仍存在，请联系我们。
   nav:
     home: 首页
     services: 服务

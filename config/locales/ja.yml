@@ -16,6 +16,24 @@ ja:
     author: Gelbhart Innovations
     tagline: 価値を創造する革新的なソリューション
     description: 製薬・不動産・フルスタックソフトウェアのコンサルティングと実行支援
+  seo:
+    pages:
+      home:
+        description: "Gelbhart Innovations：製薬サービス、不動産、フルスタック開発におけるコンサルティングと実行支援。"
+      services:
+        description: "製薬、不動産、フルスタックソフトウェアのコンサルティングと実行支援。初期計画からリリース、その後のサポートまで。"
+      contact:
+        description: "Gelbhart Innovations の電話・メール・住所。製薬、不動産、ソフトウェアに関するお問い合わせを歓迎します。"
+      tos:
+        title: 利用規約およびプライバシーポリシー
+        description: 本サイトの利用は、本法的通知の条件および適用法のすべてに従います。
+    errors:
+      not_found:
+        title: エラー 404
+        description: お探しのページは移動または削除されたか、存在しなかった可能性があります。
+      internal_server_error:
+        title: エラー 500
+        description: 問題が発生しました。ページを更新するか、解決しない場合はお問い合わせください。
   nav:
     home: ホーム
     services: サービス

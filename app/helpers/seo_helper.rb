@@ -2,6 +2,20 @@ module SeoHelper
   DEFAULT_OG_IMAGE = "logo.png"
   DEFAULT_ROBOTS = "index, follow"
 
+  # Open Graph uses underscore locales (language_TERRITORY), aligned with site locales.
+  OG_LOCALE_BY_RAILS_LOCALE = {
+    en: "en_US",
+    es: "es_ES",
+    fr: "fr_FR",
+    de: "de_DE",
+    it: "it_IT",
+    pt: "pt_PT",
+    zh: "zh_CN",
+    ja: "ja_JP",
+    ko: "ko_KR",
+    ar: "ar_SA"
+  }.freeze
+
   def og_meta_tags(title: nil, description: nil, image: nil, url: nil, type: "website")
     {
       "og:title" => truncate_text(title || @title || ApplicationHelper::SITE_NAME, 60),
@@ -10,8 +24,19 @@ module SeoHelper
       "og:url" => url || request.original_url,
       "og:type" => type,
       "og:site_name" => ApplicationHelper::SITE_NAME,
-      "og:locale" => "en_US"
+      "og:locale" => og_locale_for(I18n.locale)
     }
+  end
+
+  # Additional og:locale:alternate meta tags (one per other supported locale).
+  def og_locale_alternate_properties
+    primary = og_locale_for(I18n.locale)
+    I18n.available_locales.filter_map do |loc|
+      code = og_locale_for(loc)
+      next if code == primary
+
+      ["og:locale:alternate", code]
+    end
   end
 
   def twitter_card_meta_tags(title: nil, description: nil, image: nil, card_type: "summary_large_image")
@@ -48,6 +73,10 @@ module SeoHelper
   end
 
   private
+
+  def og_locale_for(locale)
+    OG_LOCALE_BY_RAILS_LOCALE[locale.to_sym] || "en_US"
+  end
 
   def convert_to_absolute_url(path)
     return path if path.start_with?("http")

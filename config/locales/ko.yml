@@ -16,6 +16,24 @@ ko:
     author: Gelbhart Innovations
     tagline: 가치를 창출하는 혁신적인 솔루션
     description: 제약, 부동산 및 풀스택 소프트웨어 컨설팅과 실행
+  seo:
+    pages:
+      home:
+        description: "Gelbhart Innovations: 제약 서비스, 부동산, 풀스택 개발 분야의 컨설팅과 실행."
+      services:
+        description: "제약, 부동산, 풀스택 소프트웨어 분야의 컨설팅과 실행. 초기 계획부터 출시 및 이후 지원까지."
+      contact:
+        description: "Gelbhart Innovations의 전화, 이메일 및 주소. 제약, 부동산, 소프트웨어 관련 문의를 환영합니다."
+      tos:
+        title: 이용약관 및 개인정보 처리방침
+        description: 본 웹사이트 이용은 본 법적 고지의 모든 조건 및 적용 법률의 적용을 받습니다.
+    errors:
+      not_found:
+        title: 오류 404
+        description: 찾으시는 페이지가 이동되었거나 삭제되었거나 존재하지 않았을 수 있습니다.
+      internal_server_error:
+        title: 오류 500
+        description: 문제가 발생했습니다. 페이지를 새로 고침하거나 문제가 지속되면 문의해 주세요.
   nav:
     home: 홈
     services: 서비스

@@ -24,6 +24,9 @@
     <% og_meta_tags.each do |property, content| %>
       <%= property_meta_tag(property, content) %>
     <% end %>
+    <% og_locale_alternate_properties.each do |property, content| %>
+      <%= property_meta_tag(property, content) %>
+    <% end %>
 
     <% twitter_card_meta_tags.each do |name, content| %>
       <%= meta_tag(name, content) %>

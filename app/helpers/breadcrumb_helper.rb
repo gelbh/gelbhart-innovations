@@ -1,7 +1,7 @@
 module BreadcrumbHelper
   def breadcrumb_trail
     [].tap do |items|
-      items << { name: "Home", path: root_path }
+      items << { name: I18n.t("nav.home"), path: root_path }
 
       unless AppConstants::BREADCRUMB_EXCLUDED_CONTROLLERS.include?(controller.controller_name)
         items << { name: controller.controller_name.titleize }
