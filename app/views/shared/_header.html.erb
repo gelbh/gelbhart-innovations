@@ -1,7 +1,7 @@
 <header class="header navbar navbar-expand-lg navbar-sticky d-flex flex-column shadow-sm bg-light <%= 'position-absolute' if home_page? %>">
   <div class="container position-relative d-flex align-items-center justify-content-between py-2 py-sm-3">
     <div class="d-flex align-items-center">
-      <button type="button" class="navbar-toggler me-2 me-sm-3" data-bs-toggle="modal" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <button type="button" class="navbar-toggler me-2 me-sm-3" data-bs-toggle="modal" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="<%= t('nav.toggle_navigation') %>">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -13,8 +13,8 @@
               <%= link_to services_path, class: "nav-link pe-0 #{nav_active_class(services_path, pharmaceutical_path, real_estate_path, full_stack_path, sustainability_path)}", data: { turbo_preload: true }, style: "border-right: none;" do %>
                 <%= t('nav.services') %>
               <% end %>
-              <button class="btn dropdown-toggle dropdown-toggle-split ps-1 pe-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="border: none; background: none; color: inherit; font-size: 0.8rem; margin-left: -2px;">
-                <span class="visually-hidden">Toggle Dropdown</span>
+              <button class="btn dropdown-toggle dropdown-toggle-split ps-1 pe-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="<%= t('nav.toggle_services_dropdown') %>" style="border: none; background: none; color: inherit; font-size: 0.8rem; margin-left: -2px;">
+                <span class="visually-hidden"><%= t('nav.toggle_services_dropdown') %></span>
               </button>
             </div>
             <ul class="dropdown-menu">
@@ -57,7 +57,7 @@
     </div>
 
     <%= link_to root_path, class: "position-absolute position-sm-absolute start-50 translate-middle-x align-items-center navbar-brand px-2 px-sm-3 #{home_page? ? 'd-none' : 'd-flex'}", data: { turbo_preload: true } do %>
-      <%= image_tag "logo.png", alt: "Gelbhart Inn. Logo", width: 50, height: 50 %>
+      <%= image_tag "logo.png", alt: t('common.logo_alt'), width: 50, height: 50 %>
     <% end %>
 
     <div class="d-flex align-items-center ms-auto">
@@ -65,11 +65,13 @@
 
       <div class="form-check form-switch mode-switch ms-2 ms-sm-3" data-bs-toggle="mode">
         <label class="form-check-label d-none d-sm-inline" for="theme-mode">
-          <i class="bx bx-bulb" role="theme" aria-label="<%= t('common.light_mode') %>"><span class="d-none"><%= t('common.light_mode') %></span></i>
+          <i class="bx bx-bulb" aria-hidden="true"></i>
+          <span class="visually-hidden"><%= t('common.light_mode') %></span>
         </label>
-        <input name="theme-mode" type="checkbox" class="form-check-input" id="theme-mode">
+        <input name="theme-mode" type="checkbox" class="form-check-input" id="theme-mode" aria-label="<%= t('common.toggle_theme') %>">
         <label class="form-check-label d-none d-sm-inline" for="theme-mode">
-          <i class="bx bxs-bulb" role="theme" aria-label="<%= t('common.dark_mode') %>"><span class="d-none"><%= t('common.dark_mode') %></span></i>
+          <i class="bx bxs-bulb" aria-hidden="true"></i>
+          <span class="visually-hidden"><%= t('common.dark_mode') %></span>
         </label>
       </div>
     </div>
@@ -82,7 +84,7 @@
     <div class="modal-content mobile-menu-popup">
       <div class="modal-header border-bottom">
         <h5 class="modal-title d-flex align-items-center" id="mobileMenuLabel">
-          <%= image_tag "logo.png", alt: "Gelbhart Inn. Logo", width: 30, height: 30, class: "me-2" %>
+          <%= image_tag "logo.png", alt: t('common.logo_alt'), width: 30, height: 30, class: "me-2" %>
           <span><%= t('nav.menu') %></span>
         </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<%= t('common.close') %>"></button>

@@ -8,70 +8,29 @@
 }
 
 .hero-logo {
-  max-width: 180px !important;
+  max-width: 150px !important;
 
   @media (min-width: 576px) {
-    max-width: 220px !important;
+    max-width: 180px !important;
   }
   @media (min-width: 768px) {
-    max-width: 250px !important;
+    max-width: 200px !important;
   }
 }
 
 .hero-title {
-  font-size: clamp(1.5rem, calc(1.5rem + 1vw), 2.5rem);
-  line-height: 1.2;
+  font-size: clamp(2.25rem, 1.3rem + 4.2vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
   word-break: break-word;
-
-  @media (min-width: 576px) {
-    font-size: calc(1.75rem + 1.2vw);
-  }
-  @media (min-width: 768px) {
-    font-size: calc(2rem + 1.5vw);
-  }
-  @media (min-width: 1200px) {
-    font-size: 2.5rem;
-  }
-
-  .text-gradient-primary {
-    display: inline-block;
-    background: linear-gradient(
-      90deg,
-      var(--si-logo-red) 0%,
-      #a86881 12.5%,
-      var(--si-logo-blue) 25%,
-      #a86881 37.5%,
-      var(--si-logo-red) 50%,
-      #a86881 62.5%,
-      var(--si-logo-blue) 75%,
-      #a86881 87.5%,
-      var(--si-logo-red) 100%
-    );
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradient-shift 9s linear infinite;
-  }
-}
-
-@keyframes gradient-shift {
-  0% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
 }
 
 .hero-subtitle {
-  font-size: 0.95rem;
-  line-height: 1.4;
-
-  @media (min-width: 576px) {
-    font-size: 1.15rem;
-  }
-  @media (min-width: 768px) {
-    font-size: 1.25rem;
-  }
+  font-size: clamp(0.95rem, 0.85rem + 0.55vw, 1.35rem);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.16em;
+  text-wrap: balance;
 }

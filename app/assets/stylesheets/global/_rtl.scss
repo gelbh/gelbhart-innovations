@@ -278,16 +278,12 @@ html[dir="rtl"] {
     inset-inline-end: auto;
     inset-inline-start: 1rem;
   }
-  .service-icon {
-    inset-inline-start: auto;
-    inset-inline-end: 1.5rem;
-  }
-  .service-card {
-    text-align: start;
-  }
   .hero-title,
   .hero-subtitle {
     text-align: center;
+  }
+  .hero-subtitle {
+    letter-spacing: normal;
   }
   .footer {
     text-align: center;

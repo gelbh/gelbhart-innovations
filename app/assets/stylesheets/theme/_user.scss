@@ -3,11 +3,19 @@
 // Gelbhart Innovations brand-specific styles
 // ============================================================================
 
-// Brand Logo Colors
+// Brand Logo Colors & semantic tokens
 :root {
+  --si-brand-signal-rgb: 239, 70, 70;
+  --si-brand-brick-rgb: 223, 71, 50;
+  --si-brand-blue-rgb: 82, 159, 203;
+  --si-brand-teal-rgb: 0, 111, 151;
+
+  --si-brand-signal: #ef4646;
+  --si-brand-brick: #df4732;
+  --si-brand-teal: #006f97;
   --si-logo-blue: #529fcb;
   --si-logo-blue-rgb: 82, 159, 203;
-  --si-logo-red: #df4732;
+  --si-logo-red: var(--si-brand-brick);
   --si-logo-red-rgb: 223, 71, 50;
 }
 
@@ -18,4 +26,8 @@
 
 .text-logo-red {
   color: var(--si-logo-red) !important;
+}
+
+.text-brand-signal {
+  color: var(--si-brand-signal) !important;
 }
