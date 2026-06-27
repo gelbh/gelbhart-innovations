@@ -19,11 +19,11 @@ de:
   seo:
     pages:
       home:
-        description: "Gelbhart Innovations: Beratung und Umsetzung in Pharmadienstleistungen, Immobilien und Full-Stack-Entwicklung."
+        description: 'Gelbhart Innovations: Beratung und Umsetzung in Pharmadienstleistungen, Immobilien und Full-Stack-Entwicklung.'
       services:
-        description: "Beratung und Umsetzung in Pharmadienstleistungen, Immobilien und Full-Stack-Software von der ersten Planung über die Einführung bis zur anschließenden Betreuung."
+        description: Beratung und Umsetzung in Pharmadienstleistungen, Immobilien und Full-Stack-Software von der ersten Planung über die Einführung bis zur anschließenden Betreuung.
       contact:
-        description: "Telefon, E-Mail und Adresse von Gelbhart Innovations. Anfragen zu Pharma-, Immobilien- und Softwareprojekten sind willkommen."
+        description: Telefon, E-Mail und Adresse von Gelbhart Innovations. Anfragen zu Pharma-, Immobilien- und Softwareprojekten sind willkommen.
       tos:
         title: Allgemeine Geschäftsbedingungen und Datenschutz
         description: Die Nutzung dieser Website unterliegt allen Bedingungen dieses rechtlichen Hinweises und den geltenden Gesetzen.
@@ -45,6 +45,8 @@ de:
     team: Team
     contact: Kontakt
     menu: Menü
+    toggle_navigation: Navigation umschalten
+    toggle_services_dropdown: Servicemenü umschalten
   common:
     loading_map: Karte laden...
     open_in_google_maps: In Google Maps öffnen
@@ -59,6 +61,9 @@ de:
     light_mode: Licht-Modus
     dark_mode: Dunkler Modus
     language: Sprache
+    logo_alt: Gelbhart Innovations Logo
+    toggle_theme: Helles oder dunkles Design umschalten
+    external_website_aria: Gelbhart Innovations Website
   footer:
     copyright: Alle Rechte vorbehalten. Hergestellt von
     legal_notice: Bitte beachten Sie unser
@@ -81,12 +86,28 @@ de:
         description: Due Diligence, Partnerschaften, Portfolioentscheidungen und produktnahe Beratung für Pharmaunternehmen.
         page_title: Pharmazeutische Dienstleistungen
         back_button: Alle Dienstleistungen
+        intro: Evidenzbasierte Beratung über den gesamten pharmazeutischen Lebenszyklus — von der ersten Bewertung bis zum Launch. Jede Phase baut auf der vorherigen auf.
+        pipeline_kicker: Produktentwicklung
+        pipeline_title: Entwicklungszyklus
+        hero_image_alt: Pharmazeutisches Laborglas bei Tageslicht
+        spotlight:
+          label: Leitende Beraterin
       real_estate:
         title: Immobilien-Dienstleistungen
         subtitle: Entwicklung und Investment vom Grundstück bis zum Verkauf
         description: Grundstückssuche und -kauf, Projektabwicklung, Vermarktung und Finanzierung für Wohnen, Gastgewerbe und Gewerbe.
         page_title: Immobilien-Dienstleistungen
         back_button: Alle Dienstleistungen
+        intro: Immobilienentwicklung und -investition von der Grundstückssuche bis zur Finanzierung und Übergabe.
+        stages_kicker: Vom Grundstück zum Verkauf
+        stages_title: Entwicklungsprozess
+        hero_image_alt: Architekturentwicklung mit technischer Planüberlagerung
+        phases:
+          pre_development: Vorentwicklung
+          construction: Bau
+          post_development: Nach der Fertigstellung
+        spotlight:
+          label: Hauptentwickler
       full_stack:
         title: Full-Stack-Entwicklung
         subtitle: Rails, Oberflächen, APIs und Betrieb
@@ -103,6 +124,7 @@ de:
       open_profile_aria: Profil für %{name} öffnen
       click_to_flip_tooltip: Klicken für vollständiges Profil
       lead_service_link_aria: "%{service}-Services ansehen — %{name}"
+      image_alt: Porträt von %{name}, Leitung %{service}
     contact:
       title: Gelbhart Innovations
       address_label: Adresse
@@ -117,25 +139,25 @@ de:
     tos:
       title: Bedingungen und Konditionen
       items:
-        - Willkommen auf unserer Website. Indem Sie auf unsere Website zugreifen oder sie nutzen, erklären Sie sich mit diesen Nutzungsbedingungen und unserer Datenschutzrichtlinie einverstanden.
-        - Der Inhalt unserer Website ist Eigentum unseres Unternehmens und durch Gesetze zum Schutz des geistigen Eigentums geschützt. Sie dürfen die Inhalte nur für persönliche, nicht-kommerzielle Zwecke nutzen. Sie dürfen keinen Teil der Website ohne unsere vorherige schriftliche Zustimmung kopieren, verändern, verteilen oder wiederverwenden.
-        - Unsere Website kann Links zu Websites Dritter enthalten. Wir sind nicht verantwortlich für die Verfügbarkeit, den Inhalt oder die Datenschutzpraktiken dieser externen Websites.
-        - Wir stellen diese Website "wie sie ist" zur Verfügung, ohne jegliche Garantien oder Zusicherungen. Wir haften nicht für Schäden, die durch die Nutzung der Website entstehen, einschließlich, aber nicht beschränkt auf direkte, indirekte, zufällige oder Folgeschäden.
-        - In keinem Fall haftet unser Unternehmen für Ansprüche, Verluste oder Schäden, die den Betrag von 100 $ übersteigen und mit der Nutzung dieser Website in Zusammenhang stehen.
-        - Diese Bedingungen unterliegen den Gesetzen der Schweiz. Alle Streitigkeiten werden vor den Gerichten in der Schweiz ausgetragen.
+      - Willkommen auf unserer Website. Indem Sie auf unsere Website zugreifen oder sie nutzen, erklären Sie sich mit diesen Nutzungsbedingungen und unserer Datenschutzrichtlinie einverstanden.
+      - Der Inhalt unserer Website ist Eigentum unseres Unternehmens und durch Gesetze zum Schutz des geistigen Eigentums geschützt. Sie dürfen die Inhalte nur für persönliche, nicht-kommerzielle Zwecke nutzen. Sie dürfen keinen Teil der Website ohne unsere vorherige schriftliche Zustimmung kopieren, verändern, verteilen oder wiederverwenden.
+      - Unsere Website kann Links zu Websites Dritter enthalten. Wir sind nicht verantwortlich für die Verfügbarkeit, den Inhalt oder die Datenschutzpraktiken dieser externen Websites.
+      - Wir stellen diese Website "wie sie ist" zur Verfügung, ohne jegliche Garantien oder Zusicherungen. Wir haften nicht für Schäden, die durch die Nutzung der Website entstehen, einschließlich, aber nicht beschränkt auf direkte, indirekte, zufällige oder Folgeschäden.
+      - In keinem Fall haftet unser Unternehmen für Ansprüche, Verluste oder Schäden, die den Betrag von 100 $ übersteigen und mit der Nutzung dieser Website in Zusammenhang stehen.
+      - Diese Bedingungen unterliegen den Gesetzen der Schweiz. Alle Streitigkeiten werden vor den Gerichten in der Schweiz ausgetragen.
     privacy:
       title: Datenschutzbestimmungen
       items:
-        - Wir können von Ihnen bereitgestellte Informationen sowie Informationen, die automatisch von unserem Webserver und Browser erfasst werden, sammeln. Wir verwenden diese Informationen, um unsere Dienste bereitzustellen und zu verbessern.
-        - Wir können Ihre Daten an Drittanbieter weitergeben, die uns beim Betrieb der Website und bei der Betreuung unserer Kunden unterstützen. Wir verkaufen oder vermieten Ihre persönlichen Daten nicht an Dritte.
-        - Wir setzen Cookies und ähnliche Mittel ein, wo nötig, um Einstellungen zu speichern und die Nutzung der Website zu messen. Das können Sie in den Browsereinstellungen anpassen.
-        - Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Wenn Sie die Website nach einer Änderung weiterhin nutzen, erklären Sie sich mit der neuen Richtlinie einverstanden.
+      - Wir können von Ihnen bereitgestellte Informationen sowie Informationen, die automatisch von unserem Webserver und Browser erfasst werden, sammeln. Wir verwenden diese Informationen, um unsere Dienste bereitzustellen und zu verbessern.
+      - Wir können Ihre Daten an Drittanbieter weitergeben, die uns beim Betrieb der Website und bei der Betreuung unserer Kunden unterstützen. Wir verkaufen oder vermieten Ihre persönlichen Daten nicht an Dritte.
+      - Wir setzen Cookies und ähnliche Mittel ein, wo nötig, um Einstellungen zu speichern und die Nutzung der Website zu messen. Das können Sie in den Browsereinstellungen anpassen.
+      - Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Wenn Sie die Website nach einer Änderung weiterhin nutzen, erklären Sie sich mit der neuen Richtlinie einverstanden.
   errors:
     not_found:
-      heading: "404"
+      heading: '404'
       message: Die Seite, die Sie suchen, existiert nicht oder wurde verschoben.
     internal_server_error:
-      heading: "500"
+      heading: '500'
       message: Auf unserer Seite ist etwas schief gelaufen. Bitte versuchen Sie es später noch einmal.
   team_members:
     bareket:
@@ -180,30 +202,30 @@ de:
       land_identification:
         title: Identifizierung von Land und Gelegenheiten
         description:
-          - Grundstückssuche für Wohnen, Gastgewerbe, Freizeit und Gewerbe.
-          - Markt- und Machbarkeitsstudien.
-          - Zonierung, Infrastruktur und langfristiger Wert.
+        - Grundstückssuche für Wohnen, Gastgewerbe, Freizeit und Gewerbe.
+        - Markt- und Machbarkeitsstudien.
+        - Zonierung, Infrastruktur und langfristiger Wert.
       acquisition:
         title: Akquisition und Strukturierung
         description:
-          - Leitung von Grundstückskaufverhandlungen und Due-Diligence-Prüfungen.
-          - Koordinierung mit Rechtsberatern, Banken und Finanzinstituten.
-          - Strukturierung von Investitionen und Eigentumsmodellen im Einklang mit den Zielen von Kunden und Investoren.
+        - Leitung von Grundstückskaufverhandlungen und Due-Diligence-Prüfungen.
+        - Koordinierung mit Rechtsberatern, Banken und Finanzinstituten.
+        - Strukturierung von Investitionen und Eigentumsmodellen im Einklang mit den Zielen von Kunden und Investoren.
       development:
         title: Design- und Entwicklungsmanagement
         description:
-          - Gesamtplanung, Architektur und Design.
-          - Koordination von Beratern, Auftragnehmern und Projektteams.
-          - Qualität, Umweltziele und Terminplan.
+        - Gesamtplanung, Architektur und Design.
+        - Koordination von Beratern, Auftragnehmern und Projektteams.
+        - Qualität, Umweltziele und Terminplan.
       marketing:
         title: Marketing und Vertrieb
         description:
-          - Marke und Go-to-Market-Planung.
-          - Kampagnen für Investoren und Endkäufer.
-          - Vertriebswege und Kundenbeziehungen zur besseren Vermarktung.
+        - Marke und Go-to-Market-Planung.
+        - Kampagnen für Investoren und Endkäufer.
+        - Vertriebswege und Kundenbeziehungen zur besseren Vermarktung.
       financial:
         title: Finanzielle und regulatorische Koordinierung
         description:
-          - Banken, Buchhalter und Wirtschaftsprüfer für Finanzierung und Compliance.
-          - Finanzberichterstattung, Investor Relations und behördliche Freigaben.
-          - Nachverfolgung von der ersten Idee bis zur Übergabe.
+        - Banken, Buchhalter und Wirtschaftsprüfer für Finanzierung und Compliance.
+        - Finanzberichterstattung, Investor Relations und behördliche Freigaben.
+        - Nachverfolgung von der ersten Idee bis zur Übergabe.

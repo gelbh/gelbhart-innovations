@@ -19,11 +19,11 @@ pt:
   seo:
     pages:
       home:
-        description: "Gelbhart Innovations: consultoria e execução em serviços farmacêuticos, imobiliários e desenvolvimento full-stack."
+        description: 'Gelbhart Innovations: consultoria e execução em serviços farmacêuticos, imobiliários e desenvolvimento full-stack.'
       services:
-        description: "Consultoria e execução em serviços farmacêuticos, imobiliários e software full-stack, desde o primeiro plano até ao lançamento e suporte posterior."
+        description: Consultoria e execução em serviços farmacêuticos, imobiliários e software full-stack, desde o primeiro plano até ao lançamento e suporte posterior.
       contact:
-        description: "Telefone, e-mail e morada da Gelbhart Innovations. Aceitamos pedidos sobre projetos farmacêuticos, imobiliários e de software."
+        description: Telefone, e-mail e morada da Gelbhart Innovations. Aceitamos pedidos sobre projetos farmacêuticos, imobiliários e de software.
       tos:
         title: Termos e condições e política de privacidade
         description: A utilização deste site está sujeita a todos os termos e condições deste aviso legal e às leis aplicáveis.
@@ -45,6 +45,8 @@ pt:
     team: Equipa
     contact: Contactar-nos
     menu: Menu
+    toggle_navigation: Alternar navegação
+    toggle_services_dropdown: Alternar menu de serviços
   common:
     loading_map: Carregar mapa...
     open_in_google_maps: Abrir no Google Maps
@@ -59,6 +61,9 @@ pt:
     light_mode: Modo de luz
     dark_mode: Modo escuro
     language: Idioma
+    logo_alt: Logótipo Gelbhart Innovations
+    toggle_theme: Alternar tema claro ou escuro
+    external_website_aria: Site Gelbhart Innovations
   footer:
     copyright: Todos os direitos reservados. Fabricado por
     legal_notice: Consulte a nossa
@@ -81,12 +86,28 @@ pt:
         description: Due diligence, parcerias, decisões de portfólio e aconselhamento sobre produtos para empresas farmacêuticas.
         page_title: Serviços farmacêuticos
         back_button: Todos os serviços
+        intro: Consultoria baseada em evidências ao longo do ciclo de vida farmacêutico — da primeira avaliação ao lançamento. Cada fase assenta na anterior.
+        pipeline_kicker: Desenvolvimento de produto
+        pipeline_title: Ciclo de desenvolvimento
+        hero_image_alt: Vidros de laboratório farmacêutico à luz do dia
+        spotlight:
+          label: Consultora principal
       real_estate:
         title: Serviços imobiliários
         subtitle: Promoção e investimento do terreno à venda
         description: Procura e compra de terrenos, execução de projectos, comercialização e finanças para habitação, hotelaria e comércio.
         page_title: Serviços imobiliários
         back_button: Todos os serviços
+        intro: Desenvolvimento e investimento imobiliário de ponta a ponta — da identificação de terrenos à finança e entrega.
+        stages_kicker: Do terreno à venda
+        stages_title: Processo de desenvolvimento
+        hero_image_alt: Desenvolvimento arquitetónico com sobreposição técnica de planta
+        phases:
+          pre_development: Pré-desenvolvimento
+          construction: Construção
+          post_development: Pós-desenvolvimento
+        spotlight:
+          label: Desenvolvedor principal
       full_stack:
         title: Desenvolvimento full-stack
         subtitle: Rails, interfaces, APIs e infraestrutura
@@ -103,6 +124,7 @@ pt:
       open_profile_aria: Abrir perfil para %{name}
       click_to_flip_tooltip: Clique para ver o perfil completo
       lead_service_link_aria: Ver serviços de %{service} — %{name}
+      image_alt: Retrato de %{name}, líder de %{service}
     contact:
       title: Gelbhart Innovations
       address_label: Endereço
@@ -117,25 +139,25 @@ pt:
     tos:
       title: Termos e condições
       items:
-        - Bem-vindo ao nosso website. Ao aceder ou utilizar o nosso website, concorda em ficar vinculado a estes termos de serviço e à nossa política de privacidade.
-        - O conteúdo do nosso website é propriedade da nossa empresa e está protegido por leis de propriedade intelectual. Só pode utilizar o conteúdo para fins pessoais e não comerciais. Não pode copiar, modificar, distribuir ou reutilizar qualquer parte do website sem o nosso consentimento prévio por escrito.
-        - O nosso website pode conter ligações para websites de terceiros. Não somos responsáveis pela disponibilidade, conteúdo ou práticas de privacidade desses sites externos.
-        - Fornecemos este website "tal como está", sem quaisquer garantias ou declarações. Não somos responsáveis por quaisquer danos decorrentes do uso do website, incluindo, mas não limitado a, danos diretos, indiretos, incidentais ou consequenciais.
-        - Em nenhum caso a nossa empresa será responsável por reivindicações, perdas ou danos superiores a 100 dólares relacionados com o seu uso deste website.
-        - Estes termos serão regidos pelas leis da Suíça. Quaisquer litígios serão resolvidos nos tribunais da Suíça.
+      - Bem-vindo ao nosso website. Ao aceder ou utilizar o nosso website, concorda em ficar vinculado a estes termos de serviço e à nossa política de privacidade.
+      - O conteúdo do nosso website é propriedade da nossa empresa e está protegido por leis de propriedade intelectual. Só pode utilizar o conteúdo para fins pessoais e não comerciais. Não pode copiar, modificar, distribuir ou reutilizar qualquer parte do website sem o nosso consentimento prévio por escrito.
+      - O nosso website pode conter ligações para websites de terceiros. Não somos responsáveis pela disponibilidade, conteúdo ou práticas de privacidade desses sites externos.
+      - Fornecemos este website "tal como está", sem quaisquer garantias ou declarações. Não somos responsáveis por quaisquer danos decorrentes do uso do website, incluindo, mas não limitado a, danos diretos, indiretos, incidentais ou consequenciais.
+      - Em nenhum caso a nossa empresa será responsável por reivindicações, perdas ou danos superiores a 100 dólares relacionados com o seu uso deste website.
+      - Estes termos serão regidos pelas leis da Suíça. Quaisquer litígios serão resolvidos nos tribunais da Suíça.
     privacy:
       title: Política de privacidade
       items:
-        - Podemos recolher informações fornecidas por si, bem como informações recolhidas automaticamente pelo nosso servidor web e navegador. Utilizamos estas informações para fornecer e melhorar os nossos serviços.
-        - Podemos partilhar as suas informações com prestadores de serviços terceiros que nos ajudam a operar o website e a servir os nossos clientes. Não vendemos nem alugamos as suas informações pessoais a terceiros.
-        - Utilizamos cookies e ferramentas semelhantes quando necessário para memorizar preferências e perceber como o site é usado. Pode ajustar isto nas definições do navegador.
-        - Podemos atualizar esta política de privacidade de vez em quando. O seu uso continuado do website após quaisquer alterações constitui a sua aceitação da nova política.
+      - Podemos recolher informações fornecidas por si, bem como informações recolhidas automaticamente pelo nosso servidor web e navegador. Utilizamos estas informações para fornecer e melhorar os nossos serviços.
+      - Podemos partilhar as suas informações com prestadores de serviços terceiros que nos ajudam a operar o website e a servir os nossos clientes. Não vendemos nem alugamos as suas informações pessoais a terceiros.
+      - Utilizamos cookies e ferramentas semelhantes quando necessário para memorizar preferências e perceber como o site é usado. Pode ajustar isto nas definições do navegador.
+      - Podemos atualizar esta política de privacidade de vez em quando. O seu uso continuado do website após quaisquer alterações constitui a sua aceitação da nova política.
   errors:
     not_found:
-      heading: "404"
+      heading: '404'
       message: A página que procura não existe ou foi movida.
     internal_server_error:
-      heading: "500"
+      heading: '500'
       message: Algo correu mal do nosso lado. Por favor, tente novamente mais tarde.
   team_members:
     bareket:
@@ -180,30 +202,30 @@ pt:
       land_identification:
         title: Identificação de terrenos e oportunidades
         description:
-          - Procura de terrenos para habitação, hotelaria, lazer e comércio.
-          - Estudos de mercado e de viabilidade.
-          - Zonagem, infraestruturas e valor a longo prazo.
+        - Procura de terrenos para habitação, hotelaria, lazer e comércio.
+        - Estudos de mercado e de viabilidade.
+        - Zonagem, infraestruturas e valor a longo prazo.
       acquisition:
         title: Aquisição e estruturação
         description:
-          - Gestão de negociações de compra de terrenos e due diligence.
-          - Coordenação com assessores jurídicos, bancos e instituições financeiras.
-          - Estruturação de investimentos e modelos de propriedade alinhados com os objectivos do cliente e do investidor.
+        - Gestão de negociações de compra de terrenos e due diligence.
+        - Coordenação com assessores jurídicos, bancos e instituições financeiras.
+        - Estruturação de investimentos e modelos de propriedade alinhados com os objectivos do cliente e do investidor.
       development:
         title: Gestão da conceção e do desenvolvimento
         description:
-          - Planeamento mestre, arquitetura e design.
-          - Coordenação de consultores, empreiteiros e equipas de projeto.
-          - Qualidade, metas ambientais e calendário.
+        - Planeamento mestre, arquitetura e design.
+        - Coordenação de consultores, empreiteiros e equipas de projeto.
+        - Qualidade, metas ambientais e calendário.
       marketing:
         title: Execução de marketing e vendas
         description:
-          - Marca e plano go-to-market.
-          - Campanhas para investidores e compradores finais.
-          - Canais de venda e relações com clientes para melhorar a absorção.
+        - Marca e plano go-to-market.
+        - Campanhas para investidores e compradores finais.
+        - Canais de venda e relações com clientes para melhorar a absorção.
       financial:
         title: Coordenação financeira e regulamentar
         description:
-          - Bancos, contabilistas e auditores para financiamento e conformidade.
-          - Relatórios financeiros, relações com investidores e aprovações.
-          - Acompanhamento da ideia inicial à entrega do projeto.
+        - Bancos, contabilistas e auditores para financiamento e conformidade.
+        - Relatórios financeiros, relações com investidores e aprovações.
+        - Acompanhamento da ideia inicial à entrega do projeto.

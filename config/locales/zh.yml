@@ -19,11 +19,11 @@ zh:
   seo:
     pages:
       home:
-        description: "Gelbhart Innovations：在制药服务、房地产与全栈软件开发领域提供咨询与交付。"
+        description: Gelbhart Innovations：在制药服务、房地产与全栈软件开发领域提供咨询与交付。
       services:
-        description: "在制药、房地产与全栈软件领域提供咨询与交付，涵盖从初期规划、上线到后续支持。"
+        description: 在制药、房地产与全栈软件领域提供咨询与交付，涵盖从初期规划、上线到后续支持。
       contact:
-        description: "Gelbhart Innovations 的电话、电子邮件与地址。欢迎就制药、房地产与软件业务进行咨询。"
+        description: Gelbhart Innovations 的电话、电子邮件与地址。欢迎就制药、房地产与软件业务进行咨询。
       tos:
         title: 条款与条件及隐私政策
         description: 使用本网站须遵守本法律声明中的全部条款以及适用法律。
@@ -45,6 +45,8 @@ zh:
     team: 团队
     contact: 联系我们
     menu: 菜单
+    toggle_navigation: 切换导航
+    toggle_services_dropdown: 切换服务菜单
   common:
     loading_map: 正在加载地图...
     open_in_google_maps: 在谷歌地图中打开
@@ -59,6 +61,9 @@ zh:
     light_mode: 灯光模式
     dark_mode: 黑暗模式
     language: 语言
+    logo_alt: Gelbhart Innovations 标志
+    toggle_theme: 切换浅色或深色主题
+    external_website_aria: Gelbhart Innovations 网站
   footer:
     copyright: 保留所有权利。制作
     legal_notice: 请参阅我们的
@@ -81,12 +86,28 @@ zh:
         description: 尽职调查、合作、组合决策与面向制药公司的产品层面建议。
         page_title: 制药服务
         back_button: 所有服务
+        intro: 贯穿制药全生命周期的循证咨询——从首次评估到上市。每一阶段都建立在前一阶段之上。
+        pipeline_kicker: 产品开发
+        pipeline_title: 开发生命周期
+        hero_image_alt: 日光下的制药实验室玻璃器皿
+        spotlight:
+          label: 首席顾问
       real_estate:
         title: 房地产服务
         subtitle: 从土地到销售的开发与投资
         description: 土地搜寻与购买、项目交付、营销与融资，面向住宅、酒店和商业。
         page_title: 房地产服务
         back_button: 所有服务
+        intro: 端到端房地产开发与投资——从土地识别到融资与交付。
+        stages_kicker: 从土地到销售
+        stages_title: 开发流程
+        hero_image_alt: 带有技术蓝图叠加的建筑开发项目
+        phases:
+          pre_development: 前期开发
+          construction: 建设
+          post_development: 后期开发
+        spotlight:
+          label: 首席开发商
       full_stack:
         title: 全栈开发
         subtitle: Rails、界面、API 与运维
@@ -103,6 +124,7 @@ zh:
       open_profile_aria: 为 %{name} 打开配置文件
       click_to_flip_tooltip: 点击查看完整简介
       lead_service_link_aria: 查看 %{service} 服务 — %{name}
+      image_alt: "%{name} 肖像，%{service} 负责人"
     contact:
       title: Gelbhart Innovations
       address_label: 地址
@@ -117,25 +139,25 @@ zh:
     tos:
       title: 条款和条件
       items:
-        - 欢迎访问我们的网站。通过访问或使用我们的网站，您同意受这些服务条款和我们的隐私政策约束。
-        - 我们网站上的内容是我们公司的财产，受知识产权法保护。您只能将内容用于个人、非商业目的。未经我们事先书面同意，您不得复制、修改、分发或重复使用网站的任何部分。
-        - 我们的网站可能包含指向第三方网站的链接。我们对这些外部网站的可用性、内容或隐私做法不承担责任。
-        - 我们按"现状"提供本网站，不提供任何保证或声明。我们对您使用网站所产生的任何损害不承担责任，包括但不限于直接、间接、偶然或后果性损害。
-        - 在任何情况下，我们公司对与您使用本网站相关的超过 100 美元的索赔、损失或损害概不负责。
-        - 这些条款应受瑞士法律管辖。任何争议将在瑞士法院解决。
+      - 欢迎访问我们的网站。通过访问或使用我们的网站，您同意受这些服务条款和我们的隐私政策约束。
+      - 我们网站上的内容是我们公司的财产，受知识产权法保护。您只能将内容用于个人、非商业目的。未经我们事先书面同意，您不得复制、修改、分发或重复使用网站的任何部分。
+      - 我们的网站可能包含指向第三方网站的链接。我们对这些外部网站的可用性、内容或隐私做法不承担责任。
+      - 我们按"现状"提供本网站，不提供任何保证或声明。我们对您使用网站所产生的任何损害不承担责任，包括但不限于直接、间接、偶然或后果性损害。
+      - 在任何情况下，我们公司对与您使用本网站相关的超过 100 美元的索赔、损失或损害概不负责。
+      - 这些条款应受瑞士法律管辖。任何争议将在瑞士法院解决。
     privacy:
       title: 隐私政策
       items:
-        - 我们可能会收集您提供的信息，以及由我们的网络服务器和浏览器自动收集的信息。我们使用这些信息来提供和改进我们的服务。
-        - 我们可能会与协助我们运营网站和为客户服务的第三方服务提供商共享您的信息。我们不会向任何第三方出售或出租您的个人信息。
-        - 我们在需要时使用 cookie 和类似技术记录偏好并了解网站使用情况。您可在浏览器设置中调整。
-        - 我们可能会不时更新此隐私政策。您在更改后继续使用网站即表示您接受新政策。
+      - 我们可能会收集您提供的信息，以及由我们的网络服务器和浏览器自动收集的信息。我们使用这些信息来提供和改进我们的服务。
+      - 我们可能会与协助我们运营网站和为客户服务的第三方服务提供商共享您的信息。我们不会向任何第三方出售或出租您的个人信息。
+      - 我们在需要时使用 cookie 和类似技术记录偏好并了解网站使用情况。您可在浏览器设置中调整。
+      - 我们可能会不时更新此隐私政策。您在更改后继续使用网站即表示您接受新政策。
   errors:
     not_found:
-      heading: "404"
+      heading: '404'
       message: 您要查找的页面不存在或已被移动。
     internal_server_error:
-      heading: "500"
+      heading: '500'
       message: 我们这边出了问题。请稍后再试。
   team_members:
     bareket:
@@ -180,30 +202,30 @@ zh:
       land_identification:
         title: 土地和机会识别
         description:
-          - 为住宅、酒店、休闲与商业寻找土地。
-          - 市场研究与可行性研究。
-          - 分区、基础设施与长期价值。
+        - 为住宅、酒店、休闲与商业寻找土地。
+        - 市场研究与可行性研究。
+        - 分区、基础设施与长期价值。
       acquisition:
         title: 收购和构建
         description:
-          - 管理土地购买谈判和尽职调查。
-          - 与法律顾问、银行和金融机构协调。
-          - 构建与客户和投资者目标一致的投资和所有权模式。
+        - 管理土地购买谈判和尽职调查。
+        - 与法律顾问、银行和金融机构协调。
+        - 构建与客户和投资者目标一致的投资和所有权模式。
       development:
         title: 设计和开发管理
         description:
-          - 总体规划、建筑与设计。
-          - 协调顾问、承包商与项目团队。
-          - 质量、环境目标与进度。
+        - 总体规划、建筑与设计。
+        - 协调顾问、承包商与项目团队。
+        - 质量、环境目标与进度。
       marketing:
         title: 营销和销售执行
         description:
-          - 品牌与上市策略。
-          - 面向投资者与终端买家的推广。
-          - 销售渠道与客户关系，以提高去化。
+        - 品牌与上市策略。
+        - 面向投资者与终端买家的推广。
+        - 销售渠道与客户关系，以提高去化。
       financial:
         title: 财务和监管协调
         description:
-          - 银行、会计师与审计师，对接融资与合规。
-          - 财务报告、投资者关系与监管审批。
-          - 从最初设想跟进到项目移交。
+        - 银行、会计师与审计师，对接融资与合规。
+        - 财务报告、投资者关系与监管审批。
+        - 从最初设想跟进到项目移交。

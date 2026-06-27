@@ -19,11 +19,11 @@ fr:
   seo:
     pages:
       home:
-        description: "Gelbhart Innovations : conseil et mise en œuvre dans les services pharmaceutiques, immobiliers et le développement full-stack."
+        description: 'Gelbhart Innovations : conseil et mise en œuvre dans les services pharmaceutiques, immobiliers et le développement full-stack.'
       services:
-        description: "Conseil et mise en œuvre dans les services pharmaceutiques, immobiliers et logiciels full-stack, de la première planification au lancement et au support ultérieur."
+        description: Conseil et mise en œuvre dans les services pharmaceutiques, immobiliers et logiciels full-stack, de la première planification au lancement et au support ultérieur.
       contact:
-        description: "Téléphone, e-mail et adresse de Gelbhart Innovations. Demandes bienvenues pour les projets pharmaceutiques, immobiliers et logiciels."
+        description: Téléphone, e-mail et adresse de Gelbhart Innovations. Demandes bienvenues pour les projets pharmaceutiques, immobiliers et logiciels.
       tos:
         title: Conditions générales et politique de confidentialité
         description: L'utilisation de ce site est soumise à l'ensemble des conditions du présent avis juridique et aux lois applicables.
@@ -45,6 +45,8 @@ fr:
     team: L'équipe
     contact: Nous contacter
     menu: Menu
+    toggle_navigation: Basculer la navigation
+    toggle_services_dropdown: Basculer le menu Services
   common:
     loading_map: Chargement de la carte...
     open_in_google_maps: Ouvrir dans Google Maps
@@ -59,6 +61,9 @@ fr:
     light_mode: Mode lumineux
     dark_mode: Mode sombre
     language: Langue
+    logo_alt: Logo Gelbhart Innovations
+    toggle_theme: Basculer le thème clair ou sombre
+    external_website_aria: Site web Gelbhart Innovations
   footer:
     copyright: Tous droits réservés. Réalisé par
     legal_notice: Veuillez consulter notre
@@ -81,12 +86,28 @@ fr:
         description: Due diligence, partenariats, arbitrages de portefeuille et conseil produit pour les entreprises pharmaceutiques.
         page_title: Services pharmaceutiques
         back_button: Tous les services
+        intro: Conseil fondé sur les preuves tout au long du cycle de vie pharmaceutique — de la première évaluation au lancement. Chaque étape s'appuie sur la précédente.
+        pipeline_kicker: Développement produit
+        pipeline_title: Cycle de développement
+        hero_image_alt: Verrerie de laboratoire pharmaceutique en lumière du jour
+        spotlight:
+          label: Conseillère principale
       real_estate:
         title: Services immobiliers
         subtitle: Promotion et investissement du terrain à la vente
         description: Recherche et achat de terrains, réalisation de projets, commercialisation et financement pour le logement, l'hôtellerie et le commerce.
         page_title: Services immobiliers
         back_button: Tous les services
+        intro: Promotion et investissement immobiliers de bout en bout — de l'identification des terrains à la finance et à la livraison.
+        stages_kicker: Du terrain à la vente
+        stages_title: Processus de développement
+        hero_image_alt: Projet architectural avec superposition technique de plan
+        phases:
+          pre_development: Pré-développement
+          construction: Construction
+          post_development: Post-développement
+        spotlight:
+          label: Promoteur principal
       full_stack:
         title: Développement full-stack
         subtitle: Rails, interfaces, APIs et hébergement
@@ -103,6 +124,7 @@ fr:
       open_profile_aria: Profil ouvert pour %{name}
       click_to_flip_tooltip: Cliquez pour voir le profil complet
       lead_service_link_aria: Voir les services %{service} — %{name}
+      image_alt: Portrait de %{name}, responsable %{service}
     contact:
       title: Gelbhart Innovations
       address_label: Adresse
@@ -117,25 +139,25 @@ fr:
     tos:
       title: Conditions générales d'utilisation
       items:
-        - Bienvenue sur notre site web. En accédant à notre site web ou en l'utilisant, vous acceptez d'être lié par les présentes conditions de service et par notre politique de confidentialité.
-        - Le contenu de notre site web est la propriété de notre société et est protégé par les lois sur la propriété intellectuelle. Vous ne pouvez utiliser le contenu qu'à des fins personnelles et non commerciales. Vous ne pouvez pas copier, modifier, distribuer ou réutiliser toute partie du site web sans notre accord écrit préalable.
-        - Notre site web peut contenir des liens vers des sites web de tiers. Nous ne sommes pas responsables de la disponibilité, du contenu ou des pratiques de confidentialité de ces sites externes.
-        - Nous fournissons ce site web "en l'état", sans aucune garantie ni représentation. Nous ne sommes pas responsables des dommages résultant de l'utilisation du site web, y compris, mais sans s'y limiter, les dommages directs, indirects, accessoires ou consécutifs.
-        - En aucun cas, notre société ne sera responsable des réclamations, pertes ou dommages dépassant 100 dollars liés à votre utilisation de ce site web.
-        - Les présentes conditions sont régies par le droit suisse. Tout litige sera résolu par les tribunaux suisses.
+      - Bienvenue sur notre site web. En accédant à notre site web ou en l'utilisant, vous acceptez d'être lié par les présentes conditions de service et par notre politique de confidentialité.
+      - Le contenu de notre site web est la propriété de notre société et est protégé par les lois sur la propriété intellectuelle. Vous ne pouvez utiliser le contenu qu'à des fins personnelles et non commerciales. Vous ne pouvez pas copier, modifier, distribuer ou réutiliser toute partie du site web sans notre accord écrit préalable.
+      - Notre site web peut contenir des liens vers des sites web de tiers. Nous ne sommes pas responsables de la disponibilité, du contenu ou des pratiques de confidentialité de ces sites externes.
+      - Nous fournissons ce site web "en l'état", sans aucune garantie ni représentation. Nous ne sommes pas responsables des dommages résultant de l'utilisation du site web, y compris, mais sans s'y limiter, les dommages directs, indirects, accessoires ou consécutifs.
+      - En aucun cas, notre société ne sera responsable des réclamations, pertes ou dommages dépassant 100 dollars liés à votre utilisation de ce site web.
+      - Les présentes conditions sont régies par le droit suisse. Tout litige sera résolu par les tribunaux suisses.
     privacy:
       title: Politique de confidentialité
       items:
-        - Nous pouvons recueillir des informations que vous nous fournissez, ainsi que des informations collectées automatiquement par notre serveur web et notre navigateur. Nous utilisons ces informations pour fournir et améliorer nos services.
-        - Nous pouvons partager vos informations avec des prestataires de services tiers qui nous aident à exploiter le site web et à servir nos clients. Nous ne vendons ni ne louons vos informations personnelles à des tiers.
-        - Nous utilisons des cookies et outils similaires lorsque nécessaire pour mémoriser des préférences et mesurer l'utilisation du site. Vous pouvez régler cela dans les paramètres de votre navigateur.
-        - Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. En continuant à utiliser le site web après toute modification, vous acceptez la nouvelle politique.
+      - Nous pouvons recueillir des informations que vous nous fournissez, ainsi que des informations collectées automatiquement par notre serveur web et notre navigateur. Nous utilisons ces informations pour fournir et améliorer nos services.
+      - Nous pouvons partager vos informations avec des prestataires de services tiers qui nous aident à exploiter le site web et à servir nos clients. Nous ne vendons ni ne louons vos informations personnelles à des tiers.
+      - Nous utilisons des cookies et outils similaires lorsque nécessaire pour mémoriser des préférences et mesurer l'utilisation du site. Vous pouvez régler cela dans les paramètres de votre navigateur.
+      - Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. En continuant à utiliser le site web après toute modification, vous acceptez la nouvelle politique.
   errors:
     not_found:
-      heading: "404"
+      heading: '404'
       message: La page que vous recherchez n'existe pas ou a été déplacée.
     internal_server_error:
-      heading: "500"
+      heading: '500'
       message: Un problème s'est produit de notre côté. Veuillez réessayer plus tard.
   team_members:
     bareket:
@@ -180,30 +202,30 @@ fr:
       land_identification:
         title: Identification des terres et des opportunités
         description:
-          - Recherche de terrains pour logement, hôtellerie, loisirs et commerce.
-          - Études de marché et de faisabilité.
-          - Zonage, infrastructure et valeur à long terme.
+        - Recherche de terrains pour logement, hôtellerie, loisirs et commerce.
+        - Études de marché et de faisabilité.
+        - Zonage, infrastructure et valeur à long terme.
       acquisition:
         title: Acquisition et structuration
         description:
-          - Gestion des négociations d'achat de terrains et de la diligence raisonnable.
-          - Assurer la coordination avec les conseillers juridiques, les banques et les institutions financières.
-          - Structurer les investissements et les modèles de propriété en fonction des objectifs des clients et des investisseurs.
+        - Gestion des négociations d'achat de terrains et de la diligence raisonnable.
+        - Assurer la coordination avec les conseillers juridiques, les banques et les institutions financières.
+        - Structurer les investissements et les modèles de propriété en fonction des objectifs des clients et des investisseurs.
       development:
         title: Gestion de la conception et du développement
         description:
-          - Plan directeur, architecture et conception.
-          - Coordination des consultants, entreprises et équipes de projet.
-          - Qualité, objectifs environnementaux et calendrier.
+        - Plan directeur, architecture et conception.
+        - Coordination des consultants, entreprises et équipes de projet.
+        - Qualité, objectifs environnementaux et calendrier.
       marketing:
         title: Marketing et exécution des ventes
         description:
-          - Marque et stratégie go-to-market.
-          - Campagnes visant investisseurs et acheteurs finaux.
-          - Canaux de vente et relations clients pour améliorer le taux de commercialisation.
+        - Marque et stratégie go-to-market.
+        - Campagnes visant investisseurs et acheteurs finaux.
+        - Canaux de vente et relations clients pour améliorer le taux de commercialisation.
       financial:
         title: Coordination financière et réglementaire
         description:
-          - Banques, comptables et auditeurs pour financement et conformité.
-          - Rapports financiers, relations investisseurs et autorisations.
-          - Suivi du concept initial jusqu'à la remise du projet.
+        - Banques, comptables et auditeurs pour financement et conformité.
+        - Rapports financiers, relations investisseurs et autorisations.
+        - Suivi du concept initial jusqu'à la remise du projet.

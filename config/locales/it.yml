@@ -19,11 +19,11 @@ it:
   seo:
     pages:
       home:
-        description: "Gelbhart Innovations: consulenza e realizzazione nei servizi farmaceutici, immobiliari e nello sviluppo full-stack."
+        description: 'Gelbhart Innovations: consulenza e realizzazione nei servizi farmaceutici, immobiliari e nello sviluppo full-stack.'
       services:
-        description: "Consulenza e realizzazione nei servizi farmaceutici, immobiliari e software full-stack, dalla prima pianificazione al lancio e al supporto successivo."
+        description: Consulenza e realizzazione nei servizi farmaceutici, immobiliari e software full-stack, dalla prima pianificazione al lancio e al supporto successivo.
       contact:
-        description: "Telefono, e-mail e indirizzo di Gelbhart Innovations. Accettiamo richieste su progetti farmaceutici, immobiliari e software."
+        description: Telefono, e-mail e indirizzo di Gelbhart Innovations. Accettiamo richieste su progetti farmaceutici, immobiliari e software.
       tos:
         title: Termini e condizioni e informativa sulla privacy
         description: L'uso di questo sito è soggetto a tutti i termini e condizioni del presente avviso legale e alle leggi applicabili.
@@ -45,6 +45,8 @@ it:
     team: Squadra
     contact: Contatto
     menu: Menu
+    toggle_navigation: Attiva/disattiva navigazione
+    toggle_services_dropdown: Attiva/disattiva menu servizi
   common:
     loading_map: Caricamento mappa...
     open_in_google_maps: Aprire in Google Maps
@@ -59,6 +61,9 @@ it:
     light_mode: Modalità luce
     dark_mode: Modalità scura
     language: Lingua
+    logo_alt: Logo Gelbhart Innovations
+    toggle_theme: Passa al tema chiaro o scuro
+    external_website_aria: Sito web Gelbhart Innovations
   footer:
     copyright: Tutti i diritti riservati. Realizzato da
     legal_notice: Si prega di consultare il nostro
@@ -81,12 +86,28 @@ it:
         description: Due diligence, partnership, scelte di portafoglio e consulenza sui prodotti per le aziende farmaceutiche.
         page_title: Servizi farmaceutici
         back_button: Tutti i servizi
+        intro: Consulenza basata sull'evidenza lungo l'intero ciclo di vita farmaceutico — dalla prima valutazione al lancio. Ogni fase si appoggia alla precedente.
+        pipeline_kicker: Sviluppo del prodotto
+        pipeline_title: Ciclo di sviluppo
+        hero_image_alt: Vetreria da laboratorio farmaceutico in luce diurna
+        spotlight:
+          label: Consulente principale
       real_estate:
         title: Servizi immobiliari
         subtitle: Sviluppo e investimento dal terreno alla vendita
         description: Ricerca e acquisto del suolo, realizzazione dei progetti, commercializzazione e finanza per residenza, alberghi e commercio.
         page_title: Servizi immobiliari
         back_button: Tutti i servizi
+        intro: Sviluppo e investimento immobiliare end-to-end — dall'individuazione del terreno alla finanza e alla consegna.
+        stages_kicker: Dal terreno alla vendita
+        stages_title: Processo di sviluppo
+        hero_image_alt: Sviluppo architettonico con sovrapposizione tecnica di progetto
+        phases:
+          pre_development: Pre-sviluppo
+          construction: Costruzione
+          post_development: Post-sviluppo
+        spotlight:
+          label: Sviluppatore principale
       full_stack:
         title: Sviluppo full-stack
         subtitle: Rails, interfacce, API e operatività
@@ -103,6 +124,7 @@ it:
       open_profile_aria: Profilo aperto per %{name}
       click_to_flip_tooltip: Clic per vedere il profilo completo
       lead_service_link_aria: Vedi servizi %{service} — %{name}
+      image_alt: Ritratto di %{name}, responsabile %{service}
     contact:
       title: Gelbhart Innovations
       address_label: Indirizzo
@@ -117,25 +139,25 @@ it:
     tos:
       title: Termini e condizioni
       items:
-        - Benvenuti nel nostro sito web. Accedendo o utilizzando il nostro sito web, l'utente accetta di essere vincolato dai presenti termini di servizio e dalla nostra politica sulla privacy.
-        - Il contenuto del nostro sito web è di proprietà della nostra azienda ed è protetto dalle leggi sulla proprietà intellettuale. È possibile utilizzare il contenuto solo per scopi personali e non commerciali. Non è consentito copiare, modificare, distribuire o riutilizzare alcuna parte del sito web senza il nostro previo consenso scritto.
-        - Il nostro sito web può contenere link a siti web di terzi. Non siamo responsabili della disponibilità, del contenuto o delle pratiche sulla privacy di tali siti esterni.
-        - Forniamo questo sito web "così com'è" senza alcuna garanzia o dichiarazione. Non siamo responsabili di alcun danno derivante dall'uso del sito web da parte dell'utente, compresi, ma non solo, i danni diretti, indiretti, incidentali o consequenziali.
-        - In nessun caso la nostra azienda sarà responsabile di eventuali reclami, perdite o danni superiori a 100 dollari relativi all'uso di questo sito web.
-        - I presenti termini sono disciplinati dalle leggi della Svizzera. Eventuali controversie saranno risolte dai tribunali della Svizzera.
+      - Benvenuti nel nostro sito web. Accedendo o utilizzando il nostro sito web, l'utente accetta di essere vincolato dai presenti termini di servizio e dalla nostra politica sulla privacy.
+      - Il contenuto del nostro sito web è di proprietà della nostra azienda ed è protetto dalle leggi sulla proprietà intellettuale. È possibile utilizzare il contenuto solo per scopi personali e non commerciali. Non è consentito copiare, modificare, distribuire o riutilizzare alcuna parte del sito web senza il nostro previo consenso scritto.
+      - Il nostro sito web può contenere link a siti web di terzi. Non siamo responsabili della disponibilità, del contenuto o delle pratiche sulla privacy di tali siti esterni.
+      - Forniamo questo sito web "così com'è" senza alcuna garanzia o dichiarazione. Non siamo responsabili di alcun danno derivante dall'uso del sito web da parte dell'utente, compresi, ma non solo, i danni diretti, indiretti, incidentali o consequenziali.
+      - In nessun caso la nostra azienda sarà responsabile di eventuali reclami, perdite o danni superiori a 100 dollari relativi all'uso di questo sito web.
+      - I presenti termini sono disciplinati dalle leggi della Svizzera. Eventuali controversie saranno risolte dai tribunali della Svizzera.
     privacy:
       title: Informativa sulla privacy
       items:
-        - Possiamo raccogliere informazioni fornite dall'utente, nonché informazioni raccolte automaticamente dal nostro server web e dal browser. Utilizziamo queste informazioni per fornire e migliorare i nostri servizi.
-        - Possiamo condividere le vostre informazioni con fornitori di servizi terzi che ci assistono nella gestione del sito web e nel servizio ai nostri clienti. Non vendiamo né affittiamo le vostre informazioni personali a terzi.
-        - Utilizziamo cookie e strumenti simili dove serve per ricordare le preferenze e capire come si usa il sito. Potete regolare tutto nelle impostazioni del browser.
-        - La presente informativa sulla privacy può essere aggiornata periodicamente. L'uso continuato del sito web dopo eventuali modifiche costituisce l'accettazione della nuova politica.
+      - Possiamo raccogliere informazioni fornite dall'utente, nonché informazioni raccolte automaticamente dal nostro server web e dal browser. Utilizziamo queste informazioni per fornire e migliorare i nostri servizi.
+      - Possiamo condividere le vostre informazioni con fornitori di servizi terzi che ci assistono nella gestione del sito web e nel servizio ai nostri clienti. Non vendiamo né affittiamo le vostre informazioni personali a terzi.
+      - Utilizziamo cookie e strumenti simili dove serve per ricordare le preferenze e capire come si usa il sito. Potete regolare tutto nelle impostazioni del browser.
+      - La presente informativa sulla privacy può essere aggiornata periodicamente. L'uso continuato del sito web dopo eventuali modifiche costituisce l'accettazione della nuova politica.
   errors:
     not_found:
-      heading: "404"
+      heading: '404'
       message: La pagina che state cercando non esiste o è stata spostata.
     internal_server_error:
-      heading: "500"
+      heading: '500'
       message: Qualcosa non è andato per il verso giusto. Si prega di riprovare più tardi.
   team_members:
     bareket:
@@ -180,30 +202,30 @@ it:
       land_identification:
         title: Identificazione dei terreni e delle opportunità
         description:
-          - Ricerca di terreni per residenza, ospitalità, tempo libero e commercio.
-          - Ricerche di mercato e studi di fattibilità.
-          - Zonizzazione, infrastrutture e valore a lungo termine.
+        - Ricerca di terreni per residenza, ospitalità, tempo libero e commercio.
+        - Ricerche di mercato e studi di fattibilità.
+        - Zonizzazione, infrastrutture e valore a lungo termine.
       acquisition:
         title: Acquisizione e strutturazione
         description:
-          - Gestione delle trattative per l'acquisto di terreni e della due diligence.
-          - Coordinamento con consulenti legali, banche e istituzioni finanziarie.
-          - Strutturare investimenti e modelli di proprietà allineati agli obiettivi dei clienti e degli investitori.
+        - Gestione delle trattative per l'acquisto di terreni e della due diligence.
+        - Coordinamento con consulenti legali, banche e istituzioni finanziarie.
+        - Strutturare investimenti e modelli di proprietà allineati agli obiettivi dei clienti e degli investitori.
       development:
         title: Gestione della progettazione e dello sviluppo
         description:
-          - Master plan, architettura e progettazione.
-          - Coordinamento di consulenti, appaltatori e team di progetto.
-          - Qualità, obiettivi ambientali e rispetto dei tempi.
+        - Master plan, architettura e progettazione.
+        - Coordinamento di consulenti, appaltatori e team di progetto.
+        - Qualità, obiettivi ambientali e rispetto dei tempi.
       marketing:
         title: Esecuzione di marketing e vendite
         description:
-          - Marchio e piano go-to-market.
-          - Campagne per investitori e acquirenti finali.
-          - Reti di vendita e rapporti con i clienti per migliorare il tasso di vendita.
+        - Marchio e piano go-to-market.
+        - Campagne per investitori e acquirenti finali.
+        - Reti di vendita e rapporti con i clienti per migliorare il tasso di vendita.
       financial:
         title: Coordinamento finanziario e normativo
         description:
-          - Banche, contabili e revisori per finanziamenti e conformità.
-          - Reporting finanziario, relazioni con gli investitori e autorizzazioni.
-          - Controllo dalla prima idea al completamento del progetto.
+        - Banche, contabili e revisori per finanziamenti e conformità.
+        - Reporting finanziario, relazioni con gli investitori e autorizzazioni.
+        - Controllo dalla prima idea al completamento del progetto.

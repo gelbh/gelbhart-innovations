@@ -19,11 +19,11 @@ es:
   seo:
     pages:
       home:
-        description: "Gelbhart Innovations: consultoría y ejecución en servicios farmacéuticos, inmobiliarios y desarrollo full-stack."
+        description: 'Gelbhart Innovations: consultoría y ejecución en servicios farmacéuticos, inmobiliarios y desarrollo full-stack.'
       services:
-        description: "Consultoría y ejecución en servicios farmacéuticos, inmobiliarios y software full-stack, desde la planificación inicial hasta el lanzamiento y el soporte posterior."
+        description: Consultoría y ejecución en servicios farmacéuticos, inmobiliarios y software full-stack, desde la planificación inicial hasta el lanzamiento y el soporte posterior.
       contact:
-        description: "Teléfono, correo electrónico y dirección de Gelbhart Innovations. Aceptamos consultas sobre proyectos farmacéuticos, inmobiliarios y de software."
+        description: Teléfono, correo electrónico y dirección de Gelbhart Innovations. Aceptamos consultas sobre proyectos farmacéuticos, inmobiliarios y de software.
       tos:
         title: Términos y condiciones y política de privacidad
         description: El uso de este sitio web está sujeto a todos los términos y condiciones de este aviso legal y a las leyes aplicables.
@@ -45,6 +45,8 @@ es:
     team: Equipo
     contact: Póngase en contacto con nosotros
     menu: Menú
+    toggle_navigation: Alternar navegación
+    toggle_services_dropdown: Alternar menú de servicios
   common:
     loading_map: Cargando mapa...
     open_in_google_maps: Abrir en Google Maps
@@ -59,6 +61,9 @@ es:
     light_mode: Modo Claro
     dark_mode: Modo oscuro
     language: Idioma
+    logo_alt: Logotipo de Gelbhart Innovations
+    toggle_theme: Alternar tema claro u oscuro
+    external_website_aria: Sitio web de Gelbhart Innovations
   footer:
     copyright: Todos los derechos reservados. Fabricado por
     legal_notice: Consulte nuestro
@@ -75,7 +80,7 @@ es:
     services:
       title: Servicios
       intro_lead: Planificación, ejecución y soporte continuo en sectores regulados y en la web.
-      member_label: "Responsable: %{name}"
+      member_label: 'Responsable: %{name}'
       pharmaceutical:
         title: Servicios farmacéuticos
         subtitle: Consultoría para la industria farmacéutica
@@ -86,6 +91,11 @@ es:
           title: Consultora del sector farmacéutico
           cta_primary: Hablar de servicios farmacéuticos
           cta_secondary: Conectar en LinkedIn
+          label: Asesora principal
+        intro: Asesoramiento basado en evidencia a lo largo del ciclo de vida farmacéutico, desde la primera evaluación hasta el lanzamiento. Cada etapa se apoya en la anterior.
+        pipeline_kicker: Desarrollo de producto
+        pipeline_title: Ciclo de desarrollo
+        hero_image_alt: Cristalería de laboratorio farmacéutico a la luz del día
       real_estate:
         title: Servicios inmobiliarios
         subtitle: Promoción e inversión desde el terreno hasta la venta
@@ -96,6 +106,15 @@ es:
           title: Liderazgo inmobiliario y de proyectos
           cta_primary: Hablar de servicios inmobiliarios
           cta_secondary: Conectar en LinkedIn
+          label: Desarrollador principal
+        intro: Desarrollo e inversión inmobiliaria de extremo a extremo, desde la identificación de terrenos hasta la financiación y la entrega.
+        stages_kicker: Del terreno a la venta
+        stages_title: Proceso de desarrollo
+        hero_image_alt: Desarrollo arquitectónico con superposición técnica de plano
+        phases:
+          pre_development: Pre-desarrollo
+          construction: Construcción
+          post_development: Post-desarrollo
       full_stack:
         title: Desarrollo full-stack
         subtitle: Rails, interfaces, APIs e infraestructura
@@ -117,7 +136,7 @@ es:
         deep_dive_title: Detalle de servicios
         roadmap_title: Cómo trabajamos juntos
         back_button: Todos los servicios
-        step_label: "Paso %{number}"
+        step_label: Paso %{number}
         metrics:
           impact_readiness:
             label: Preparación normativa
@@ -140,45 +159,45 @@ es:
             title: Evaluaciones de ciclo de vida
             outcome: Comprenda y reporte el impacto total de productos y operaciones.
             tags:
-              - LCA
-              - Reporte de impacto
-              - Soporte de decisión
+            - LCA
+            - Reporte de impacto
+            - Soporte de decisión
             prompt: "¿Quiere conocer o reportar el impacto real de su producto y de sus operaciones?"
             details: Con herramientas y metodologías de inventario actuales, evaluamos y revisamos el impacto de ciclo de vida en toda su oferta. El resultado son datos accionables para priorizar transiciones sostenibles y orientar su estrategia futura.
           business_model:
             title: Revisión y evaluación del modelo de negocio
             outcome: Transicione su modelo hacia operaciones más resilientes y centradas en sostenibilidad.
             tags:
-              - Modelo de negocio
-              - Estrategia de transición
-              - Plan 2030+
+            - Modelo de negocio
+            - Estrategia de transición
+            - Plan 2030+
             prompt: "¿Quiere entender y avanzar hacia operaciones y diseño más sostenibles?"
             details: Evaluamos prácticas sostenibles actuales y emergentes, y ayudamos a transformar parte o todo su modelo operativo. Así su organización se mantiene competitiva en una industria cada vez más centrada en sostenibilidad hacia 2030 y más allá.
           compliance:
             title: Cumplimiento en sostenibilidad
             outcome: Aumente su preparación frente a normativa climática en toda la operación.
             tags:
-              - Cumplimiento
-              - Reducción de riesgo
-              - Revisión de preparación
+            - Cumplimiento
+            - Reducción de riesgo
+            - Revisión de preparación
             prompt: "¿Quiere estar preparado e incluso adelantarse a la legislación climática que puede afectar a su empresa?"
             details: Realizamos una revisión de cumplimiento paso a paso en toda su operación y evaluamos su preparación para futuras regulaciones climáticas. Obtendrá un plan claro para aumentar transparencia, reducir exposición y adelantarse a la competencia.
           circular_design:
             title: Diseño y desarrollo de negocio circular
             outcome: Rediseñe operaciones y modelo de negocio para capturar valor circular.
             tags:
-              - Circularidad
-              - Diseño operativo
-              - Retención de valor
+            - Circularidad
+            - Diseño operativo
+            - Retención de valor
             prompt: "¿Quiere convertirse en una empresa circular o saber qué puede aportar el diseño circular a su firma?"
             details: Identificamos oportunidades estratégicas de rediseño para avanzar hacia operaciones circulares. El enfoque es tomar decisiones realistas y de alto impacto para posicionar su empresa en la siguiente etapa del sector.
           low_cost:
             title: Transformaciones de bajo coste y bajo impacto operativo
             outcome: Inicie mejoras sostenibles eficientes sin cambios iniciales pesados.
             tags:
-              - Baja inversión
-              - Quick wins
-              - Productividad del equipo
+            - Baja inversión
+            - Quick wins
+            - Productividad del equipo
             prompt: "¿Aún no ve claramente los beneficios financieros de una transición sostenible para su empresa?"
             details: Diseñamos intervenciones concretas y de bajo coste que mejoran el desempeño sostenible y crean entendimiento interno. En lugar de grandes cambios operativos, priorizamos mejoras de infraestructura y espacios de trabajo para impulsar eficiencia y productividad.
         roadmap:
@@ -225,6 +244,7 @@ es:
       open_profile_aria: Perfil abierto para %{name}
       click_to_flip_tooltip: Clic para ver perfil completo
       lead_service_link_aria: Ver servicios de %{service} — %{name}
+      image_alt: Retrato de %{name}, responsable de %{service}
     contact:
       title: Gelbhart Innovations
       address_label: Dirección
@@ -239,25 +259,25 @@ es:
     tos:
       title: Condiciones generales
       items:
-        - Bienvenido a nuestro sitio web. Al acceder o utilizar nuestro sitio web, acepta las presentes condiciones de servicio y nuestra política de privacidad.
-        - El contenido de nuestro sitio web es propiedad de nuestra empresa y está protegido por las leyes de propiedad intelectual. Sólo puede utilizar el contenido para fines personales y no comerciales. No puede copiar, modificar, distribuir ni reutilizar ninguna parte del sitio web sin nuestro consentimiento previo por escrito.
-        - Nuestro sitio web puede contener enlaces a sitios web de terceros. No somos responsables de la disponibilidad, el contenido o las prácticas de privacidad de esos sitios externos.
-        - Proporcionamos este sitio web "tal cual", sin garantías ni declaraciones. No nos hacemos responsables de ningún daño derivado del uso del sitio web, incluidos, entre otros, los daños directos, indirectos, incidentales o consecuentes.
-        - En ningún caso nuestra empresa será responsable de reclamaciones, pérdidas o daños superiores a 100 dólares relacionados con el uso que usted haga de este sitio web.
-        - Estas condiciones se regirán por las leyes de Suiza. Cualquier litigio se resolverá en los tribunales de Suiza.
+      - Bienvenido a nuestro sitio web. Al acceder o utilizar nuestro sitio web, acepta las presentes condiciones de servicio y nuestra política de privacidad.
+      - El contenido de nuestro sitio web es propiedad de nuestra empresa y está protegido por las leyes de propiedad intelectual. Sólo puede utilizar el contenido para fines personales y no comerciales. No puede copiar, modificar, distribuir ni reutilizar ninguna parte del sitio web sin nuestro consentimiento previo por escrito.
+      - Nuestro sitio web puede contener enlaces a sitios web de terceros. No somos responsables de la disponibilidad, el contenido o las prácticas de privacidad de esos sitios externos.
+      - Proporcionamos este sitio web "tal cual", sin garantías ni declaraciones. No nos hacemos responsables de ningún daño derivado del uso del sitio web, incluidos, entre otros, los daños directos, indirectos, incidentales o consecuentes.
+      - En ningún caso nuestra empresa será responsable de reclamaciones, pérdidas o daños superiores a 100 dólares relacionados con el uso que usted haga de este sitio web.
+      - Estas condiciones se regirán por las leyes de Suiza. Cualquier litigio se resolverá en los tribunales de Suiza.
     privacy:
       title: Política de privacidad
       items:
-        - Podemos recopilar información proporcionada por usted, así como información recogida automáticamente por nuestro servidor web y navegador. Utilizamos esta información para ofrecer y mejorar nuestros servicios.
-        - Podemos compartir su información con terceros proveedores de servicios que nos ayudan a operar el sitio web y servir a nuestros clientes. No vendemos ni alquilamos su información personal a terceros.
-        - Utilizamos cookies y herramientas similares cuando hace falta para recordar preferencias y ver cómo se usa el sitio. Puede ajustarlo en la configuración del navegador.
-        - Podemos actualizar esta política de privacidad de vez en cuando. Su uso continuado del sitio web después de cualquier cambio constituye su aceptación de la nueva política.
+      - Podemos recopilar información proporcionada por usted, así como información recogida automáticamente por nuestro servidor web y navegador. Utilizamos esta información para ofrecer y mejorar nuestros servicios.
+      - Podemos compartir su información con terceros proveedores de servicios que nos ayudan a operar el sitio web y servir a nuestros clientes. No vendemos ni alquilamos su información personal a terceros.
+      - Utilizamos cookies y herramientas similares cuando hace falta para recordar preferencias y ver cómo se usa el sitio. Puede ajustarlo en la configuración del navegador.
+      - Podemos actualizar esta política de privacidad de vez en cuando. Su uso continuado del sitio web después de cualquier cambio constituye su aceptación de la nueva política.
   errors:
     not_found:
-      heading: "404"
+      heading: '404'
       message: La página que busca no existe o ha sido movida.
     internal_server_error:
-      heading: "500"
+      heading: '500'
       message: Algo ha ido mal. Vuelva a intentarlo más tarde.
   team_members:
     bareket:
@@ -302,30 +322,30 @@ es:
       land_identification:
         title: Identificación de terrenos y oportunidades
         description:
-          - Localización de suelo para vivienda, hostelería, ocio y comercio.
-          - Estudios de mercado y de viabilidad.
-          - Zonificación, infraestructura y valor a largo plazo.
+        - Localización de suelo para vivienda, hostelería, ocio y comercio.
+        - Estudios de mercado y de viabilidad.
+        - Zonificación, infraestructura y valor a largo plazo.
       acquisition:
         title: Adquisición y estructuración
         description:
-          - Gestión de las negociaciones de compra de terrenos y diligencia debida.
-          - Coordinación con asesores jurídicos, bancos e instituciones financieras.
-          - Estructuración de inversiones y modelos de propiedad alineados con los objetivos de clientes e inversores.
+        - Gestión de las negociaciones de compra de terrenos y diligencia debida.
+        - Coordinación con asesores jurídicos, bancos e instituciones financieras.
+        - Estructuración de inversiones y modelos de propiedad alineados con los objetivos de clientes e inversores.
       development:
         title: Gestión de diseño y desarrollo
         description:
-          - Planificación general, arquitectura y diseño.
-          - Coordinación de consultores, contratistas y equipos de proyecto.
-          - Calidad, objetivos ambientales y calendario.
+        - Planificación general, arquitectura y diseño.
+        - Coordinación de consultores, contratistas y equipos de proyecto.
+        - Calidad, objetivos ambientales y calendario.
       marketing:
         title: Ejecución de marketing y ventas
         description:
-          - Marca y plan de salida al mercado.
-          - Campañas orientadas a inversores y compradores finales.
-          - Canales de venta y relación con clientes para mejorar la absorción.
+        - Marca y plan de salida al mercado.
+        - Campañas orientadas a inversores y compradores finales.
+        - Canales de venta y relación con clientes para mejorar la absorción.
       financial:
         title: Coordinación financiera y normativa
         description:
-          - Bancos, contables y auditores para financiación y cumplimiento.
-          - Informes financieros, relación con inversores y autorizaciones.
-          - Seguimiento desde la idea inicial hasta la entrega.
+        - Bancos, contables y auditores para financiación y cumplimiento.
+        - Informes financieros, relación con inversores y autorizaciones.
+        - Seguimiento desde la idea inicial hasta la entrega.

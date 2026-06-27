@@ -54,6 +54,8 @@ en:
     team: "Team"
     contact: "Contact Us"
     menu: "Menu"
+    toggle_navigation: "Toggle navigation"
+    toggle_services_dropdown: "Toggle services menu"
 
   # Common UI elements
   common:
@@ -70,6 +72,9 @@ en:
     light_mode: "Light Mode"
     dark_mode: "Dark Mode"
     language: "Language"
+    logo_alt: "Gelbhart Innovations logo"
+    toggle_theme: "Toggle light or dark theme"
+    external_website_aria: "Gelbhart Innovations website"
 
   # Footer
   footer:
@@ -121,8 +126,14 @@ en:
         description: "Due diligence, partnerships, portfolio choices, and product-level advice for pharma companies."
         page_title: "Pharmaceutical Services"
         back_button: "All Services"
+        intro: "Evidence-led advisory across the pharmaceutical lifecycle—from first assessment through launch. Each stage builds on the last."
+        pipeline_kicker: "Product development"
+        pipeline_title: "Development lifecycle"
+        hero_image_alt: "Pharmaceutical laboratory glassware in soft daylight"
         spotlight:
+          label: "Lead advisor"
           title: "Pharmaceutical industry consultant"
+          bio: "With more than 27 years in the pharmaceutical industry, Bareket advises on due diligence, partnerships, and product strategy—from first assessment through launch."
           cta_primary: "Discuss pharmaceutical services"
           cta_secondary: "Connect on LinkedIn"
       real_estate:
@@ -131,8 +142,18 @@ en:
         description: "Land search, purchase, project delivery, marketing, and finance for housing, hospitality, and commercial schemes."
         page_title: "Real Estate Services"
         back_button: "All Services"
+        intro: "End-to-end real estate development and investment—from land identification through finance and handover."
+        stages_kicker: "Land to sales"
+        stages_title: "Development process"
+        hero_image_alt: "Architectural development with technical blueprint overlay"
+        phases:
+          pre_development: "Pre-development"
+          construction: "Construction"
+          post_development: "Post-development"
         spotlight:
+          label: "Principal developer"
           title: "Real estate and project leadership"
+          bio: "Yaron brings over 20 years of project leadership across real estate and hospitality, guiding disciplined execution from land identification through finance and handover."
           cta_primary: "Discuss real estate services"
           cta_secondary: "Connect on LinkedIn"
       full_stack:
@@ -143,7 +164,9 @@ en:
         embed_iframe_title: "Tomer Gelbhart — full-stack developer portfolio at gelbhart.dev"
         embed_section_title_suffix: " — Tomer Gelbhart's portfolio"
         spotlight:
+          label: "Lead developer"
           title: "Full-stack developer"
+          bio: "Tomer builds production software across Rails, interfaces, APIs, and cloud—with depth in classical and quantum machine learning."
           cta_primary: "Discuss software engagements"
           cta_secondary: "Connect on LinkedIn"
       sustainability:
@@ -152,6 +175,7 @@ en:
         description: "Practical sustainability services covering LCA, compliance, circular business design, and efficient transformation pathways."
         page_title: "Sustainability Services"
         intro: "Tailored sustainability services for teams that want measurable impact, stronger readiness, and practical execution."
+        hero_image_alt: "Lush green foliage in natural daylight"
         offerings_title: "Tailored Sustainability Services"
         deep_dive_title: "Service Deep Dives"
         roadmap_title: "How We Work Together"
@@ -251,6 +275,7 @@ en:
               description: "Reintroduce materials and components into new workflows."
         venn_aria: "Animated Venn diagram showing environmental, social, and governance overlap."
         spotlight:
+          label: "Lead specialist"
           title: "Sustainability and Innovation Specialist"
           bio: "Effie supports sustainability transitions with practical business-model assessment, clear communication, and implementation-focused planning."
           cta_primary: "Book a sustainability consultation"
@@ -265,6 +290,7 @@ en:
       open_profile_aria: "Open profile for %{name}"
       click_to_flip_tooltip: "Click to view full profile"
       lead_service_link_aria: "View %{service} services — %{name}"
+      image_alt: "Portrait of %{name}, %{service} lead"
 
     contact:
       title: "Gelbhart Innovations"
