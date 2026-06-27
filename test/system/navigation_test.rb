@@ -7,7 +7,7 @@ class NavigationTest < ApplicationSystemTestCase
     visit root_url
 
     assert_selector "h1", text: "GELBHART"
-    assert_selector "h1 span.text-gradient-primary", text: "INNOVATIONS"
+    assert_selector "h1 span.text-brand-signal", text: "INNOVATIONS"
   end
 
   test "navigating to services page" do
@@ -45,7 +45,7 @@ class NavigationTest < ApplicationSystemTestCase
     visit root_url
     click_on "Team", match: :first
 
-    assert_selector "h2", text: "Our leadership"
+    assert_selector "h1", text: "Our leadership"
   end
 
   test "navigating to contact page" do
