@@ -1,18 +1,18 @@
 <svg class="re-building" viewBox="0 0 220 420" role="presentation" aria-hidden="true" focusable="false">
   <defs>
     <pattern id="re-building-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.2" />
     </pattern>
   </defs>
 
-  <rect x="0" y="0" width="220" height="420" fill="url(#re-building-grid)" opacity="0.5"/>
+  <rect x="0" y="0" width="220" height="420" fill="url(#re-building-grid)" opacity="0.5" />
 
   <g class="re-building__foundation" aria-hidden="true">
     <path d="M 30 380 L 190 380 L 190 400 L 30 400 Z"
           fill="rgba(0, 111, 151, 0.06)"
           stroke="currentColor"
           stroke-width="1.25"
-          opacity="0.45"/>
+          opacity="0.45" />
   </g>
 
   <% floors = [
@@ -28,9 +28,9 @@
             d="M 40 <%= floor[:y] %> L 180 <%= floor[:y] %> L 175 <%= floor[:y] + floor[:h] %> L 45 <%= floor[:y] + floor[:h] %> Z"
             fill="rgba(0, 111, 151, 0.04)"
             stroke="currentColor"
-            stroke-width="1.75"/>
+            stroke-width="1.75" />
       <line x1="45" y1="<%= floor[:y] + floor[:h] / 2 %>" x2="175" y2="<%= floor[:y] + floor[:h] / 2 %>"
-            stroke="currentColor" stroke-width="0.75" opacity="0.35" stroke-dasharray="4 3"/>
+            stroke="currentColor" stroke-width="0.75" opacity="0.35" stroke-dasharray="4 3" />
       <text x="210" y="<%= floor[:y] + floor[:h] / 2 + 5 %>" font-size="11" fill="currentColor" opacity="0.4" font-family="system-ui, sans-serif"><%= floor[:label] %></text>
     </g>
   <% end %>
@@ -41,7 +41,7 @@
         stroke="currentColor"
         stroke-width="1.25"
         opacity="0.35"
-        stroke-linecap="round"/>
+        stroke-linecap="round" />
 
-  <line x1="10" y1="400" x2="210" y2="400" stroke="currentColor" stroke-width="2" opacity="0.25"/>
+  <line x1="10" y1="400" x2="210" y2="400" stroke="currentColor" stroke-width="2" opacity="0.25" />
 </svg>
