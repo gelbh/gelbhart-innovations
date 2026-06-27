@@ -41,18 +41,59 @@
   background-color: var(--bs-body-bg);
   border: 1px solid var(--bs-border-color);
   box-shadow: 0 4px 24px rgba(11, 15, 25, 0.06);
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg))
+    translateY(var(--lift, 0));
+  transform-style: preserve-3d;
+  translate: 0 0;
+  opacity: 1;
   transition:
-    transform 0.25s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.6s ease,
     box-shadow 0.25s ease,
     border-color 0.25s ease;
+  transition-delay:
+    0s,
+    calc(var(--tile-index, 0) * 80ms),
+    calc(var(--tile-index, 0) * 80ms),
+    0s,
+    0s;
 
   &:hover {
-    border-color: rgba(99, 102, 241, 0.28);
+    border-color: rgba(var(--tile-accent, 11, 15, 25), 0.45);
   }
 
   &:focus-visible {
     outline: 0;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 0 0 3px rgba(var(--tile-accent, 11, 15, 25), 0.45);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(
+      18rem 18rem at var(--ptr-x, 50%) var(--ptr-y, 50%),
+      rgba(var(--tile-accent, 11, 15, 25), 0.16),
+      transparent 60%
+    );
+    transition: opacity 0.35s ease;
+  }
+
+  &:hover::after,
+  &:focus-within::after {
+    opacity: 1;
+  }
+}
+
+@starting-style {
+  .services-hub__tile {
+    opacity: 0;
+    translate: 0 16px;
   }
 }
 
@@ -62,7 +103,7 @@
 
 @media (hover: hover) and (pointer: fine) {
   .services-hub__tile:not(.services-hub__tile--static):hover {
-    transform: translateY(-5px);
+    --lift: -5px;
     box-shadow: 0 18px 44px rgba(11, 15, 25, 0.12);
   }
 
@@ -74,11 +115,20 @@
 
 @media (prefers-reduced-motion: reduce) {
   .services-hub__tile {
+    transform: none;
+    translate: none;
+    opacity: 1;
+    transition:
+      box-shadow 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .services-hub__tile::after {
     transition: none;
   }
 
   .services-hub__tile:not(.services-hub__tile--static):hover {
-    transform: none;
+    --lift: 0;
   }
 }
 
@@ -86,14 +136,9 @@
   cursor: default;
 }
 
-.services-hub__top-accent {
-  display: block;
-  block-size: 4px;
-  inline-size: 100%;
-  flex-shrink: 0;
-}
-
 .services-hub__tile-body {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
@@ -109,6 +154,7 @@
 .services-hub__cta {
   margin-top: auto;
   padding-top: 1rem;
+  color: var(--si-brand-teal);
 }
 
 .services-hub__icon-wrap {
@@ -129,8 +175,10 @@
 }
 
 .services-hub__eyebrow {
-  letter-spacing: 0.04em;
-  color: var(--bs-secondary-color);
+  letter-spacing: normal;
+  text-transform: none;
+  color: #565973;
+  font-weight: 600;
 }
 
 [dir="rtl"] .services-hub__cta-icon {
@@ -138,97 +186,527 @@
 }
 
 // ----------------------------------------------------------------------------
-// Service Cards (pharmaceutical / real estate subpages)
+// Pharmaceutical page — Lifecycle Spine (flagship)
 // ----------------------------------------------------------------------------
 
-.service-icon {
-  position: relative;
-  overflow: hidden;
+.pharma-page {
+  --pharma-accent: var(--si-brand-signal);
+  --pharma-accent-rgb: var(--si-brand-signal-rgb);
+  background-color: var(--bs-secondary-bg);
+}
 
-  // Shine effect on hover
-  &::before {
-    content: "";
-    position: absolute;
-    inset: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-      45deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    transition: transform 0.6s;
-    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+.pharma-page__hero--editorial,
+.realestate-page__hero--immersive {
+  position: relative;
+  isolation: isolate;
+  min-block-size: clamp(22rem, 62vh, 36rem);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  margin-block-end: 0;
+}
+
+.pharma-journey,
+.realestate-journey {
+  padding-block-start: clamp(2.5rem, 1.5rem + 3vw, 4.5rem);
+}
+
+.pharma-page__hero-media,
+.realestate-page__hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.pharma-page__hero-photo,
+.realestate-page__hero-photo {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+// Real estate hero: taller crop window + lower focal point so more of the
+// skyline is visible while still keeping sky at the top.
+.realestate-page__hero--immersive {
+  min-block-size: clamp(26rem, 74vh, 44rem);
+}
+
+.realestate-page__hero-photo {
+  object-position: center 55%;
+}
+
+.pharma-page__hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(11, 15, 25, 0.92) 0%,
+    rgba(11, 15, 25, 0.78) 42%,
+    rgba(11, 15, 25, 0.35) 68%,
+    rgba(11, 15, 25, 0.15) 100%
+  );
+}
+
+.realestate-page__hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(8, 28, 38, 0.9) 0%,
+    rgba(8, 28, 38, 0.72) 45%,
+    rgba(8, 28, 38, 0.25) 72%,
+    rgba(8, 28, 38, 0.1) 100%
+  );
+}
+
+.pharma-page__hero-inner,
+.realestate-page__hero-inner {
+  position: relative;
+  z-index: 2;
+  padding-block: clamp(2.5rem, 6vw, 5rem);
+  max-inline-size: 42rem;
+}
+
+.pharma-page__back,
+.realestate-page__back {
+  margin-block-end: 1.25rem;
+}
+
+.pharma-page__kicker,
+.realestate-page__kicker {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: none;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.pharma-page__title,
+.realestate-page__title {
+  font-size: clamp(2.35rem, 1.4rem + 4.5vw, 4.75rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  color: #fff;
+}
+
+.pharma-page__lead,
+.realestate-page__lead {
+  font-size: clamp(1.05rem, 0.95rem + 0.45vw, 1.3rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.88);
+  text-wrap: pretty;
+  max-inline-size: 38rem;
+}
+
+.pharma-journey__section-title,
+.realestate-journey__section-title {
+  font-size: clamp(1.5rem, 1.15rem + 1.2vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.pharma-journey__layout,
+.realestate-journey__layout {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+
+  @media (min-width: 992px) {
+    grid-template-columns: minmax(7rem, 9.5rem) 1fr;
+    gap: 2.5rem 3rem;
+    align-items: start;
+  }
+}
+
+.pharma-journey__graphic,
+.realestate-journey__graphic {
+  display: none;
+
+  @media (min-width: 992px) {
+    display: block;
+    position: sticky;
+    inset-block-start: 6rem;
+  }
+}
+
+.pharma-spine {
+  inline-size: 100%;
+  block-size: auto;
+  color: var(--bs-border-color);
+}
+
+.pharma-spine__node-core {
+  fill: var(--bs-body-bg);
+  stroke: rgba(var(--si-brand-signal-rgb), 0.35);
+  transition:
+    stroke 0.35s ease,
+    filter 0.35s ease;
+}
+
+.pharma-spine__node.is-lit .pharma-spine__node-core {
+  stroke: var(--si-brand-signal);
+  filter: drop-shadow(0 0 10px rgba(var(--si-brand-signal-rgb), 0.55));
+}
+
+.pharma-spine__node-halo {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.pharma-spine__node.is-lit .pharma-spine__node-halo {
+  opacity: 1;
+}
+
+.pharma-journey__stages {
+  @media (max-width: 991.98px) {
+    border-inline-start: 3px solid rgba(var(--pharma-accent-rgb), 0.15);
+    padding-inline-start: 1.25rem;
+    margin-inline-start: 0.25rem;
+  }
+}
+
+.realestate-journey__phases {
+  @media (max-width: 991.98px) {
+    border-inline-start: 3px solid rgba(var(--re-accent-rgb), 0.15);
+    padding-inline-start: 1.25rem;
+    margin-inline-start: 0.25rem;
+  }
+}
+
+.pharma-journey__stage,
+.realestate-journey__stage {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem 1.25rem;
+  padding-block: 1.5rem;
+  border-block-end: 1px solid var(--bs-border-color-translucent);
+  opacity: 0.65;
+  transform: translateY(6px);
+  transition:
+    opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+
+  &.is-active,
+  .service-journey--complete & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &:last-child {
+    border-block-end: 0;
+  }
+
+  @media (min-width: 768px) {
+    gap: 1.5rem 2rem;
+    padding-block: 1.85rem;
+  }
+}
+
+.pharma-journey__index {
+  font-size: clamp(2.25rem, 1.6rem + 2.5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: rgba(var(--pharma-accent-rgb), 0.18);
+  font-variant-numeric: tabular-nums;
+  transition: color 0.35s ease;
+}
+
+.pharma-journey__stage.is-active .pharma-journey__index {
+  color: var(--pharma-accent);
+}
+
+.pharma-journey__subtitle {
+  color: var(--bs-body-color);
+  line-height: 1.4;
+}
+
+.pharma-journey__description,
+.realestate-journey__bullets {
+  color: var(--bs-body-color);
+  line-height: 1.55;
+  text-wrap: pretty;
+  max-width: 65ch;
+}
+
+.pharma-journey__title,
+.realestate-journey__title {
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+// ----------------------------------------------------------------------------
+// Real Estate page — Blueprint That Builds Itself
+// ----------------------------------------------------------------------------
+
+.realestate-page {
+  --re-accent: var(--si-brand-teal);
+  --re-accent-rgb: var(--si-brand-teal-rgb);
+  background-color: var(--bs-secondary-bg);
+}
+
+.realestate-page__hero-blueprint {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  color: rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.9;
+}
+
+.re-building {
+  inline-size: 100%;
+  block-size: auto;
+  color: var(--si-brand-teal);
+}
+
+.re-building__floor {
+  opacity: 0.22;
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+
+  &.is-built,
+  .service-journey--complete & {
+    opacity: 1;
+  }
+}
+
+.re-building__outline {
+  transition:
+    stroke 0.4s ease,
+    fill 0.4s ease;
+}
+
+.re-building__floor.is-built .re-building__outline {
+  stroke: var(--si-brand-teal);
+  fill: rgba(var(--si-brand-teal-rgb), 0.12);
+}
+
+.realestate-journey__phase {
+  margin-block-end: 2.25rem;
+
+  &:last-child {
+    margin-block-end: 0;
+  }
+}
+
+.realestate-journey__phase-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--re-accent);
+  margin-block-end: 0.5rem;
+}
+
+.realestate-journey__index {
+  font-size: clamp(2.25rem, 1.6rem + 2.5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: rgba(var(--re-accent-rgb), 0.16);
+  font-variant-numeric: tabular-nums;
+  transition: color 0.35s ease;
+}
+
+.realestate-journey__stage.is-active .realestate-journey__index {
+  color: rgba(var(--re-accent-rgb), 0.55);
+}
+
+.realestate-journey__bullets {
+  padding-inline-start: 1.15rem;
+
+  li + li {
+    margin-block-start: 0.35rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pharma-journey__stage,
+  .realestate-journey__stage,
+  .pharma-spine__node-core,
+  .pharma-spine__node-halo,
+  .re-building__floor {
+    transition: none;
+    transform: none;
+    opacity: 1;
   }
 }
 
 // ----------------------------------------------------------------------------
-// Desktop Hover Effects (pointer devices only)
+// Service member spotlight (practice pages)
 // ----------------------------------------------------------------------------
 
-@media (hover: hover) and (pointer: fine) {
-  .service-card:hover {
-    .service-icon {
-      transform: translateY(-3px) scale(1.1);
+.service-member-spotlight {
+  --spotlight-accent: var(--bs-primary);
+  --spotlight-accent-rgb: var(--bs-primary-rgb);
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(var(--spotlight-accent-rgb), 0.16);
+  background: linear-gradient(
+    155deg,
+    rgba(var(--spotlight-accent-rgb), 0.05) 0%,
+    var(--bs-body-bg) 48%
+  );
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 12px 36px rgba(15, 23, 42, 0.06);
 
-      &.pharma-icon {
-        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4) !important;
-      }
+  &::before {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    inline-size: 4px;
+    background: var(--spotlight-accent);
+    z-index: 1;
+  }
+}
 
-      &.realestate-icon {
-        box-shadow: 0 10px 25px rgba(17, 153, 142, 0.4) !important;
-      }
+[data-bs-theme="dark"] .service-member-spotlight {
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+}
 
-      i {
-        transform: scale(1.2);
-      }
+.service-member-spotlight__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-block-size: 100%;
 
-      &::before {
-        transform: translateX(100%) translateY(100%) rotate(45deg);
-      }
+  @media (min-width: 768px) {
+    grid-template-columns: minmax(220px, 36%) 1fr;
+  }
+}
+
+.service-member-spotlight__figure {
+  position: relative;
+  margin: 0;
+  background: rgba(var(--spotlight-accent-rgb), 0.04);
+
+  @media (min-width: 768px) {
+    &::after {
+      content: "";
+      position: absolute;
+      inset-block: 0;
+      inset-inline-end: 0;
+      inline-size: 1px;
+      background: linear-gradient(
+        180deg,
+        transparent,
+        rgba(var(--spotlight-accent-rgb), 0.2) 35%,
+        rgba(var(--spotlight-accent-rgb), 0.2) 65%,
+        transparent
+      );
     }
   }
 }
 
-// ----------------------------------------------------------------------------
-// Touch Device Active States (no hover)
-// ----------------------------------------------------------------------------
+.service-member-spotlight__image {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  min-block-size: clamp(14rem, 45vw, 18rem);
+  object-fit: cover;
+  object-position: center top;
 
-@media (hover: none) {
-  .service-card:active .service-icon {
-    transform: scale(0.95);
+  @media (min-width: 768px) {
+    min-block-size: 18rem;
   }
 }
 
-// ----------------------------------------------------------------------------
-// Service Icon Responsive Sizing
-// ----------------------------------------------------------------------------
+.service-member-spotlight__content {
+  padding: clamp(1.35rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-.service-icon-responsive {
-  width: 60px !important;
-  height: 60px !important;
+.service-member-spotlight__label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--spotlight-accent);
+  margin-block-end: 0.65rem;
+}
 
-  @media (min-width: 576px) {
-    width: 70px !important;
-    height: 70px !important;
-  }
+.service-member-spotlight__name {
+  font-size: clamp(1.5rem, 2.5vw, 1.85rem);
+  font-weight: 650;
+  line-height: 1.15;
+  margin-block-end: 0.35rem;
+  color: var(--bs-body-color);
+}
 
-  @media (min-width: 768px) {
-    width: 80px !important;
-    height: 80px !important;
+.service-member-spotlight__role {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--bs-secondary-color);
+  margin-block-end: 1rem;
+}
+
+.service-member-spotlight__bio {
+  font-size: 0.975rem;
+  line-height: 1.6;
+  margin-block-end: 1.35rem;
+  max-inline-size: 52ch;
+
+  p:last-child {
+    margin-bottom: 0;
   }
 }
 
-.service-icon-content {
-  font-size: 1.75rem !important;
+.service-member-spotlight__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
 
-  @media (min-width: 576px) {
-    font-size: 2rem !important;
+.service-member-spotlight--pharma {
+  --spotlight-accent: var(--si-brand-signal);
+  --spotlight-accent-rgb: var(--si-brand-signal-rgb);
+}
+
+.service-member-spotlight--realestate {
+  --spotlight-accent: var(--si-brand-teal);
+  --spotlight-accent-rgb: var(--si-brand-teal-rgb);
+
+  .service-member-spotlight__content {
+    background-image:
+      linear-gradient(rgba(var(--si-brand-teal-rgb), 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(var(--si-brand-teal-rgb), 0.04) 1px, transparent 1px);
+    background-size: 22px 22px;
+    background-position: -1px -1px;
   }
+}
 
-  @media (min-width: 768px) {
-    font-size: 2.2rem !important;
+.service-member-spotlight--fullstack {
+  --spotlight-accent: var(--si-brand-brick);
+  --spotlight-accent-rgb: var(--si-brand-brick-rgb);
+}
+
+.service-member-spotlight--sustainability {
+  --spotlight-accent: var(--bs-success);
+  --spotlight-accent-rgb: var(--bs-success-rgb);
+
+  background: linear-gradient(
+    155deg,
+    rgba(var(--bs-success-rgb), 0.07) 0%,
+    var(--bs-body-bg) 50%
+  );
+}
+
+.pharma-page__spotlight-wrap,
+.realestate-page__spotlight-wrap,
+.fullstack-page__spotlight-wrap,
+.sustainability-page__spotlight-wrap {
+  @media (min-width: 992px) {
+    padding-block-start: 1.5rem;
   }
 }
 
@@ -257,14 +735,10 @@
   }
 }
 
-// ----------------------------------------------------------------------------
-// Sustainability service page (calm / soft nature layout)
-// ----------------------------------------------------------------------------
-
-// Service heroes: cover fills the strip edge-to-edge; 320px band (PagesController) keeps more in frame than a short bar.
-.jarallax.jarallax--sustainability-hero,
+// Full-stack hero strip (jarallax). Cover fills the strip edge-to-edge.
 .jarallax.jarallax--service-hero {
   overflow: hidden;
+  background-color: var(--bs-body-bg);
 
   @media (min-width: 576px) {
     min-height: 320px;
@@ -277,155 +751,382 @@
   }
 }
 
-.jarallax.jarallax--sustainability-hero {
-  background-color: var(--bs-success-bg-subtle);
+// ----------------------------------------------------------------------------
+// Sustainability page — Growth Stem (flagship)
+// ----------------------------------------------------------------------------
+
+.sustainability-page {
+  --sus-accent: var(--bs-success);
+  --sus-accent-rgb: var(--bs-success-rgb);
+  background-color: var(--bs-secondary-bg);
 }
 
-.jarallax.jarallax--service-hero {
-  background-color: var(--bs-body-bg);
+.sustainability-page__hero--natural {
+  position: relative;
+  isolation: isolate;
+  min-block-size: clamp(22rem, 62vh, 36rem);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  margin-block-end: 0;
 }
 
-.sustainability-page--calm {
-  max-width: 52rem;
+.sustainability-page__hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 
-.sustainability-page__intro {
-  max-width: 40rem;
+.sustainability-page__hero-photo {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  object-position: center 45%;
 }
 
-.sustainability-page__eyebrow {
-  letter-spacing: 0.12em;
-  font-weight: 500;
+.sustainability-page__hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(8, 33, 21, 0.9) 0%,
+    rgba(8, 33, 21, 0.72) 45%,
+    rgba(8, 33, 21, 0.25) 72%,
+    rgba(8, 33, 21, 0.1) 100%
+  );
+}
+
+.sustainability-page__hero-inner {
+  position: relative;
+  z-index: 2;
+  padding-block: clamp(2.5rem, 6vw, 5rem);
+  max-inline-size: 42rem;
+}
+
+.sustainability-page__back {
+  margin-block-end: 1.25rem;
+}
+
+.sustainability-page__kicker {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: none;
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .sustainability-page__title {
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+  font-size: clamp(2.35rem, 1.4rem + 4.5vw, 4.75rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  color: #fff;
 }
 
 .sustainability-page__lead {
+  font-size: clamp(1.05rem, 0.95rem + 0.45vw, 1.3rem);
   line-height: 1.55;
+  color: rgba(255, 255, 255, 0.88);
+  text-wrap: pretty;
+  max-inline-size: 38rem;
 }
 
-.sustainability-page__accordion-item {
-  border: 1px solid var(--bs-border-color-translucent);
-  border-radius: 0.75rem;
-  overflow: hidden;
-  background-color: var(--bs-body-bg);
+.sustainability-journey {
+  padding-block-start: clamp(2.5rem, 1.5rem + 3vw, 4.5rem);
 }
 
-.sustainability-page__accordion-btn {
-  font-weight: 500;
-  font-size: 1rem;
-  padding-block: 0.9rem;
-  padding-inline: 1.1rem;
-  box-shadow: none !important; // stylelint-disable-line declaration-no-important
-
-  &:not(.collapsed) {
-    color: var(--bs-body-color);
-    background-color: rgba(var(--bs-success-rgb), 0.1);
-  }
-
-  &.collapsed {
-    background-color: var(--bs-body-bg);
-  }
+.sustainability-journey__section-title {
+  font-size: clamp(1.5rem, 1.15rem + 1.2vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
-.sustainability-page__accordion-body {
-  padding-block: 0 1.15rem;
-  padding-inline: 1.1rem 1.25rem;
-}
+.sustainability-journey__layout {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
 
-.sustainability-page__tag-list {
-  .list-inline-item {
-    margin-bottom: 0.35rem;
+  @media (min-width: 992px) {
+    grid-template-columns: minmax(7rem, 9.5rem) 1fr;
+    gap: 2.5rem 3rem;
+    align-items: start;
   }
 }
 
-.sustainability-page__tag {
+.sustainability-journey__graphic {
+  display: none;
+
+  @media (min-width: 992px) {
+    display: block;
+    position: sticky;
+    inset-block-start: 6rem;
+  }
+}
+
+.sus-growth {
+  inline-size: 100%;
+  block-size: auto;
+  color: var(--bs-border-color);
+}
+
+.sus-growth__node-core {
+  fill: var(--bs-body-bg);
+  stroke: rgba(var(--sus-accent-rgb), 0.35);
+  transition:
+    stroke 0.35s ease,
+    filter 0.35s ease;
+}
+
+.sus-growth__node.is-lit .sus-growth__node-core {
+  stroke: var(--sus-accent);
+  filter: drop-shadow(0 0 10px rgba(var(--sus-accent-rgb), 0.55));
+}
+
+.sus-growth__leaf {
+  fill: rgba(var(--sus-accent-rgb), 0.04);
+  stroke: currentColor;
+  stroke-width: 1.5;
+  transition:
+    fill 0.45s ease,
+    stroke 0.45s ease;
+}
+
+.sus-growth__node.is-lit .sus-growth__leaf {
+  fill: rgba(var(--sus-accent-rgb), 0.2);
+  stroke: var(--sus-accent);
+}
+
+.sus-growth__node-halo {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.sus-growth__node.is-lit .sus-growth__node-halo {
+  opacity: 1;
+}
+
+.sustainability-journey__stages {
+  @media (max-width: 991.98px) {
+    border-inline-start: 3px solid rgba(var(--sus-accent-rgb), 0.15);
+    padding-inline-start: 1.25rem;
+    margin-inline-start: 0.25rem;
+  }
+}
+
+.sustainability-journey__stage {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem 1.25rem;
+  padding-block: 1.5rem;
+  border-block-end: 1px solid var(--bs-border-color-translucent);
+  opacity: 0.65;
+  transform: translateY(6px);
+  transition:
+    opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+
+  &.is-active,
+  .service-journey--complete & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &:last-child {
+    border-block-end: 0;
+  }
+
+  @media (min-width: 768px) {
+    gap: 1.5rem 2rem;
+    padding-block: 1.85rem;
+  }
+}
+
+.sustainability-journey__index {
+  font-size: clamp(2.25rem, 1.6rem + 2.5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: rgba(var(--sus-accent-rgb), 0.18);
+  font-variant-numeric: tabular-nums;
+  transition: color 0.35s ease;
+}
+
+.sustainability-journey__stage.is-active .sustainability-journey__index {
+  color: var(--sus-accent);
+}
+
+.sustainability-journey__prompt {
+  color: var(--bs-body-color);
+  line-height: 1.4;
+}
+
+.sustainability-journey__description {
+  color: var(--bs-body-color);
+  line-height: 1.55;
+  text-wrap: pretty;
+  max-width: 65ch;
+}
+
+.sustainability-journey__title {
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.sustainability-journey__tags .list-inline-item {
+  margin-bottom: 0.35rem;
+}
+
+.sustainability-journey__tag {
   display: inline-block;
   font-size: 0.75rem;
   font-weight: 500;
   padding: 0.2rem 0.55rem;
   border-radius: 999px;
-  border: 1px solid rgba(var(--bs-success-rgb), 0.25);
+  border: 1px solid rgba(var(--sus-accent-rgb), 0.25);
   color: var(--bs-secondary-color);
-  background-color: rgba(var(--bs-success-rgb), 0.06);
+  background-color: rgba(var(--sus-accent-rgb), 0.06);
 }
 
-.sustainability-page__esg-block {
-  padding-block: 0.5rem;
-}
-
-.sustainability-page__venn-panel {
-  max-inline-size: 22rem;
-  margin-inline: auto;
-  padding: clamp(1.25rem, 4vw, 2rem);
-  border-radius: 1.25rem;
-  border: 1px solid var(--bs-border-color-translucent);
-  background: linear-gradient(
-    165deg,
-    rgba(var(--bs-success-rgb), 0.12) 0%,
-    var(--bs-body-bg) 45%,
-    rgba(var(--bs-success-rgb), 0.06) 100%
-  );
-  box-shadow:
-    0 1px 2px rgba(15, 23, 42, 0.04),
-    0 12px 40px rgba(15, 23, 42, 0.06);
-}
-
-[data-bs-theme="dark"] .sustainability-page__venn-panel {
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.2),
-    0 12px 40px rgba(0, 0, 0, 0.25);
-}
-
-.sustainability-page__venn-animation {
-  display: block;
-  inline-size: 100%;
-  block-size: clamp(200px, 42vw, 280px);
-  margin-inline: auto;
-}
-
-.sustainability-page__simple-list-item {
-  padding-block: 0.65rem;
-  border-block-end: 1px solid var(--bs-border-color-translucent);
-
-  &:last-child {
-    border-block-end: 0;
-    padding-block-end: 0;
-  }
-
-  &:first-child {
-    padding-block-start: 0;
+@media (prefers-reduced-motion: reduce) {
+  .sustainability-journey__stage,
+  .sus-growth__node-core,
+  .sus-growth__node-halo,
+  .sus-growth__leaf {
+    transition: none;
+    transform: none;
+    opacity: 1;
   }
 }
 
-.sustainability-page__simple-list-title {
-  font-weight: 600;
-  color: var(--bs-body-color);
+// ----------------------------------------------------------------------------
+// Services hub — overdrive (living doors, atelier field, view transitions)
+// ----------------------------------------------------------------------------
+
+// Smoothly interpolatable custom properties for the pointer-reactive light.
+@property --ptr-x {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 50%;
 }
 
-.service-member-spotlight {
-  border: 1px solid var(--bs-border-color-translucent);
-  border-radius: 0.75rem;
-  background-color: var(--bs-body-bg);
-  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.05);
+@property --ptr-y {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 50%;
 }
 
-[data-bs-theme="dark"] .service-member-spotlight {
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+@property --rx {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
 }
 
-.service-member-spotlight__image {
+@property --ry {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.services-hub__header {
+  max-inline-size: 42rem;
+}
+
+.services-hub__canvas-host {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  > :not(.services-hub__field) {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.services-hub__field {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   inline-size: 100%;
   block-size: 100%;
-  min-block-size: 12rem;
-  object-fit: cover;
-}
+  pointer-events: none;
+  opacity: 0.5;
 
-.service-member-spotlight__bio {
-  p:last-child {
-    margin-bottom: 0;
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 0.35;
   }
 }
+
+// Hero entrance choreography — the inner content rises into place on arrival.
+.pharma-page__hero-inner > *,
+.realestate-page__hero-inner > *,
+.sustainability-page__hero-inner > * {
+  opacity: 1;
+  translate: 0 0;
+  transition:
+    opacity 0.7s ease,
+    translate 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@starting-style {
+  .pharma-page__hero-inner > *,
+  .realestate-page__hero-inner > *,
+  .sustainability-page__hero-inner > * {
+    opacity: 0;
+    translate: 0 20px;
+  }
+}
+
+.pharma-page__hero-inner > :nth-child(1),
+.realestate-page__hero-inner > :nth-child(1),
+.sustainability-page__hero-inner > :nth-child(1) {
+  transition-delay: 0.04s;
+}
+
+.pharma-page__hero-inner > :nth-child(2),
+.realestate-page__hero-inner > :nth-child(2),
+.sustainability-page__hero-inner > :nth-child(2) {
+  transition-delay: 0.12s;
+}
+
+.pharma-page__hero-inner > :nth-child(3),
+.realestate-page__hero-inner > :nth-child(3),
+.sustainability-page__hero-inner > :nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+.pharma-page__hero-inner > :nth-child(4),
+.realestate-page__hero-inner > :nth-child(4),
+.sustainability-page__hero-inner > :nth-child(4) {
+  transition-delay: 0.28s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pharma-page__hero-inner > *,
+  .realestate-page__hero-inner > *,
+  .sustainability-page__hero-inner > * {
+    transition: none;
+    translate: none;
+    opacity: 1;
+  }
+}
+
+// View Transitions — shared-element morph from a tapped tile into the hero.
+.vt-hero {
+  view-transition-name: practice-shared;
+}
+
+::view-transition-group(practice-shared) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0.001s !important; // stylelint-disable-line declaration-no-important
+  }
+}
+

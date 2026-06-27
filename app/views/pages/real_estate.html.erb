@@ -1,36 +1,81 @@
-<%= render 'shared/jarallax' %>
+<div class="realestate-page service-journey" data-controller="service-journey">
+  <%= render "shared/breadcrumb" %>
 
-<div class="bg-secondary">
-  <%= render 'shared/breadcrumb' %>
-
-  <section class="container py-2 pb-md-4 pb-lg-5 px-3 px-sm-4">
-    <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between gap-3 mb-3 mb-sm-4">
-      <h1 class="mb-0 fs-3 fs-sm-2 fs-md-1"><%= t('pages.services.real_estate.page_title') %></h1>
-      <%= link_to services_path, class: "btn btn-outline-primary btn-sm btn-md-md flex-shrink-0", data: { turbo_preload: true } do %>
-        <i class="bx bx-arrow-back me-1 me-sm-2"></i><span class="d-none d-sm-inline"><%= t('pages.services.real_estate.back_button') %></span>
-      <% end %>
+  <section class="realestate-page__hero realestate-page__hero--immersive vt-hero">
+    <div class="realestate-page__hero-media" aria-hidden="true">
+      <%= image_tag "covers/real_estate_hero.jpg",
+                    class: "realestate-page__hero-photo",
+                    alt: "",
+                    width: 1600,
+                    height: 900,
+                    loading: "eager",
+                    decoding: "async" %>
+      <div class="realestate-page__hero-scrim"></div>
+      <%= render "shared/realestate_hero_blueprint" %>
     </div>
-
-    <div class="row row-cols-1 row-cols-md-2">
-      <% @real_estate_services.each do |service| %>
-        <div class="col py-3 py-sm-4 my-1 my-sm-2 my-md-3">
-          <%= render "shared/service_card",
-                     title: service.title,
-                     description: service.description,
-                     icon: service.icon,
-                     gradient: AppConstants::SERVICE_GRADIENTS[:real_estate] %>
-        </div>
+    <div class="container realestate-page__hero-inner px-3 px-sm-4">
+      <%= link_to services_path, class: "realestate-page__back btn btn-outline-light btn-sm", data: { turbo_preload: true } do %>
+        <i class="bx bx-arrow-back me-1"></i><span class="d-none d-sm-inline"><%= t("pages.services.real_estate.back_button") %></span>
       <% end %>
+      <p class="realestate-page__kicker mb-2"><%= t("pages.services.real_estate.stages_kicker") %></p>
+      <h1 class="realestate-page__title mb-3"><%= t("pages.services.real_estate.page_title") %></h1>
+      <p class="realestate-page__lead mb-0"><%= t("pages.services.real_estate.intro") %></p>
+    </div>
+    <span class="visually-hidden"><%= t("pages.services.real_estate.hero_image_alt") %></span>
+  </section>
+
+  <section class="realestate-journey container px-3 px-sm-4 pb-4 pb-lg-5"
+           data-service-journey-target="track"
+           aria-labelledby="realestate-stages-title">
+    <header class="realestate-journey__header mb-4 mb-lg-5">
+      <h2 class="realestate-journey__section-title mb-0" id="realestate-stages-title"><%= t("pages.services.real_estate.stages_title") %></h2>
+    </header>
+
+    <div class="realestate-journey__layout">
+      <div class="realestate-journey__graphic">
+        <%= render "shared/realestate_building_elevation" %>
+      </div>
+
+      <div class="realestate-journey__phases">
+        <% stage_counter = 0 %>
+        <% real_estate_services_by_phase(@real_estate_services).each_with_index do |phase_group, phase_index| %>
+          <% next if phase_group[:services].empty? %>
+          <section class="realestate-journey__phase" aria-labelledby="realestate-phase-<%= phase_group[:phase] %>">
+            <h3 class="realestate-journey__phase-label" id="realestate-phase-<%= phase_group[:phase] %>">
+              <%= t("pages.services.real_estate.phases.#{phase_group[:phase]}") %>
+            </h3>
+            <div class="realestate-journey__stages">
+              <% phase_group[:services].each do |service| %>
+                <% stage_counter += 1 %>
+                <article class="realestate-journey__stage"
+                         data-service-journey-target="stage"
+                         data-stage-index="<%= stage_counter - 1 %>"
+                         style="--stage-index: <%= stage_counter - 1 %>;">
+                  <span class="realestate-journey__index" aria-hidden="true"><%= format("%02d", stage_counter) %></span>
+                  <div class="realestate-journey__body">
+                    <h4 class="realestate-journey__title h5 fw-bold mb-2"><%= service.title %></h4>
+                    <ul class="realestate-journey__bullets mb-0">
+                      <% service_description_items(service).each do |item| %>
+                        <li><%= item %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </article>
+              <% end %>
+            </div>
+          </section>
+        <% end %>
+      </div>
     </div>
 
     <% if @real_estate_member.present? %>
-      <div class="pt-4 pt-md-5 mt-2 mt-md-3">
+      <div class="realestate-page__spotlight-wrap pt-5 mt-2">
         <%= render "shared/service_member_spotlight",
                    member: @real_estate_member,
                    heading_id: "real-estate-member-title",
-                   role_emphasis_class: "text-success-emphasis",
-                   primary_btn_class: "btn-success",
-                   i18n_scope: "pages.services.real_estate.spotlight" %>
+                   primary_btn_class: "btn-primary",
+                   i18n_scope: "pages.services.real_estate.spotlight",
+                   wrapper_class: "service-member-spotlight--realestate" %>
       </div>
     <% end %>
   </section>

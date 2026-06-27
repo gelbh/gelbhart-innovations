@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 module AppConstants
+  # Per-practice icon accents, tuned to the brand register (Signal Red / Brick /
+  # Logo Blue / Coastal Teal). Sustainability keeps a green eco accent on purpose.
   SERVICE_GRADIENTS = {
-    pharmaceutical: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-    real_estate: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)",
-    full_stack: "linear-gradient(135deg, #6366f1 0%, #22d3ee 100%)",
+    pharmaceutical: "linear-gradient(135deg, #ef4646 0%, #df4732 100%)",
+    real_estate: "linear-gradient(135deg, #529fcb 0%, #006f97 100%)",
+    full_stack: "linear-gradient(135deg, #df4732 0%, #006f97 100%)",
     sustainability: "linear-gradient(135deg, #0ea5a4 0%, #84cc16 100%)"
   }.freeze
 
@@ -15,10 +17,28 @@ module AppConstants
     sustainability: "bx bx-leaf"
   }.freeze
 
+  # Per-practice accent (RGB triplet) for pointer-reactive lighting on the
+  # services hub and shared-element view transitions.
+  SERVICE_ACCENT_RGB = {
+    pharmaceutical: "239, 70, 70",
+    real_estate: "0, 111, 151",
+    full_stack: "82, 159, 203",
+    sustainability: "14, 165, 164"
+  }.freeze
+
   SERVICE_ICON_MODIFIERS = {
     pharmaceutical: "pharma-icon",
     real_estate: "realestate-icon"
   }.freeze
+
+  REAL_ESTATE_PHASES = [
+    { phase: :pre_development, keys: %w[land_identification acquisition] },
+    { phase: :construction, keys: %w[development] },
+    { phase: :post_development, keys: %w[marketing financial] }
+  ].freeze
+
+  # Ordered sustainability service stages (i18n under pages.services.sustainability.services)
+  SUSTAINABILITY_SERVICE_KEYS = %w[lca business_model compliance circular_design low_cost].freeze
 
   # Embedded on /services/full-stack (portfolio must allow frame-ancestors for this origin)
   PORTFOLIO_SITE_URL = "https://gelbhart.dev/".freeze

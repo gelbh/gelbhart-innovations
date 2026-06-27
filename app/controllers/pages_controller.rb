@@ -21,9 +21,6 @@ class PagesController < ApplicationController
       title: t("pages.services.pharmaceutical.page_title"),
       description: t("pages.services.pharmaceutical.description")
     )
-    assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:pharmaceutical], height: AppConstants::SERVICE_HERO_JARALLAX_HEIGHT, speed: 0.35)
-    @jarallax_extra_class = "jarallax--service-hero"
-    @jarallax_hide_overlay = true
     @services = Service.pharmaceutical
     @pharmaceutical_member = TeamMember.find_by_key(:bareket)
   end
@@ -33,9 +30,6 @@ class PagesController < ApplicationController
       title: t("pages.services.real_estate.page_title"),
       description: t("pages.services.real_estate.description")
     )
-    assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:real_estate], height: AppConstants::SERVICE_HERO_JARALLAX_HEIGHT, speed: 0.35)
-    @jarallax_extra_class = "jarallax--service-hero"
-    @jarallax_hide_overlay = true
     @real_estate_services = Service.real_estate
     @real_estate_member = TeamMember.find_by_key(:yaron)
   end
@@ -56,9 +50,7 @@ class PagesController < ApplicationController
       title: t("pages.services.sustainability.page_title"),
       description: t("pages.services.sustainability.description")
     )
-    assign_jarallax(image: AppConstants::JARALLAX_IMAGES[:sustainability], height: AppConstants::SERVICE_HERO_JARALLAX_HEIGHT, speed: 0.35)
-    @jarallax_extra_class = "jarallax--sustainability-hero"
-    @jarallax_hide_overlay = true
+    @sustainability_services = AppConstants::SUSTAINABILITY_SERVICE_KEYS
     @sustainability_member = TeamMember.find_by_key(:effie)
   end
 

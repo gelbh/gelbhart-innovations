@@ -1,66 +1,72 @@
-<%= render "shared/jarallax" %>
-
-<div class="bg-secondary">
+<div class="sustainability-page service-journey" data-controller="service-journey">
   <%= render "shared/breadcrumb" %>
 
-  <section class="sustainability-page sustainability-page--calm container py-4 py-lg-5 px-3 px-sm-4">
-    <header class="sustainability-page__intro mx-auto mb-5 pb-lg-1">
-      <div class="d-flex flex-column flex-md-row align-items-md-start justify-content-between gap-4">
-        <div class="flex-grow-1 text-center text-md-start">
-          <p class="sustainability-page__eyebrow small text-body-secondary mb-2"><%= t("nav.sustainability") %></p>
-          <h1 class="sustainability-page__title display-5 fw-semibold text-body mb-3"><%= t("pages.services.sustainability.page_title") %></h1>
-          <p class="sustainability-page__lead fs-5 text-body-secondary mb-3 mb-md-4"><%= t("pages.services.sustainability.intro") %></p>
-        </div>
-        <%= link_to services_path, class: "btn btn-outline-secondary btn-sm align-self-center align-self-md-start flex-shrink-0", data: { turbo_preload: true } do %>
-          <i class="bx bx-arrow-back me-1"></i><%= t("pages.services.sustainability.back_button") %>
-        <% end %>
-      </div>
+  <section class="sustainability-page__hero sustainability-page__hero--natural vt-hero">
+    <div class="sustainability-page__hero-media" aria-hidden="true">
+      <%= image_tag "covers/sustainability_hero.jpg",
+                    class: "sustainability-page__hero-photo",
+                    alt: "",
+                    width: 1600,
+                    height: 900,
+                    loading: "eager",
+                    decoding: "async" %>
+      <div class="sustainability-page__hero-scrim"></div>
+    </div>
+    <div class="container sustainability-page__hero-inner px-3 px-sm-4">
+      <%= link_to services_path, class: "sustainability-page__back btn btn-outline-light btn-sm", data: { turbo_preload: true } do %>
+        <i class="bx bx-arrow-back me-1"></i><span class="d-none d-sm-inline"><%= t("pages.services.sustainability.back_button") %></span>
+      <% end %>
+      <p class="sustainability-page__kicker mb-2"><%= t("pages.services.sustainability.subtitle") %></p>
+      <h1 class="sustainability-page__title mb-3"><%= t("pages.services.sustainability.page_title") %></h1>
+      <p class="sustainability-page__lead mb-0"><%= t("pages.services.sustainability.intro") %></p>
+    </div>
+    <span class="visually-hidden"><%= t("pages.services.sustainability.hero_image_alt") %></span>
+  </section>
+
+  <section class="sustainability-journey container px-3 px-sm-4 pb-4 pb-lg-5"
+           data-service-journey-target="track"
+           aria-labelledby="sustainability-stages-title">
+    <header class="sustainability-journey__header mb-4 mb-lg-5">
+      <h2 class="sustainability-journey__section-title mb-0" id="sustainability-stages-title"><%= t("pages.services.sustainability.offerings_title") %></h2>
     </header>
 
-    <section class="mb-5 pb-lg-2" aria-labelledby="sustainability-services-title">
-      <h2 class="h4 fw-semibold mb-4 text-body" id="sustainability-services-title"><%= t("pages.services.sustainability.offerings_title") %></h2>
-      <div class="accordion sustainability-page__accordion" id="sustainability-accordion">
-        <% %w[lca business_model compliance circular_design low_cost].each_with_index do |service_key, index| %>
-          <% header_id = "sustainability-heading-#{service_key}" %>
-          <% collapse_id = "sustainability-collapse-#{service_key}" %>
-          <article class="accordion-item sustainability-page__accordion-item mb-2">
-            <h3 class="accordion-header mb-0" id="<%= header_id %>">
-              <button class="accordion-button sustainability-page__accordion-btn <%= "collapsed" if index.positive? %>"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#<%= collapse_id %>"
-                      aria-expanded="<%= index.zero? %>"
-                      aria-controls="<%= collapse_id %>">
-                <%= t("pages.services.sustainability.services.#{service_key}.title") %>
-              </button>
-            </h3>
-            <div id="<%= collapse_id %>"
-                 class="accordion-collapse collapse <%= "show" if index.zero? %>"
-                 aria-labelledby="<%= header_id %>"
-                 data-bs-parent="#sustainability-accordion">
-              <div class="accordion-body sustainability-page__accordion-body">
-                <p class="fw-medium text-body mb-2"><%= t("pages.services.sustainability.services.#{service_key}.prompt") %></p>
-                <p class="text-body-secondary mb-3"><%= t("pages.services.sustainability.services.#{service_key}.details") %></p>
-                <ul class="sustainability-page__tag-list list-inline mb-0">
-                  <% t("pages.services.sustainability.services.#{service_key}.tags").each do |tag| %>
-                    <li class="list-inline-item"><span class="sustainability-page__tag"><%= tag %></span></li>
-                  <% end %>
-                </ul>
-              </div>
-            </div>
-          </article>
-        <% end %>
+    <div class="sustainability-journey__layout">
+      <div class="sustainability-journey__graphic">
+        <%= render "shared/sustainability_growth" %>
       </div>
-    </section>
+
+      <ol class="sustainability-journey__stages list-unstyled mb-0">
+        <% @sustainability_services.each_with_index do |service_key, index| %>
+          <% scope = "pages.services.sustainability.services.#{service_key}" %>
+          <li class="sustainability-journey__stage"
+              data-service-journey-target="stage"
+              data-stage-index="<%= index %>"
+              style="--stage-index: <%= index %>;">
+            <span class="sustainability-journey__index" aria-hidden="true"><%= format("%02d", index + 1) %></span>
+            <article class="sustainability-journey__content">
+              <h3 class="sustainability-journey__title h4 fw-bold mb-2"><%= t("#{scope}.title") %></h3>
+              <p class="sustainability-journey__prompt fw-medium mb-2"><%= t("#{scope}.prompt") %></p>
+              <p class="sustainability-journey__description mb-3"><%= t("#{scope}.details") %></p>
+              <ul class="sustainability-journey__tags list-inline mb-0">
+                <% t("#{scope}.tags").each do |tag| %>
+                  <li class="list-inline-item"><span class="sustainability-journey__tag"><%= tag %></span></li>
+                <% end %>
+              </ul>
+            </article>
+          </li>
+        <% end %>
+      </ol>
+    </div>
 
     <% if @sustainability_member.present? %>
-      <%= render "shared/service_member_spotlight",
-                 member: @sustainability_member,
-                 heading_id: "sustainability-member-title",
-                 role_emphasis_class: "text-success-emphasis",
-                 primary_btn_class: "btn-success",
-                 i18n_scope: "pages.services.sustainability.spotlight",
-                 bio_text: t("pages.services.sustainability.spotlight.bio") %>
+      <div class="sustainability-page__spotlight-wrap pt-5 mt-2">
+        <%= render "shared/service_member_spotlight",
+                   member: @sustainability_member,
+                   heading_id: "sustainability-member-title",
+                   primary_btn_class: "btn-success",
+                   i18n_scope: "pages.services.sustainability.spotlight",
+                   wrapper_class: "service-member-spotlight--sustainability" %>
+      </div>
     <% end %>
   </section>
 </div>

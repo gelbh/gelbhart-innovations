@@ -10,7 +10,7 @@
     </h2>
   </div>
 
-  <div class="webdev-embed" role="region" aria-labelledby="webdev-portfolio-embed-heading">
+  <div class="webdev-embed vt-hero" role="region" aria-labelledby="webdev-portfolio-embed-heading">
     <iframe class="webdev-embed__frame"
             src="<%= AppConstants::PORTFOLIO_SITE_URL %>"
             title="<%= t("pages.services.full_stack.embed_iframe_title") %>"
@@ -20,13 +20,13 @@
   </div>
 
   <% if @full_stack_member.present? %>
-    <div class="container py-4 py-lg-5 px-3 px-sm-4">
+    <div class="container fullstack-page__spotlight-wrap py-4 py-lg-5 px-3 px-sm-4">
       <%= render "shared/service_member_spotlight",
                  member: @full_stack_member,
                  heading_id: "full-stack-member-title",
-                 role_emphasis_class: "text-primary-emphasis",
                  primary_btn_class: "btn-primary",
-                 i18n_scope: "pages.services.full_stack.spotlight" %>
+                 i18n_scope: "pages.services.full_stack.spotlight",
+                 wrapper_class: "service-member-spotlight--fullstack" %>
     </div>
   <% end %>
 </div>

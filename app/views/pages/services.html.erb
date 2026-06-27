@@ -1,50 +1,35 @@
 <%= render "shared/jarallax" %>
 
-<div class="bg-secondary">
+<div class="bg-secondary services-hub__canvas-host" data-controller="atelier-field">
+  <canvas class="services-hub__field" data-atelier-field-target="canvas" aria-hidden="true"></canvas>
+
   <%= render "shared/breadcrumb" %>
 
   <section class="services-hub container py-2 pb-md-5 px-3 px-sm-4">
-    <header class="services-hub__header mx-auto text-center mb-4 mb-md-5" style="max-width: 42rem;">
+    <header class="services-hub__header mx-auto text-center mb-4 mb-md-5">
       <h1 class="services-hub__heading display-6 fw-bold mb-3"><%= t("pages.services.title") %></h1>
-      <p class="services-hub__lead text-body-secondary fs-5 mb-0"><%= t("pages.services.intro_lead") %></p>
+      <p class="services-hub__lead text-body fs-5 mb-0"><%= t("pages.services.intro_lead") %></p>
     </header>
 
-    <div class="services-hub__grid">
-      <%= render "shared/services_offering_tile",
-                 title: t("pages.services.pharmaceutical.title"),
-                 eyebrow: t("pages.services.pharmaceutical.subtitle"),
-                 body: t("pages.services.pharmaceutical.description"),
-                 icon: AppConstants::SERVICE_ICONS[:pharmaceutical],
-                 gradient: AppConstants::SERVICE_GRADIENTS[:pharmaceutical],
-                 href: pharmaceutical_path,
-                 wrapper_options: { data: { turbo_preload: true } } %>
-
-      <%= render "shared/services_offering_tile",
-                 title: t("pages.services.real_estate.title"),
-                 eyebrow: t("pages.services.real_estate.subtitle"),
-                 body: t("pages.services.real_estate.description"),
-                 icon: AppConstants::SERVICE_ICONS[:real_estate],
-                 gradient: AppConstants::SERVICE_GRADIENTS[:real_estate],
-                 href: real_estate_path,
-                 wrapper_options: { data: { turbo_preload: true } } %>
-
-      <%= render "shared/services_offering_tile",
-                 title: t("pages.services.full_stack.title"),
-                 eyebrow: t("pages.services.full_stack.subtitle"),
-                 body: t("pages.services.full_stack.description"),
-                 icon: AppConstants::SERVICE_ICONS[:full_stack],
-                 gradient: AppConstants::SERVICE_GRADIENTS[:full_stack],
-                 href: full_stack_path,
-                 wrapper_options: { data: { turbo_preload: true } } %>
-
-      <%= render "shared/services_offering_tile",
-                 title: t("pages.services.sustainability.title"),
-                 eyebrow: t("pages.services.sustainability.subtitle"),
-                 body: t("pages.services.sustainability.description"),
-                 icon: AppConstants::SERVICE_ICONS[:sustainability],
-                 gradient: AppConstants::SERVICE_GRADIENTS[:sustainability],
-                 href: sustainability_path,
-                 wrapper_options: { data: { turbo_preload: true } } %>
+    <div class="services-hub__grid" data-controller="tile-field">
+      <% [
+        [:pharmaceutical, pharmaceutical_path],
+        [:real_estate, real_estate_path],
+        [:full_stack, full_stack_path],
+        [:sustainability, sustainability_path]
+      ].each_with_index do |(key, path), index| %>
+        <%= render "shared/services_offering_tile",
+                   title: t("pages.services.#{key}.title"),
+                   eyebrow: t("pages.services.#{key}.subtitle"),
+                   body: t("pages.services.#{key}.description"),
+                   icon: AppConstants::SERVICE_ICONS[key],
+                   gradient: AppConstants::SERVICE_GRADIENTS[key],
+                   accent_rgb: AppConstants::SERVICE_ACCENT_RGB[key],
+                   practice: key,
+                   tile_index: index,
+                   href: path,
+                   wrapper_options: { data: { turbo_preload: true, tile_field_target: "tile" } } %>
+      <% end %>
     </div>
   </section>
 </div>

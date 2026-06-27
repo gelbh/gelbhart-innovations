@@ -1,0 +1,46 @@
+<svg class="pharma-spine" viewBox="0 0 120 520" role="presentation" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="pharma-node-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ef4646" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#ef4646" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="pharma-spine-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g class="pharma-spine__molecule" transform="translate(60 36)">
+    <polygon points="0,-22 19,-11 19,11 0,22 -19,11 -19,-11" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.35"/>
+    <circle cx="0" cy="0" r="5" fill="#ef4646" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5"/>
+    <line x1="0" y1="-22" x2="0" y2="-32" stroke="currentColor" stroke-width="1" opacity="0.25"/>
+    <line x1="19" y1="11" x2="28" y2="16" stroke="currentColor" stroke-width="1" opacity="0.25"/>
+    <line x1="-19" y1="11" x2="-28" y2="16" stroke="currentColor" stroke-width="1" opacity="0.25"/>
+  </g>
+
+  <path class="pharma-spine__track"
+        d="M 60 72 L 60 500"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        opacity="0.12"/>
+
+  <path class="pharma-spine__progress"
+        data-service-journey-target="progressPath"
+        d="M 60 72 L 60 500"
+        fill="none"
+        stroke="#ef4646"
+        stroke-width="3"
+        stroke-linecap="round"
+        filter="url(#pharma-spine-glow)"/>
+
+  <% [88, 168, 248, 328, 408, 488].each_with_index do |y, index| %>
+    <g class="pharma-spine__node" data-stage-node="<%= index %>">
+      <circle cx="60" cy="<%= y %>" r="14" fill="url(#pharma-node-glow)" class="pharma-spine__node-halo"/>
+      <circle cx="60" cy="<%= y %>" r="7" class="pharma-spine__node-core"/>
+    </g>
+  <% end %>
+</svg>

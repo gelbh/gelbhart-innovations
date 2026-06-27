@@ -19,14 +19,24 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     get pharmaceutical_url
     assert_response :success
     assert_select "h1", "Pharmaceutical Services"
-    assert_select ".service-card", minimum: 1
+    assert_select ".pharma-journey__stage", 6
+    assert_select ".service-member-spotlight", 1
   end
 
   test "should get real_estate" do
     get real_estate_url
     assert_response :success
     assert_select "h1", "Real Estate Services"
-    assert_select ".service-card", minimum: 1
+    assert_select ".realestate-journey__stage", 5
+    assert_select ".service-member-spotlight", 1
+  end
+
+  test "should get sustainability" do
+    get sustainability_url
+    assert_response :success
+    assert_select "h1", "Sustainability Services"
+    assert_select ".sustainability-journey__stage", 5
+    assert_select ".service-member-spotlight", 1
   end
 
   test "should get full_stack" do
@@ -39,7 +49,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
   test "should get team" do
     get team_url
     assert_response :success
-    assert_select "h2", "Our leadership"
+    assert_select "h1", "Our leadership"
   end
 
   test "should get contact" do

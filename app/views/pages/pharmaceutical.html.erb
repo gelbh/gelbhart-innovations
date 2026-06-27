@@ -1,37 +1,67 @@
-<%= render 'shared/jarallax' %>
+<div class="pharma-page service-journey" data-controller="service-journey">
+  <%= render "shared/breadcrumb" %>
 
-<div class="bg-secondary">
-  <%= render 'shared/breadcrumb' %>
-
-  <section class="container py-2 pb-md-4 pb-lg-5 px-3 px-sm-4">
-    <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between gap-3 mb-3 mb-sm-4">
-      <h1 class="mb-0 fs-3 fs-sm-2 fs-md-1"><%= t('pages.services.pharmaceutical.page_title') %></h1>
-      <%= link_to services_path, class: "btn btn-outline-primary btn-sm btn-md-md flex-shrink-0", data: { turbo_preload: true } do %>
-        <i class="bx bx-arrow-back me-1 me-sm-2"></i><span class="d-none d-sm-inline"><%= t('pages.services.pharmaceutical.back_button') %></span>
-      <% end %>
+  <section class="pharma-page__hero pharma-page__hero--editorial vt-hero">
+    <div class="pharma-page__hero-media" aria-hidden="true">
+      <%= image_tag "covers/pharmaceutical_hero.jpg",
+                    class: "pharma-page__hero-photo",
+                    alt: "",
+                    width: 1600,
+                    height: 900,
+                    loading: "eager",
+                    decoding: "async" %>
+      <div class="pharma-page__hero-scrim"></div>
     </div>
-
-    <div class="row row-cols-1 row-cols-md-2">
-      <% @services.each do |service| %>
-        <div class="col py-3 py-sm-4 my-1 my-sm-2 my-md-3">
-          <%= render "shared/service_card",
-                     title: service.title,
-                     subtitle: service.subtitle,
-                     description: service.description,
-                     icon: service.icon,
-                     gradient: AppConstants::SERVICE_GRADIENTS[:pharmaceutical] %>
-        </div>
+    <div class="container pharma-page__hero-inner px-3 px-sm-4">
+      <%= link_to services_path, class: "pharma-page__back btn btn-outline-light btn-sm", data: { turbo_preload: true } do %>
+        <i class="bx bx-arrow-back me-1"></i><span class="d-none d-sm-inline"><%= t("pages.services.pharmaceutical.back_button") %></span>
       <% end %>
+      <p class="pharma-page__kicker mb-2"><%= t("pages.services.pharmaceutical.pipeline_kicker") %></p>
+      <h1 class="pharma-page__title mb-3"><%= t("pages.services.pharmaceutical.page_title") %></h1>
+      <p class="pharma-page__lead mb-0"><%= t("pages.services.pharmaceutical.intro") %></p>
+    </div>
+    <span class="visually-hidden"><%= t("pages.services.pharmaceutical.hero_image_alt") %></span>
+  </section>
+
+  <section class="pharma-journey container px-3 px-sm-4 pb-4 pb-lg-5"
+           data-service-journey-target="track"
+           aria-labelledby="pharma-pipeline-title">
+    <header class="pharma-journey__header mb-4 mb-lg-5">
+      <h2 class="pharma-journey__section-title mb-0" id="pharma-pipeline-title"><%= t("pages.services.pharmaceutical.pipeline_title") %></h2>
+    </header>
+
+    <div class="pharma-journey__layout">
+      <div class="pharma-journey__graphic">
+        <%= render "shared/pharma_lifecycle_spine" %>
+      </div>
+
+      <ol class="pharma-journey__stages list-unstyled mb-0">
+        <% @services.each_with_index do |service, index| %>
+          <li class="pharma-journey__stage"
+              data-service-journey-target="stage"
+              data-stage-index="<%= index %>"
+              style="--stage-index: <%= index %>;">
+            <span class="pharma-journey__index" aria-hidden="true"><%= format("%02d", index + 1) %></span>
+            <article class="pharma-journey__content">
+              <h3 class="pharma-journey__title h4 fw-bold mb-2"><%= service.title %></h3>
+              <% if service.subtitle.present? %>
+                <p class="pharma-journey__subtitle fw-medium mb-2"><%= service.subtitle %></p>
+              <% end %>
+              <p class="pharma-journey__description mb-0"><%= service.description %></p>
+            </article>
+          </li>
+        <% end %>
+      </ol>
     </div>
 
     <% if @pharmaceutical_member.present? %>
-      <div class="pt-4 pt-md-5 mt-2 mt-md-3">
+      <div class="pharma-page__spotlight-wrap pt-5 mt-2">
         <%= render "shared/service_member_spotlight",
                    member: @pharmaceutical_member,
                    heading_id: "pharmaceutical-member-title",
-                   role_emphasis_class: "text-primary-emphasis",
                    primary_btn_class: "btn-primary",
-                   i18n_scope: "pages.services.pharmaceutical.spotlight" %>
+                   i18n_scope: "pages.services.pharmaceutical.spotlight",
+                   wrapper_class: "service-member-spotlight--pharma" %>
       </div>
     <% end %>
   </section>
