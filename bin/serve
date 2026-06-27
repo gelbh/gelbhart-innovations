@@ -8,7 +8,7 @@ set -euo pipefail
 PID_FILE="tmp/pids/server.pid"
 DEVELOPMENT_LOG_FILE="log/development.log"
 SERVER_LOG_FILE="log/server.log"
-DEFAULT_PORT=3000
+DEFAULT_PORT=3001
 IDLE_CHECK_INTERVAL_SECONDS=15
 
 # Ensure we're in a Rails directory
@@ -258,7 +258,6 @@ parse_cli_args() {
         ;;
       --port=*)
         port="${arg#*=}"
-        rails_args+=("$arg")
         ;;
       --idle-timeout)
         prev_arg="$arg"
@@ -269,7 +268,6 @@ parse_cli_args() {
       *)
         if [[ "$prev_arg" == "-p" || "$prev_arg" == "--port" ]]; then
           port="$arg"
-          rails_args+=("$prev_arg" "$arg")
           prev_arg=""
         elif [[ "$prev_arg" == "--idle-timeout" ]]; then
           idle_timeout_seconds="$arg"
@@ -327,16 +325,55 @@ start_idle_monitor() {
   idle_monitor_pid=$!
 }
 
+wait_for_server() {
+  local server_pid="$1"
+  local max_attempts=20
+  local attempt
+
+  for (( attempt = 1; attempt <= max_attempts; attempt++ )); do
+    if ! kill -0 "$server_pid" 2>/dev/null; then
+      return 1
+    fi
+
+    if command -v curl >/dev/null 2>&1; then
+      if curl -fsS "http://127.0.0.1:$port/up" >/dev/null 2>&1 || curl -fsS "http://127.0.0.1:$port/" >/dev/null 2>&1; then
+        return 0
+      fi
+    elif ss -tln 2>/dev/null | grep -q ":$port "; then
+      return 0
+    fi
+
+    sleep 1
+  done
+
+  kill -0 "$server_pid" 2>/dev/null
+}
+
+report_server_start_failure() {
+  local server_pid="$1"
+
+  echo "Error: Rails server failed to start on port $port." >&2
+  if [[ -f "$SERVER_LOG_FILE" ]]; then
+    echo "Recent log output:" >&2
+    tail -n 20 "$SERVER_LOG_FILE" >&2
+  fi
+  if kill -0 "$server_pid" 2>/dev/null; then
+    kill "$server_pid" 2>/dev/null || true
+  fi
+  exit 1
+}
+
 echo ""
 if [[ "$background" == true ]]; then
   echo "== Starting Rails server in background =="
   mkdir -p log
-  bin/rails server "${rails_args[@]}" > "$SERVER_LOG_FILE" 2>&1 &
+  bin/rails server -p "$port" "${rails_args[@]}" > "$SERVER_LOG_FILE" 2>&1 &
   server_pid=$!
   idle_monitor_pid=""
   start_idle_monitor "$server_pid" "$idle_timeout_seconds"
-  # Wait a moment for server to start
-  sleep 2
+  if ! wait_for_server "$server_pid"; then
+    report_server_start_failure "$server_pid"
+  fi
   echo "Rails server started in background (PID: $server_pid)"
   echo "Logs: tail -f $SERVER_LOG_FILE"
   echo "Stop server: kill $server_pid"
@@ -352,7 +389,7 @@ else
     echo "Idle auto-stop: enabled (${idle_timeout_seconds}s without activity)"
   fi
   echo ""
-  bin/rails server "${rails_args[@]}" &
+  bin/rails server -p "$port" "${rails_args[@]}" &
   server_pid=$!
   idle_monitor_pid=""
   start_idle_monitor "$server_pid" "$idle_timeout_seconds"
