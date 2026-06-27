@@ -387,6 +387,9 @@ html[dir="rtl"] .team-card-back-service-chevron {
 
 // Team Page Variant
 .team-page .team-card-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   position: relative;
   overflow: hidden;
   border-radius: 1.75rem;
@@ -410,7 +413,7 @@ html[dir="rtl"] .team-card-back-service-chevron {
     border-radius: inherit;
     background: linear-gradient(
       160deg,
-      rgba(239, 70, 70, 0.4),
+      rgba(var(--si-brand-signal-rgb), 0.4),
       rgba(76, 130, 247, 0.35)
     );
     opacity: 0;
@@ -597,11 +600,27 @@ html[dir="rtl"] .team-card-back-service-chevron {
   border-radius: 1.75rem;
   overflow: hidden;
   z-index: 1;
-  cursor: pointer;
   flex: 1 1 auto;
   min-height: 0;
   display: flex;
   flex-direction: column;
+}
+
+.team-page .team-card-flip-trigger {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: inherit;
+  cursor: pointer;
+  font: inherit;
+
+  &:focus-visible {
+    outline: 2px solid var(--bs-primary);
+    outline-offset: 2px;
+  }
 }
 
 .team-page .team-card-back {
@@ -1006,7 +1025,7 @@ html[dir="rtl"] .team-card-back-service-chevron {
       &::before {
         background: linear-gradient(
           160deg,
-          rgba(239, 70, 70, 0.35),
+          rgba(var(--si-brand-signal-rgb), 0.35),
           rgba(76, 130, 247, 0.3)
         );
       }

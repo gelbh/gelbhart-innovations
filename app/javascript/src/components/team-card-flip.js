@@ -29,8 +29,6 @@ const teamCardFlip = (() => {
   };
 
   const handleTriggerClick = (e) => {
-    if (e.target.closest("a") || e.target.closest("button")) return;
-
     const trigger = e.currentTarget;
     const flipContainer = trigger.closest(FLIP_CONTAINER_SELECTOR);
     if (!flipContainer) return;
@@ -55,6 +53,12 @@ const teamCardFlip = (() => {
     }
   };
 
+  const handleTriggerKeydown = (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    e.preventDefault();
+    handleTriggerClick(e);
+  };
+
   const handleBackClick = (e) => {
     e.stopPropagation();
     const btn = e.currentTarget;
@@ -74,6 +78,7 @@ const teamCardFlip = (() => {
     document.querySelectorAll(TRIGGER_SELECTOR).forEach((trigger) => {
       if (trigger.dataset.teamCardFlipAttached === "true") return;
       trigger.addEventListener("click", handleTriggerClick);
+      trigger.addEventListener("keydown", handleTriggerKeydown);
       trigger.dataset.teamCardFlipAttached = "true";
     });
 
@@ -88,6 +93,7 @@ const teamCardFlip = (() => {
     document.querySelectorAll(TRIGGER_SELECTOR).forEach((trigger) => {
       if (trigger.dataset.teamCardFlipAttached !== "true") return;
       trigger.removeEventListener("click", handleTriggerClick);
+      trigger.removeEventListener("keydown", handleTriggerKeydown);
       delete trigger.dataset.teamCardFlipAttached;
     });
 
