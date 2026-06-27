@@ -18,13 +18,26 @@ module ApplicationHelper
 
   VENDOR_DEFERRED_STYLESHEETS = %w[
     boxicons/css/boxicons.min.css
-    swiper/swiper-bundle.min.css
-    lightgallery/css/lightgallery-bundle.min.css
     flag-icons/css/flag-icons.min.css
   ].freeze
 
+  LAYOUT_VENDOR_SCRIPTS = {
+    bootstrap: "bootstrap/dist/js/bootstrap.bundle.min.js",
+    smooth_scroll: "smooth-scroll/dist/smooth-scroll.min.js",
+    jarallax: "jarallax/dist/jarallax.min.js"
+  }.freeze
+
   def deferred_vendor_stylesheet_hrefs
     VENDOR_DEFERRED_STYLESHEETS.map { |path| asset_path(path) }
+  end
+
+  def layout_vendor_script_paths
+    paths = [
+      LAYOUT_VENDOR_SCRIPTS[:bootstrap],
+      LAYOUT_VENDOR_SCRIPTS[:smooth_scroll]
+    ]
+    paths << LAYOUT_VENDOR_SCRIPTS[:jarallax] if @jarallax.present?
+    paths
   end
 
   def locale_to_flag(locale)

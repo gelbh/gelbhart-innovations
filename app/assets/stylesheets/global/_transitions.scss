@@ -31,17 +31,6 @@
   }
 }
 
-// Fallback for browsers without View Transitions API
-html.turbo-loading {
-  opacity: 0;
-  transition: opacity 0.2s ease-out;
-}
-
-html:not(.turbo-loading) {
-  opacity: 1;
-  transition: opacity 0.2s ease-in;
-}
-
 body,
 turbo-frame {
   opacity: 1;
